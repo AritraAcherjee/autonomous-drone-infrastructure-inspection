@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>aegisinspect_diagnostics</name>
+  <version>0.1.0</version>
+  <description>Reserved diagnostics package; no diagnostics implementation.</description>
+  <maintainer email="AritraAcherjee@users.noreply.github.com">Aritra Acherjee</maintainer>
+  <license>Proprietary</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

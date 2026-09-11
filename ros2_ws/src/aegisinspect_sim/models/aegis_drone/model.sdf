@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<sdf version="1.12">
+  <model name="aegis_drone">
+    <!-- Fixed in place deliberately: this is a sensor foundation, not a flight model. -->
+    <static>true</static>
+    <link name="base_link">
+      <collision name="body"><geometry><box><size>0.4 0.4 0.12</size></box></geometry></collision>
+      <visual name="body">
+        <geometry><box><size>0.4 0.4 0.12</size></box></geometry>
+        <material><ambient>0.25 0.3 0.35 1</ambient><diffuse>0.25 0.3 0.35 1</diffuse></material>
+      </visual>
+      <!-- Rendering looks along camera_link +X. Header labels the optical convention. -->
+      <sensor name="camera" type="camera">
+        <pose relative_to="camera_link">0 0 0 0 0 0</pose>
+        <frame_id>camera_optical_frame</frame_id>
+        <topic>/aegis/sim/sensors/camera/image_raw</topic>
+        <always_on>true</always_on><update_rate>30</update_rate>
+        <camera>
+          <camera_info_topic>/aegis/sim/sensors/camera/camera_info</camera_info_topic>
+          <horizontal_fov>1.0471975511965976</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.1</near><far>20</far></clip>
+        </camera>
+      </sensor>
+      <sensor name="imu" type="imu">
+        <pose relative_to="imu_link">0 0 0 0 0 0</pose>
+        <frame_id>imu_link</frame_id>
+        <topic>/aegis/sim/sensors/imu/data</topic>
+        <always_on>true</always_on><update_rate>200</update_rate>
+        <imu/>
+      </sensor>
+      <sensor name="lidar" type="gpu_lidar">
+        <pose relative_to="lidar_link">0 0 0 0 0 0</pose>
+        <frame_id>lidar_link</frame_id>
+        <topic>/aegis/sim/sensors/lidar</topic>
+        <always_on>true</always_on><update_rate>10</update_rate>
+        <lidar>
+          <scan>
+            <horizontal><samples>360</samples><resolution>1</resolution>
+              <min_angle>-3.141592653589793</min_angle><max_angle>3.141592653589793</max_angle>
+            </horizontal>
+            <vertical><samples>16</samples><resolution>1</resolution>
+              <min_angle>-0.2617993877991494</min_angle><max_angle>0.2617993877991494</max_angle>
+            </vertical>
+          </scan>
+          <range><min>0.2</min><max>20</max><resolution>0.01</resolution></range>
+        </lidar>
+      </sensor>
+    </link>
+    <!-- Must match description/urdf/drone.urdf.xacro; parity is tested. -->
+    <frame name="camera_link" attached_to="base_link"><pose>0.25 0 0 0 0 0</pose></frame>
+    <frame name="camera_optical_frame" attached_to="camera_link">
+      <pose>0 0 0 -1.5707963267948966 0 -1.5707963267948966</pose>
+    </frame>
+    <frame name="imu_link" attached_to="base_link"><pose>0 0 0 0 0 0</pose></frame>
+    <frame name="lidar_link" attached_to="base_link"><pose>0 0 0.15 0 0 0</pose></frame>
+  </model>
+</sdf>
