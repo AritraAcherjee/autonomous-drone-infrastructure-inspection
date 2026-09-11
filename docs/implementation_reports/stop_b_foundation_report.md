@@ -5,7 +5,8 @@ https://github.com/AritraAcherjee/autonomous-drone-infrastructure-inspection.git
 
 Baseline commit: `1cd132587f5a91ca3b5ed215adf6f2a6d702f63e`. The clean original tree (README.md, .gitignore, .git/)
 was shown before files were modified. No separate repository was created.
-This report records the implementation and validation evidence before target-platform runtime validation.
+This report preserves the initial implementation evidence. Subsequent owner-verified
+manual runtime results are recorded in the [runtime validation report](stop_b_runtime_validation.md).
 
 ## Scope and implementation
 
@@ -130,11 +131,18 @@ BLOCKED: ROS 2 Python runtime unavailable: No module named 'rclpy'
 The PowerShell tool wrapper maps a failing native command to shell exit 1; the
 Python process exit code was separately captured as 2 (blocked), as designed.
 
-**Build result: BLOCKED, not attempted with colcon.** ROS 2, colcon and gz are not
-available on PATH; WSL reports it is not installed. ROS launch imports, ament build,
-libsdformat semantic validation, GUI/headless rendering, sensor publication,
-clock/TF runtime behavior and the live acceptance check remain **unverified**.
-Static parsing is not a substitute for those checks.
+**Initial Codex build status: BLOCKED** because ROS 2, colcon, Gazebo and WSL
+were unavailable there. This historical limitation has been superseded for the
+manual foundation checks by the owner's Ubuntu 26.04/WSL2 results:
+**rosdep succeeded, 13 packages built with 0 failures, and the Stop-B ROS/Gazebo
+FOUNDATION manual runtime validation passed.** GUI startup, world/model loading,
+live clock/sensor observations, CameraInfo and the reported static transforms
+were verified. See [runtime validation](stop_b_runtime_validation.md).
+
+No successful automated live smoke-check, headless-rendering or standalone
+libsdformat validation result was supplied. Those checks remain unrecorded.
+The earlier exit-2 smoke-check result above describes the initial Codex host,
+not a failure of the subsequently validated Ubuntu runtime.
 
 ## Expected ROS interfaces
 
@@ -169,7 +177,9 @@ nav_msgs/msg/Odometry, header odom, child base_link, no TF ownership.
 Target remains Ubuntu 26.04 / ROS 2 Lyrical Luth / Gazebo Jetty LTS / ros_gz.
 Uses SDF 1.12 native sensor frame_id and Jetty system plugins. Older Gazebo
 versions may reject them. Headless sensor rendering still requires Ogre2/EGL
-support. No target runtime compatibility can be certified on this Windows host.
+support. The owner has now verified the documented GUI foundation on Ubuntu
+26.04/WSL2 with ROS 2 Lyrical and gz sim 10.5.0; this does not establish
+headless compatibility or final sensor performance.
 
 See [verification guide](stop_b_foundation_verification.md) for prerequisites, exact apt/
 rosdep commands, GUI/headless launch, topic/TF inspection and troubleshooting.
