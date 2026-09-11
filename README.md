@@ -238,8 +238,17 @@ Bridge direction, QoS and timestamp settings follow the
 Older Gazebo versions may reject the SDF version or frame field. Keep the frozen
 Lyrical/Jetty pairing and flag incompatibilities rather than renaming frames.
 
-This skeleton was prepared on Windows without ROS, Gazebo or WSL. The initial
-offline suite passed; **ament/colcon build, ROS launch, SDF semantic validation,
-rendering and live smoke checks remain blocked and unverified**. Installing the
-reference environment and running the commands above is still required before
-claiming a working simulation foundation.
+The initial Codex environment lacked ROS/Gazebo/WSL, and the offline suite passed
+22 tests. Subsequent **owner-verified manual WSL2/Ubuntu runtime validation passed
+for the Stop-B ROS/Gazebo foundation**: rosdep installation, all 13 package builds,
+WSLg GUI/world/model startup, live clock/sensor observations, CameraInfo and the
+reported static transforms. See the [runtime validation evidence](docs/implementation_reports/stop_b_runtime_validation.md)
+for exact measurements and scope.
+
+Observed GUI wall-clock rates were RGB 11–12 Hz, IMU 147–149 Hz and LiDAR
+7.4–7.5 Hz at approximately 74–77% real-time factor. These are observations,
+not final performance targets. RGB is below simple real-time-factor scaling
+of its configured 30 Hz; the cause has not been established. The automated
+live smoke checker, standalone SDF validation and headless validation still
+have no successful run recorded. Stop B and later algorithm/integration
+milestones are not complete.
