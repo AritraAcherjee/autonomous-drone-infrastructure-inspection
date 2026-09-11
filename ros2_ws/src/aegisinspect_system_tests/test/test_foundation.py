@@ -15,7 +15,7 @@ PACKAGES = {
     'safety', 'navigation', 'inspection', 'diagnostics', 'bringup', 'sim', 'system_tests',
 }
 RESERVED_PACKAGES = {
-    'sensors', 'perception', 'localization', 'mapping', 'safety', 'navigation',
+    'sensors', 'perception', 'localization', 'safety', 'navigation',
     'inspection', 'diagnostics',
 }
 EXPECTED = {

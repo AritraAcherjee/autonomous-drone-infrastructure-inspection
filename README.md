@@ -1,7 +1,8 @@
 # Autonomous Multimodal Drone Infrastructure Inspection System
 
 AegisInspect aims to support infrastructure inspection using vision and robotics.
-This repository currently contains only the **Stop-B ROS 2 / Gazebo foundation skeleton**.
+This repository contains the **Stop-B ROS 2 / Gazebo foundation skeleton**
+and a tested, ROS-independent camera depth geometry core.
 It does not complete Stop B or the ROS/Gazebo workstreams.
 
 ## Scope
@@ -28,7 +29,7 @@ ros2_ws/src/
 ├── aegisinspect_sensors/          reserved; metadata only
 ├── aegisinspect_perception/       reserved; metadata only
 ├── aegisinspect_localization/     reserved; metadata only
-├── aegisinspect_mapping/          reserved; metadata only
+├── aegisinspect_mapping/          pure Python depth geometry and synthetic tests
 ├── aegisinspect_safety/           reserved; metadata only
 ├── aegisinspect_navigation/       reserved; metadata only
 ├── aegisinspect_inspection/       reserved; metadata only
@@ -153,7 +154,7 @@ Reserved interfaces have **no publishers**:
 
 * `/aegis/perception/depth/image`: `sensor_msgs/msg/Image`, `32FC1`, meters,
   optical-axis Z, `camera_optical_frame`. This foundation has an RGB camera;
-  it does not implement a depth source or project points.
+  it does not implement a depth source or publish projected points.
 * `/aegis/localization/vio/odom`: `nav_msgs/msg/Odometry`, header `odom`, child
   `base_link`. VIO will be a measurement source and must not own dynamic TF.
 
@@ -252,3 +253,5 @@ of its configured 30 Hz; the cause has not been established. The automated
 live smoke checker, standalone SDF validation and headless validation still
 have no successful run recorded. Stop B and later algorithm/integration
 milestones are not complete.
+
+See the [depth geometry implementation note](docs/implementation_reports/depth_projection_core.md) for the pure back-projection API, calibration preconditions, ROI sampling and offline test commands.
