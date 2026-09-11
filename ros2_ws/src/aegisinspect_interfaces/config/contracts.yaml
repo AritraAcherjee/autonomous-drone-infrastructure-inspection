@@ -1,0 +1,31 @@
+schema_version: 1
+target: {ubuntu: '26.04', ros: lyrical, gazebo: jetty, integration: ros_gz}
+active_sensor_topics:
+  /aegis/sensors/camera/image_raw: {type: sensor_msgs/msg/Image, frame: camera_optical_frame}
+  /aegis/sensors/camera/camera_info: {type: sensor_msgs/msg/CameraInfo, frame: camera_optical_frame}
+  /aegis/sensors/imu/data: {type: sensor_msgs/msg/Imu, frame: imu_link}
+  /aegis/sensors/lidar/points: {type: sensor_msgs/msg/PointCloud2, frame: lidar_link}
+reserved_topics:
+  /aegis/perception/depth/image:
+    type: sensor_msgs/msg/Image
+    encoding: 32FC1
+    units: meters
+    quantity: optical-axis Z
+    frame: camera_optical_frame
+    implemented: false
+  /aegis/localization/vio/odom:
+    type: nav_msgs/msg/Odometry
+    frame: odom
+    child_frame: base_link
+    publishes_tf: false
+    implemented: false
+static_tf:
+  - [base_link, camera_link]
+  - [camera_link, camera_optical_frame]
+  - [base_link, imu_link]
+  - [base_link, lidar_link]
+reserved_dynamic_tf:
+  - [map, odom]
+  - [odom, base_link]
+ground_truth_namespace: /aegis/sim/ground_truth
+ground_truth_use: evaluation-only

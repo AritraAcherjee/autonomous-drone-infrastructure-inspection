@@ -1,4 +1,4 @@
-# Autonomous Multimodal Drone Infrastructure Inspection System
+# Stop-B foundation verification guide
 
 AegisInspect aims to support infrastructure inspection using vision and robotics.
 This repository currently contains only the **Stop-B ROS 2 / Gazebo foundation skeleton**.

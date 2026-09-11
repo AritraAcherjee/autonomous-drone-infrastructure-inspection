@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<sdf version="1.12">
+  <world name="inspection_bay">
+    <gravity>0 0 -9.81</gravity>
+    <physics name="foundation" type="ignored">
+      <max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+    <scene><ambient>0.6 0.6 0.6 1</ambient><background>0.8 0.85 0.9 1</background></scene>
+    <light name="bay_light" type="directional">
+      <pose>0 0 8 0 0 0</pose><diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular><direction>0.3 0 -1</direction>
+      <cast_shadows>true</cast_shadows>
+    </light>
+    <model name="floor">
+      <static>true</static><pose>0 0 -0.1 0 0 0</pose>
+      <link name="geometry">
+        <collision name="collision"><geometry><box><size>12 10 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>12 10 0.2</size></box></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="wall">
+      <static>true</static><pose>4 0 2 0 0 0</pose>
+      <link name="geometry">
+        <collision name="collision"><geometry><box><size>0.2 8 4</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.2 8 4</size></box></geometry>
+          <material><ambient>0.8 0.8 0.75 1</ambient><diffuse>0.8 0.8 0.75 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="column">
+      <static>true</static><pose>2 2 1.5 0 0 0</pose>
+      <link name="geometry">
+        <collision name="collision"><geometry><box><size>0.5 0.5 3</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.5 0.5 3</size></box></geometry>
+          <material><ambient>0.4 0.4 0.45 1</ambient><diffuse>0.4 0.4 0.45 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <!-- Neutral geometric panels: no defect classes, labels, or detections. -->
+    <model name="panel_a">
+      <static>true</static><pose>3.88 -0.8 1.5 0 0 0</pose>
+      <link name="geometry">
+        <collision name="collision"><geometry><box><size>0.02 0.5 0.5</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.02 0.5 0.5</size></box></geometry>
+          <material><ambient>0.1 0.2 0.8 1</ambient><diffuse>0.1 0.2 0.8 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="panel_b">
+      <static>true</static><pose>3.88 0.8 1.8 0 0 0</pose>
+      <link name="geometry">
+        <collision name="collision"><geometry><box><size>0.02 0.7 0.3</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.02 0.7 0.3</size></box></geometry>
+          <material><ambient>0.8 0.3 0.1 1</ambient><diffuse>0.8 0.3 0.1 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <!-- Known Gazebo world pose only; never a world->map or odom TF. -->
+    <include>
+      <uri>model://aegis_drone</uri><name>aegis_drone</name>
+      <pose>0 0 1.5 0 0 0</pose>
+    </include>
+  </world>
+</sdf>
