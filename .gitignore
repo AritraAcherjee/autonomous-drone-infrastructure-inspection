@@ -224,3 +224,7 @@ ros2_ws/log/
 
 # Externally sourced raw datasets; never redistribute through Git
 /data/raw/
+
+# Isolated detector runtime and disposable caches
+/.venv-detection/
+/outputs/cache/

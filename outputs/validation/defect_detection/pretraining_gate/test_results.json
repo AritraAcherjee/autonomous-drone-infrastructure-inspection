@@ -1,0 +1,28 @@
+{
+  "status": "FAIL",
+  "m1": {
+    "command": ".venv-detection/Scripts/python.exe -m unittest discover -s tests/data -v",
+    "passed": 111,
+    "failed": 1,
+    "skipped": 0
+  },
+  "detector": {
+    "command": ".venv-detection/Scripts/python.exe -m pytest tests ros2_ws/src/aegisinspect_mapping/test ros2_ws/src/aegisinspect_system_tests/test -q --junitxml=outputs/validation/defect_detection/pretraining_gate/pytest_results.xml",
+    "selection": "all 32 detector-gate test methods within full suite",
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "full_python_suite": {
+    "command": ".venv-detection/Scripts/python.exe -m pytest tests ros2_ws/src/aegisinspect_mapping/test ros2_ws/src/aegisinspect_system_tests/test -q --junitxml=outputs/validation/defect_detection/pretraining_gate/pytest_results.xml",
+    "PYTHONPATH": [
+      "src",
+      "ros2_ws/src/aegisinspect_mapping"
+    ],
+    "passed": 221,
+    "failed": 1,
+    "skipped": 0,
+    "warnings": 26
+  },
+  "blocker": "Pre-existing DatasetRegistryTests.test_gyu_approved_entry_and_artifacts_unchanged preservation hash mismatch; 23 protected artifacts disagree with retained snapshot but match committed base exactly."
+}

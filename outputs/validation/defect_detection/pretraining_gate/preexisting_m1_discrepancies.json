@@ -1,0 +1,163 @@
+[
+  {
+    "path": "configs\\data\\gyu_det_v3_baseline.yaml",
+    "expected": "aeee0038389d953b5928ab0beed22e45eb12ecd1d65d730c87f62cfe5f1734f4",
+    "actual": "c58d363fd29e94e9cb16398babba9afbef51264c7ffc6acd2f9ccb440e4e2766",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\baseline_data_policy.md",
+    "expected": "7b77dff8d2139fb6b55c8840294d1791724ce4ef19cb6c5153cdcefe6e8eca63",
+    "actual": "7ec6901fe3a91fc849e731bf852bc3bfd14edd9e9f1a26371fa9f7f6984dd465",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\M1_EVIDENCE_INDEX.md",
+    "expected": "8edea824a68bfb988e801914d412ed0ca1ee660ddd6820fd20d6bcc8ae7f4d53",
+    "actual": "82187b556416b8be7d843e3a0323135caed43c1859299931f4c9f494b349c577",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\pairing_report.md",
+    "expected": "841c7d72fe585db379ef0b6f901f751d3b97538609f628d2e62f0e8659c2555b",
+    "actual": "ba3ee03bbfbb6a96a995793750ee3bce5457a6ade8bf45576922874298e4f9f7",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\baseline_split\\baseline_split_policy.md",
+    "expected": "8d1f676a8ec037e0cfc5e429c090272ab7662058a2d9b00073ed60b0005235a8",
+    "actual": "46e9aa9261baef573b700253afffc3f99e268699e673e11d6edc49418a7ba068",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\baseline_split\\proposal_summary.json",
+    "expected": "1fcbda50425896304312f400f48bc4378ea9bb0989e640741bc9eba27607ffeb",
+    "actual": "6e8cb8a18f182fa5fd76cfe4efcf2abbf6eb09b7ed3fd8b3a98436001dd24bb3",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\full_validation\\execution_checks.md",
+    "expected": "e7d99e0ca2f6ff4ee0f446e883df16932281ff2e20a6c74117b1707a9622b0c1",
+    "actual": "4b784fb633872c945b2b82f616ed2775d770d22acefeef925c206bc4279f9774",
+    "matches_committed_base": true,
+    "expected_matches_crlf": false
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\full_validation\\validation.json",
+    "expected": "9afb3f09161f700df9d9059e1c90df44df9b535cf3d284e52b5eb12340c37b99",
+    "actual": "dc92b3c570c68ed8d9612d593156f422f071a7a417e82f443a3446a7c6317b43",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\full_validation\\validation_report.md",
+    "expected": "cc4a6beb7edb8df3e0ac329d0adc6a1e54324362d6ed6048566a0fa86f991cef",
+    "actual": "2fb6883ea1c18d9cc139870266cfae44473fba3713fb1305d0ae87b47cd4742c",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\leakage_audit\\execution_checks.md",
+    "expected": "def296b9ae5e18cdd27e65fc54c378bc2bf3831c6ed48a251351502ccd5bae7e",
+    "actual": "506a0082b1911cf492600ad3a102472667e9b68e0f8d2c94ee015553de4cf13b",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\leakage_audit\\leakage_report.md",
+    "expected": "01ad3274f544238d65b4a7211cbc85256641f4e5ff93dfedeaab834c4725f713",
+    "actual": "dd52e68577916d7e477d72032d695918d27accfc1c7e966afda841fe03b5fa93",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\leakage_audit\\leakage_validation.json",
+    "expected": "42216a695812bb8d4e5afedbeed6548d56c5decc956bbbb1d7719ffbce15a590",
+    "actual": "e21fcc31dba7d77419a19bb810a11a969335138d9f433eaec9ae75d4a9eed769",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\leakage_review\\final_leakage_review.md",
+    "expected": "1508dde1572e758930492195b63784c2ab0075aed299b3f1f186aca4e1ffb020",
+    "actual": "d4d600821ad022f9ea847cde36300d695134b2bb2b493dcb9def243ff5ced359",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\m1_evidence\\baseline_v1_execution_checks.json",
+    "expected": "d52ac4d1796bc72ba70702f335e79cc6405e3f331c5587343c2ca4e22d701fbd",
+    "actual": "4e0b0bea7c794def3c8cee50112bfa98e418b6ba69e889622cba4ba18913b0af",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\m1_evidence\\baseline_v1_execution_checks.md",
+    "expected": "dc0452cd2f572f58cf80e978e5376a0cd5ae21437110fc07c857925538adce4d",
+    "actual": "73ad9bd510c93ee24d09416616965b63acfe784eea16f828209f52cb0ef49943",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\m1_evidence\\consistency_check.json",
+    "expected": "8e9c2d3b850f85bfa35b68bb41090d62d11908e53420595d6ee4b533a5224677",
+    "actual": "fc723dade475976dffd6a45345f3aa1202ee66c102545c6d366826b94e46ecfb",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\m1_evidence\\documentation_execution_checks.md",
+    "expected": "2d87652317e04877d49465c23751b057930b297483c655fbde5919ec941c7603",
+    "actual": "273b46398e95d1503b07cf31b8e856cc528cbd34f9b59ddf1d33581aa9242210",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\orphan_review\\final_triage_summary.csv",
+    "expected": "29ac9f103ae6a04dba4585aacbbc66c1f018a4ed05f562a65a14946781aefe0c",
+    "actual": "232701df442d42d1e0b62e0b52c0a05da2842da1a67d3b2fbbe5bdf63cb41af5",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\orphan_review\\final_triage_summary.md",
+    "expected": "bfc3eaff38a673bd5bf032f5949e369893e983b964da4da48728748c13162f7e",
+    "actual": "b6a51aa64373c0aa9f0f55c9388908742ca1edce9b610afbff5a54676e1d0a42",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\orphan_review\\index.csv",
+    "expected": "25cee58bb62f8c3c9bd13cfdc337baaa2aa4b65ab246f79179475d3c4c78a6d9",
+    "actual": "127941f1a0bda77fc202df19c18b35ce2db3d6dd9dbbc07c994c4321cab32c7e",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\orphan_review\\README.md",
+    "expected": "f0d5b520b145c1c3feb119eb4bdc1fa6f786bec6380a769608f99e98abb09afa",
+    "actual": "6ea205907a41719e61b818c0ea2179855b607245b00dc8bed57a2a681a493f04",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\orphan_review\\TRIAGE_NOTES.md",
+    "expected": "e8ec064bf792f08edb557902530e5bbcb55ccc9765030b75901fccc8edab6d22",
+    "actual": "c1cf52716a31a783b1271008be3209ebed55d410619e0cad02134170f9c4b96c",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  },
+  {
+    "path": "outputs\\validation\\gyu_det_v3\\orphan_review\\validation.json",
+    "expected": "9192e433845bdb35752797c0e2c78e1cf3048b70b0fdee5670f4121b22a7f5ae",
+    "actual": "c4208ef34796cbbf944da0eb106d9489f75db3a0c143951c188da2fec5de770e",
+    "matches_committed_base": true,
+    "expected_matches_crlf": true
+  }
+]
