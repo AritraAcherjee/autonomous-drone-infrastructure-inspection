@@ -10,10 +10,12 @@
         <material><ambient>0.25 0.3 0.35 1</ambient><diffuse>0.25 0.3 0.35 1</diffuse></material>
       </visual>
       <!-- Rendering looks along camera_link +X. Header labels the optical convention. -->
-      <sensor name="camera" type="camera">
+      <!-- One RGB-D renderer shares pose, projection, resolution and clipping. -->
+      <sensor name="camera" type="rgbd_camera">
         <pose relative_to="camera_link">0 0 0 0 0 0</pose>
         <frame_id>camera_optical_frame</frame_id>
-        <topic>/aegis/sim/sensors/camera/image_raw</topic>
+        <!-- RGB-D appends /image and /depth_image to this transport prefix. -->
+        <topic>/aegis/sim/sensors/camera</topic>
         <always_on>true</always_on><update_rate>30</update_rate>
         <camera>
           <camera_info_topic>/aegis/sim/sensors/camera/camera_info</camera_info_topic>

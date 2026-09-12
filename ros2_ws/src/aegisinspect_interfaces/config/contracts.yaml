@@ -5,14 +5,16 @@ active_sensor_topics:
   /aegis/sensors/camera/camera_info: {type: sensor_msgs/msg/CameraInfo, frame: camera_optical_frame}
   /aegis/sensors/imu/data: {type: sensor_msgs/msg/Imu, frame: imu_link}
   /aegis/sensors/lidar/points: {type: sensor_msgs/msg/PointCloud2, frame: lidar_link}
-reserved_topics:
+active_perception_topics:
   /aegis/perception/depth/image:
     type: sensor_msgs/msg/Image
     encoding: 32FC1
     units: meters
     quantity: optical-axis Z
     frame: camera_optical_frame
-    implemented: false
+    implemented: true
+    runtime_validation: pending
+reserved_topics:
   /aegis/localization/vio/odom:
     type: nav_msgs/msg/Odometry
     frame: odom
