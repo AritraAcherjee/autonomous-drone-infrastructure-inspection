@@ -228,3 +228,13 @@ ros2_ws/log/
 # Isolated detector runtime and disposable caches
 /.venv-detection/
 /outputs/cache/
+
+# Disposable detector artifacts; retain configs, concise metrics and provenance.
+/outputs/training/defect_detection/**/*.pt
+/outputs/training/defect_detection/**/*.png
+/outputs/training/defect_detection/**/*.jpg
+/outputs/training/defect_detection/**/events.out.tfevents.*
+/outputs/training/defect_detection/**/raw_before.json
+/outputs/training/defect_detection/**/raw_after.json
+/outputs/validation/defect_detection/exif_alignment/raw_before.json
+/outputs/validation/defect_detection/exif_alignment/raw_after.json

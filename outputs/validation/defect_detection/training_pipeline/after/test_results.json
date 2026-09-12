@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "run_id": "5d73df6a98d14b4eb9aabe6ba9d3a18a",
+  "started_at": "2026-09-12T20:55:08.187379+00:00",
+  "commands": [
+    {
+      "suite": "m1",
+      "command": [
+        "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/data",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+      "started_at": "2026-09-12T20:55:08.272342+00:00",
+      "returncode": 0,
+      "finished_at": "2026-09-12T20:55:21.957835+00:00"
+    },
+    {
+      "suite": "full_python_suite",
+      "command": [
+        "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests",
+        "ros2_ws/src/aegisinspect_mapping/test",
+        "ros2_ws/src/aegisinspect_system_tests/test",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\defect_detection\\training_pipeline\\after\\test-run-wfk695gu\\pytest_results.xml"
+      ],
+      "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+      "started_at": "2026-09-12T20:55:21.969695+00:00",
+      "returncode": 0,
+      "finished_at": "2026-09-12T20:56:24.872655+00:00"
+    }
+  ],
+  "git_sha": "043ce54d40708c6bf278f8b07741c1e4afe9ccd6",
+  "PYTHONPATH": [
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\src",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\ros2_ws\\src\\aegisinspect_mapping"
+  ],
+  "m1": {
+    "passed": 112,
+    "failed": 0,
+    "skipped": 0
+  },
+  "full_python_suite": {
+    "passed": 286,
+    "failed": 0,
+    "skipped": 0,
+    "subtests_passed": 75
+  },
+  "detector": {
+    "passed": 74,
+    "failed": 0,
+    "skipped": 0
+  },
+  "artifacts": {
+    "m1_tests.txt": "d8daa0aeb6a42286321713788404e36bee42a5d30787334c5c546a925475d74c",
+    "full_tests.txt": "9d42e81fba4925bcba677311414d8336ad1368dfab4cd6d3d0e9abd257738a43",
+    "pytest_results.xml": "8e9deab98dd9ddee45b85e51166fe46d0b67e6efe3d6c5bb8841145d238358e7"
+  },
+  "finished_at": "2026-09-12T20:56:24.893008+00:00"
+}

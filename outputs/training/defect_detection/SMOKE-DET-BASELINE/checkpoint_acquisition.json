@@ -1,0 +1,9 @@
+{
+  "filename": "yolo26s.pt",
+  "model_id": "yolo26s",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt",
+  "acquisition": "HTTPS download from official ultralytics/assets v8.4.0 release",
+  "local_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\cache\\models\\ultralytics\\v8.4.0\\yolo26s.pt",
+  "size_bytes": 20422725,
+  "sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b"
+}

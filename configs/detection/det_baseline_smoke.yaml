@@ -1,0 +1,10 @@
+extends: det_baseline.yaml
+smoke:
+  name: SMOKE-DET-BASELINE
+  epochs: 1
+  train_images: 128
+  valid_images: 32
+  selection: sha256(seed:split:relative_path)
+  warmup_epochs: 0.0
+  close_mosaic: 0
+  save_period: 1

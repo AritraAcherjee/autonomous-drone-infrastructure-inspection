@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "implementation": {
+    "configs/detection/det_baseline.yaml": "d2b8bfd1de031317c79671729ce3ba5ed263edd4cf9cc879ad0148a9c8ed31e3",
+    "configs/detection/det_baseline_smoke.yaml": "5865881214ad0b463d743063ef391c5a9e2092de2836e6e62109ac4f3338c31b",
+    "scripts/check_detector_training.py": "9a7f9b1af367a294e832f4967c0f4e48855329496ff2cd3980d8d7bf98027f53",
+    "scripts/train_detector.py": "ae4fcc4011a67732b6a86e2365cb786bcf02b456778b3c4f2b242adfc2ca1f89",
+    "scripts/verify_detector_exif.py": "a45f250496782a9ed6785ea79d000857bd03b16c8a48b36cf1e160aa0038b600",
+    "src/detection/training/__init__.py": "372bc3ea8cfe0659a0977593efc8756aaa8c2e3c341a490cc4459843e255e1bc",
+    "src/detection/training/config.py": "b5cdb2e469d17e11128bbba5be0a065d9e026e77048d02aefe08617e16e2aec3",
+    "src/detection/training/dataset.py": "463bc97bff46dcba7aeb2ed017ccc74cde4d9e8ac0664e74f54ea418e06e2208",
+    "src/detection/training/exif.py": "5e98e7fb9638efdf87d5795ac9ca8af0beb86e1f954c2f9681f45e92454f5679",
+    "src/detection/training/provenance.py": "1b8a87db017a578c03ab48d4e5cdc88e0dba0158a56c12ac2c3e9119d0549fc5",
+    "src/detection/training/trainer.py": "0082d8681c0e3a634ed9f26e1c83a907546bb8438e414c4dce0f2dc4b1a38d07",
+    "tests/detection/test_pretraining_gate.py": "1b0bf402917d0d8a7cc45ed9ad59b9f8136d91351a98de15b9c0e850df663074",
+    "tests/detection/test_training.py": "47efd638251adea5d1f37ff603fe1cddd2fe24a392f4d0882b1fce6bbaa50d34"
+  },
+  "detector_command": [
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/detection",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\defect_detection\\training_pipeline\\before\\detector.xml"
+  ],
+  "required_tests": {
+    "status": "PASS",
+    "run_id": "61f56e18452f4473adbda93d84917e9d",
+    "started_at": "2026-09-12T21:14:23.746997+00:00",
+    "commands": [
+      {
+        "suite": "m1",
+        "command": [
+          "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/data",
+          "-v"
+        ],
+        "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+        "started_at": "2026-09-12T21:14:23.820757+00:00",
+        "returncode": 0,
+        "finished_at": "2026-09-12T21:14:36.906657+00:00"
+      },
+      {
+        "suite": "full_python_suite",
+        "command": [
+          "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "tests",
+          "ros2_ws/src/aegisinspect_mapping/test",
+          "ros2_ws/src/aegisinspect_system_tests/test",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-5wee5y0b\\pytest_results.xml"
+        ],
+        "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+        "started_at": "2026-09-12T21:14:36.919250+00:00",
+        "returncode": 0,
+        "finished_at": "2026-09-12T21:15:40.698702+00:00"
+      }
+    ],
+    "git_sha": "043ce54d40708c6bf278f8b07741c1e4afe9ccd6",
+    "PYTHONPATH": [
+      "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\src",
+      "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\ros2_ws\\src\\aegisinspect_mapping"
+    ],
+    "m1": {
+      "passed": 112,
+      "failed": 0,
+      "skipped": 0
+    },
+    "full_python_suite": {
+      "passed": 288,
+      "failed": 0,
+      "skipped": 0,
+      "subtests_passed": 75
+    },
+    "detector": {
+      "passed": 76,
+      "failed": 0,
+      "skipped": 0
+    },
+    "artifacts": {
+      "m1_tests.txt": "c212d470791f37efb9c5e5e8cbeeb7cf9218679991b88b43aff880f17e209b93",
+      "full_tests.txt": "c006752b46a6e43e76afc962235afa2e8b9826c85a7f2b8ab1507d9633833f29",
+      "pytest_results.xml": "175043d6b4776e022e83e5292a5c54dcf5cba7209d835de91bad8c1c48255c88"
+    },
+    "finished_at": "2026-09-12T21:15:40.735165+00:00"
+  },
+  "evidence_sha256": {
+    "outputs/validation/defect_detection/training_pipeline/before/detector.xml": "1d9cb56dbd4dd814d5a3f5e096e17ed8b87004665f8e0fe5552e55de86a5cbe0",
+    "outputs/validation/defect_detection/training_pipeline/before/detector_tests.txt": "992ecb71463b920dcef967c8753d2a295277e6537be6285ecf5e239759f2c6bd",
+    "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "c006752b46a6e43e76afc962235afa2e8b9826c85a7f2b8ab1507d9633833f29",
+    "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "c212d470791f37efb9c5e5e8cbeeb7cf9218679991b88b43aff880f17e209b93",
+    "outputs/validation/defect_detection/training_pipeline/before/pytest_results.xml": "175043d6b4776e022e83e5292a5c54dcf5cba7209d835de91bad8c1c48255c88",
+    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "c2d04199b71d18f5262570691d9126a5e1a7e6b1fc229e29f9c2454323b8f6dc"
+  }
+}
