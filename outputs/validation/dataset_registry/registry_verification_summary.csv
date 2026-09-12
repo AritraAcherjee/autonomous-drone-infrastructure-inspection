@@ -1,0 +1,17 @@
+dataset_id,dataset_name,verification_status,decision,acquisition_timing,license_identifier,m1_required,intended_role
+gyu_det_v3,GYU-DET,APPROVED_UNCHANGED,USE_NOW,NOW,CC-BY-NC-SA-4.0,true,Approved first structural-defect detector baseline
+codebrim,CODEBRIM,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,LicenseRef-CODEBRIM-NC,false,Protected external/domain-shift evaluation after detector baseline freeze
+sdnet2018,SDNET2018,SOURCE_AND_TERMS_VERIFIED,OPTIONAL,NOT_REQUIRED,CC-BY-4.0,false,Auxiliary crack classification and robustness analysis
+deepcrack,DeepCrack,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,LicenseRef-DeepCrack-NC,false,Crack segmentation benchmark
+structural_damage_2d,2D Structural Damage Dataset,SOURCE_IDENTIFIED_PROJECT_IDENTITY_AND_LICENSE_UNRESOLVED,HOLD,DO_NOT_ACQUIRE_YET,LICENSE_UNRESOLVED,false,Potential auxiliary detection/generalization only after provenance clearance
+lol_v2,LOL-v2,SOURCE_VERIFIED_LICENSE_UNRESOLVED,HOLD,DO_NOT_ACQUIRE_YET,LICENSE_UNRESOLVED,false,Paired enhancement evaluation after rights clarification
+exdark,ExDark,SOURCE_AND_TERMS_VERIFIED,OPTIONAL,NOT_REQUIRED,LicenseRef-ExDark-NC,false,Optional low-light object-detection domain shift experiments
+visdrone,VisDrone,SOURCE_VERIFIED_LICENSE_SCOPE_UNRESOLVED,HOLD,DO_NOT_ACQUIRE_YET,LICENSE_UNRESOLVED,false,Video/tracking methodology; optional aerial detection robustness
+euroc_mav,EuRoC MAV,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,InC-NC,false,VIO / localization benchmark
+tum_rgbd,TUM RGB-D,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,CC-BY-4.0,false,Depth / RGB-D SLAM validation
+hilti_slam_2022,Hilti SLAM 2022,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,CC-BY-NC-SA-3.0,false,Construction SLAM and sensor-fusion evaluation
+hilti_slam_2023,Hilti SLAM 2023,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,CC-BY-NC-SA-3.0,false,Construction SLAM and sensor-fusion evaluation
+hilti_trimble_slam_2026,Hilti x Trimble SLAM 2026,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,CC-BY-NC-SA-3.0,false,Construction VIO and floor-plan localization; not LiDAR-input benchmarking
+tu_delft_oda,TU Delft ODA,SOURCE_AND_TERMS_VERIFIED,DEFER_TO_WORKSTREAM,LATER,CC0-1.0,false,Obstacle detection/avoidance and aerial perception validation
+flir_adas,FLIR ADAS,SOURCE_VERIFIED_LICENSE_UNRESOLVED,HOLD,DO_NOT_ACQUIRE_YET,LICENSE_UNRESOLVED,false,Optional thermal/multimodal object-perception extension only
+aegisinspect_gazebo_dataset,AegisInspect Gazebo-generated dataset,INTERNAL_PLANNED_ASSET_LICENSE_UNRESOLVED,DEFER_TO_WORKSTREAM,LATER,LICENSE_UNRESOLVED,false,REQUIRED_LATER for integrated system verification

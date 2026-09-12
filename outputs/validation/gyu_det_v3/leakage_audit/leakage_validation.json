@@ -1,0 +1,74 @@
+{
+  "cross_split_candidates_by_split_pair": {
+    "train/test": 11,
+    "train/valid": 4,
+    "valid/test": 2
+  },
+  "cross_split_exact_pairs": {
+    "train/valid": 1
+  },
+  "cumulative_candidate_counts": {
+    "0": 1,
+    "12": 17,
+    "4": 2,
+    "8": 3
+  },
+  "hash_algorithm": "128-bit horizontal+vertical dHash; stored primary orientation; LANCZOS",
+  "image_sha256_source": "existing manifest only; image bytes not rehashed",
+  "input_sha256": {
+    "data\\manifests\\gyu_det_v3_raw_manifest.csv": "d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772",
+    "outputs\\validation\\gyu_det_v3\\full_validation\\image_validation.csv": "b2101b60bf850e7934136b011c53099e8d4d9721df2fb8d78afe1632a5d93cf3",
+    "outputs\\validation\\gyu_det_v3\\orphan_review\\final_triage_summary.csv": "29ac9f103ae6a04dba4585aacbbc66c1f018a4ed05f562a65a14946781aefe0c",
+    "outputs\\validation\\gyu_det_v3\\orphan_review\\human_triage_decisions.csv": "b02700628cbce14e2db2ba1ef8db0dbf6b4549a51c3ccd4511440a0392c9827e",
+    "outputs\\validation\\gyu_det_v3\\orphan_review\\index.csv": "25cee58bb62f8c3c9bd13cfdc337baaa2aa4b65ab246f79179475d3c4c78a6d9"
+  },
+  "pillow_version": "12.3.0",
+  "protected_inputs_unchanged": true,
+  "raw_metadata_unchanged": true,
+  "render_failures": [],
+  "summary": {
+    "basename_collision_groups": 0,
+    "candidate_pairs_needing_review": 17,
+    "cross_split_basename_collision_pairs": 0,
+    "cross_split_capture_metadata_groups": 1,
+    "cross_split_exact_duplicate_pairs": 1,
+    "cross_split_identical_perceptual_hash": 1,
+    "cross_split_probable": 1,
+    "cross_split_very_strong": 1,
+    "cross_split_weaker": 14,
+    "exact_duplicate_groups": 7,
+    "fingerprint_failures": 0,
+    "images": 11123,
+    "mpo_images": 565,
+    "numeric_neighbor_pairs": 18,
+    "numeric_neighbors_also_perceptual": 0,
+    "opencv_check": "skipped: OpenCV not installed",
+    "opencv_dimension_mismatches": 0,
+    "opencv_load_failures": 0,
+    "rendering_failures": 0,
+    "review_pairs_shown": 17,
+    "review_sheet_count": 5,
+    "within_split_basename_collision_pairs": 0,
+    "within_split_exact_duplicate_pairs": 6
+  },
+  "thresholds": {
+    "identical": 0,
+    "probable": [
+      5,
+      8
+    ],
+    "very_strong": [
+      1,
+      4
+    ],
+    "weaker": [
+      9,
+      12
+    ]
+  },
+  "within_split_exact_pairs": {
+    "test": 0,
+    "train": 4,
+    "valid": 2
+  }
+}

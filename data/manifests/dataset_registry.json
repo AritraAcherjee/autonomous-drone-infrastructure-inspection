@@ -1,0 +1,1900 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-09-11",
+  "datasets": [
+    {
+      "dataset_id": "gyu_det_v3",
+      "dataset_name": "GYU-DET",
+      "verification_status": "APPROVED_UNCHANGED",
+      "decision": "USE_NOW",
+      "acquisition_timing": "NOW",
+      "m1_required": true,
+      "official_source": "Science Data Bank V3",
+      "official_source_url": "https://www.scidb.cn/en/detail?dataSetId=68827df9f367442c8be0c283e60ed3b7",
+      "doi": "10.57760/sciencedb.19893",
+      "version": "V3",
+      "license_identifier": "CC-BY-NC-SA-4.0",
+      "license_url": "https://doi.org/10.57760/sciencedb.19893",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "Non-commercial attribution/share-alike; raw archives not redistributed through Git.",
+      "modalities": [
+        "RGB"
+      ],
+      "annotation_type": "YOLO normalized bounding boxes",
+      "classes_or_content": "0 Crack; 1 Breakage; 2 Comb; 3 Hole; 4 Reinforcement; 5 Seepage",
+      "intended_role": "Approved first structural-defect detector baseline",
+      "owning_workstream": "Chat 03 / Defect Detection",
+      "approximate_size": "40.71 decimal GB source ZIPs; baseline 10,398 images / 48,392 annotations",
+      "availability": "ACQUIRED_AND_APPROVED; train 8305, valid 1040, test 1053",
+      "limitations": "Preserve approved baseline-v1; 712 unclassified images and 21 orphan labels excluded; reader/MPO gate belongs to Chat 03.",
+      "verification_sources": [
+        "https://www.scidb.cn/en/detail?dataSetId=68827df9f367442c8be0c283e60ed3b7",
+        "https://doi.org/10.57760/sciencedb.19893",
+        "docs/data/sources/gyu_det_v3.md",
+        "data/manifests/gyu_det_v3_source_provenance.json",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "ACQUIRED_AND_APPROVED",
+      "citation": "Existing approved source/provenance record, retained without re-verification.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "CC-BY-NC-ND-4.0 (separate from V3 dataset)",
+      "source_doc": "docs/data/sources/gyu_det_v3.md",
+      "license_doc": "docs/data/licenses/gyu_det_v3.md",
+      "field_sources": {
+        "dataset_name": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "official_source": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "official_source_url": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "doi": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "version": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "modalities": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "annotation_type": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "classes_or_content": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "approximate_size": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "availability": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "citation": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "license_identifier": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "license_url": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "commercial_restriction": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "redistribution_notes": [
+          "docs/data/sources/gyu_det_v3.md",
+          "data/manifests/gyu_det_v3_source_provenance.json"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": "USE",
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "codebrim",
+      "dataset_name": "CODEBRIM",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "Zenodo / original authors",
+      "official_source_url": "https://zenodo.org/records/2620293",
+      "doi": "10.5281/zenodo.2620293",
+      "version": "1.0",
+      "license_identifier": "LicenseRef-CODEBRIM-NC",
+      "license_url": "https://zenodo.org/records/2620293/files/license.md?download=1",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "Custom terms: non-commercial research/education only; no commercial gain from derivatives; no dataset or modified-dataset redistribution. Colleagues must accept terms; data-free models/annotations may be shared under the same terms. Cite authors; record acceptance/any required permission before acquisition.",
+      "modalities": [
+        "RGB"
+      ],
+      "annotation_type": "Original images with boxes; extracted crops have multi-label classification targets; no masks established",
+      "classes_or_content": "Crack; spallation; efflorescence; exposed bars; corrosion stain; background",
+      "intended_role": "Protected external/domain-shift evaluation after detector baseline freeze",
+      "owning_workstream": "Chat 03 / Defect Detection: external evaluation",
+      "approximate_size": "1,590 source images / 30 bridges; original-image ZIP 8.3 GB; four alternative packages total 36.4 GB",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Partial taxonomy overlap; multi-label regions differ from YOLO single-class boxes. Define compatible metrics before predictions. Never train/tune baseline on this holdout.",
+      "verification_sources": [
+        "https://zenodo.org/records/2620293",
+        "https://zenodo.org/records/2620293/files/license.md?download=1",
+        "https://arxiv.org/html/1904.08486v1",
+        "https://github.com/ccc-frankfurt/meta-learning-CODEBRIM",
+        "https://zenodo.org/api/records/2620293",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Official dataset title: CODEBRIM: COncrete DEfect BRidge IMage Dataset. Martin Mundt, Sagnik Majumder, Sreenivas Murali, Panagiotis Panetsos, Visvanathan Ramesh; Goethe University / Egnatia Odos; CVPR 2019, Meta-learning Convolutional Neural Architectures for Multi-target Concrete Defect Classification with CODEBRIM.",
+      "code_license": "Separate repository custom research/educational terms; adapted ENAS code has additional upstream terms.",
+      "paper_license": "arXiv version: perpetual non-exclusive arXiv distribution license, not dataset permission",
+      "source_doc": "docs/data/sources/codebrim.md",
+      "license_doc": "docs/data/licenses/codebrim.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "official_source": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "official_source_url": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "doi": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "version": [
+          "https://zenodo.org/api/records/2620293"
+        ],
+        "modalities": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "annotation_type": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "classes_or_content": [
+          "https://arxiv.org/html/1904.08486v1"
+        ],
+        "approximate_size": [
+          "https://zenodo.org/records/2620293",
+          "https://arxiv.org/html/1904.08486v1"
+        ],
+        "availability": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "citation": [
+          "https://zenodo.org/records/2620293"
+        ],
+        "license_identifier": [
+          "https://zenodo.org/records/2620293/files/license.md?download=1"
+        ],
+        "license_url": [
+          "https://zenodo.org/records/2620293/files/license.md?download=1"
+        ],
+        "commercial_restriction": [
+          "https://zenodo.org/records/2620293/files/license.md?download=1"
+        ],
+        "redistribution_notes": [
+          "https://zenodo.org/records/2620293/files/license.md?download=1"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "external_holdout": true,
+      "approved_registry_decision": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "sdnet2018",
+      "dataset_name": "SDNET2018",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "OPTIONAL",
+      "acquisition_timing": "NOT_REQUIRED",
+      "m1_required": false,
+      "official_source": "Utah State University institutional dataset record",
+      "official_source_url": "https://digitalcommons.usu.edu/all_datasets/48/",
+      "doi": "10.15142/T3TD19",
+      "version": "2018",
+      "license_identifier": "CC-BY-4.0",
+      "license_url": "https://digitalcommons.usu.edu/all_datasets/48/",
+      "commercial_restriction": "No non-commercial restriction in the identified grant; other rights may apply",
+      "redistribution_notes": "CC BY 4.0 attribution, license link and modification notice; no NC condition in this grant.",
+      "modalities": [
+        "RGB"
+      ],
+      "annotation_type": "Image-level cracked/non-cracked folder labels; no bounding boxes supplied by this classification dataset",
+      "classes_or_content": "Concrete bridge decks (D), walls (W), pavements (P); cracked and non-cracked patches",
+      "intended_role": "Auxiliary crack classification and robustness analysis",
+      "owning_workstream": "Defect Detection / crack robustness experiments",
+      "approximate_size": "Over 56,000 images; ZIP listed as 515,903 kB",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Patch classification is not detector ground truth; retain source-image grouping to avoid patch leakage. No need for first detector.",
+      "verification_sources": [
+        "https://digitalcommons.usu.edu/all_datasets/48/",
+        "https://www.sciencedirect.com/science/article/pii/S2352340918314082",
+        "https://commons.und.edu/cie-fac/14/",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Maguire, Dorafshan, Thomas (2018), SDNET2018: A concrete crack image dataset for machine learning applications. Dataset DOI 10.15142/T3TD19.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "Data in Brief article: CC BY 4.0, verified separately at authors institutional article record",
+      "source_doc": "docs/data/sources/sdnet2018.md",
+      "license_doc": "docs/data/licenses/sdnet2018.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "official_source": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "official_source_url": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "doi": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "version": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "modalities": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "annotation_type": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "classes_or_content": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "approximate_size": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "availability": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "citation": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "license_identifier": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "license_url": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "commercial_restriction": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "redistribution_notes": [
+          "https://digitalcommons.usu.edu/all_datasets/48/"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "deepcrack",
+      "dataset_name": "DeepCrack",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "Yahui Liu original author dataset repository",
+      "official_source_url": "https://github.com/yhlleo/DeepCrack",
+      "doi": null,
+      "version": "Liu et al. Neurocomputing 2019 dataset (537 images)",
+      "license_identifier": "LicenseRef-DeepCrack-NC",
+      "license_url": "https://github.com/yhlleo/DeepCrack/blob/master/README.md",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "Explicit dataset use restricted to non-commercial research and education. No blanket redistribution or commercial grant inferred.",
+      "modalities": [
+        "RGB",
+        "binary masks"
+      ],
+      "annotation_type": "Pixel-wise crack segmentation",
+      "classes_or_content": "Crack / non-crack pixels across concrete/asphalt scenes",
+      "intended_role": "Crack segmentation benchmark",
+      "owning_workstream": "Chat 06 / Defect Segmentation",
+      "approximate_size": "537 images at 544 x 384; 300 train / 237 test; archive bytes UNKNOWN",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "This registry explicitly selects Liu et al., not Zou et al. TIP 2019 (CrackTree260, CRKWH100, CrackLS315, Stone331). Authors own only part of original images; upstream-image permissions/redistribution need review before broader reuse.",
+      "verification_sources": [
+        "https://github.com/yhlleo/DeepCrack",
+        "https://github.com/yhlleo/DeepCrack/blob/master/README.md",
+        "https://yhlleo.github.io/papers/DeepCrack-Neurocomputing2019.pdf",
+        "https://github.com/qinnzou/DeepCrack",
+        "https://github.com/yhlleo/DeepSegmentor/blob/master/LICENSE",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Yahui Liu, Jian Yao, Xiaohu Lu, Renping Xie, Li Li; DeepCrack: A Deep Hierarchical Feature Learning Architecture for Crack Segmentation, Neurocomputing 338 (2019), 139-153.",
+      "code_license": "DeepSegmentor has a separate BSD-style software grant and third-party notices; it does not replace dataset NC terms.",
+      "paper_license": "Elsevier 2019 all rights reserved, shown in author-hosted paper",
+      "source_doc": "docs/data/sources/deepcrack.md",
+      "license_doc": "docs/data/licenses/deepcrack.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "official_source": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "official_source_url": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "doi": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "version": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "modalities": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "annotation_type": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "classes_or_content": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "approximate_size": [
+          "https://yhlleo.github.io/papers/DeepCrack-Neurocomputing2019.pdf"
+        ],
+        "availability": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "citation": [
+          "https://github.com/yhlleo/DeepCrack"
+        ],
+        "license_identifier": [
+          "https://github.com/yhlleo/DeepCrack/blob/master/README.md"
+        ],
+        "license_url": [
+          "https://github.com/yhlleo/DeepCrack/blob/master/README.md"
+        ],
+        "commercial_restriction": [
+          "https://github.com/yhlleo/DeepCrack/blob/master/README.md"
+        ],
+        "redistribution_notes": [
+          "https://github.com/yhlleo/DeepCrack/blob/master/README.md"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "publication_doi": "10.1016/j.neucom.2019.01.036",
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "structural_damage_2d",
+      "dataset_name": "2D Structural Damage Dataset",
+      "verification_status": "SOURCE_IDENTIFIED_PROJECT_IDENTITY_AND_LICENSE_UNRESOLVED",
+      "decision": "HOLD",
+      "acquisition_timing": "DO_NOT_ACQUIRE_YET",
+      "m1_required": false,
+      "official_source": "Xin Peng / Cal Unmanned Research Lab, UC Berkeley (best matching named repository)",
+      "official_source_url": "https://github.com/xin-peng/2D_structural_damage_dataset",
+      "doi": null,
+      "version": null,
+      "license_identifier": "LICENSE_UNRESOLVED",
+      "license_url": null,
+      "commercial_restriction": "UNKNOWN",
+      "redistribution_notes": "LICENSE STATUS: UNRESOLVED. No explicit dataset or repository-wide code license found in inspected root/README. Public files do not confer reuse rights; clear upstream sources individually.",
+      "modalities": [
+        "RGB"
+      ],
+      "annotation_type": "2D bounding boxes; repository has VOC-style Annotations, JPEGImages, ImageSets and labels folders",
+      "classes_or_content": "Crack and spalling",
+      "intended_role": "Potential auxiliary detection/generalization only after provenance clearance",
+      "owning_workstream": "Defect Detection / external datasets",
+      "approximate_size": "2,700 images stated; archive bytes UNKNOWN",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Project notes supplied only a name: identification with this exact repository is a documented inference, not a recovered prior URL. Mixed SDNET, PEER Hub and self-collected provenance; missing explicit dataset grant prevents use.",
+      "verification_sources": [
+        "https://github.com/xin-peng/2D_structural_damage_dataset",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Xin Peng, Gaofeng Su, ZhiQiang Chen, Raja Sengupta; Structural Damage Detection, Localization, and Quantification via UAV-based 3D Imaging; 13th International Workshop on Structural Health Monitoring (repository citation).",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/structural_damage_2d.md",
+      "license_doc": "docs/data/licenses/structural_damage_2d.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "official_source": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "official_source_url": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "doi": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "version": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "modalities": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "annotation_type": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "classes_or_content": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "approximate_size": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "availability": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "citation": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "license_identifier": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "license_url": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "commercial_restriction": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "redistribution_notes": [
+          "https://github.com/xin-peng/2D_structural_damage_dataset"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "lol_v2",
+      "dataset_name": "LOL-v2",
+      "verification_status": "SOURCE_VERIFIED_LICENSE_UNRESOLVED",
+      "decision": "HOLD",
+      "acquisition_timing": "DO_NOT_ACQUIRE_YET",
+      "m1_required": false,
+      "official_source": "Wenhan Yang original author project repositories",
+      "official_source_url": "https://github.com/flyywh/CVPR-2020-Semi-Low-Light",
+      "doi": null,
+      "version": "LOL-v2 / TIP 2021 extension",
+      "license_identifier": "LICENSE_UNRESOLVED",
+      "license_url": null,
+      "commercial_restriction": "UNKNOWN",
+      "redistribution_notes": "LICENSE STATUS: UNRESOLVED. Commercial and redistribution rights UNKNOWN; obtain explicit dataset permission before acquisition/use.",
+      "modalities": [
+        "RGB low-light",
+        "RGB normal-light"
+      ],
+      "annotation_type": "Paired low/normal-light enhancement, real and synthetic subsets; auxiliary unpaired training collections are separate",
+      "classes_or_content": "Low-light scenes and normal-exposure references, not defect annotations",
+      "intended_role": "Paired enhancement evaluation after rights clarification",
+      "owning_workstream": "Chat 05 / Low-Light Vision",
+      "approximate_size": "UNKNOWN: authoritative subset counts not recovered in inspected accessible text",
+      "availability": "Author README lists LOL-v2 Baidu/Google Drive links; access to archive contents not tested",
+      "limitations": "Do not confuse LOL-v1 (BMVC 2018), LOL-v2 (TIP 2021), DRBN code or separate AVA/unpaired collections. No explicit dataset terms found. The SGM README paper link returned a Band Representation-Based paper instead; subset counts remain unverified rather than copied from secondary reports.",
+      "verification_sources": [
+        "https://github.com/flyywh/CVPR-2020-Semi-Low-Light",
+        "https://github.com/flyywh/SGM-Low-Light",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Wenhan Yang, Wenjing Wang, Haofeng Huang, Shiqi Wang, Jiaying Liu; Sparse Gradient Regularized Deep Retinex Network for Robust Low-Light Image Enhancement, TIP 30 (2021), 2072-2086.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/lol_v2.md",
+      "license_doc": "docs/data/licenses/lol_v2.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "official_source": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "official_source_url": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "doi": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "version": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "modalities": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "annotation_type": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "classes_or_content": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "approximate_size": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "availability": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "citation": [
+          "https://github.com/flyywh/SGM-Low-Light"
+        ],
+        "license_identifier": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "license_url": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "commercial_restriction": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "redistribution_notes": [
+          "https://github.com/flyywh/CVPR-2020-Semi-Low-Light"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "publication_doi": "10.1109/TIP.2021.3050850",
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "exdark",
+      "dataset_name": "ExDark",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "OPTIONAL",
+      "acquisition_timing": "NOT_REQUIRED",
+      "m1_required": false,
+      "official_source": "Universiti Malaya / Loh and Chan official dataset repository",
+      "official_source_url": "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset",
+      "doi": null,
+      "version": "2018 release; dataset link updated 2022-09-02",
+      "license_identifier": "LicenseRef-ExDark-NC",
+      "license_url": "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/Dataset/README.md",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "Dataset README explicitly permits only non-commercial research; contact Chee Seng Chan for commercial use. Redistribution rights are not expressly specified by that dataset statement; do not infer unrestricted redistribution from the code license.",
+      "modalities": [
+        "RGB low-light"
+      ],
+      "annotation_type": "Image class labels and object boxes in TXT [left, top, width, height]; lighting and experimental-split labels",
+      "classes_or_content": "Bicycle, Boat, Bottle, Bus, Car, Cat, Chair, Cup, Dog, Motorbike, People, Table; 10 lighting types from Low to Twilight",
+      "intended_role": "Optional low-light object-detection domain shift experiments",
+      "owning_workstream": "Chat 05 / Low-Light Vision (optional extension)",
+      "approximate_size": "7,363 images; author lists archive as 1.5Gb; ground truth 4.2Mb (units as written); 3000 train / 1800 validation / 2563 test",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "No structural-defect labels. Dataset-specific README restricts use to non-commercial research; root BSD software license does not override dataset terms. Commercial usage needs author contact.",
+      "verification_sources": [
+        "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset",
+        "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/Dataset/README.md",
+        "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/LICENSE",
+        "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Dataset/README.md",
+        "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Groundtruth/README.md",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Yuen Peng Loh, Chee Seng Chan; Getting to Know Low-light Images with The Exclusively Dark Dataset; CVIU 178 (2019), 30-42; DOI 10.1016/j.cviu.2018.10.010.",
+      "code_license": "BSD-3-Clause repository software license, separate from explicit dataset NC research terms",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/exdark.md",
+      "license_doc": "docs/data/licenses/exdark.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "official_source": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "official_source_url": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "doi": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "version": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "modalities": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "annotation_type": [
+          "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Dataset/README.md",
+          "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Groundtruth/README.md"
+        ],
+        "classes_or_content": [
+          "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Dataset/README.md",
+          "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Groundtruth/README.md"
+        ],
+        "approximate_size": [
+          "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Dataset/README.md",
+          "https://raw.githubusercontent.com/cs-chan/Exclusively-Dark-Image-Dataset/master/Groundtruth/README.md"
+        ],
+        "availability": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "citation": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset"
+        ],
+        "license_identifier": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/Dataset/README.md"
+        ],
+        "license_url": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/Dataset/README.md"
+        ],
+        "commercial_restriction": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/Dataset/README.md"
+        ],
+        "redistribution_notes": [
+          "https://github.com/cs-chan/Exclusively-Dark-Image-Dataset/blob/master/Dataset/README.md"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "visdrone",
+      "dataset_name": "VisDrone",
+      "verification_status": "SOURCE_VERIFIED_LICENSE_SCOPE_UNRESOLVED",
+      "decision": "HOLD",
+      "acquisition_timing": "DO_NOT_ACQUIRE_YET",
+      "m1_required": false,
+      "official_source": "AISKYEYE / Tianjin University original benchmark repository",
+      "official_source_url": "https://github.com/VisDrone/VisDrone-Dataset",
+      "doi": null,
+      "version": "VisDrone2019 (choose VID/MOT subset in tracking workstream)",
+      "license_identifier": "LICENSE_UNRESOLVED",
+      "license_url": null,
+      "commercial_restriction": "UNKNOWN",
+      "redistribution_notes": "LICENSE STATUS: UNRESOLVED for selected 2019 dataset. Current project page MIT label recorded as evidence, not silently expanded into a grant for all releases. No commercial/redistribution rights assumed.",
+      "modalities": [
+        "RGB aerial images",
+        "video"
+      ],
+      "annotation_type": "Image/video object boxes, single-object and multi-object tracking; occlusion attributes",
+      "classes_or_content": "Pedestrians, people, bicycles and vehicles; 10 detection categories, not structural defects",
+      "intended_role": "Video/tracking methodology; optional aerial detection robustness",
+      "owning_workstream": "Video / Tracking",
+      "approximate_size": "2019 README: 288 video clips / 261,908 frames; 10,209 stills; over 2.6 million boxes",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "New project page labels VisDrone MIT but differs in release statistics; original 2019 repository has no license file or explicit dataset terms. Applicability of MIT label to selected 2019 payload unresolved; ask maintainers. Hidden challenge annotations constrain evaluation.",
+      "verification_sources": [
+        "https://github.com/VisDrone/VisDrone-Dataset",
+        "https://aiskyeye.com/download/",
+        "https://visdrone.org/visdrone/data-base/visdrone",
+        "https://arxiv.org/abs/2001.06303",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Zhu, Wen, Du, Bian, Fan, Hu, Ling; Detection and Tracking Meet Drones Challenge (TPAMI 2021).",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/visdrone.md",
+      "license_doc": "docs/data/licenses/visdrone.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "official_source": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "official_source_url": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "doi": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "version": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "modalities": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "annotation_type": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "classes_or_content": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "approximate_size": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "availability": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "citation": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "license_identifier": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "license_url": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "commercial_restriction": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "redistribution_notes": [
+          "https://github.com/VisDrone/VisDrone-Dataset"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "euroc_mav",
+      "dataset_name": "EuRoC MAV",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "ETH Zurich ASL / ETH Research Collection",
+      "official_source_url": "https://projects.asl.ethz.ch/datasets/euroc-mav/",
+      "doi": "10.3929/ethz-b-000690084",
+      "version": "2016 dataset; institutional deposit 2024-09-27",
+      "license_identifier": "InC-NC",
+      "license_url": "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "ETH record states In Copyright - Non-Commercial Use Permitted. Treat commercial use and redistribution beyond identified permission as requiring clarification.",
+      "modalities": [
+        "Monochrome stereo",
+        "IMU",
+        "ground-truth poses/positions",
+        "structure scans"
+      ],
+      "annotation_type": "Visual-inertial odometry/SLAM, motion and structure ground truth; ASL format and ROS data",
+      "classes_or_content": "Machine hall and Vicon rooms; Asctec Firefly MAV; stereo 20 Hz, IMU 200 Hz",
+      "intended_role": "VIO / localization benchmark",
+      "owning_workstream": "Visual-Inertial SLAM / Localization",
+      "approximate_size": "11 benchmark sequences; institutional ZIP bundles: 12,096.15 + 5,762.35 + 5,734.81 MB; calibration 4,211.46 MB",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Independent exposure, dynamic-motion and ground-truth synchronization limits; rights statement is not a Creative Commons open-data license.",
+      "verification_sources": [
+        "https://projects.asl.ethz.ch/datasets/euroc-mav/",
+        "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f",
+        "https://www.research-collection.ethz.ch/server/api/core/bitstreams/d861e63b-cfa9-4411-85a5-5ad6b3526e44/content",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Burri, Nikolic, Gohl, Schneider, Rehder, Omari, Achtelik, Siegwart; The EuRoC micro aerial vehicle datasets, IJRR 2016; paper DOI 10.1177/0278364915620033.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/euroc_mav.md",
+      "license_doc": "docs/data/licenses/euroc_mav.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "official_source": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "official_source_url": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "doi": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "version": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/",
+          "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f"
+        ],
+        "modalities": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "annotation_type": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "classes_or_content": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "approximate_size": [
+          "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f",
+          "https://www.research-collection.ethz.ch/server/api/core/bitstreams/d861e63b-cfa9-4411-85a5-5ad6b3526e44/content"
+        ],
+        "availability": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "citation": [
+          "https://projects.asl.ethz.ch/datasets/euroc-mav/"
+        ],
+        "license_identifier": [
+          "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f"
+        ],
+        "license_url": [
+          "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f"
+        ],
+        "commercial_restriction": [
+          "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f"
+        ],
+        "redistribution_notes": [
+          "https://www.research-collection.ethz.ch/entities/researchdata/bcaf173e-5dac-484b-bc37-faf97a594f1f"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "tum_rgbd",
+      "dataset_name": "TUM RGB-D",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "TUM Computer Vision Group",
+      "official_source_url": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset",
+      "doi": null,
+      "version": "RGB-D benchmark; 2011/2012 sequence collections; no single version number",
+      "license_identifier": "CC-BY-4.0",
+      "license_url": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset",
+      "commercial_restriction": "No non-commercial restriction in the identified grant; other rights may apply",
+      "redistribution_notes": "Current official site: data CC BY 4.0 unless otherwise stated; retain attribution/license/modification notices. Historical 2012 workshop paper says CC BY 3.0; record acquisition-time terms.",
+      "modalities": [
+        "RGB",
+        "depth",
+        "trajectories",
+        "accelerometer"
+      ],
+      "annotation_type": "RGB-D SLAM/odometry ground truth; sequence archives, PNG images/timestamp lists and ROS bags",
+      "classes_or_content": "Freiburg1/2/3 sequences: indoor motion, structure/texture and dynamic people",
+      "intended_role": "Depth / RGB-D SLAM validation",
+      "owning_workstream": "Depth / RGB-D SLAM",
+      "approximate_size": "Per-sequence sizes published; e.g. freiburg2_rpy_validation approximately 2.06 GB; aggregate UNKNOWN",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Indoor RGB-D sensor domain differs from aerial inspection; depth/trajectory benchmark, not structural defect labels. Respect any sequence-specific exceptions.",
+      "verification_sources": [
+        "https://cvg.cit.tum.de/data/datasets/rgbd-dataset",
+        "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download",
+        "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats",
+        "https://cvg.cit.tum.de/_media/spezial/bib/sturm12iros_ws.pdf",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Sturm, Engelhard, Endres, Burgard, Cremers; A Benchmark for the Evaluation of RGB-D SLAM Systems, IROS 2012.",
+      "code_license": "BSD-2-Clause, explicitly separate on official benchmark page",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/tum_rgbd.md",
+      "license_doc": "docs/data/licenses/tum_rgbd.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "official_source": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "official_source_url": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "doi": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "version": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "modalities": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "annotation_type": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats"
+        ],
+        "classes_or_content": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "approximate_size": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download"
+        ],
+        "availability": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "citation": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "license_identifier": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "license_url": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "commercial_restriction": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "redistribution_notes": [
+          "https://cvg.cit.tum.de/data/datasets/rgbd-dataset"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "hilti_slam_2022",
+      "dataset_name": "Hilti SLAM 2022",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "Hilti official challenge and Hilti-Research repository",
+      "official_source_url": "https://www.hilti-challenge.com/dataset-2022",
+      "doi": null,
+      "version": "2022",
+      "license_identifier": "CC-BY-NC-SA-3.0",
+      "license_url": "https://www.hilti-challenge.com/dataset-2022",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "This release page explicitly licenses its datasets/benchmarks CC BY-NC-SA 3.0: attribution, non-commercial use, share-alike for distributed adaptations.",
+      "modalities": [
+        "Cameras",
+        "LiDAR",
+        "IMU",
+        "ground-truth positions"
+      ],
+      "annotation_type": "ROS bags; calibrated SLAM streams; sparse surveyed 3DoF ground truth; selected extra 6DoF trajectories and E57 reference scans",
+      "classes_or_content": "Handheld five-camera Alphasense, Hesai PandarXT-32 and IMU; Oxford theatre/construction",
+      "intended_role": "Construction SLAM and sensor-fusion evaluation",
+      "owning_workstream": "Chat 10 / LiDAR SLAM + Mapping; Chat 11 / Sensor Fusion",
+      "approximate_size": "8 challenge + 8 additional sequences; individual listed rosbag sizes 6-80 GB; aggregate not assumed",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Large calibrated streams; sparse ground truth is not dense pose truth. Choose sequences and sensor adapters later; no first-detector requirement.",
+      "verification_sources": [
+        "https://www.hilti-challenge.com/dataset-2022",
+        "https://github.com/Hilti-Research/hilti-slam-challenge-2022",
+        "https://huggingface.co/datasets/Hilti-Research/hilti-slam-challenge-2022",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Zhang et al.; Hilti-Oxford Dataset: A Millimeter-Accurate Benchmark for SLAM, RA-L 2023; DOI 10.1109/LRA.2022.3226077.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/hilti_slam_2022.md",
+      "license_doc": "docs/data/licenses/hilti_slam_2022.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "official_source": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "official_source_url": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "doi": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "version": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "modalities": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "annotation_type": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "classes_or_content": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "approximate_size": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "availability": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "citation": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "license_identifier": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "license_url": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "commercial_restriction": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "redistribution_notes": [
+          "https://www.hilti-challenge.com/dataset-2022"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "hilti_slam_2023",
+      "dataset_name": "Hilti SLAM 2023",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "Hilti official challenge and Hilti-Research repository",
+      "official_source_url": "https://www.hilti-challenge.com/dataset-2023",
+      "doi": null,
+      "version": "2023",
+      "license_identifier": "CC-BY-NC-SA-3.0",
+      "license_url": "https://www.hilti-challenge.com/dataset-2023",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "This release page explicitly licenses its datasets/benchmarks CC BY-NC-SA 3.0: attribution, non-commercial use, share-alike for distributed adaptations.",
+      "modalities": [
+        "Cameras",
+        "LiDAR",
+        "IMU",
+        "ground-truth positions"
+      ],
+      "annotation_type": "ROS bags; calibrated SLAM streams; sparse surveyed 3DoF ground truth; single/multi-session groups",
+      "classes_or_content": "Handheld Alphasense five-camera/Hesai PandarXT-32/IMU; robot four OAK-D cameras, Xsens MTi-670 IMU and Robosense BPearl LiDAR; construction sites",
+      "intended_role": "Construction SLAM and sensor-fusion evaluation",
+      "owning_workstream": "Chat 10 / LiDAR SLAM + Mapping; Chat 11 / Sensor Fusion",
+      "approximate_size": "12 main + 3 additional sequences; individual rosbag sizes 9-63 GB; aggregate not assumed",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Large calibrated streams; sparse ground truth is not dense pose truth. Choose sequences and sensor adapters later; no first-detector requirement.",
+      "verification_sources": [
+        "https://www.hilti-challenge.com/dataset-2023",
+        "https://github.com/Hilti-Research/hilti-slam-challenge-2023",
+        "https://huggingface.co/datasets/Hilti-Research/hilti-slam-challenge-2023",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Nair, Kindle, Levchev, Scaramuzza; Hilti SLAM Challenge 2023: Benchmarking Single + Multi-session SLAM across Sensor Constellations in Construction, RA-L 2024; DOI 10.1109/LRA.2024.3421791.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/hilti_slam_2023.md",
+      "license_doc": "docs/data/licenses/hilti_slam_2023.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "official_source": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "official_source_url": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "doi": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "version": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "modalities": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "annotation_type": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "classes_or_content": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "approximate_size": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "availability": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "citation": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "license_identifier": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "license_url": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "commercial_restriction": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "redistribution_notes": [
+          "https://www.hilti-challenge.com/dataset-2023"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "hilti_trimble_slam_2026",
+      "dataset_name": "Hilti x Trimble SLAM 2026",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "Hilti / Trimble / Oxford official challenge",
+      "official_source_url": "https://hilti-trimble-challenge.com/",
+      "doi": null,
+      "version": "2026; all ground truth released June 16; official HF release August 6",
+      "license_identifier": "CC-BY-NC-SA-3.0",
+      "license_url": "https://hilti-trimble-challenge.com/",
+      "commercial_restriction": "Non-commercial only",
+      "redistribution_notes": "2026 homepage and repository LICENSE independently state CC BY-NC-SA 3.0; non-commercial, attribution and share-alike.",
+      "modalities": [
+        "Dual fisheye RGB",
+        "IMU",
+        "floor plans",
+        "reference trajectories"
+      ],
+      "annotation_type": "360 visual-inertial SLAM/localization; ROS2 db3 bags, PNG/DXF floor plans, trajectories",
+      "classes_or_content": "Insta360 front/back 1472 x 1440 at 30 Hz; IMU 1000 Hz; construction floors",
+      "intended_role": "Construction VIO and floor-plan localization; not LiDAR-input benchmarking",
+      "owning_workstream": "Visual-Inertial SLAM / Localization; Chat 11 / Sensor Fusion",
+      "approximate_size": "30 runs; total bytes UNKNOWN",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Hesai XT32 LiDAR generated ground truth but its data are NOT included in provided ROS2 bags. Rolling shutter, timestamp offset, unregistered design floor plans and excluded scoring runs require adapters.",
+      "verification_sources": [
+        "https://hilti-trimble-challenge.com/",
+        "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026",
+        "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026/blob/main/LICENSE",
+        "https://huggingface.co/datasets/Hilti-Research/hilti-trimble-slam-challenge-2026",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Centanni, Zhang et al.; Hilti-Trimble-Oxford Dataset: 360 Visual-Inertial Benchmark with Floor Plan Priors for SLAM and Localization, 2026; arXiv:2607.06464.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/hilti_trimble_slam_2026.md",
+      "license_doc": "docs/data/licenses/hilti_trimble_slam_2026.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "official_source": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "official_source_url": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "doi": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "version": [
+          "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026"
+        ],
+        "modalities": [
+          "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026"
+        ],
+        "annotation_type": [
+          "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026"
+        ],
+        "classes_or_content": [
+          "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026"
+        ],
+        "approximate_size": [
+          "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026"
+        ],
+        "availability": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "citation": [
+          "https://github.com/Hilti-Research/hilti-trimble-slam-challenge-2026"
+        ],
+        "license_identifier": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "license_url": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "commercial_restriction": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "redistribution_notes": [
+          "https://hilti-trimble-challenge.com/"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "tu_delft_oda",
+      "dataset_name": "TU Delft ODA",
+      "verification_status": "SOURCE_AND_TERMS_VERIFIED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "TU Delft / 4TU.ResearchData",
+      "official_source_url": "https://data.4tu.nl/articles/_/14214236/1",
+      "doi": "10.4121/14214236.v1",
+      "version": "1 (2021-03-19)",
+      "license_identifier": "CC0-1.0",
+      "license_url": "https://data.4tu.nl/articles/_/14214236/1",
+      "commercial_restriction": "No non-commercial restriction in the identified grant; other rights may apply",
+      "redistribution_notes": "Institutional record explicitly CC0 1.0; no NC limitation. Record creator citation for scientific provenance; separate software licenses not inferred.",
+      "modalities": [
+        "RGB",
+        "DVS events",
+        "24 GHz radar",
+        "6-axis IMU",
+        "OptiTrack"
+      ],
+      "annotation_type": "Obstacle positions and drone position/attitude; ROS bags/CSV; RGB AVI video",
+      "classes_or_content": "Indoor MAV flights toward one or two poles, full/dim light; turn left/right or continue",
+      "intended_role": "Obstacle detection/avoidance and aerial perception validation",
+      "owning_workstream": "Autonomous Navigation / Obstacle Detection",
+      "approximate_size": "1,369 trials; archive 98,186,579,073 bytes (98.19 decimal GB)",
+      "availability": "Official page and download links listed; payload not tested or acquired",
+      "limitations": "Narrow indoor pole task and event/radar sensor mismatch; samples 593-629 lack obstacle coordinates. Useful for navigation methodology, not proof of outdoor collision avoidance.",
+      "verification_sources": [
+        "https://data.4tu.nl/articles/_/14214236/1",
+        "https://github.com/tudelft/ODA_Dataset",
+        "https://api.datacite.org/dois/10.4121/14214236.v1",
+        "https://research.tudelft.nl/en/publications/a-novel-obstacle-detection-and-avoidance-dataset-for-drones/",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Julien Dupeyroux, Nikhil Wessendorp, Raoul Dinaux, Guido De Croon; The Obstacle Detection and Avoidance Dataset for Drones (2021). Associated 2022 paper DOI 10.1145/3522784.3522786.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/tu_delft_oda.md",
+      "license_doc": "docs/data/licenses/tu_delft_oda.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "official_source": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "official_source_url": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "doi": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "version": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "modalities": [
+          "https://github.com/tudelft/ODA_Dataset"
+        ],
+        "annotation_type": [
+          "https://github.com/tudelft/ODA_Dataset"
+        ],
+        "classes_or_content": [
+          "https://github.com/tudelft/ODA_Dataset"
+        ],
+        "approximate_size": [
+          "https://data.4tu.nl/articles/_/14214236/1",
+          "https://github.com/tudelft/ODA_Dataset"
+        ],
+        "availability": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "citation": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "license_identifier": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "license_url": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "commercial_restriction": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "redistribution_notes": [
+          "https://data.4tu.nl/articles/_/14214236/1"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "flir_adas",
+      "dataset_name": "FLIR ADAS",
+      "verification_status": "SOURCE_VERIFIED_LICENSE_UNRESOLVED",
+      "decision": "HOLD",
+      "acquisition_timing": "DO_NOT_ACQUIRE_YET",
+      "m1_required": false,
+      "official_source": "Teledyne FLIR OEM official dataset page",
+      "official_source_url": "https://oem.flir.com/solutions/automotive/adas-dataset-form/",
+      "doi": null,
+      "version": "Current expanded 26,442-frame listing; numeric release label not specified",
+      "license_identifier": "LICENSE_UNRESOLVED",
+      "license_url": null,
+      "commercial_restriction": "UNKNOWN",
+      "redistribution_notes": "LICENSE STATUS: UNRESOLVED. No explicit dataset reuse grant recovered from public landing/form. Preserve and review actual download agreement before acquiring; commercial and redistribution rights UNKNOWN.",
+      "modalities": [
+        "Visible RGB",
+        "thermal"
+      ],
+      "annotation_type": "Object bounding boxes; MSCOCO and Conservator JSON; thermal TIFF/JPEG and RGB JPEG",
+      "classes_or_content": "Person, bike, car, motorcycle, bus, train, truck, traffic light, fire hydrant, street sign, dog, skateboard, stroller, scooter, other vehicle",
+      "intended_role": "Optional thermal/multimodal object-perception extension only",
+      "owning_workstream": "Thermal / Multimodal extension",
+      "approximate_size": "26,442 frames; 520,000 boxes; 9,711 thermal + 9,233 RGB stills and 7,498 video frames; archive bytes UNKNOWN",
+      "availability": "Official listing accessible via browser/search; sign-in/account notice and registration form present; gated payload/terms not tested",
+      "limitations": "Automotive objects are not infrastructure thermal-defect ground truth. Registration/download form does not establish commercial or redistribution rights; no terms accepted or account created.",
+      "verification_sources": [
+        "https://oem.flir.com/solutions/automotive/adas-dataset-form/",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "NOT_ACQUIRED_IN_THIS_SWEEP",
+      "citation": "Teledyne FLIR Thermal Dataset for Algorithm Training (official supplier listing).",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/flir_adas.md",
+      "license_doc": "docs/data/licenses/flir_adas.md",
+      "field_sources": {
+        "dataset_name": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "official_source": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "official_source_url": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "doi": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "version": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "modalities": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "annotation_type": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "classes_or_content": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "approximate_size": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "availability": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "citation": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "license_identifier": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "license_url": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "commercial_restriction": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "redistribution_notes": [
+          "https://oem.flir.com/solutions/automotive/adas-dataset-form/"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null,
+      "required_later": null
+    },
+    {
+      "dataset_id": "aegisinspect_gazebo_dataset",
+      "dataset_name": "AegisInspect Gazebo-generated dataset",
+      "verification_status": "INTERNAL_PLANNED_ASSET_LICENSE_UNRESOLVED",
+      "decision": "DEFER_TO_WORKSTREAM",
+      "acquisition_timing": "LATER",
+      "m1_required": false,
+      "official_source": "AegisInspect project / Gazebo simulation",
+      "official_source_url": "docs/data/sources/aegisinspect_gazebo_dataset.md",
+      "doi": null,
+      "version": null,
+      "license_identifier": "LICENSE_UNRESOLVED",
+      "license_url": null,
+      "commercial_restriction": "UNKNOWN; depends on selected upstream assets",
+      "redistribution_notes": "LICENSE STATUS: UNRESOLVED. No blanket generated-data license. Redistribution depends on worlds, models, meshes, textures, plugins and imported assets; upstream asset-license manifest required before generation intended for sharing.",
+      "modalities": [
+        "PLANNED RGB",
+        "PLANNED depth",
+        "PLANNED LiDAR",
+        "PLANNED IMU",
+        "PLANNED poses/ground truth"
+      ],
+      "annotation_type": "Planned synchronized simulation streams; potential segmentation/detection labels",
+      "classes_or_content": "Planned inspection worlds, navigation scenarios and integration tests",
+      "intended_role": "REQUIRED_LATER for integrated system verification",
+      "owning_workstream": "Simulation / Navigation / Sensor Fusion / 3D Mapping / Integration / System Testing",
+      "approximate_size": "NOT_GENERATED; size TBD by simulation scenario specification",
+      "availability": "PLANNED_INTERNAL; not generated/acquired in this sweep",
+      "limitations": "Planned internal dataset, not an existing third-party release. Simulation cannot establish real-world generalization or replace real defects. Asset inventory not yet fixed.",
+      "verification_sources": [
+        "docs/data/sources/aegisinspect_gazebo_dataset.md",
+        "https://gazebosim.org/docs/latest/fuel_insert/",
+        "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+        "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+      ],
+      "verified_on": "2026-09-11",
+      "acquisition_status": "PLANNED_INTERNAL",
+      "citation": "AegisInspect project owner; internal requirement established by this scope decision.",
+      "code_license": "UNKNOWN; no code-license grant assumed",
+      "paper_license": "UNKNOWN; paper accessibility does not establish dataset rights",
+      "source_doc": "docs/data/sources/aegisinspect_gazebo_dataset.md",
+      "license_doc": "docs/data/licenses/aegisinspect_gazebo_dataset.md",
+      "field_sources": {
+        "dataset_name": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "official_source": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "official_source_url": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "doi": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "version": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "modalities": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "annotation_type": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "classes_or_content": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "approximate_size": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "availability": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "citation": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "license_identifier": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "license_url": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "commercial_restriction": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "redistribution_notes": [
+          "docs/data/sources/aegisinspect_gazebo_dataset.md"
+        ],
+        "decision": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "acquisition_timing": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "m1_required": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "intended_role": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "owning_workstream": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ],
+        "limitations": [
+          "docs/data/M1_DATASET_ACQUISITION_PLAN.md",
+          "docs/data/M1_DATA_FOUNDATION_SCOPE_DECISION.md"
+        ]
+      },
+      "required_later": true,
+      "approved_registry_decision": null,
+      "external_holdout": null,
+      "publication_doi": null
+    }
+  ]
+}

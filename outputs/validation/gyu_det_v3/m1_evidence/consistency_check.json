@@ -1,0 +1,37 @@
+{
+  "annotations": 48392,
+  "approved_artifact_hashes": "PASS",
+  "approved_artifacts_modified": false,
+  "baseline_finalization_reproducibility": "Previously verified: two clean temporary outputs byte-identical; evidence copied, not rerun",
+  "deferred_to_defect_detection": [
+    "Select/install detector environment",
+    "Read all baseline images including MPO subset",
+    "Prevent raw repair and keep caches outside raw",
+    "No-training reader smoke test",
+    "Confirm 8305/1040/1053 and six class IDs"
+  ],
+  "documentation_tests_failed": 0,
+  "documentation_tests_passed": 98,
+  "excluded_raw_images": 725,
+  "gyu_det_data_foundation_blockers": [],
+  "image_counts": {
+    "test": 1053,
+    "train": 8305,
+    "valid": 1040
+  },
+  "label_paths_verified": 10398,
+  "leakage_assertions": "PASS",
+  "manifest_sha256": {
+    "test": "6a60c2b97387b3e9849f28b11163f3a4f184ea129ae074664549564a9cac98cb",
+    "train": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+    "valid": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06"
+  },
+  "orphan_labels_excluded": 21,
+  "overall_multidataset_m1_complete": false,
+  "raw_data_modified": false,
+  "raw_files_checked_read_only": 21559,
+  "source_manifest_sha256": "d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772",
+  "source_v3_license_and_md5": "Verified in official V3 page selection",
+  "status": "PASS",
+  "total_supervised_images": 10398
+}

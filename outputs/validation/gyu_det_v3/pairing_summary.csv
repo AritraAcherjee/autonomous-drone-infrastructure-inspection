@@ -1,0 +1,4 @@
+split,total_images,total_labels,exact_matched_pairs,images_without_labels,labels_without_images,ambiguous_images,ambiguous_labels,matched_empty_annotations
+train,8898,8334,8314,584,20,0,0,0
+valid,1112,1045,1044,68,1,0,0,0
+test,1113,1053,1053,60,0,0,0,0

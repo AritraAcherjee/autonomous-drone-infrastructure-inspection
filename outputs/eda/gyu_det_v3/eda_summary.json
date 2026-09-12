@@ -1,0 +1,247 @@
+{
+  "class_distribution": [
+    {
+      "class_id": 0,
+      "class_name": "Crack",
+      "class_to_minority_instance_ratio": 3.7872860635696823,
+      "exact_pair_annotation_instances": 4647,
+      "exact_pair_images_containing_class": 1923,
+      "instance_share_percent": 9.591925196606601,
+      "majority_to_class_instance_ratio": 4.124596513879922,
+      "orphan_annotation_instances": 6,
+      "percent_exact_pair_images": 18.470848141388917,
+      "split": "all",
+      "total_raw_annotation_instances": 4653
+    },
+    {
+      "class_id": 1,
+      "class_name": "Breakage",
+      "class_to_minority_instance_ratio": 15.621026894865526,
+      "exact_pair_annotation_instances": 19167,
+      "exact_pair_images_containing_class": 7168,
+      "instance_share_percent": 39.562821227320576,
+      "majority_to_class_instance_ratio": 1.0,
+      "orphan_annotation_instances": 19,
+      "percent_exact_pair_images": 68.85025453846893,
+      "split": "all",
+      "total_raw_annotation_instances": 19186
+    },
+    {
+      "class_id": 2,
+      "class_name": "Comb",
+      "class_to_minority_instance_ratio": 4.6552567237163816,
+      "exact_pair_annotation_instances": 5712,
+      "exact_pair_images_containing_class": 3208,
+      "instance_share_percent": 11.790203727785002,
+      "majority_to_class_instance_ratio": 3.355567226890756,
+      "orphan_annotation_instances": 4,
+      "percent_exact_pair_images": 30.813562578042454,
+      "split": "all",
+      "total_raw_annotation_instances": 5716
+    },
+    {
+      "class_id": 3,
+      "class_name": "Hole",
+      "class_to_minority_instance_ratio": 1.0,
+      "exact_pair_annotation_instances": 1227,
+      "exact_pair_images_containing_class": 852,
+      "instance_share_percent": 2.532664561273144,
+      "majority_to_class_instance_ratio": 15.621026894865526,
+      "orphan_annotation_instances": 2,
+      "percent_exact_pair_images": 8.18365190663721,
+      "split": "all",
+      "total_raw_annotation_instances": 1229
+    },
+    {
+      "class_id": 4,
+      "class_name": "Reinforcement",
+      "class_to_minority_instance_ratio": 10.862265688671556,
+      "exact_pair_annotation_instances": 13328,
+      "exact_pair_images_containing_class": 3787,
+      "instance_share_percent": 27.51047536483167,
+      "majority_to_class_instance_ratio": 1.4381002400960383,
+      "orphan_annotation_instances": 46,
+      "percent_exact_pair_images": 36.374987993468444,
+      "split": "all",
+      "total_raw_annotation_instances": 13374
+    },
+    {
+      "class_id": 5,
+      "class_name": "Seepage",
+      "class_to_minority_instance_ratio": 3.558272208638957,
+      "exact_pair_annotation_instances": 4366,
+      "exact_pair_images_containing_class": 1816,
+      "instance_share_percent": 9.011909922183005,
+      "majority_to_class_instance_ratio": 4.3900595510765,
+      "orphan_annotation_instances": 7,
+      "percent_exact_pair_images": 17.443089040437997,
+      "split": "all",
+      "total_raw_annotation_instances": 4373
+    }
+  ],
+  "class_imbalance_ratio": 15.621026894865526,
+  "exact_pair_annotation_instances": 48447,
+  "exact_pair_images": 10411,
+  "exact_pair_rounding_warning_boxes": 1808,
+  "extreme_aspect_ratio_boxes": 1388,
+  "input_artifacts_unchanged": true,
+  "input_sha256": {
+    "data\\manifests\\gyu_det_v3_raw_manifest.csv": "d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772",
+    "data\\raw\\gyu_det\\v3\\archives\\classes.txt": "3a22a96c563544ac5ac44fc1310ccf547fd5e46ec6935b0f2529d66c273d8981",
+    "outputs\\validation\\gyu_det_v3\\baseline_data_policy.md": "7b77dff8d2139fb6b55c8840294d1791724ce4ef19cb6c5153cdcefe6e8eca63",
+    "outputs\\validation\\gyu_det_v3\\full_validation\\image_validation.csv": "b2101b60bf850e7934136b011c53099e8d4d9721df2fb8d78afe1632a5d93cf3",
+    "outputs\\validation\\gyu_det_v3\\full_validation\\label_validation.csv": "5388a125a0d7fcb0e9640f86f041c0171af40d507b7c056e02e8cf3bb11021ea",
+    "outputs\\validation\\gyu_det_v3\\full_validation\\validation.json": "9afb3f09161f700df9d9059e1c90df44df9b535cf3d284e52b5eb12340c37b99",
+    "outputs\\validation\\gyu_det_v3\\leakage_review\\human_leakage_decisions.csv": "e26acf9aba30e950db61fe33dd87b8c3a3df8bda1c7f29db7fcf4410c0a20cbf",
+    "outputs\\validation\\gyu_det_v3\\orphan_review\\final_triage_summary.csv": "29ac9f103ae6a04dba4585aacbbc66c1f018a4ed05f562a65a14946781aefe0c"
+  },
+  "leakage_outcomes": {
+    "CONFIRMED_EXACT_CROSS_SPLIT_LEAKAGE": 1,
+    "HIGH_CONFIDENCE_NEAR_DUPLICATE_LEAKAGE": 1,
+    "REJECT_LEAKAGE_CANDIDATE": 14,
+    "UNRESOLVED_POSSIBLE_SAME_SCENE": 1
+  },
+  "median_annotations_per_image": 4.0,
+  "median_normalized_box_area": 0.014318660932000002,
+  "methodology": {
+    "extreme_pixel_aspect_ratio": [
+      0.1,
+      10
+    ],
+    "leakage_members_removed": 0,
+    "near_border_distance": 0.01,
+    "no_images_decoded": true,
+    "normalized_cooccurrence": "P(column present | row present)",
+    "rounding_tolerance": 1e-06,
+    "size_area_edges": [
+      0.001,
+      0.01,
+      0.1
+    ],
+    "supervised_view": "PROVISIONAL_BASELINE_ELIGIBLE"
+  },
+  "multi_class_percent": 57.026222264912114,
+  "near_border_boxes": 13468,
+  "orphan_annotation_instances": 84,
+  "orphan_labels": 21,
+  "orphan_outcomes": {
+    "MANUAL_REVIEW_PLAUSIBLE": 5,
+    "NO_VALID_MATCH_IN_REVIEWED_TOP5": 10,
+    "REJECTED_RANK1_PAIRING": 2,
+    "UNRESOLVED_HOLD": 4
+  },
+  "outputs": [
+    "dataset_overview.csv",
+    "class_distribution.csv",
+    "class_distribution_by_split.csv",
+    "annotation_count_distribution.csv",
+    "split_comparison.csv",
+    "box_statistics.csv",
+    "box_statistics_by_class.csv",
+    "box_statistics_by_split.csv",
+    "box_size_distribution.csv",
+    "box_measurements.csv",
+    "box_examples.csv",
+    "annotation_count_examples.csv",
+    "resolution_distribution.csv",
+    "aspect_ratio_distribution.csv",
+    "image_statistics.csv",
+    "class_cooccurrence.csv",
+    "class_cooccurrence_normalized.csv",
+    "class_combination_statistics.csv",
+    "figures/annotations_per_image.png",
+    "figures/box_area_by_class.png",
+    "figures/box_area_distribution.png",
+    "figures/box_aspect_ratio_distribution.png",
+    "figures/class_cooccurrence_heatmap.png",
+    "figures/class_distribution.png",
+    "figures/class_distribution_by_split.png",
+    "figures/image_aspect_ratio_distribution.png",
+    "figures/resolution_distribution.png",
+    "eda_summary.json",
+    "eda_report.md",
+    "output_inventory.csv"
+  ],
+  "repairs_authorized": 0,
+  "runtime_versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "python": "3.12.14"
+  },
+  "size_distribution": [
+    {
+      "box_count": 4610,
+      "group": "all",
+      "group_type": "all",
+      "percent": 9.515553078622,
+      "size_category": "tiny"
+    },
+    {
+      "box_count": 16029,
+      "group": "all",
+      "group_type": "all",
+      "percent": 33.0856399777076,
+      "size_category": "small"
+    },
+    {
+      "box_count": 20287,
+      "group": "all",
+      "group_type": "all",
+      "percent": 41.87462587982744,
+      "size_category": "medium"
+    },
+    {
+      "box_count": 7521,
+      "group": "all",
+      "group_type": "all",
+      "percent": 15.524181063842962,
+      "size_category": "large"
+    }
+  ],
+  "source_sha256": {
+    "eda_gyu_det.py": "494de0ff3ac3e356517c5f6c1c626c92519b262096aa7db69bc422e1ad790fdd",
+    "gyu_eda.py": "793bd5e53a87e97894c4df3eb535d385bfc986b28bb56ef7c4d66a4ea9478875"
+  },
+  "split_difference_flags": [
+    "Breakage instance shares: train 35.60%, valid 43.44%, test 61.64%.",
+    "Comb instance shares: train 13.16%, valid 9.72%, test 4.77%.",
+    "Seepage instance shares: train 10.27%, valid 7.67%, test 2.09%.",
+    "median_normalized_box_area: train 0.01462, valid 0.01574, test 0.01227.",
+    "median_megapixels: train 15.93, valid 15.93, test 20.16.",
+    "Resolution 2736x1824 raw image shares: train 7.59%, valid 1.35%, test 0.09%.",
+    "Resolution 4608x3456 raw image shares: train 33.41%, valid 22.30%, test 14.38%.",
+    "Resolution 5184x3888 raw image shares: train 31.71%, valid 45.50%, test 59.39%."
+  ],
+  "total_images": 11123,
+  "unlabeled_images": 712,
+  "validation_context": {
+    "auxiliary_frame_decode_failures": 565,
+    "confirmed_mappings": 0,
+    "corrupted_unreadable_images": 565,
+    "derived_boxes_outside_frame": 1809,
+    "duplicate_annotation_rows": 0,
+    "empty_label_files": 0,
+    "exact_pairs": 10411,
+    "human_triaged_orphans": 21,
+    "image_without_label": 712,
+    "invalid_annotation_rows": 0,
+    "invalid_class_id_rows": 0,
+    "invalid_label_files": 0,
+    "inventory_discrepancies": 0,
+    "malformed_label_files": 0,
+    "manifest_rows": 11123,
+    "nonfinite_value_issues": 0,
+    "orphan_labels": 21,
+    "out_of_range_box_rows": 1809,
+    "out_of_range_normalized_rows": 0,
+    "primary_image_decode_failures": 0,
+    "repairs_authorized": 0,
+    "total_images_validated": 11123,
+    "total_label_files_validated": 10432,
+    "unique_resolutions": 85,
+    "unreadable_labels": 0,
+    "unsupported_image_formats": 0,
+    "unusual_resolution_images": 116,
+    "zero_negative_box_rows": 0
+  }
+}

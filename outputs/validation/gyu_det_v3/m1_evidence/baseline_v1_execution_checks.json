@@ -1,0 +1,9 @@
+{
+  "raw_unchanged": true,
+  "raw_files": 21559,
+  "protected_artifacts_unchanged": true,
+  "protected_artifacts": 114,
+  "clean_temporary_reproducibility": "passed",
+  "output_hashes_match": true,
+  "processed_files_are_lists_only": true
+}

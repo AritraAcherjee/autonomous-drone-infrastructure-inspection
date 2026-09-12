@@ -1,0 +1,15 @@
+group_id,sha256,filename,split,relative_path,dimensions,pairing_status,group_scope
+1,3001b5bcac75b02bf48b74f736a8a1035d1aba418198dc6b0958d7586a46046e,4476.JPG,train,data/raw/gyu_det/v3/extracted/train/train/images/4476.JPG,4000x3000,exact_pair,within_split
+1,3001b5bcac75b02bf48b74f736a8a1035d1aba418198dc6b0958d7586a46046e,4631.JPG,train,data/raw/gyu_det/v3/extracted/train/train/images/4631.JPG,4000x3000,exact_pair,within_split
+2,3b8e3ce70bb5e4b4e3090917313743fa289628281c34d1ade9538495f3f26905,10245.jpg,train,data/raw/gyu_det/v3/extracted/train/train/images/10245.jpg,3456x2304,exact_pair,within_split
+2,3b8e3ce70bb5e4b4e3090917313743fa289628281c34d1ade9538495f3f26905,11150.jpg,train,data/raw/gyu_det/v3/extracted/train/train/images/11150.jpg,3456x2304,exact_pair,within_split
+3,8f6ed2eb5d35f0abd77a08ff744defcab75c1820a28d8d575d7c136650b928ed,9228.jpg,valid,data/raw/gyu_det/v3/extracted/valid/valid/images/9228.jpg,2368x4208,exact_pair,within_split
+3,8f6ed2eb5d35f0abd77a08ff744defcab75c1820a28d8d575d7c136650b928ed,9229.jpg,valid,data/raw/gyu_det/v3/extracted/valid/valid/images/9229.jpg,2368x4208,exact_pair,within_split
+4,ae7f06267f327a2bf7aa4adbac9fb8bdf28173ca3a02f91d3795093c9924c6ec,3852.JPG,train,data/raw/gyu_det/v3/extracted/train/train/images/3852.JPG,4000x3000,exact_pair,within_split
+4,ae7f06267f327a2bf7aa4adbac9fb8bdf28173ca3a02f91d3795093c9924c6ec,4263.JPG,train,data/raw/gyu_det/v3/extracted/train/train/images/4263.JPG,4000x3000,exact_pair,within_split
+5,d7a0281a7bb013cdfc4885b66b5d33f96e689f94a23f89e436fa77f0c2252189,9838.jpg,train,data/raw/gyu_det/v3/extracted/train/train/images/9838.jpg,2048x1536,exact_pair,cross_split
+5,d7a0281a7bb013cdfc4885b66b5d33f96e689f94a23f89e436fa77f0c2252189,11989.jpg,valid,data/raw/gyu_det/v3/extracted/valid/valid/images/11989.jpg,2048x1536,exact_pair,cross_split
+6,ec755b567c0e4ab2442b3dd0e0b9a5af50d0d6223953cd4dd87713006529e645,139.JPG,train,data/raw/gyu_det/v3/extracted/train/train/images/139.JPG,3264x2448,exact_pair,within_split
+6,ec755b567c0e4ab2442b3dd0e0b9a5af50d0d6223953cd4dd87713006529e645,183.JPG,train,data/raw/gyu_det/v3/extracted/train/train/images/183.JPG,3264x2448,exact_pair,within_split
+7,f3c8e110448654a6e7c7fdbb4108f06ce69f3003a7bbada022bc6d84d5a0e1c2,9219.jpg,valid,data/raw/gyu_det/v3/extracted/valid/valid/images/9219.jpg,4208x2368,exact_pair,within_split
+7,f3c8e110448654a6e7c7fdbb4108f06ce69f3003a7bbada022bc6d84d5a0e1c2,9220.jpg,valid,data/raw/gyu_det/v3/extracted/valid/valid/images/9220.jpg,4208x2368,exact_pair,within_split

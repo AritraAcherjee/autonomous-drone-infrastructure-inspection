@@ -1,0 +1,37 @@
+view,split,class_id,raw_class_name,presentation_class_name,instances,images_containing_class
+RAW_OFFICIAL_EXACT_PAIRS,train,0,Crack,Crack,3877,1627
+RAW_OFFICIAL_EXACT_PAIRS,train,1,Breakage,Breakage,13398,5546
+RAW_OFFICIAL_EXACT_PAIRS,train,2,Comb,Honeycombing,4952,2767
+RAW_OFFICIAL_EXACT_PAIRS,train,3,Hole,Hole,928,689
+RAW_OFFICIAL_EXACT_PAIRS,train,4,Reinforcement,Exposed Reinforcement,10612,3064
+RAW_OFFICIAL_EXACT_PAIRS,train,5,Seepage,Seepage,3865,1590
+DRY_RUN_PROPOSED,train,0,Crack,Crack,3876,1626
+DRY_RUN_PROPOSED,train,1,Breakage,Breakage,13383,5539
+DRY_RUN_PROPOSED,train,2,Comb,Honeycombing,4945,2762
+DRY_RUN_PROPOSED,train,3,Hole,Hole,927,688
+DRY_RUN_PROPOSED,train,4,Reinforcement,Exposed Reinforcement,10604,3060
+DRY_RUN_PROPOSED,train,5,Seepage,Seepage,3864,1589
+RAW_OFFICIAL_EXACT_PAIRS,valid,0,Crack,Crack,366,146
+RAW_OFFICIAL_EXACT_PAIRS,valid,1,Breakage,Breakage,2141,765
+RAW_OFFICIAL_EXACT_PAIRS,valid,2,Comb,Honeycombing,479,302
+RAW_OFFICIAL_EXACT_PAIRS,valid,3,Hole,Hole,230,108
+RAW_OFFICIAL_EXACT_PAIRS,valid,4,Reinforcement,Exposed Reinforcement,1335,334
+RAW_OFFICIAL_EXACT_PAIRS,valid,5,Seepage,Seepage,378,167
+DRY_RUN_PROPOSED,valid,0,Crack,Crack,366,146
+DRY_RUN_PROPOSED,valid,1,Breakage,Breakage,2129,761
+DRY_RUN_PROPOSED,valid,2,Comb,Honeycombing,479,302
+DRY_RUN_PROPOSED,valid,3,Hole,Hole,228,106
+DRY_RUN_PROPOSED,valid,4,Reinforcement,Exposed Reinforcement,1327,332
+DRY_RUN_PROPOSED,valid,5,Seepage,Seepage,378,167
+RAW_OFFICIAL_EXACT_PAIRS,test,0,Crack,Crack,404,150
+RAW_OFFICIAL_EXACT_PAIRS,test,1,Breakage,Breakage,3628,857
+RAW_OFFICIAL_EXACT_PAIRS,test,2,Comb,Honeycombing,281,139
+RAW_OFFICIAL_EXACT_PAIRS,test,3,Hole,Hole,69,55
+RAW_OFFICIAL_EXACT_PAIRS,test,4,Reinforcement,Exposed Reinforcement,1381,389
+RAW_OFFICIAL_EXACT_PAIRS,test,5,Seepage,Seepage,123,59
+DRY_RUN_PROPOSED,test,0,Crack,Crack,404,150
+DRY_RUN_PROPOSED,test,1,Breakage,Breakage,3628,857
+DRY_RUN_PROPOSED,test,2,Comb,Honeycombing,281,139
+DRY_RUN_PROPOSED,test,3,Hole,Hole,69,55
+DRY_RUN_PROPOSED,test,4,Reinforcement,Exposed Reinforcement,1381,389
+DRY_RUN_PROPOSED,test,5,Seepage,Seepage,123,59

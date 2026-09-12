@@ -1,0 +1,24 @@
+{
+  "article_rights_section_license": "CC BY-NC-ND 4.0",
+  "article_url": "https://www.nature.com/articles/s41597-025-05395-w",
+  "current_availability": "Public V3 record and four file listings accessible; bulk downloads not re-tested.",
+  "dataset_landing_page": "https://www.scidb.cn/en/detail?dataSetId=68827df9f367442c8be0c283e60ed3b7",
+  "default_version": "V4",
+  "default_version_license": "CC BY 4.0",
+  "local_source_file_sizes_bytes": {
+    "classes.txt": 53,
+    "test.zip": 4594004450,
+    "train.zip": 31892320387,
+    "valid.zip": 4220930256
+  },
+  "official_v3_md5": {
+    "classes.txt": "F078630BF0D0614B07C9DC990DA40801",
+    "test.zip": "522A80C18CAA4A0030D7FFC9DDFA98B2",
+    "train.zip": "A8AAD1CC02E86C4857B8315EE9F1606E",
+    "valid.zip": "D8EBE9C38D9D4D05DD9CFFB50A692086"
+  },
+  "selected_version": "V3",
+  "verification_method": "Read-only official landing-page browser inspection, using the Version 3 Visit button in History; no dataset files downloaded.",
+  "version_note": "The URL does not encode the selected version. Select Version 3 explicitly; default HTML/JSON-LD refers to Version 4.",
+  "visible_license": "CC BY-NC-SA 4.0"
+}

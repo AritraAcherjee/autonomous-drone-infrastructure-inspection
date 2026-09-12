@@ -1,0 +1,28 @@
+# DRY RUN ONLY: future dataset/list paths below DO NOT exist yet.
+# This proposal does not authorize materialization or model training.
+# Resolve path relative to repository root when future materialization is approved.
+# Standard YOLO dataset loaders do not enforce the aegisinspect metadata flags.
+path: data/processed/gyu_det_v3_baseline
+train: train.txt
+val: valid.txt
+test: test.txt
+nc: 6
+names:
+  0: "Crack"
+  1: "Breakage"
+  2: "Honeycombing"
+  3: "Hole"
+  4: "Exposed Reinforcement"
+  5: "Seepage"
+aegisinspect:
+  proposal_only: true
+  materialized: false
+  training_authorized: false
+  raw_class_ids_unchanged: true
+  source_class_names:
+    0: "Crack"
+    1: "Breakage"
+    2: "Comb"
+    3: "Hole"
+    4: "Reinforcement"
+    5: "Seepage"

@@ -1,0 +1,58 @@
+class_ids,class_names,class_count,images,percent_exact_pairs
+1,Breakage,1,2232,21.438862741331285
+1;4,Breakage + Reinforcement,2,1433,13.764287772548267
+2,Comb,1,687,6.5987897416194405
+1;2,Breakage + Comb,2,683,6.560368840649313
+1;2;4,Breakage + Comb + Reinforcement,3,634,6.089712803765249
+0,Crack,1,631,6.060897128037652
+5,Seepage,1,617,5.926423974642205
+1;5,Breakage + Seepage,2,412,3.957352799923158
+0;1,Crack + Breakage,2,406,3.8997214484679668
+2;4,Comb + Reinforcement,2,311,2.9872250504274325
+4,Reinforcement,1,249,2.3917010853904523
+0;1;4,Crack + Breakage + Reinforcement,3,189,1.815387570838536
+1;4;5,Breakage + Reinforcement + Seepage,3,182,1.7481509941408127
+1;3;4,Breakage + Hole + Reinforcement,3,179,1.7193353184132167
+0;2,Crack + Comb,2,151,1.4503890116223226
+1;3,Breakage + Hole,2,124,1.1910479300739603
+0;1;2,Crack + Breakage + Comb,3,105,1.0085486504658534
+2;5,Comb + Seepage,2,89,0.8548650465853425
+1;2;5,Breakage + Comb + Seepage,3,88,0.8452598213428105
+0;4,Crack + Reinforcement,2,85,0.8164441456152147
+1;2;3;4,Breakage + Comb + Hole + Reinforcement,4,81,0.7780232446450869
+0;1;2;4,Crack + Breakage + Comb + Reinforcement,4,80,0.7684180194025549
+4;5,Reinforcement + Seepage,2,63,0.6051291902795121
+2;3;4,Comb + Hole + Reinforcement,3,62,0.5955239650369801
+3,Hole,1,58,0.5571030640668524
+0;1;5,Crack + Breakage + Seepage,3,56,0.5378926135817885
+1;2;4;5,Breakage + Comb + Reinforcement + Seepage,4,45,0.4322351359139372
+3;5,Hole + Seepage,2,43,0.41302468542887333
+2;3,Comb + Hole,2,41,0.3938142349438094
+0;5,Crack + Seepage,2,39,0.37460378445874554
+1;3;4;5,Breakage + Hole + Reinforcement + Seepage,4,38,0.3649985592162136
+1;2;3,Breakage + Comb + Hole,3,37,0.35539333397368167
+1;3;5,Breakage + Hole + Seepage,3,36,0.34578810873114973
+0;1;3;4,Crack + Breakage + Hole + Reinforcement,4,23,0.22092018057823457
+0;1;4;5,Crack + Breakage + Reinforcement + Seepage,4,23,0.22092018057823457
+0;1;3,Crack + Breakage + Hole,3,21,0.2017097300931707
+0;2;4,Crack + Comb + Reinforcement,3,20,0.19210450485063874
+0;3,Crack + Hole,2,20,0.19210450485063874
+3;4,Hole + Reinforcement,2,19,0.1824992796081068
+2;4;5,Comb + Reinforcement + Seepage,3,15,0.14407837863797907
+1;2;3;4;5,Breakage + Comb + Hole + Reinforcement + Seepage,5,12,0.11526270291038325
+0;1;2;4;5,Crack + Breakage + Comb + Reinforcement + Seepage,5,11,0.10565747766785132
+0;1;2;3,Crack + Breakage + Comb + Hole,4,10,0.09605225242531937
+1;2;3;5,Breakage + Comb + Hole + Seepage,4,10,0.09605225242531937
+0;1;2;5,Crack + Breakage + Comb + Seepage,4,8,0.0768418019402555
+0;2;3,Crack + Comb + Hole,3,8,0.0768418019402555
+0;4;5,Crack + Reinforcement + Seepage,3,8,0.0768418019402555
+0;2;5,Crack + Comb + Seepage,3,7,0.06723657669772357
+0;3;4,Crack + Hole + Reinforcement,3,7,0.06723657669772357
+0;1;2;3;4,Crack + Breakage + Comb + Hole + Reinforcement,5,5,0.048026126212659684
+3;4;5,Hole + Reinforcement + Seepage,3,5,0.048026126212659684
+0;2;3;4,Crack + Comb + Hole + Reinforcement,4,4,0.03842090097012775
+0;1;3;4;5,Crack + Breakage + Hole + Reinforcement + Seepage,5,3,0.028815675727595812
+0;1;3;5,Crack + Breakage + Hole + Seepage,4,2,0.019210450485063875
+2;3;5,Comb + Hole + Seepage,3,2,0.019210450485063875
+0;2;3;5,Crack + Comb + Hole + Seepage,4,1,0.009605225242531937
+2;3;4;5,Comb + Hole + Reinforcement + Seepage,4,1,0.009605225242531937

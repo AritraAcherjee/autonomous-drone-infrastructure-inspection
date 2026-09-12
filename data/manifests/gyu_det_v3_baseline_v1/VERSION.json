@@ -1,0 +1,68 @@
+{
+  "approved_conflict_exclusions": [
+    "train/139.JPG",
+    "train/183.JPG",
+    "train/3852.JPG",
+    "train/4263.JPG",
+    "train/4476.JPG",
+    "train/4631.JPG",
+    "valid/9219.jpg",
+    "valid/9220.jpg",
+    "valid/9228.jpg",
+    "valid/9229.jpg"
+  ],
+  "class_mapping": [
+    {
+      "canonical_display_name": "Crack",
+      "id": 0,
+      "raw_source_name": "Crack"
+    },
+    {
+      "canonical_display_name": "Breakage",
+      "id": 1,
+      "raw_source_name": "Breakage"
+    },
+    {
+      "canonical_display_name": "Honeycombing",
+      "id": 2,
+      "raw_source_name": "Comb"
+    },
+    {
+      "canonical_display_name": "Hole",
+      "id": 3,
+      "raw_source_name": "Hole"
+    },
+    {
+      "canonical_display_name": "Exposed Reinforcement",
+      "id": 4,
+      "raw_source_name": "Reinforcement"
+    },
+    {
+      "canonical_display_name": "Seepage",
+      "id": 5,
+      "raw_source_name": "Seepage"
+    }
+  ],
+  "creation_policy_version": "human-approved-baseline-v1-policy-1",
+  "dataset": "GYU-DET",
+  "exclusions_summary": {
+    "APPROVED_BASELINE_V1_CONFLICT_GROUP_EXCLUSION": 10,
+    "APPROVED_LEAKAGE_GROUP_OTHER_SPLIT_RETAINED": 1,
+    "EQUIVALENT_EXACT_DUPLICATE_REDUNDANT": 2,
+    "UNLABELED_UNCLASSIFIED": 712
+  },
+  "leakage_constraints_summary": {
+    "conservative_unresolved": "retain test/12582.jpg; exclude train/11334.jpg; not confirmed leakage",
+    "exact": "retain valid/11989.jpg; exclude train/9838.jpg",
+    "high_confidence": "retain train/11727.jpg; valid/11985.jpg stays unlabeled/excluded"
+  },
+  "manifest_sha256": {
+    "test": "6a60c2b97387b3e9849f28b11163f3a4f184ea129ae074664549564a9cac98cb",
+    "train": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+    "valid": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06"
+  },
+  "orphan_labels_excluded": 21,
+  "processed_specification_version": "baseline-v1",
+  "source_manifest_sha256": "d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772",
+  "source_version": "v3"
+}

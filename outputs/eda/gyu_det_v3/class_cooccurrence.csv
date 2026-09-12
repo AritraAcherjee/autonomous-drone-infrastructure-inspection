@@ -1,0 +1,7 @@
+class_name,Crack,Breakage,Comb,Hole,Reinforcement,Seepage
+Crack,1923,942,410,104,458,158
+Breakage,942,7168,1809,581,2938,926
+Comb,410,1809,3208,274,1281,289
+Hole,104,581,274,852,439,153
+Reinforcement,458,2938,1281,439,3787,406
+Seepage,158,926,289,153,406,1816

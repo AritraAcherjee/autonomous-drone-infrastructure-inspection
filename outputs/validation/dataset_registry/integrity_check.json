@@ -1,0 +1,13 @@
+{
+  "raw_inventory_unchanged": true,
+  "raw_files_checked": 21559,
+  "protected_files_checked": 113,
+  "protected_files_changed": [],
+  "gyu_registry_section_unchanged": true,
+  "method": "Raw path/size/mtime_ns inventory before and after; SHA-256 of 113 existing non-raw approved evidence files. Raw bytes not rehashed in this documentation sweep.",
+  "raw_write_operations_performed": false,
+  "bulk_dataset_downloads_performed": false,
+  "baseline_reopened": false,
+  "models_trained": false,
+  "ml_framework_installed": false
+}

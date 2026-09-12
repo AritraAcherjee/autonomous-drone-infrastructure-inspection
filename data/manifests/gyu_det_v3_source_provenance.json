@@ -1,0 +1,73 @@
+{
+  "acquisition_hash_basis": "User-verified acquisition MD5 values independently matched to all four official V3 file listings; classes.txt rehashed locally. Large archives not rehashed in this documentation pass.",
+  "annotation_format": "YOLO TXT: class_id x_center y_center width height; normalized coordinates",
+  "associated_paper_title": "Multi-defect type beam bridge dataset: GYU-DET",
+  "baseline_counts": {
+    "annotations": 48392,
+    "test": 1053,
+    "total": 10398,
+    "train": 8305,
+    "valid": 1040
+  },
+  "baseline_specification_version": "baseline-v1",
+  "baseline_test_manifest_sha256": "6a60c2b97387b3e9849f28b11163f3a4f184ea129ae074664549564a9cac98cb",
+  "baseline_train_manifest_sha256": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+  "baseline_valid_manifest_sha256": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06",
+  "dataset": "GYU-DET",
+  "dataset_authors": [
+    "Linchang Zhao",
+    "Ruiping Li"
+  ],
+  "dataset_doi": "https://doi.org/10.57760/sciencedb.19893",
+  "dataset_license": "CC BY-NC-SA 4.0",
+  "dataset_version": "V3",
+  "exact_pair_count": 10411,
+  "license_verification": "Official ScienceDB UI with Version 3 selected: CC BY-NC-SA 4.0. Default Version 4 shows CC BY 4.0 and must not be substituted.",
+  "official_repository": "Science Data Bank",
+  "official_title": "GYU-DET",
+  "orphan_label_count": 21,
+  "paper_doi": "https://doi.org/10.1038/s41597-025-05395-w",
+  "paper_license": "CC BY-NC-ND 4.0",
+  "raw_data_modified": false,
+  "raw_image_count": 11123,
+  "raw_label_count": 10432,
+  "raw_local_root": "data/raw/gyu_det/v3/",
+  "raw_split_names": [
+    "train",
+    "valid",
+    "test"
+  ],
+  "source_archive_files": [
+    "classes.txt",
+    "test.zip",
+    "train.zip",
+    "valid.zip"
+  ],
+  "source_archive_md5": {
+    "classes.txt": "F078630BF0D0614B07C9DC990DA40801",
+    "test.zip": "522A80C18CAA4A0030D7FFC9DDFA98B2",
+    "train.zip": "A8AAD1CC02E86C4857B8315EE9F1606E",
+    "valid.zip": "D8EBE9C38D9D4D05DD9CFFB50A692086"
+  },
+  "source_classes": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Comb",
+    "3": "Hole",
+    "4": "Reinforcement",
+    "5": "Seepage"
+  },
+  "source_file_sizes_bytes": {
+    "classes.txt": 53,
+    "test.zip": 4594004450,
+    "train.zip": 31892320387,
+    "valid.zip": 4220930256
+  },
+  "source_manifest_sha256": "d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772",
+  "source_urls": [
+    "https://www.scidb.cn/en/detail?dataSetId=68827df9f367442c8be0c283e60ed3b7",
+    "https://www.nature.com/articles/s41597-025-05395-w",
+    "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  ],
+  "unlabeled_image_count": 712
+}
