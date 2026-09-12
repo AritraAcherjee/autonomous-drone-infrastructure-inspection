@@ -1,2 +1,6 @@
 # Keep launch scripts and ROS/Gazebo configuration portable to Ubuntu.
 * text=auto eol=lf
+
+# Preserve archived M1 execution logs byte-for-byte, including original CRLF.
+outputs/validation/gyu_det_v3/m1_evidence/baseline_v1_tests.log -text whitespace=cr-at-eol
+outputs/validation/gyu_det_v3/m1_evidence/documentation_tests.log -text whitespace=cr-at-eol
