@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import subprocess
 import unittest
 from unittest.mock import patch
 
@@ -11,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))
 from detection.data.raw_guard import canonical, compare, inside, mutable_path, readonly_raw, snapshot
 from detection.data.readonly_verifier import CLASSES, decode, load_approved, verify_label
 from detection.pretraining_gate import SECTIONS, aggregate, finalize_report, write_json
+from detection.test_evidence import generate, validate
 from data.validators.gyu_baseline_v1 import EXPECTED_COUNTS, resolve_label, resolve_list_entry
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -108,7 +110,127 @@ class GuardTests(unittest.TestCase):
         write_json(path, {'status': 'FAIL'}, self.raw)
         self.assertEqual(finalize_report(self.root, sections)['status'], 'FAIL')
         write_json(path, {'status': 'PASS'}, self.raw)
-        self.assertEqual(finalize_report(self.root, sections)['status'], 'PASS')
+        self.assertEqual(finalize_report(self.root, sections)['status'], 'FAIL')
+
+
+class FreshEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.out = self.root / 'outputs/validation/defect_detection/pretraining_gate'
+        self.out.mkdir(parents=True)
+        self.sha = 'a' * 40
+
+    def execute(self, argv, **kwargs):
+        if argv[0] == 'git':
+            return subprocess.CompletedProcess(argv, 0, self.sha + '\n', '')
+        self.assertEqual(kwargs['cwd'], self.root)
+        self.assertIn(str(self.root / 'src'), kwargs['env']['PYTHONPATH'])
+        self.assertIn(str(self.root / 'ros2_ws/src/aegisinspect_mapping'), kwargs['env']['PYTHONPATH'])
+        if 'unittest' in argv:
+            return subprocess.CompletedProcess(argv, 0, '', 'Ran 112 tests in 1.0s\n\nOK\n')
+        xml = Path(next(a.split('=', 1)[1] for a in argv if a.startswith('--junitxml=')))
+        xml.write_text('<testsuites><testsuite tests="2"><testcase classname="data.test_m1"/>'
+                       '<testcase classname="detection.test_pretraining_gate"/></testsuite></testsuites>')
+        return subprocess.CompletedProcess(argv, 0, '2 passed', '')
+
+    def fresh(self, runner=None):
+        with patch('detection.test_evidence.subprocess.run', side_effect=runner or self.execute):
+            return generate(self.root, self.out, timeout=1)
+
+    def test_fresh_success_and_provenance(self):
+        result = self.fresh()
+        self.assertEqual(result['status'], 'PASS')
+        self.assertEqual(result['m1']['passed'], 112)
+        self.assertEqual(result['git_sha'], self.sha)
+        self.assertEqual(len(result['commands']), 2)
+        sections = {k: {'status': 'PASS'} for k in SECTIONS}
+        sections['git_sha'] = self.sha
+        self.assertEqual(finalize_report(self.root, sections, result)['status'], 'PASS')
+
+    def test_stale_pass_replaced_by_new_execution(self):
+        old = self.fresh()
+        new = self.fresh()
+        self.assertNotEqual(old['run_id'], new['run_id'])
+        self.assertEqual(validate(self.out, old, self.sha)['status'], 'FAIL')
+        self.assertEqual(validate(self.out, new, self.sha)['status'], 'PASS')
+
+    def test_nonzero_required_commands_fail(self):
+        for suite in ('unittest', 'pytest'):
+            def fail(argv, **kwargs):
+                result = self.execute(argv, **kwargs)
+                if suite in argv:
+                    result.returncode = 1
+                return result
+            with self.subTest(suite=suite):
+                self.assertEqual(self.fresh(fail)['status'], 'FAIL')
+
+    def test_unavailable_and_timeout_cannot_reuse_pass(self):
+        for error in (OSError('unavailable'), subprocess.TimeoutExpired('test', 1)):
+            self.fresh()
+            def fail(argv, **kwargs):
+                if argv[0] == 'git':
+                    return self.execute(argv, **kwargs)
+                raise error
+            with self.subTest(error=type(error).__name__):
+                self.assertEqual(self.fresh(fail)['status'], 'FAIL')
+                self.assertEqual(json.loads((self.out/'test_results.json').read_text())['status'], 'FAIL')
+
+    def test_missing_or_malformed_fresh_xml_ignores_old_xml(self):
+        for content in (None, 'not xml', '<testsuites/>'):
+            self.fresh()
+            def broken(argv, **kwargs):
+                result = self.execute(argv, **kwargs)
+                if 'pytest' in argv:
+                    xml = Path(next(a.split('=', 1)[1] for a in argv if a.startswith('--junitxml=')))
+                    if content is None:
+                        xml.unlink()
+                    else:
+                        xml.write_text(content)
+                return result
+            with self.subTest(content=content):
+                self.assertEqual(self.fresh(broken)['status'], 'FAIL')
+
+    def test_malformed_m1_summary_fails(self):
+        def broken(argv, **kwargs):
+            result = self.execute(argv, **kwargs)
+            if 'unittest' in argv:
+                result.stderr = 'OK'
+            return result
+        self.assertEqual(self.fresh(broken)['status'], 'FAIL')
+
+    def test_write_failure_cannot_fall_back_to_old_pass(self):
+        self.fresh()
+        with patch.object(Path, 'write_text', side_effect=OSError('read only')):
+            result = self.fresh()
+        self.assertEqual(result['status'], 'FAIL')
+        self.assertEqual(validate(self.out, result, self.sha)['status'], 'FAIL')
+
+    def test_artifact_corruption_or_missing_json_fails(self):
+        for name in ('test_results.json', 'pytest_results.xml', 'm1_tests.txt', 'full_tests.txt'):
+            result = self.fresh()
+            (self.out/name).write_text('corrupted')
+            with self.subTest(name=name):
+                self.assertEqual(validate(self.out, result, self.sha)['status'], 'FAIL')
+        result = self.fresh()
+        (self.out/'test_results.json').unlink()
+        self.assertEqual(validate(self.out, result, self.sha)['status'], 'FAIL')
+
+    def test_wrong_git_sha_fails(self):
+        self.assertEqual(validate(self.out, self.fresh(), 'b'*40)['status'], 'FAIL')
+
+    def test_pytest_subtest_totals_must_reconcile(self):
+        for declared, status in ((5, 'PASS'), (6, 'FAIL')):
+            def subtests(argv, **kwargs):
+                result = self.execute(argv, **kwargs)
+                if 'pytest' in argv:
+                    xml = Path(next(a.split('=', 1)[1] for a in argv if a.startswith('--junitxml=')))
+                    xml.write_text(xml.read_text().replace('tests="2"', f'tests="{declared}"'))
+                    result.stdout = '2 passed, 3 subtests passed in 1.0s'
+                return result
+            with self.subTest(declared=declared):
+                self.assertEqual(self.fresh(subtests)['status'], status)
 
 
 class DatasetTests(unittest.TestCase):

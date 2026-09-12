@@ -16,6 +16,7 @@ import sys
 from detection.data.raw_guard import compare, mutable_path, readonly_raw, sha256, snapshot
 from detection.data.readonly_verifier import CLASSES, decode, load_approved, read_csv, verify_label
 from data.validators.gyu_m1_documentation import check_approved
+from detection.test_evidence import generate as generate_test_evidence, validate as validate_test_evidence
 
 SECTIONS = ('environment', 'dataset_counts', 'class_mapping', 'image_reader', 'mpo_reader', 'label_reader', 'raw_immutability')
 
@@ -121,6 +122,7 @@ def _run(root: Path) -> dict:
     write_json(out / 'dependency_versions.json', sections['environment'], raw)
     before = None
     baseline = set()
+    test_execution = None
     try:
         check_approved(root)  # Read-only retained M1 hash/association checks.
         config, records = load_approved(root)
@@ -137,6 +139,8 @@ def _run(root: Path) -> dict:
         print('Snapshotting all raw metadata and hashing baseline images/labels...', flush=True)
         before = snapshot(raw, baseline)
         write_json(out / 'raw_snapshot_before.json', before, raw)
+        print('Generating fresh M1 and full Python test evidence...', flush=True)
+        test_execution = generate_test_evidence(root, out)
         mismatches = [r['image_relative_path'] for r in records
                       if before[r['image'].relative_to(raw).as_posix()]['sha256'] != r['image_sha256']]
         if mismatches:
@@ -192,23 +196,19 @@ def _run(root: Path) -> dict:
     report['training_executed'] = False
     report['weights_downloaded'] = False
     report['git_sha'] = command(['git', '-C', str(root), 'rev-parse', 'HEAD'])
-    return finalize_report(root, report)
+    return finalize_report(root, report, test_execution)
 
 
-def finalize_report(root: Path, runtime_report: dict) -> dict:
+def finalize_report(root: Path, runtime_report: dict, test_execution: dict | None = None) -> dict:
     """Combine measured reader evidence with required regression-test evidence.
 
-    Can be called after tests finish without repeating image reads or changing
-    raw snapshots. A reader PASS cannot override a failed or absent test gate.
+    Requires the fresh execution result from this invocation. Historical JSON
+    alone never authorizes PASS, even when the reader measurements passed.
     """
     raw = root / 'data/raw'
     out = mutable_path(root / 'outputs/validation/defect_detection/pretraining_gate', raw)
     report = dict(runtime_report)
-    test_evidence = out / 'test_results.json'
-    try:
-        report['tests'] = json.loads(test_evidence.read_text(encoding='utf-8'))
-    except (OSError, ValueError) as exc:
-        report['tests'] = {'status': 'FAIL', 'reason': f'Required test evidence unavailable: {exc}'}
+    report['tests'] = validate_test_evidence(out, test_execution, report.get('git_sha'))
     report['status'] = 'PASS' if (all(report.get(k, {}).get('status') == 'PASS' for k in SECTIONS)
                                 and report['tests'].get('status') == 'PASS'
                                 and not report.get('execution_error')) else 'FAIL'

@@ -1,23 +1,6 @@
-........F........................................................ [ 29%]
-................................................................................................................ [ 79%]
-.............................................                            [100%]
-================================== FAILURES ===================================
-____ DatasetRegistryTests.test_gyu_approved_entry_and_artifacts_unchanged _____
-
-self = <test_dataset_registry.DatasetRegistryTests testMethod=test_gyu_approved_entry_and_artifacts_unchanged>
-
-    def test_gyu_approved_entry_and_artifacts_unchanged(self) -> None:
-        raw=(ROOT/'docs/data/DATASET_REGISTRY.md').read_bytes()
-        approved=raw[raw.index(b'## GYU-DET'):]
-        self.assertEqual(hashlib.sha256(approved).hexdigest(),self.snapshot['gyu_registry_section_sha256'])
-        for path,expected in self.snapshot['protected'].items():
->           self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),expected,path)
-E           AssertionError: 'c58d363fd29e94e9cb16398babba9afbef51264c7ffc6acd2f9ccb440e4e2766' != 'aeee0038389d953b5928ab0beed22e45eb12ecd1d65d730c87f62cfe5f1734f4'
-E           - c58d363fd29e94e9cb16398babba9afbef51264c7ffc6acd2f9ccb440e4e2766
-E           + aeee0038389d953b5928ab0beed22e45eb12ecd1d65d730c87f62cfe5f1734f4
-E            : configs\data\gyu_det_v3_baseline.yaml
-
-tests\data\test_dataset_registry.py:65: AssertionError
+................................................................. [ 28%]
+................................................................................................... [ 70%]
+....................................................................     [100%]
 ============================== warnings summary ===============================
 data/test_gyu_leakage.py: 13 warnings
   C:\Users\Aritra\Documents\autonomous-drone-infrastructure-inspection\src\data\validators\gyu_leakage.py:40: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
@@ -28,6 +11,4 @@ data/test_gyu_leakage.py: 13 warnings
     vertical = list(gray.resize((8,9), Image.Resampling.LANCZOS).getdata())
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-=========================== short test summary info ===========================
-FAILED ros2_ws\src\aegisinspect_mapping\data\test_dataset_registry.py::DatasetRegistryTests::test_gyu_approved_entry_and_artifacts_unchanged
-1 failed, 221 passed, 26 warnings, 39 subtests passed in 58.07s
+232 passed, 26 warnings, 52 subtests passed in 61.45s (0:01:01)

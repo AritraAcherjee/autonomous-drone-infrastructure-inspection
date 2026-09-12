@@ -6,7 +6,7 @@ test_codebrim_isolation (test_dataset_registry.DatasetRegistryTests.test_codebri
 test_decisions_and_types (test_dataset_registry.DatasetRegistryTests.test_decisions_and_types) ... ok
 test_field_level_evidence (test_dataset_registry.DatasetRegistryTests.test_field_level_evidence) ... ok
 test_gazebo_requires_asset_licenses_and_later_generation (test_dataset_registry.DatasetRegistryTests.test_gazebo_requires_asset_licenses_and_later_generation) ... ok
-test_gyu_approved_entry_and_artifacts_unchanged (test_dataset_registry.DatasetRegistryTests.test_gyu_approved_entry_and_artifacts_unchanged) ... FAIL
+test_gyu_approved_entry_and_artifacts_unchanged (test_dataset_registry.DatasetRegistryTests.test_gyu_approved_entry_and_artifacts_unchanged) ... ok
 test_json_and_csv_agree_all_fields (test_dataset_registry.DatasetRegistryTests.test_json_and_csv_agree_all_fields) ... ok
 test_no_false_acquisition_claim (test_dataset_registry.DatasetRegistryTests.test_no_false_acquisition_claim) ... ok
 test_no_raw_inventory_modifications (test_dataset_registry.DatasetRegistryTests.test_no_raw_inventory_modifications) ... ok
@@ -45,8 +45,7 @@ test_box_calculation_non_square_image (test_gyu_eda.EdaTests.test_box_calculatio
 test_changed_label_fails_before_analysis (test_gyu_eda.EdaTests.test_changed_label_fails_before_analysis) ... ok
 test_class_counting_and_orphan_separation (test_gyu_eda.EdaTests.test_class_counting_and_orphan_separation) ... ok
 test_cooccurrence_counts_images_not_instances (test_gyu_eda.EdaTests.test_cooccurrence_counts_images_not_instances) ... ok
-test_no_image_decode_and_deterministic_outputs (test_gyu_eda.EdaTests.test_no_image_decode_and_deterministic_outputs) ... Could not save font_manager cache [Errno 13] Permission denied: 'C:\\Users\\Aritra\\.matplotlib\\fontlist-v3.11.0.json.matplotlib-lock'
-ok
+test_no_image_decode_and_deterministic_outputs (test_gyu_eda.EdaTests.test_no_image_decode_and_deterministic_outputs) ... ok
 test_output_guard (test_gyu_eda.EdaTests.test_output_guard) ... ok
 test_size_boundary_rules (test_gyu_eda.EdaTests.test_size_boundary_rules) ... ok
 test_split_aggregation (test_gyu_eda.EdaTests.test_split_aggregation) ... ok
@@ -116,18 +115,7 @@ test_orphan_label_with_no_candidate (test_gyu_pairing.PairingTests.test_orphan_l
 test_similar_names_are_never_paired (test_gyu_pairing.PairingTests.test_similar_names_are_never_paired) ... ok
 test_top_ten_scopes_determinism_and_input_unchanged (test_gyu_pairing.PairingTests.test_top_ten_scopes_determinism_and_input_unchanged) ... ok
 
-======================================================================
-FAIL: test_gyu_approved_entry_and_artifacts_unchanged (test_dataset_registry.DatasetRegistryTests.test_gyu_approved_entry_and_artifacts_unchanged)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "C:\Users\Aritra\Documents\autonomous-drone-infrastructure-inspection\tests\data\test_dataset_registry.py", line 65, in test_gyu_approved_entry_and_artifacts_unchanged
-    self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),expected,path)
-AssertionError: 'c58d363fd29e94e9cb16398babba9afbef51264c7ffc6acd2f9ccb440e4e2766' != 'aeee0038389d953b5928ab0beed22e45eb12ecd1d65d730c87f62cfe5f1734f4'
-- c58d363fd29e94e9cb16398babba9afbef51264c7ffc6acd2f9ccb440e4e2766
-+ aeee0038389d953b5928ab0beed22e45eb12ecd1d65d730c87f62cfe5f1734f4
- : configs\data\gyu_det_v3_baseline.yaml
+Ran 112 tests in 15.046s
 
-----------------------------------------------------------------------
-Ran 112 tests in 29.071s
-
-FAILED (failures=1)
+OK
