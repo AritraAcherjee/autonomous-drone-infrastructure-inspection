@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(aegisinspect_system_tests)
 find_package(ament_cmake REQUIRED)
-install(PROGRAMS scripts/smoke_check.py DESTINATION lib/${PROJECT_NAME})
-install(PROGRAMS scripts/depth_check.py DESTINATION lib/${PROJECT_NAME})
+install(PROGRAMS scripts/smoke_check.py scripts/depth_check.py DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_cmake_pytest REQUIRED)

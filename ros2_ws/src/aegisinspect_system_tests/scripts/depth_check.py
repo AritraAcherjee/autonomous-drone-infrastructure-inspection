@@ -84,6 +84,38 @@ def gz_stamps(text):
     return stamps
 
 
+def capture_gz_stamps(spin_once, timeout):
+    """Keep Gazebo capture active while servicing ROS for the full window."""
+    with tempfile.TemporaryFile(mode='w+') as output, tempfile.TemporaryFile(mode='w+') as stderr:
+        capture = subprocess.Popen(['gz', 'topic', '-e', '-t', GZ_DEPTH],
+                                   stdout=output, stderr=stderr)
+        try:
+            deadline = time.monotonic() + timeout
+            while time.monotonic() < deadline:
+                spin_once()
+                if capture.poll() is not None:
+                    stderr.seek(0)
+                    raise subprocess.SubprocessError('Gazebo transport capture exited early: ' + stderr.read())
+        finally:
+            if capture.poll() is None:
+                capture.terminate()
+                try:
+                    capture.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    capture.kill()
+                    capture.wait(timeout=5)
+        output.seek(0)
+        return gz_stamps(output.read())
+
+
+def exact_stamp_matches(original_stamps, ros_stamps):
+    """Require three distinct preserved observations despite transport drops."""
+    matched = original_stamps & ros_stamps
+    if len(matched) < 3:
+        raise ValueError('require three exact Gazebo -> ROS observation timestamp matches')
+    return matched
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--timeout', type=float, default=30)
@@ -124,32 +156,14 @@ def main():
                       qos_profile_sensor_data) for topic, kind in [(DEPTH, Image), (RGB, Image), (INFO, CameraInfo)]]
     subscriptions.append(node.create_subscription(Clock, '/clock', lambda m: clocks.append(stamp(m.clock)),
                                                  qos_profile_sensor_data))
-    capture = None
     try:
-        with tempfile.TemporaryFile(mode='w+') as output, tempfile.TemporaryFile(mode='w+') as stderr:
-            deadline = time.monotonic() + args.timeout
-            while time.monotonic() < deadline:
-                rclpy.spin_once(node, timeout_sec=0.05)
-                if capture is None and counts[DEPTH] >= 3:
-                    # Start after ROS discovery; retain ROS stamps across this exact acquisition interval.
-                    capture = subprocess.Popen(['gz', 'topic', '-e', '-t', GZ_DEPTH, '-n', '3'],
-                                               stdout=output, stderr=stderr)
-            if capture is None:
-                errors.add('no depth messages; Gazebo timestamp capture not started')
-            elif capture.poll() is None:
-                capture.terminate()
-                capture.wait(timeout=5)
-                errors.add('Gazebo transport capture timed out')
-            elif capture.returncode != 0:
-                stderr.seek(0)
-                errors.add('Gazebo transport capture failed: ' + stderr.read())
-            output.seek(0)
-            original_stamps = gz_stamps(output.read())
-            matched = original_stamps & stamps[DEPTH]
-            print('Gazebo observation stamps (ns):', sorted(original_stamps))
-            print('Exact ROS depth stamp matches (ns):', sorted(matched))
-            if len(original_stamps) < 3 or matched != original_stamps:
-                errors.add('require three exact Gazebo -> ROS observation timestamp matches')
+        original_stamps = capture_gz_stamps(lambda: rclpy.spin_once(node, timeout_sec=0.05), args.timeout)
+        print('Gazebo observation stamps (ns):', sorted(original_stamps))
+        print('Exact ROS depth stamp matches (ns):', sorted(original_stamps & stamps[DEPTH]))
+        try:
+            exact_stamp_matches(original_stamps, stamps[DEPTH])
+        except ValueError as exc:
+            errors.add(str(exc))
 
         for topic in stamps:
             if counts[topic] < 3 or node.count_publishers(topic) != 1:
@@ -202,9 +216,6 @@ def main():
         print(f'BLOCKED: {exc}')
         return 2
     finally:
-        if capture is not None and capture.poll() is None:
-            capture.terminate()
-            capture.wait(timeout=5)
         node.destroy_node()
         rclpy.shutdown()
 

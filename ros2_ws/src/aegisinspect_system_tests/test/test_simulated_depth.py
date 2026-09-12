@@ -1,5 +1,6 @@
 """Configuration invariants and synthetic probe tests; no ROS/Gazebo claims."""
 import importlib.util
+import io
 import math
 from pathlib import Path
 import struct
@@ -115,3 +116,77 @@ def test_gazebo_timestamp_parser_handles_zero_fields_and_ignores_data():
     text = 'header { stamp { sec: 12 nsec: 34 } } data: "sec: 999"\n'
     text += 'header { stamp { sec: 13 } }\nheader { stamp { nsec: 50 } }'
     assert probe.gz_stamps(text) == {12_000_000_034, 13_000_000_000, 50}
+
+
+@pytest.mark.parametrize('ros', [set(), {10, 20}, {40, 50, 60}, {11, 21, 31}])
+def test_timestamp_matching_rejects_insufficient_disjoint_and_one_ns_offsets(ros):
+    with pytest.raises(ValueError, match='three exact'):
+        probe.exact_stamp_matches({10, 20, 30}, ros)
+
+
+def test_timestamp_matching_accepts_sparse_ros_observations():
+    assert probe.exact_stamp_matches(set(range(141)), {30, 70, 100}) == {30, 70, 100}
+    with pytest.raises(ValueError, match='three exact'):
+        probe.exact_stamp_matches({10, 20, 30}, set([10, 10, 20]))
+
+
+@pytest.mark.parametrize('failure', [None, 'transport', 'callback', 'termination'])
+def test_capture_services_ros_throughout_gazebo_window_and_cleans_up(monkeypatch, failure):
+    state = SimpleNamespace(tick=0, running=False, stopped=False, killed=False)
+    ros = set()
+    streams = []
+
+    def temporary_file(**kwargs):
+        stream = io.StringIO()
+        streams.append(stream)
+        return stream
+
+    def popen(command, stdout, stderr):
+        assert command == ['gz', 'topic', '-e', '-t', probe.GZ_DEPTH]
+        state.running = True
+        return SimpleNamespace(poll=poll, terminate=terminate, wait=wait, kill=kill)
+
+    def poll():
+        return None if state.running else 1
+
+    def terminate():
+        state.stopped = True
+        if failure != 'termination':
+            state.running = False
+
+    def kill():
+        state.killed = True
+        state.running = False
+
+    def wait(timeout):
+        if state.running:
+            raise probe.subprocess.TimeoutExpired('gz', timeout)
+
+    def spin_once():
+        assert state.running
+        state.tick += 1
+        streams[0].write(f'header {{ stamp {{ sec: {state.tick} }} }}\n')
+        # First three Gazebo frames are missed; ROS later receives only every other frame.
+        if state.tick in (4, 6, 8):
+            ros.add(state.tick * 1_000_000_000)
+        if failure == 'transport':
+            state.running = False
+            streams[1].write('transport failed')
+        elif failure == 'callback':
+            raise RuntimeError('callback failed')
+
+    monkeypatch.setattr(probe.tempfile, 'TemporaryFile', temporary_file)
+    monkeypatch.setattr(probe.subprocess, 'Popen', popen)
+    monkeypatch.setattr(probe.time, 'monotonic', lambda: state.tick)
+    if failure in ('transport', 'callback'):
+        exception = probe.subprocess.SubprocessError if failure == 'transport' else RuntimeError
+        with pytest.raises(exception, match='transport failed|callback failed'):
+            probe.capture_gz_stamps(spin_once, 8)
+    else:
+        original = probe.capture_gz_stamps(spin_once, 8)
+        assert state.tick == 8
+        assert probe.exact_stamp_matches(original, ros) == ros
+    assert not state.running
+    assert state.stopped == (failure != 'transport')
+    assert state.killed == (failure == 'termination')
+    assert all(stream.closed for stream in streams)
