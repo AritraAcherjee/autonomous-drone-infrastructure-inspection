@@ -1,0 +1,10 @@
+{
+  "ultralytics": "8.4.145",
+  "files_sha256": {
+    "data/base.py": "863018d66387a9904d61368c5058e2ce1cfe830b6fd99a399fe9df159d4b0555",
+    "data/dataset.py": "6c30496c691aefeb0646bea23a1519d2960c927b71dae10c370afcd9765f0e0e",
+    "data/utils.py": "6135197e734e4dba2b85caca69a7757979f5ac4c8cb08223feb22888fe9c0ade",
+    "utils/patches.py": "dd25f86ed9ff9598b6d1923d22ecb26a6ad38df8c50ef6f4f1c897701aaf2507"
+  },
+  "inspected_before_full_reader": true
+}

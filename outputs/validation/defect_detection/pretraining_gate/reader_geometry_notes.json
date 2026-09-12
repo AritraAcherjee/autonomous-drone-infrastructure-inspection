@@ -1,0 +1,13 @@
+{
+  "label_warning_counts": {
+    "derived_box_outside_frame": 1803
+  },
+  "dimension_differences": 648,
+  "orientations": {
+    "6": 351,
+    "8": 297
+  },
+  "all_differences_are_axis_swaps": true,
+  "m1_baseline_unique_resolutions": 82,
+  "runtime_unique_resolutions": 92
+}

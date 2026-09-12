@@ -1,0 +1,181 @@
+{
+  "status": "PASS",
+  "environment": {
+    "operating_system": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "python_executable": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+    "environment_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection",
+    "active_venv": null,
+    "active_conda": null,
+    "isolated": true,
+    "pip": "26.2.1",
+    "torch": "2.14.0+cu130",
+    "torchvision": "0.29.0+cu130",
+    "ultralytics": "8.4.145",
+    "numpy": "2.4.6",
+    "opencv-python": "5.0.0.93",
+    "Pillow": "12.3.0",
+    "nvidia_smi": "Sat Sep 12 13:43:45 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 591.94                 Driver Version: 591.94         CUDA Version: 13.1     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4070 ...  WDDM  |   00000000:01:00.0  On |                  N/A |\n| N/A   55C    P5             10W /  134W |    2336MiB /   8188MiB |     41%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A            7740    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\n|    0   N/A  N/A           10880    C+G   ...IA App\\CEF\\NVIDIA Overlay.exe      N/A      |\n|    0   N/A  N/A           16056    C+G   ...5n1h2txyewy\\TextInputHost.exe      N/A      |\n|    0   N/A  N/A           16360    C+G   ...cw5n1h2txyewy\\WidgetBoard.exe      N/A      |\n|    0   N/A  N/A           16748    C+G   C:\\Windows\\explorer.exe               N/A      |\n|    0   N/A  N/A           17204    C+G   ...2txyewy\\CrossDeviceResume.exe      N/A      |\n|    0   N/A  N/A           17436    C+G   ...IA App\\CEF\\NVIDIA Overlay.exe      N/A      |\n|    0   N/A  N/A           17624    C+G   ...y\\StartMenuExperienceHost.exe      N/A      |\n|    0   N/A  N/A           17668    C+G   ..._cw5n1h2txyewy\\SearchHost.exe      N/A      |\n|    0   N/A  N/A           19592    C+G   ...4__8wekyb3d8bbwe\\ms-teams.exe      N/A      |\n|    0   N/A  N/A           24564    C+G   ...ntrolPanel\\SystemSettings.exe      N/A      |\n|    0   N/A  N/A           24960    C+G   ...yb3d8bbwe\\Notepad\\Notepad.exe      N/A      |\n|    0   N/A  N/A           27176    C+G   ...crosoft\\OneDrive\\OneDrive.exe      N/A      |\n|    0   N/A  N/A           29788    C+G   ...App_cw5n1h2txyewy\\LockApp.exe      N/A      |\n|    0   N/A  N/A           31808    C+G   ...4__8wekyb3d8bbwe\\ms-teams.exe      N/A      |\n|    0   N/A  N/A           32224    C+G   ...indows\\System32\\ShellHost.exe      N/A      |\n|    0   N/A  N/A           33672    C+G   ...SnippingTool\\SnippingTool.exe      N/A      |\n|    0   N/A  N/A           34884    C+G   ...xyewy\\ShellExperienceHost.exe      N/A      |\n|    0   N/A  N/A           36612    C+G   ...yb3d8bbwe\\WindowsTerminal.exe      N/A      |\n|    0   N/A  N/A           40028    C+G   ...8wekyb3d8bbwe\\M365Copilot.exe      N/A      |\n+-----------------------------------------------------------------------------------------+",
+    "nvidia_driver_gpu": "name, driver_version, memory.total [MiB], compute_cap\nNVIDIA GeForce RTX 4070 Laptop GPU, 591.94, 8188 MiB, 8.9",
+    "nvcc": "Not found on PATH",
+    "torch_cuda_runtime": "13.0",
+    "cuda_available": true,
+    "gpu_count": 1,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+        "compute_capability": [
+          8,
+          9
+        ],
+        "total_memory_bytes": 8585216000
+      }
+    ],
+    "cudnn": 92400,
+    "opencv": "5.0.0",
+    "pillow": "12.3.0",
+    "cuda_tensor_check": true,
+    "status": "PASS"
+  },
+  "dataset_counts": {
+    "status": "PASS",
+    "train": 8305,
+    "valid": 1040,
+    "test": 1053,
+    "total": 10398
+  },
+  "class_mapping": {
+    "status": "PASS",
+    "names": {
+      "0": "Crack",
+      "1": "Breakage",
+      "2": "Honeycombing",
+      "3": "Hole",
+      "4": "Exposed Reinforcement",
+      "5": "Seepage"
+    },
+    "nc": 6
+  },
+  "image_reader": {
+    "status": "PASS",
+    "attempted": 10398,
+    "successful": 10398,
+    "failures": 0,
+    "backend": "ultralytics 8.4.145: ultralytics.data.base.imread -> ultralytics.utils.patches.imread / OpenCV",
+    "unique_resolutions": 92
+  },
+  "mpo_reader": {
+    "status": "PASS",
+    "source_population": 565,
+    "baseline_intersection": 543,
+    "tested": 543,
+    "successes": 543,
+    "failures": 0,
+    "evidence_sha256": "b2101b60bf850e7934136b011c53099e8d4d9721df2fb8d78afe1632a5d93cf3"
+  },
+  "label_reader": {
+    "status": "PASS",
+    "associations": 10398,
+    "failures": 0,
+    "annotations": 48392,
+    "class_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "warning_count": 1803
+  },
+  "raw_immutability": {
+    "files_added": [],
+    "files_removed": [],
+    "size_changes": [],
+    "mtime_ns_changes": [],
+    "sha256_changes": [],
+    "new_cache_files": [],
+    "new_npy_files": [],
+    "status": "PASS",
+    "files_observed": 21559,
+    "hashed_baseline_files": 20796
+  },
+  "cache_strategy": {
+    "image_cache": false,
+    "label_cache": "None: read-only metadata consumer; stock YOLODataset not constructed",
+    "controlled_cache_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\cache\\ultralytics\\gyu_det_v3_baseline_v1",
+    "raw_adjacent_npy": "Never created or loaded by this gate"
+  },
+  "training_executed": false,
+  "weights_downloaded": false,
+  "git_sha": "0ef2ac5ef7f4027c1ea01c81b0d44abe1cfec493",
+  "tests": {
+    "status": "PASS",
+    "run_id": "7001f5926cd843bcb073364ccacaf7a6",
+    "started_at": "2026-09-12T19:46:44.061151+00:00",
+    "commands": [
+      {
+        "suite": "m1",
+        "command": [
+          "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/data",
+          "-v"
+        ],
+        "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+        "started_at": "2026-09-12T19:46:44.183573+00:00",
+        "returncode": 0,
+        "finished_at": "2026-09-12T19:46:59.799984+00:00"
+      },
+      {
+        "suite": "full_python_suite",
+        "command": [
+          "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "tests",
+          "ros2_ws/src/aegisinspect_mapping/test",
+          "ros2_ws/src/aegisinspect_system_tests/test",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\defect_detection\\pretraining_gate\\test-run-ago0n_vn\\pytest_results.xml"
+        ],
+        "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+        "started_at": "2026-09-12T19:46:59.823965+00:00",
+        "returncode": 0,
+        "finished_at": "2026-09-12T19:48:02.170906+00:00"
+      }
+    ],
+    "git_sha": "0ef2ac5ef7f4027c1ea01c81b0d44abe1cfec493",
+    "PYTHONPATH": [
+      "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\src",
+      "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\ros2_ws\\src\\aegisinspect_mapping"
+    ],
+    "m1": {
+      "passed": 112,
+      "failed": 0,
+      "skipped": 0
+    },
+    "full_python_suite": {
+      "passed": 232,
+      "failed": 0,
+      "skipped": 0,
+      "subtests_passed": 52
+    },
+    "detector": {
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0
+    },
+    "artifacts": {
+      "m1_tests.txt": "1407f959fa891affd47ede09a00ce8ef0b8625719766f75103be61e504e89438",
+      "full_tests.txt": "30d7e9754976b90cfa47ec59bed839efdd5bed6e1dc9b1b4a81a44370ee859fd",
+      "pytest_results.xml": "45cf263823f88e7e9bad6d0d92b6df20419ad3e73f96c4d61c47122e411ef94e"
+    },
+    "finished_at": "2026-09-12T19:48:02.194798+00:00"
+  }
+}

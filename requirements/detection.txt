@@ -1,0 +1,11 @@
+# Laptop 1: Python 3.11.15, Windows x86_64, NVIDIA driver 591.94.
+# PyTorch's wheel includes CUDA runtime; no system CUDA Toolkit is required.
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.14.0+cu130
+torchvision==0.29.0+cu130
+ultralytics==8.4.145
+numpy==2.4.6
+opencv-python==5.0.0.93
+Pillow==12.3.0
+PyYAML==6.0.3
+matplotlib==3.11.2
