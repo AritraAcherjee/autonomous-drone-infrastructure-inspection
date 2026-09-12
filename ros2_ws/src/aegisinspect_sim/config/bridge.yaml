@@ -7,7 +7,14 @@
   qos_profile: CLOCK
   lazy: false
 - ros_topic_name: /aegis/sensors/camera/image_raw
-  gz_topic_name: /aegis/sim/sensors/camera/image_raw
+  gz_topic_name: /aegis/sim/sensors/camera/image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+  qos_profile: SENSOR_DATA
+  lazy: false
+- ros_topic_name: /aegis/perception/depth/image
+  gz_topic_name: /aegis/sim/sensors/camera/depth_image
   ros_type_name: sensor_msgs/msg/Image
   gz_type_name: gz.msgs.Image
   direction: GZ_TO_ROS

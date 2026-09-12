@@ -24,6 +24,7 @@ EXPECTED = {
     '/aegis/sensors/imu/data': ('sensor_msgs/msg/Imu', 'imu_link'),
     '/aegis/sensors/lidar/points': ('sensor_msgs/msg/PointCloud2', 'lidar_link'),
 }
+DEPTH_TOPIC = '/aegis/perception/depth/image'
 EDGES = {
     ('base_link', 'camera_link'), ('camera_link', 'camera_optical_frame'),
     ('base_link', 'imu_link'), ('base_link', 'lidar_link'),
@@ -111,7 +112,7 @@ def test_sdf_and_urdf_extrinsics_match(urdf, model):
 def test_sensor_types_frames_and_3d_lidar(model):
     sensors = {s.attrib['name']: s for s in model.findall('link/sensor')}
     assert {name: s.attrib['type'] for name, s in sensors.items()} == {
-        'camera': 'camera', 'imu': 'imu', 'lidar': 'gpu_lidar'}
+        'camera': 'rgbd_camera', 'imu': 'imu', 'lidar': 'gpu_lidar'}
     for name, header, physical in [('camera', 'camera_optical_frame', 'camera_link'),
                                     ('imu', 'imu_link', 'imu_link'), ('lidar', 'lidar_link', 'lidar_link')]:
         sensor = sensors[name]
@@ -129,23 +130,26 @@ def test_sensor_types_frames_and_3d_lidar(model):
 
 def test_bridge_matches_sensor_outputs_and_frozen_contract(model):
     bridges = load_yaml('aegisinspect_sim/config/bridge.yaml')
-    assert len(bridges) == 5
-    assert {b['ros_topic_name'] for b in bridges} == set(EXPECTED) | {'/clock'}
+    assert len(bridges) == 6
+    assert {b['ros_topic_name'] for b in bridges} == set(EXPECTED) | {'/clock', DEPTH_TOPIC}
     sensors = {s.attrib['name']: s for s in model.findall('link/sensor')}
     outputs = {
-        sensors['camera'].findtext('topic'): 'gz.msgs.Image',
+        sensors['camera'].findtext('topic') + '/image': 'gz.msgs.Image',
+        sensors['camera'].findtext('topic') + '/depth_image': 'gz.msgs.Image',
         sensors['camera'].findtext('camera/camera_info_topic'): 'gz.msgs.CameraInfo',
         sensors['imu'].findtext('topic'): 'gz.msgs.IMU',
         sensors['lidar'].findtext('topic') + '/points': 'gz.msgs.PointCloudPacked',
         '/world/inspection_bay/clock': 'gz.msgs.Clock',
     }
-    assert len({b['gz_topic_name'] for b in bridges}) == 5
+    assert len({b['gz_topic_name'] for b in bridges}) == 6
     for bridge in bridges:
         topic = bridge['ros_topic_name']
         assert bridge['direction'] == 'GZ_TO_ROS'
         assert bridge['lazy'] is False
         assert bridge['gz_type_name'] == outputs[bridge['gz_topic_name']]
-        assert bridge['ros_type_name'] == (EXPECTED[topic][0] if topic != '/clock' else 'rosgraph_msgs/msg/Clock')
+        expected_type = {**{t: spec[0] for t, spec in EXPECTED.items()},
+                         DEPTH_TOPIC: 'sensor_msgs/msg/Image', '/clock': 'rosgraph_msgs/msg/Clock'}
+        assert bridge['ros_type_name'] == expected_type[topic]
         assert bridge['qos_profile'] == ('CLOCK' if topic == '/clock' else 'SENSOR_DATA')
 
 
@@ -157,9 +161,11 @@ def test_reserved_contracts_have_no_publishers_or_custom_messages():
     assert {tuple(pair) for pair in contract['static_tf']} == EDGES
     assert contract['reserved_dynamic_tf'] == [['map', 'odom'], ['odom', 'base_link']]
     reserved = contract['reserved_topics']
-    assert set(reserved) == {'/aegis/perception/depth/image', '/aegis/localization/vio/odom'}
-    depth = reserved['/aegis/perception/depth/image']
+    assert set(reserved) == {'/aegis/localization/vio/odom'}
+    assert set(contract['active_perception_topics']) == {DEPTH_TOPIC}
+    depth = contract['active_perception_topics'][DEPTH_TOPIC]
     assert (depth['encoding'], depth['units'], depth['quantity']) == ('32FC1', 'meters', 'optical-axis Z')
+    assert (depth['type'], depth['frame'], depth['implemented']) == ('sensor_msgs/msg/Image', 'camera_optical_frame', True)
     vio = reserved['/aegis/localization/vio/odom']
     assert (vio['type'], vio['frame'], vio['child_frame'], vio['publishes_tf']) == ('nav_msgs/msg/Odometry', 'odom', 'base_link', False)
     assert all(value['implemented'] is False for value in reserved.values())

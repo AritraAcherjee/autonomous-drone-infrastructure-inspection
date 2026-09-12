@@ -30,6 +30,7 @@ def main():
         '/aegis/sensors/camera/camera_info': (CameraInfo, 'camera_optical_frame'),
         '/aegis/sensors/imu/data': (Imu, 'imu_link'),
         '/aegis/sensors/lidar/points': (PointCloud2, 'lidar_link'),
+        '/aegis/perception/depth/image': (Image, 'camera_optical_frame'),
     }
     messages = {topic: deque(maxlen=256) for topic in sensor_types}
     clocks = deque(maxlen=256)
@@ -104,7 +105,7 @@ def main():
                 errors.add(f'/tf_static: wrong rotation for {edge}')
         if dynamic:
             errors.add('/tf: unexpected dynamic transforms')
-        for topic in ['/aegis/perception/depth/image', '/aegis/localization/vio/odom']:
+        for topic in ['/aegis/localization/vio/odom']:
             if node.count_publishers(topic):
                 errors.add(f'{topic}: reserved interface unexpectedly published')
 
