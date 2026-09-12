@@ -18,9 +18,13 @@ have no defect taxonomy or annotations. All geometry is local; no Fuel assets ar
 downloaded. The rig starts at Gazebo world pose **(0, 0, 1.5 m), RPY (0, 0, 0)**,
 looking toward the wall at X=4 m. It remains fixed in place.
 
-Chat 08 Phase 2 adds a shared RGB-D sensor and direct depth bridge. Its WSL
-runtime acceptance is **pending**; see the
-[implementation and exact validation procedure](docs/implementation_reports/simulated_depth_integration.md).
+**Chat 08 Implementation Phase 2 — Simulated Metric Depth Integration:
+READY FOR PR / MERGE.** The shared RGB-D sensor and direct depth bridge passed
+runtime validation on ROS 2 Lyrical / Gazebo Sim 10.5.0: all 13 ROS packages built,
+and the final colcon result was 103 tests, 0 errors, 0 failures, 0 skipped. See the
+[runtime evidence and validation procedure](docs/implementation_reports/simulated_depth_integration.md).
+The full ROS projection node and camera-to-map projection remain out of scope
+and incomplete; this does not complete all of Chat 08.
 
 ## Repository layout
 
@@ -127,7 +131,7 @@ state publisher. All fixed joints are published without a joint-state node.
 |---|---|---|---|
 | `/aegis/sensors/camera/image_raw` | `sensor_msgs/msg/Image` | `camera_optical_frame` | 30 Hz, 640x480 RGB8 |
 | `/aegis/sensors/camera/camera_info` | `sensor_msgs/msg/CameraInfo` | `camera_optical_frame` | 30 Hz |
-| `/aegis/perception/depth/image` | `sensor_msgs/msg/Image` | `camera_optical_frame` | 30 Hz, 640x480, expected 32FC1 metres; runtime pending |
+| `/aegis/perception/depth/image` | `sensor_msgs/msg/Image` | `camera_optical_frame` | 30 Hz, 640x480, runtime-verified 32FC1 metres |
 | `/aegis/sensors/imu/data` | `sensor_msgs/msg/Imu` | `imu_link` | 200 Hz |
 | `/aegis/sensors/lidar/points` | `sensor_msgs/msg/PointCloud2` | `lidar_link` | 10 Hz, 360x16 rays |
 | `/clock` | `rosgraph_msgs/msg/Clock` | n/a | advancing simulation time |
@@ -156,8 +160,9 @@ RPY (-pi/2, 0, -pi/2): optical X right, Y down, Z forward. Gazebo renders along
 `camera_link` +X and labels image/CameraInfo headers `camera_optical_frame`.
 
 The RGB-D sensor shares one pose, resolution, field of view and clipping setup.
-Depth is directly bridged to `/aegis/perception/depth/image`; optical-Z, metric
-values and invalid returns still require the documented WSL acceptance checks.
+Depth is directly bridged to `/aegis/perception/depth/image`. Runtime validation
+confirmed consistent RGB/depth/CameraInfo geometry, metric optical-axis Z,
+exact Gazebo-to-ROS observation timestamps and invalid/no-return behavior.
 No projected points are published.
 
 Reserved interfaces have **no publishers**:
@@ -261,9 +266,11 @@ for exact measurements and scope.
 Observed GUI wall-clock rates were RGB 11–12 Hz, IMU 147–149 Hz and LiDAR
 7.4–7.5 Hz at approximately 74–77% real-time factor. These are observations,
 not final performance targets. RGB is below simple real-time-factor scaling
-of its configured 30 Hz; the cause has not been established. The automated
-live smoke checker, standalone SDF validation and headless validation still
-have no successful run recorded. Stop B and later algorithm/integration
+of its configured 30 Hz; the cause has not been established. Subsequent Phase 2
+validation confirmed foundation launch and preservation of RGB, CameraInfo,
+IMU, LiDAR, /clock and TF/static TF. Both `smoke_check.py` and `depth_check.py`
+passed through `ros2 run`. Standalone SDF validation and headless validation
+have no successful run recorded here. Stop B and later algorithm/integration
 milestones are not complete.
 
 See the [depth geometry implementation note](docs/implementation_reports/depth_projection_core.md) for the pure back-projection API, calibration preconditions, ROI sampling and offline test commands.

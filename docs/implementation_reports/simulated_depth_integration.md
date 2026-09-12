@@ -1,13 +1,42 @@
 # Chat 08 Phase 2: simulated metric depth
 
-**CODE READY / RUNTIME VALIDATION PENDING. Not merge-ready.**
+**Chat 08 Implementation Phase 2 — Simulated Metric Depth Integration:
+READY FOR PR / MERGE.**
 
 Baseline: `606f04670c53a9b1833a3a5f5bf8121d7e3e9c2a`.
 Windows worktree: `C:\Dev\aegisinspect-chat08-codex`.
 Branch: `feat/simulated-depth-integration`.
-HEAD, main and cached origin/main matched the baseline; worktree was clean.
+At initial implementation, HEAD, main and cached origin/main matched the baseline;
+the worktree was clean.
 No remote freshness claim is made from the cached tracking ref.
-Codex cannot invoke WSL; no WSL repair or alternate ROS/Gazebo installation was attempted.
+Initial Codex validation was limited to Windows. The owner subsequently verified
+the final WSL runtime results below after the validator correction in `ad5e578`.
+
+## Final runtime validation
+
+Validated commit: `ad5e57885306fcab6cd92e88ca0da6a1389aadc7`.
+
+- ROS 2 Lyrical / Gazebo Sim 10.5.0; all 13 ROS packages built successfully.
+- Final colcon result: **103 tests, 0 errors, 0 failures, 0 skipped**.
+- Gazebo foundation launched successfully. Existing RGB, CameraInfo, IMU,
+  LiDAR and `/clock` interfaces were preserved; TF/static TF regression smoke
+  validation passed.
+- `/aegis/perception/depth/image` was live as `sensor_msgs/msg/Image`, encoding
+  `32FC1`, frame_id `camera_optical_frame`, resolution 640x480.
+  RGB/depth/CameraInfo geometry was consistent.
+- Gazebo-to-ROS observation timestamps were preserved exactly; timestamp
+  validation passed with exact nanosecond matches.
+- Fronto-parallel wall validation passed at approximately **3.65 m** at the left,
+  center and right samples. The off-axis result proves optical-axis Z rather
+  than Euclidean ray range.
+- The invalid/no-return empty-scene test passed with no positive finite
+  fabricated returns.
+- Both `smoke_check.py` and `depth_check.py` passed through `ros2 run`.
+
+The earlier validator bug was corrected by `ad5e578` and subsequently revalidated.
+This closes Phase 2 validation only. The full ROS projection node and
+camera-to-map projection remain out of scope and incomplete; all of Chat 08
+is not complete.
 
 ## Architecture and implementation
 
@@ -33,8 +62,8 @@ CameraInfo; no second calibration, sensor pose or clipping override is added.
 
 Only the internal Gazebo RGB topic changes to accommodate RGB-D suffixing.
 All frozen ROS sensor topics and /clock remain. TF, world geometry and geometry
-core are unchanged. Depth moves from reserved to active perception configuration,
-with an explicit pending runtime-validation marker. VIO remains reserved.
+core are unchanged. Depth moves from reserved to active perception configuration;
+runtime acceptance has now passed. VIO remains reserved.
 No adapter, range conversion, point-cloud bridge or projection node is added.
 
 ## Expected semantics and evidence limits
@@ -56,9 +85,10 @@ These are source/configuration expectations, **not MSI runtime measurements**:
   keeps `override_timestamps_with_wall_time: False` and `use_sim_time: True`.
 
 The upstream branch sources are supporting evidence, not a fingerprint of the
-installed MSI packages. Verify their actual behavior using the procedure below.
+installed MSI packages. Actual runtime results are recorded above; the procedure
+below supports repeat validation.
 Rendering/clipping at image edges may differ from the former RGB renderer;
-RGB output, intrinsics and sensor regression checks remain runtime gates.
+RGB output, intrinsics and sensor regression checks passed runtime validation.
 
 Non-finite/no-return depth is passed through unchanged, so the existing ROI
 sampler rejects it. There is no finite replacement, filling or recovery.
@@ -97,7 +127,7 @@ green result; those baseline issues remain outside Phase 2.
 
 ## Exact WSL acceptance procedure
 
-First ensure this feature commit is pushed from Windows (commands below).
+For repeat validation, first ensure the feature commit is available on origin.
 Use the existing WSL clone. The initial block stops on a dirty tree, protects an
 existing local feature branch from replacement, and refuses divergent history.
 
@@ -184,7 +214,8 @@ these three paths against all existing bay boxes: they hit the wall clear of
 panels/column/floor. Require each sample within **0.02 m** of 3.65 m. At the side
 pixels radial range would be about 4.02 m, so it cannot pass this tolerance.
 The probe prints radial predictions for comparison; it never converts the image.
-This checks metric scale and optical-Z; **no live result has been obtained yet**.
+The live experiment passed: all three samples were approximately **3.65 m**,
+confirming metric scale and optical-axis Z rather than radial range.
 
 ### Invalid/no-return experiment
 
@@ -207,53 +238,12 @@ values are rejectable by the existing sampler; finite clip-distance plateaus
 must fail. Stop and restart foundation.launch.py afterward to restore the bay.
 The no-return mode does not constitute the wall experiment or normal sensor pass.
 
-## Changed files and handoff
+## Closeout scope
 
-Stage only these repository-relative paths if a manual commit is needed:
-
-```text
-README.md
-docs/implementation_reports/simulated_depth_integration.md
-ros2_ws/src/aegisinspect_interfaces/config/contracts.yaml
-ros2_ws/src/aegisinspect_sim/config/bridge.yaml
-ros2_ws/src/aegisinspect_sim/models/aegis_drone/model.sdf
-ros2_ws/src/aegisinspect_system_tests/CMakeLists.txt
-ros2_ws/src/aegisinspect_system_tests/package.xml
-ros2_ws/src/aegisinspect_system_tests/scripts/smoke_check.py
-ros2_ws/src/aegisinspect_system_tests/scripts/depth_check.py
-ros2_ws/src/aegisinspect_system_tests/test/test_foundation.py
-ros2_ws/src/aegisinspect_system_tests/test/test_simulated_depth.py
-```
-
-Suggested commit message and PR title: `feat(depth): integrate simulated metric depth`.
-Git staging in Codex failed with `Unable to create .git/index.lock: Permission denied`.
-No commit was created and no ACLs were changed. From Windows PowerShell, stage
-the exact reviewed paths and mark the new runtime probe executable for WSL:
-
-```powershell
-Set-Location C:\Dev\aegisinspect-chat08-codex
-git add -- README.md docs/implementation_reports/simulated_depth_integration.md ros2_ws/src/aegisinspect_interfaces/config/contracts.yaml ros2_ws/src/aegisinspect_sim/config/bridge.yaml ros2_ws/src/aegisinspect_sim/models/aegis_drone/model.sdf ros2_ws/src/aegisinspect_system_tests/CMakeLists.txt ros2_ws/src/aegisinspect_system_tests/package.xml ros2_ws/src/aegisinspect_system_tests/scripts/smoke_check.py ros2_ws/src/aegisinspect_system_tests/scripts/depth_check.py ros2_ws/src/aegisinspect_system_tests/test/test_foundation.py ros2_ws/src/aegisinspect_system_tests/test/test_simulated_depth.py
-git update-index --chmod=+x ros2_ws/src/aegisinspect_system_tests/scripts/depth_check.py
-git diff --cached --check
-git diff --cached --stat
-git -C C:\Dev\aegisinspect-chat08-codex commit -m "feat(depth): integrate simulated metric depth"
-git -C C:\Dev\aegisinspect-chat08-codex push -u origin feat/simulated-depth-integration
-```
-
-Do not stage all untracked paths. Three inaccessible `pytest-cache-files-*`
-directories were left under `ros2_ws/src/aegisinspect_mapping` by the initial
-pytest cache attempt. They are test artifacts, not source changes, and Git warns
-when trying to inspect them. No attempt was made to change their ACLs.
-
-Suggested PR description:
-
-> Enable a shared Gazebo RGB-D camera and bridge its depth image directly to
-> `/aegis/perception/depth/image`, preserving the existing ROS sensor interfaces
-> and calibration geometry. Add deterministic configuration/probe tests and an
-> opt-in WSL validator for optical-Z, invalid returns and exact observation stamps.
->
-> Validation: 91 relevant static/geometry tests pass. The data suite reproduces
-> its unchanged baseline failures (59 pass, 63 fail, 37 errors). WSL colcon,
-> Gazebo, sensor regression and depth acceptance remain pending. Not merge-ready.
+This documentation-only closeout updates `README.md` and this report with the
+verified final runtime evidence. Phase 2 is **READY FOR PR / MERGE**.
+The earlier Windows static results and unrelated baseline data-suite failures
+remain historical evidence; the final ROS colcon result is recorded above.
 
 No Phase 3, detector, localization, map transform or projection work is included.
+The full ROS projection node and camera-to-map projection remain incomplete.
