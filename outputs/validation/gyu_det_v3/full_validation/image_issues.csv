@@ -1,0 +1,1399 @@
+split,image_filename,row_number,issue_code,severity,detail
+train,10018.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10025.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10029.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10043.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10052.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10060.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10061.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10084.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10087.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,10113.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10117.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10118.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10129.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10136.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10144.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10146.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10158.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10204.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10223.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10230.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10265.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10339.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10372.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10384.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10393.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10447.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10461.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10483.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10495.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10528.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10530.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10534.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10535.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10598.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10612.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10639.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10644.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10658.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10670.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10672.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10687.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10688.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10690.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10711.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10728.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10732.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10753.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10763.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10805.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10809.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10815.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10837.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10858.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,10931.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,10942.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,10976.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,10989.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1099.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11000.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11001.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11008.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,11013.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11032.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11037.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11047.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11050.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11069.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11071.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11074.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,11080.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11090.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11134.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11141.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11153.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11156.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11164.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11166.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11178.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,11183.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11259.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11260.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11279.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11296.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11300.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11318.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11321.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11345.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11346.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11351.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11352.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,11362.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11374.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11375.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11445.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11503.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11507.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,1151.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11520.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11533.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11541.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11556.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11572.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11617.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11626.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11667.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11676.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11687.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11701.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,1173.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11755.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,11799.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11800.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11803.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11822.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11874.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,119.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11912.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,11916.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,11932.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,1236.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1273.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1307.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,138.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,1381.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,1559.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1578.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1613.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1615.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,163.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,1826.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,1890.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,205.JPG,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,2118.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2196.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,221.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2228.png,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,2241.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,2307.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2341.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2363.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,2370.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,241.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,245.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2507.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,2529.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,2551.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2689.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,276.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,2925.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3175.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3229.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3240.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3245.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3251.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3262.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3295.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3306.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3328.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3353.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3364.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3386.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3397.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3408.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3419.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3441.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3453.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3464.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3467.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,348.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3486.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3497.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3519.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3522.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,353.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3530.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,3541.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,3597.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,3619.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,3633.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3641.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,3663.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,3665.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3668.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3708.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,3736.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3739.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3769.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3770.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3773.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3787.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3796.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3797.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3805.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3812.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3826.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3843.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3851.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3884.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3888.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3889.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3890.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3902.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3903.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3905.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3907.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3909.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,394.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3974.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3982.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,3983.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,3995.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4016.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4017.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4018.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4034.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4104.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4115.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4116.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4117.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4204.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,421.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4247.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4254.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4255.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4257.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4261.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4262.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4264.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4266.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4268.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4275.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4281.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4283.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4289.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,429.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4295.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4298.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4309.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4310.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4313.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4316.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4349.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4354.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4356.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4357.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4359.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4361.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4364.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4366.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4368.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4369.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4371.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4376.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4411.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4430.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4457.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4503.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4505.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4506.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4507.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4524.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4539.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4540.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4543.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4566.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4568.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4573.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4621.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4628.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4629.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4630.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4634.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4639.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,464.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4641.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4646.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4647.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4648.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4650.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4651.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4654.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4655.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4656.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4659.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4668.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4669.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4673.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4674.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4685.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4689.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4693.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4694.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4695.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4703.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4706.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4718.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4719.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4725.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4729.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4731.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4745.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4752.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4755.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4777.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4800.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4802.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4807.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4811.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4812.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4813.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4815.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4816.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4818.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4824.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4825.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4879.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4880.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4898.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4898.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,4909.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4909.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,4910.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4912.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4914.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4917.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4917.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4919.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4921.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4924.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4925.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4926.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,4930.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4939.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4944.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4944.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,4965.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4967.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4984.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4987.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4989.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,4989.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4993.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4994.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4996.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,4996.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,4998.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5000.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5000.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5001.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5002.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5002.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5003.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5005.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5006.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5007.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5010.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5010.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5012.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5012.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5013.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5014.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5015.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5016.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5017.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5018.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5027.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5028.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5044.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5079.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5086.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5086.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,5107.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5109.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5126.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5132.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5140.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5149.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5150.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5151.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5152.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5154.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5155.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5156.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5157.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5157.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5158.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5163.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5166.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5168.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5168.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5169.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5193.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5214.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5222.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5223.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5234.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5237.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5239.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5250.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5340.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5343.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5355.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5356.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5357.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5462.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5528.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5535.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5543.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5544.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5549.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5550.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5561.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,5564.png,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,5567.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5571.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5572.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5603.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5611.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5612.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5626.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5630.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5631.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5633.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5649.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5650.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5660.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5662.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5671.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5697.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5706.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5741.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,576.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5767.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5768.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5769.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5783.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5784.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5793.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5796.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5797.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5840.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5850.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5851.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5904.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,5913.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,5918.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5940.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5950.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5951.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5953.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5962.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,5966.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5971.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,5981.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5982.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5984.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5985.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5986.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,5989.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5992.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,5994.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,5995.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6025.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6029.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6040.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6041.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6044.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6045.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6046.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6049.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6055.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6060.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6063.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6066.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6073.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6075.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6078.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6088.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6094.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6099.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6109.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6112.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6113.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6118.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6121.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6131.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6133.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6138.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6168.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6169.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6170.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6182.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6192.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6196.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6205.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6214.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6218.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6241.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6257.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6259.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6283.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6297.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6299.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6300.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6323.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6324.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6348.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6364.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6366.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6367.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6368.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6405.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6412.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6418.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6472.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6477.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6496.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6497.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6507.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6530.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6551.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6575.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6578.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,66.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6607.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6608.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6676.png,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,6689.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6696.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6707.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6738.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6740.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6763.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6764.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6765.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6767.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6770.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6806.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6886.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6887.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6889.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6890.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6894.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6901.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6907.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6908.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6909.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6910.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6912.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6913.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6914.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6915.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6917.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6920.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6921.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6924.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6926.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6928.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6929.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6932.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6935.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6936.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6938.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6939.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6939.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6940.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6940.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6941.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6942.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6943.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6943.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6945.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6946.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6947.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6948.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6949.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6949.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6950.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6951.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6952.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6954.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6956.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6957.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6957.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6958.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6959.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6959.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6960.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6961.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6962.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6963.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6964.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6965.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6965.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6967.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6968.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6969.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6970.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6971.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6972.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6973.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6974.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6975.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6976.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6976.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6979.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6980.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6980.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6981.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,6981.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,6982.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6983.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6983.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6984.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6984.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6985.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6986.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6987.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6989.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6990.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6991.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6992.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6992.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6995.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6996.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,6996.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6997.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,6998.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7000.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7000.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7001.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7001.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7002.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7002.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7003.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7003.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7004.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7005.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7006.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7007.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7009.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7011.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7012.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7013.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7014.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7014.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7015.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7016.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7016.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7017.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7018.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7019.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7022.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7026.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7027.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7031.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7033.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7037.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7039.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7039.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7040.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7041.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7044.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7046.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7051.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7053.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7054.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7055.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7066.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7069.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7069.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7070.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7070.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7073.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7074.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7075.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7076.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7077.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7078.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7079.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7080.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7080.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7082.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7082.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7083.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7084.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7086.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7087.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7088.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7089.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7091.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7092.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7093.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7094.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7095.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7097.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7098.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7099.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7100.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7101.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7102.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7103.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7104.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7105.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7106.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7108.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7109.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7111.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7112.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7114.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7114.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7115.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7116.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7117.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7118.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7118.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7120.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7122.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7123.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7124.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7126.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7127.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7130.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7131.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7133.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7134.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7136.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7136.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7137.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7138.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7139.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7141.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7141.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7142.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7144.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7145.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7145.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7146.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7147.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7147.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7148.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7149.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7150.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7151.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7152.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7155.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7156.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7158.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7160.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7161.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7162.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7163.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7172.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,7174.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7177.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7184.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7185.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7186.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7187.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7188.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,7189.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7190.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,741.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,755.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7957.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,7970.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7979.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,7987.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8025.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8050.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8061.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8068.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8069.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8077.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8099.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8100.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8101.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8109.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8134.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8139.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8143.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8146.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8147.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8150.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8151.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8152.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8152.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8154.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8155.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8162.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8163.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8163.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8164.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8164.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8165.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8168.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8168.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8171.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8172.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8175.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8175.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8176.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8177.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8179.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8180.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8181.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8181.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8182.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8185.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8186.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8187.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8187.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,819.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8190.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8191.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8191.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8192.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8192.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8193.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8193.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8194.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8194.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8195.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8196.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8199.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8199.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,82.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,82.JPG,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,8201.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8203.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8203.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8205.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8207.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8208.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8212.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8213.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8213.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8214.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8214.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8216.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8218.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8220.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8221.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8223.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8224.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,8225.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8226.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8227.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8228.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8229.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8229.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8230.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8231.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8232.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8232.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8238.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8239.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8240.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8241.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8242.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8243.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8243.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8244.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8246.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8248.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8249.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8251.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8253.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8254.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8255.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8258.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8259.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8260.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8260.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8261.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8262.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8263.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8265.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8265.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8266.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8266.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8268.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8269.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8270.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8271.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8273.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8274.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8275.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8275.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8277.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8277.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8279.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8279.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8280.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8281.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8282.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8283.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8284.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,8287.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8287.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8288.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8290.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8291.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8292.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8294.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8294.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8295.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8295.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8297.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8297.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8298.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8299.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8301.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8302.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8303.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8304.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,8305.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8307.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8308.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8308.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8312.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8313.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8314.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8314.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8315.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8317.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8318.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8319.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8321.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8321.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8323.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8323.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8324.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8325.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,8329.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8330.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8332.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8334.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8336.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8337.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8338.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8338.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8339.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8340.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8341.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8341.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8351.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8352.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8354.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8355.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8357.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8357.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8359.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8362.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8362.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8363.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8363.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8364.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8369.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8369.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8370.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8371.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8371.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8372.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8372.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8374.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8374.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8375.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8377.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8377.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8380.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,8382.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8382.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8383.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8384.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8385.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8386.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8387.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8388.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8390.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8392.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8393.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8393.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8394.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8398.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8401.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+train,8402.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8402.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8403.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8404.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8405.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8406.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8406.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8407.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8408.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8408.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8409.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8409.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8410.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8410.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8412.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8413.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8414.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8415.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8415.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8416.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8417.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8418.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8418.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8419.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8419.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8423.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8423.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8424.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8425.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8426.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8427.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8427.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8428.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8428.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8429.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8429.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8430.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8431.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8435.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8436.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8437.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8438.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8439.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8440.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8441.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8442.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8443.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8443.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8448.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8449.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8450.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8451.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8452.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8453.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8454.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8457.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8457.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8458.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8458.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8459.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8460.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8461.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8462.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8463.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8464.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8465.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8466.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8468.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8469.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8470.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8470.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8471.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8472.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8473.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8473.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8474.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8475.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8477.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8477.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8479.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8480.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8481.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8482.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8483.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8483.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8484.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8485.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8485.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8486.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8487.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8488.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8490.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8491.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8492.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8493.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8494.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8494.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8495.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8495.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8496.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8496.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8497.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8498.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8498.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8499.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8501.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8504.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8505.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8506.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8507.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8509.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8512.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8527.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8535.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8540.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+train,8544.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8554.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8556.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,8559.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,8560.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9348.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9357.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9371.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9386.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9455.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9477.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9480.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9488.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9547.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9561.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9563.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9579.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,958.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9593.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9610.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9643.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9650.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9663.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9669.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,9678.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9698.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9699.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+train,9734.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9755.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9783.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9786.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9790.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9794.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9796.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9817.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9818.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9823.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9824.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,9831.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9835.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9849.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9860.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,9863.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9866.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9900.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+train,9915.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9936.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9937.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9938.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+train,9962.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+train,9964.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+train,9970.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,11982.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,11983.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+valid,12013.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+valid,12020.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12023.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12025.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12039.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12047.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,12056.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12070.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12073.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+valid,12076.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12085.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12096.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,12099.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12101.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12104.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12132.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,12141.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12148.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12158.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12180.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12186.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12188.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12209.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12238.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,12241.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12245.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12249.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12251.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,12283.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12293.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+valid,12301.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,12303.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12305.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,12307.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+valid,12308.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,12316.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,8563.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8573.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8576.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8577.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8580.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8582.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8584.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8585.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8618.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8645.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8646.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8657.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8658.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8680.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,8684.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,8694.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8697.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8705.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8707.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8708.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,8721.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8723.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8727.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,8737.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8738.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8757.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8764.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,8765.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8773.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,8779.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8780.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8793.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8798.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8801.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8809.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8810.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8839.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,8840.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,8841.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8842.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,8845.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8853.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8854.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,8862.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8882.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8883.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8888.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8900.png,0,unusual_resolution,warning,resolution appears fewer than 10 times
+valid,8901.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8902.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8908.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8911.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8913.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8918.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8919.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8935.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8943.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,8946.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8947.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8957.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8968.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8974.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8986.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,8997.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9018.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9020.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9022.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9049.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9061.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,9063.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9065.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9088.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,9089.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9091.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9092.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,9093.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+valid,9108.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9120.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9122.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9125.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9126.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9144.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+valid,9154.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+valid,9157.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9165.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+valid,9166.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12325.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12327.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,12334.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12371.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12394.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12400.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12402.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12407.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12409.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+test,12427.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12433.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12438.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12454.jpg,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,12499.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12548.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12564.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12572.jpg,0,exif_orientation,warning,Stored orientation 3; not transformed
+test,12598.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12609.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+test,12618.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12624.jpg,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,12629.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12651.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+test,12676.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,12682.jpg,0,unusual_resolution,warning,minimum dimension <256; resolution appears fewer than 10 times
+test,7193.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7194.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7197.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7199.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+test,7200.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7201.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7203.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7204.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7204.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7205.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7206.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7207.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7207.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7208.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7209.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7210.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+test,7211.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7212.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7213.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7213.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7214.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7214.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7220.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7223.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7230.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7231.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7235.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7236.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7241.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7242.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7248.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7248.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7249.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7250.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7257.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7258.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7259.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7259.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7260.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7265.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7265.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7266.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+test,7267.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7267.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7273.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7275.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7281.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7282.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7282.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7288.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+test,7289.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7290.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7290.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7297.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7298.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7298.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7300.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7300.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7310.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7321.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+test,7332.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7488.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7500.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7501.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7525.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7532.JPG,0,auxiliary_frame_decode_failure,error,ValueError: No data found for frame
+test,7535.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7560.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7565.jpg,0,unusual_resolution,warning,resolution appears fewer than 10 times
+test,7584.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7587.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7605.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7613.JPG,0,auxiliary_frame_decode_failure,error,SyntaxError: not a JPEG file
+test,7622.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7626.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7627.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7642.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7650.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7652.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7653.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7654.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7661.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7662.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7668.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7669.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7670.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7671.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7696.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7703.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7704.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7736.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7756.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7824.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7826.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed
+test,7885.JPG,0,exif_orientation,warning,Stored orientation 6; not transformed
+test,7920.JPG,0,exif_orientation,warning,Stored orientation 8; not transformed

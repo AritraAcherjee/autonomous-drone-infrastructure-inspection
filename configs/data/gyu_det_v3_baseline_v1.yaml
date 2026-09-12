@@ -1,0 +1,14 @@
+{
+  "train": "../../data/processed/gyu_det_v3_baseline_v1/splits/train.txt",
+  "val": "../../data/processed/gyu_det_v3_baseline_v1/splits/valid.txt",
+  "test": "../../data/processed/gyu_det_v3_baseline_v1/splits/test.txt",
+  "nc": 6,
+  "names": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  }
+}

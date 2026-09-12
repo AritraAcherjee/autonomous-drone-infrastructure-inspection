@@ -1,0 +1,68 @@
+{
+  "assertions": {
+    "included_exact_pairs_only": true,
+    "no_cross_split_approved_group": true,
+    "no_cross_split_conservative_group": true,
+    "no_cross_split_sha256": true,
+    "no_orphan_annotations": true,
+    "no_unlabeled_images": true,
+    "retained_source_splits_unchanged": true
+  },
+  "baseline_eligible_before_handling": 10411,
+  "conflicting_duplicate_groups": 5,
+  "equivalent_duplicate_groups": 2,
+  "excluded_by_reason": {
+    "ANNOTATION_CONFLICT_HUMAN_REVIEW_REQUIRED": 10,
+    "APPROVED_LEAKAGE_GROUP_OTHER_SPLIT_RETAINED": 1,
+    "EQUIVALENT_EXACT_DUPLICATE_REDUNDANT": 2,
+    "UNLABELED_UNCLASSIFIED": 712
+  },
+  "excluded_images": 725,
+  "generated_paths": [
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\baseline_eligibility.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\baseline_split_policy.md",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\class_name_mapping.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\duplicate_annotation_consistency.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\excluded_manifest.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\excluded_orphan_labels.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\exclusion_summary.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\same_scene_group_handling.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\split_annotation_statistics.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\split_class_distribution.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\split_statistics.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\test_manifest.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\train_manifest.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\valid_manifest.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\proposal_summary.json",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\baseline_split\\output_inventory.csv",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\configs\\data\\gyu_det_v3_baseline.yaml"
+  ],
+  "input_artifacts_unchanged": true,
+  "input_sha256": {
+    "data/manifests/gyu_det_v3_raw_manifest.csv": "d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772",
+    "data/raw/gyu_det/v3/archives/classes.txt": "3a22a96c563544ac5ac44fc1310ccf547fd5e46ec6935b0f2529d66c273d8981",
+    "outputs/eda/gyu_det_v3/box_measurements.csv": "7827e96d8b0bb97eacce262ec31348ac70a67d190f96cd8d70c31e1ca9baa728",
+    "outputs/eda/gyu_det_v3/eda_summary.json": "c8584fe9ab87dcc703830a207421065f3e40c0c4dc77fc4a602e338b46560b75",
+    "outputs/validation/gyu_det_v3/baseline_data_policy.md": "7b77dff8d2139fb6b55c8840294d1791724ce4ef19cb6c5153cdcefe6e8eca63",
+    "outputs/validation/gyu_det_v3/full_validation/image_validation.csv": "b2101b60bf850e7934136b011c53099e8d4d9721df2fb8d78afe1632a5d93cf3",
+    "outputs/validation/gyu_det_v3/full_validation/label_validation.csv": "5388a125a0d7fcb0e9640f86f041c0171af40d507b7c056e02e8cf3bb11021ea",
+    "outputs/validation/gyu_det_v3/full_validation/validation.json": "9afb3f09161f700df9d9059e1c90df44df9b535cf3d284e52b5eb12340c37b99",
+    "outputs/validation/gyu_det_v3/leakage_audit/exact_duplicate_groups.csv": "fd13a4767ec48005452623aa82b274ee7207673cf2fd35910950429c34c783af",
+    "outputs/validation/gyu_det_v3/leakage_review/human_leakage_decisions.csv": "e26acf9aba30e950db61fe33dd87b8c3a3df8bda1c7f29db7fcf4410c0a20cbf",
+    "outputs/validation/gyu_det_v3/orphan_review/final_triage_summary.csv": "29ac9f103ae6a04dba4585aacbbc66c1f018a4ed05f562a65a14946781aefe0c"
+  },
+  "m1_complete": false,
+  "materialized": false,
+  "orphan_labels_excluded": 21,
+  "proposed_images_by_split": {
+    "test": 1053,
+    "train": 8305,
+    "valid": 1040
+  },
+  "raw_images": 11123,
+  "source_sha256": {
+    "gyu_baseline_split.py": "91b0d2d94837fb1e393fe696ab03786f0abfa5da981ca9cea502e0e62a274467",
+    "propose_gyu_baseline_split.py": "ae65fd8a9c2b8442119f429e3d7a2d0958bad586955ea93a966a3b94ccdc5c2b"
+  },
+  "status": "DRY_RUN_WITH_GROUP_BLOCKERS"
+}

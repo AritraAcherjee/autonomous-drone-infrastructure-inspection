@@ -1,0 +1,24 @@
+metric,value
+images,11123
+fingerprint_failures,0
+exact_duplicate_groups,7
+within_split_exact_duplicate_pairs,6
+cross_split_exact_duplicate_pairs,1
+basename_collision_groups,0
+within_split_basename_collision_pairs,0
+cross_split_basename_collision_pairs,0
+cross_split_identical_perceptual_hash,1
+cross_split_very_strong,1
+cross_split_probable,1
+cross_split_weaker,14
+candidate_pairs_needing_review,17
+review_pairs_shown,17
+review_sheet_count,5
+rendering_failures,0
+numeric_neighbor_pairs,18
+numeric_neighbors_also_perceptual,0
+cross_split_capture_metadata_groups,1
+mpo_images,565
+opencv_check,skipped: OpenCV not installed
+opencv_load_failures,0
+opencv_dimension_mismatches,0

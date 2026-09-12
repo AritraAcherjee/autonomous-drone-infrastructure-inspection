@@ -1,0 +1,4 @@
+# Exact versions used for the reproducible GYU-DET V3 EDA run.
+matplotlib==3.11.2
+numpy==2.5.3
+Pillow==12.3.0

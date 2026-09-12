@@ -1,0 +1,19 @@
+split,class_id,raw_class_name,presentation_class_name,instances,images_containing_class
+train,0,Crack,Crack,3876,1626
+train,1,Breakage,Breakage,13383,5539
+train,2,Comb,Honeycombing,4945,2762
+train,3,Hole,Hole,927,688
+train,4,Reinforcement,Exposed Reinforcement,10604,3060
+train,5,Seepage,Seepage,3864,1589
+valid,0,Crack,Crack,366,146
+valid,1,Breakage,Breakage,2129,761
+valid,2,Comb,Honeycombing,479,302
+valid,3,Hole,Hole,228,106
+valid,4,Reinforcement,Exposed Reinforcement,1327,332
+valid,5,Seepage,Seepage,378,167
+test,0,Crack,Crack,404,150
+test,1,Breakage,Breakage,3628,857
+test,2,Comb,Honeycombing,281,139
+test,3,Hole,Hole,69,55
+test,4,Reinforcement,Exposed Reinforcement,1381,389
+test,5,Seepage,Seepage,123,59

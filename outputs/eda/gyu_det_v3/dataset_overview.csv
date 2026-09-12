@@ -1,0 +1,9 @@
+view,split,total_images,exact_supervised_pairs,unlabeled_images,orphan_labels,exact_pair_annotation_instances,orphan_annotation_instances,annotation_instances,one_class_images,multi_class_images,annotations_per_exact_pair_count,annotations_per_exact_pair_mean,annotations_per_exact_pair_min,annotations_per_exact_pair_p01,annotations_per_exact_pair_p05,annotations_per_exact_pair_p25,annotations_per_exact_pair_median,annotations_per_exact_pair_p75,annotations_per_exact_pair_p95,annotations_per_exact_pair_p99,annotations_per_exact_pair_max
+RAW_VALIDATED_INVENTORY,all,11123,10411,712,21,48447,84,48531,4474,5937,10411,4.653443473249448,1.0,1.0,1.0,2.0,4.0,6.0,12.0,19.0,72.0
+PROVISIONAL_BASELINE_ELIGIBLE,all,10411,10411,0,0,48447,0,48447,4474,5937,10411,4.653443473249448,1.0,1.0,1.0,2.0,4.0,6.0,12.0,19.0,72.0
+RAW_VALIDATED_INVENTORY,train,8898,8314,584,20,37632,83,37715,3410,4904,8314,4.526341111378398,1.0,1.0,1.0,2.0,3.0,6.0,12.0,18.0,72.0
+PROVISIONAL_BASELINE_ELIGIBLE,train,8314,8314,0,0,37632,0,37632,3410,4904,8314,4.526341111378398,1.0,1.0,1.0,2.0,3.0,6.0,12.0,18.0,72.0
+RAW_VALIDATED_INVENTORY,valid,1112,1044,68,1,4929,1,4930,495,549,1044,4.721264367816092,1.0,1.0,1.0,2.0,4.0,6.0,12.0,18.569999999999936,59.0
+PROVISIONAL_BASELINE_ELIGIBLE,valid,1044,1044,0,0,4929,0,4929,495,549,1044,4.721264367816092,1.0,1.0,1.0,2.0,4.0,6.0,12.0,18.569999999999936,59.0
+RAW_VALIDATED_INVENTORY,test,1113,1053,60,0,5886,0,5886,569,484,1053,5.589743589743589,1.0,1.0,1.0,3.0,4.0,7.0,14.0,22.480000000000018,32.0
+PROVISIONAL_BASELINE_ELIGIBLE,test,1053,1053,0,0,5886,0,5886,569,484,1053,5.589743589743589,1.0,1.0,1.0,3.0,4.0,7.0,14.0,22.480000000000018,32.0

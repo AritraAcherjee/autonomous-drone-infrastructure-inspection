@@ -1,0 +1,271 @@
+{
+  "valid_annotations": 21,
+  "invalid_annotations": 0,
+  "review_sheets": 21,
+  "candidate_rows": 105,
+  "rendering_failures": 0,
+  "annotations": [
+    {
+      "label_split": "train",
+      "label_filename": "111.txt",
+      "annotation_count": 3,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "2111.JPG: 2 boxes have a dimension below 10 source pixels",
+        "10110.jpg: 2 boxes have a dimension below 10 source pixels",
+        "10151.jpg: 2 boxes have a dimension below 10 source pixels",
+        "10181.jpg: 2 boxes have a dimension below 10 source pixels",
+        "11011.jpg: 2 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "112.txt",
+      "annotation_count": 23,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "1912.JPG: 2 boxes have a dimension below 10 source pixels",
+        "10102.jpg: 11 boxes have a dimension below 10 source pixels",
+        "10142.jpg: 2 boxes have a dimension below 10 source pixels",
+        "10162.jpg: 11 boxes have a dimension below 10 source pixels",
+        "11082.jpg: 9 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "1264.txt",
+      "annotation_count": 2,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "10643.jpg: 2 boxes have a dimension below 10 source pixels",
+        "11624.jpg: 1 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "1458.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "1554.txt",
+      "annotation_count": 7,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "1564.txt",
+      "annotation_count": 9,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "10524.jpg: 2 boxes have a dimension below 10 source pixels",
+        "10643.jpg: 9 boxes have a dimension below 10 source pixels",
+        "10646.jpg: 4 boxes have a dimension below 10 source pixels",
+        "11624.jpg: 8 boxes have a dimension below 10 source pixels",
+        "11694.jpg: 9 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "1800.txt",
+      "annotation_count": 4,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "10090.jpg: 1 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "190.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "7190.JPG: EXIF orientation present; stored pixel orientation retained",
+        "10090.jpg: 1 boxes have a dimension below 10 source pixels",
+        "10290.jpg: 1 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "1959.txt",
+      "annotation_count": 5,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "237.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "2307.JPG: EXIF orientation present; stored pixel orientation retained"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "238.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "2228.png: 1 boxes have a dimension below 10 source pixels"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "314.txt",
+      "annotation_count": 3,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "3763.txt",
+      "annotation_count": 7,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "4047.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "4017.JPG: EXIF orientation present; stored pixel orientation retained"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "4626.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "4923.txt",
+      "annotation_count": 2,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "574.txt",
+      "annotation_count": 8,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": [
+        "5044.JPG: EXIF orientation present; stored pixel orientation retained"
+      ]
+    },
+    {
+      "label_split": "train",
+      "label_filename": "664.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "728.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "train",
+      "label_filename": "7972.txt",
+      "annotation_count": 2,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    },
+    {
+      "label_split": "valid",
+      "label_filename": "9156.txt",
+      "annotation_count": 1,
+      "validation_status": "valid",
+      "validation_error": "",
+      "candidate_count": 5,
+      "rendering_failures": [],
+      "warnings": []
+    }
+  ],
+  "classes": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Comb",
+    "3": "Hole",
+    "4": "Reinforcement",
+    "5": "Seepage"
+  },
+  "classes_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\data\\raw\\gyu_det\\v3\\archives\\classes.txt",
+  "pillow_version": "12.3.0",
+  "input_sha256": {
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\data\\raw\\gyu_det\\v3\\archives\\classes.txt": "3a22a96c563544ac5ac44fc1310ccf547fd5e46ec6935b0f2529d66c273d8981",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\unmatched_labels.csv": "d57ce2fbbcf542b6a948a172d7138fa19be6054baefcd6d42e04e4144f6c2715",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\unmatched_images.csv": "8cdf863c3aabee243c4fd08bd92eb245d8405a8ffad1161381a3a40fc34c279b",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\matched_pairs.csv": "68e7856fa6c4a826b9320ea48a0f2e03ea05445ecc9ecccd0780f20ae7a62a9d",
+    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\gyu_det_v3\\pairing_candidates.csv": "561f0c1fc8f8d7da6d97b2c6950c8600430b8fef0cace950480cb42c06010a69"
+  }
+}

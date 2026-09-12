@@ -1,0 +1,11 @@
+{
+  "tests_run": 112,
+  "passed": 112,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 9.24,
+  "command": "python -m unittest discover -s tests/data -v",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "dependency_scope": "Existing pinned EDA dependencies in isolated temporary target; no ML framework installed"
+}

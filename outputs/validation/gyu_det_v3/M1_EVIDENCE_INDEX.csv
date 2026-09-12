@@ -1,0 +1,77 @@
+section,artifact_name,repository_relative_path,purpose,status,key_result
+A Acquisition,archives,data/raw/gyu_det/v3/archives,External immutable source files,PRESENT / PATH VERIFIED,Four source files; no redistribution
+A Acquisition,classes.txt,data/raw/gyu_det/v3/archives/classes.txt,Acquired source file,PRESENT / PATH VERIFIED,Verified acquisition MD5 F078630BF0D0614B07C9DC990DA40801; official V3 listing matches
+A Acquisition,test.zip,data/raw/gyu_det/v3/archives/test.zip,Acquired source file,PRESENT / PATH VERIFIED,Verified acquisition MD5 522A80C18CAA4A0030D7FFC9DDFA98B2; official V3 listing matches
+A Acquisition,train.zip,data/raw/gyu_det/v3/archives/train.zip,Acquired source file,PRESENT / PATH VERIFIED,Verified acquisition MD5 A8AAD1CC02E86C4857B8315EE9F1606E; official V3 listing matches
+A Acquisition,valid.zip,data/raw/gyu_det/v3/archives/valid.zip,Acquired source file,PRESENT / PATH VERIFIED,Verified acquisition MD5 D8EBE9C38D9D4D05DD9CFFB50A692086; official V3 listing matches
+B Pairing,pairing_report.md,outputs/validation/gyu_det_v3/pairing_report.md,Exact-basename pairing audit,PRESENT / PATH VERIFIED,10411 exact pairs; 712 unclassified; 21 orphan labels
+B Pairing,pairing_summary.csv,outputs/validation/gyu_det_v3/pairing_summary.csv,Exact-basename pairing audit,PRESENT / PATH VERIFIED,10411 exact pairs; 712 unclassified; 21 orphan labels
+B Pairing,unmatched_images.csv,outputs/validation/gyu_det_v3/unmatched_images.csv,Exact-basename pairing audit,PRESENT / PATH VERIFIED,10411 exact pairs; 712 unclassified; 21 orphan labels
+B Pairing,unmatched_labels.csv,outputs/validation/gyu_det_v3/unmatched_labels.csv,Exact-basename pairing audit,PRESENT / PATH VERIFIED,10411 exact pairs; 712 unclassified; 21 orphan labels
+B Pairing,matched_pairs.csv,outputs/validation/gyu_det_v3/matched_pairs.csv,Exact-basename pairing audit,PRESENT / PATH VERIFIED,10411 exact pairs; 712 unclassified; 21 orphan labels
+C Orphan review,orphan_review,outputs/validation/gyu_det_v3/orphan_review,Visual/human review evidence,PRESENT / PATH VERIFIED,21 triaged; zero confirmed mappings; no repairs
+C Orphan review,final_triage_summary.csv,outputs/validation/gyu_det_v3/orphan_review/final_triage_summary.csv,Visual/human review evidence,PRESENT / PATH VERIFIED,21 triaged; zero confirmed mappings; no repairs
+C Orphan review,human_triage_decisions.csv,outputs/validation/gyu_det_v3/orphan_review/human_triage_decisions.csv,Visual/human review evidence,PRESENT / PATH VERIFIED,21 triaged; zero confirmed mappings; no repairs
+D Validation,validation_report.md,outputs/validation/gyu_det_v3/full_validation/validation_report.md,Full validated raw inventory,PRESENT / PATH VERIFIED,All primary frames readable; auxiliary MPO and boundary warnings retained
+D Validation,image_validation.csv,outputs/validation/gyu_det_v3/full_validation/image_validation.csv,Full validated raw inventory,PRESENT / PATH VERIFIED,All primary frames readable; auxiliary MPO and boundary warnings retained
+D Validation,label_validation.csv,outputs/validation/gyu_det_v3/full_validation/label_validation.csv,Full validated raw inventory,PRESENT / PATH VERIFIED,All primary frames readable; auxiliary MPO and boundary warnings retained
+D Validation,annotation_issues.csv,outputs/validation/gyu_det_v3/full_validation/annotation_issues.csv,Full validated raw inventory,PRESENT / PATH VERIFIED,All primary frames readable; auxiliary MPO and boundary warnings retained
+D Validation,class_statistics.csv,outputs/validation/gyu_det_v3/full_validation/class_statistics.csv,Full validated raw inventory,PRESENT / PATH VERIFIED,All primary frames readable; auxiliary MPO and boundary warnings retained
+D Validation,gyu_det_v3_raw_manifest.csv,data/manifests/gyu_det_v3_raw_manifest.csv,Raw inventory and SHA-256 provenance,PRESENT / PATH VERIFIED,d78f554660bd5fe6452842051f0a1fec0bbd299b61c52139da1c8208f1c0c772
+E Leakage,exact_duplicate_groups.csv,outputs/validation/gyu_det_v3/leakage_audit/exact_duplicate_groups.csv,Exact/perceptual audit and human decisions,PRESENT / PATH VERIFIED,1 exact; 1 high-confidence; 1 conservative unresolved; 14 rejected cross-split candidates
+E Leakage,cross_split_exact_duplicates.csv,outputs/validation/gyu_det_v3/leakage_audit/cross_split_exact_duplicates.csv,Exact/perceptual audit and human decisions,PRESENT / PATH VERIFIED,1 exact; 1 high-confidence; 1 conservative unresolved; 14 rejected cross-split candidates
+E Leakage,cross_split_near_duplicates.csv,outputs/validation/gyu_det_v3/leakage_audit/cross_split_near_duplicates.csv,Exact/perceptual audit and human decisions,PRESENT / PATH VERIFIED,1 exact; 1 high-confidence; 1 conservative unresolved; 14 rejected cross-split candidates
+E Leakage,leakage_report.md,outputs/validation/gyu_det_v3/leakage_audit/leakage_report.md,Exact/perceptual audit and human decisions,PRESENT / PATH VERIFIED,1 exact; 1 high-confidence; 1 conservative unresolved; 14 rejected cross-split candidates
+E Leakage,human_leakage_decisions.csv,outputs/validation/gyu_det_v3/leakage_review/human_leakage_decisions.csv,Exact/perceptual audit and human decisions,PRESENT / PATH VERIFIED,1 exact; 1 high-confidence; 1 conservative unresolved; 14 rejected cross-split candidates
+E Leakage,final_leakage_review.md,outputs/validation/gyu_det_v3/leakage_review/final_leakage_review.md,Exact/perceptual audit and human decisions,PRESENT / PATH VERIFIED,1 exact; 1 high-confidence; 1 conservative unresolved; 14 rejected cross-split candidates
+F EDA,eda_report.md,outputs/eda/gyu_det_v3/eda_report.md,Prior exact-pair EDA interpretation,PRESENT / PATH VERIFIED,48447 prior supervised instances; 84 orphan instances separate
+F EDA,figures,outputs/eda/gyu_det_v3/figures,EDA figures,PRESENT / PATH VERIFIED,Nine figures; no new rendering required
+F EDA,annotation_count_distribution.csv,outputs/eda/gyu_det_v3/annotation_count_distribution.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,annotation_count_examples.csv,outputs/eda/gyu_det_v3/annotation_count_examples.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,aspect_ratio_distribution.csv,outputs/eda/gyu_det_v3/aspect_ratio_distribution.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,box_examples.csv,outputs/eda/gyu_det_v3/box_examples.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,box_measurements.csv,outputs/eda/gyu_det_v3/box_measurements.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,box_size_distribution.csv,outputs/eda/gyu_det_v3/box_size_distribution.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,box_statistics.csv,outputs/eda/gyu_det_v3/box_statistics.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,box_statistics_by_class.csv,outputs/eda/gyu_det_v3/box_statistics_by_class.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,box_statistics_by_split.csv,outputs/eda/gyu_det_v3/box_statistics_by_split.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,class_combination_statistics.csv,outputs/eda/gyu_det_v3/class_combination_statistics.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,class_cooccurrence.csv,outputs/eda/gyu_det_v3/class_cooccurrence.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,class_cooccurrence_normalized.csv,outputs/eda/gyu_det_v3/class_cooccurrence_normalized.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,class_distribution.csv,outputs/eda/gyu_det_v3/class_distribution.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,class_distribution_by_split.csv,outputs/eda/gyu_det_v3/class_distribution_by_split.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,dataset_overview.csv,outputs/eda/gyu_det_v3/dataset_overview.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,image_statistics.csv,outputs/eda/gyu_det_v3/image_statistics.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,output_inventory.csv,outputs/eda/gyu_det_v3/output_inventory.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,resolution_distribution.csv,outputs/eda/gyu_det_v3/resolution_distribution.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+F EDA,split_comparison.csv,outputs/eda/gyu_det_v3/split_comparison.csv,EDA statistics/table,PRESENT / PATH VERIFIED,Prior EDA denominator 10411 exact pairs unless marked raw
+G Splits,baseline_split_policy.md,outputs/validation/gyu_det_v3/baseline_split/baseline_split_policy.md,Historical dry-run policy,HISTORICAL EVIDENCE,Superseded in approval status by baseline-v1; retained unchanged
+G Splits,duplicate_annotation_consistency.csv,outputs/validation/gyu_det_v3/baseline_split/duplicate_annotation_consistency.csv,Conflict evidence,PRESENT / PATH VERIFIED,Five conflict groups; all ten members excluded by baseline-v1 human policy
+G Splits,class_statistics.csv,data/manifests/gyu_det_v3_baseline_v1/class_statistics.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,excluded.csv,data/manifests/gyu_det_v3_baseline_v1/excluded.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,excluded_orphan_labels.csv,data/manifests/gyu_det_v3_baseline_v1/excluded_orphan_labels.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,manifest_metadata.json,data/manifests/gyu_det_v3_baseline_v1/manifest_metadata.json,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,split_statistics.csv,data/manifests/gyu_det_v3_baseline_v1/split_statistics.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,test.csv,data/manifests/gyu_det_v3_baseline_v1/test.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,train.csv,data/manifests/gyu_det_v3_baseline_v1/train.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,valid.csv,data/manifests/gyu_det_v3_baseline_v1/valid.csv,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,VERSION.json,data/manifests/gyu_det_v3_baseline_v1/VERSION.json,Approved specification/provenance,APPROVED / HASH VERIFIED,8305 / 1040 / 1053; 10398 images; 48392 annotations
+G Splits,train.txt,data/processed/gyu_det_v3_baseline_v1/splits/train.txt,Portable image-reference list,APPROVED / HASH VERIFIED,Raw references only; image/label paths verified
+G Splits,valid.txt,data/processed/gyu_det_v3_baseline_v1/splits/valid.txt,Portable image-reference list,APPROVED / HASH VERIFIED,Raw references only; image/label paths verified
+G Splits,test.txt,data/processed/gyu_det_v3_baseline_v1/splits/test.txt,Portable image-reference list,APPROVED / HASH VERIFIED,Raw references only; image/label paths verified
+G Splits,gyu_det_v3_baseline_v1.yaml,configs/data/gyu_det_v3_baseline_v1.yaml,Detector config interface,APPROVED / HASH VERIFIED,Absolute YAML input; six fixed IDs
+H Documentation,gyu_det_v3.md,docs/data/sources/gyu_det_v3.md,Provenance/license/registry/handoff,PRESENT / PATH VERIFIED,GYU-DET data foundation only; reader gate deferred
+H Documentation,gyu_det_v3_source_provenance.json,data/manifests/gyu_det_v3_source_provenance.json,Provenance/license/registry/handoff,PRESENT / PATH VERIFIED,GYU-DET data foundation only; reader gate deferred
+H Documentation,gyu_det_v3.md,docs/data/licenses/gyu_det_v3.md,Provenance/license/registry/handoff,PRESENT / PATH VERIFIED,GYU-DET data foundation only; reader gate deferred
+H Documentation,gyu_det_v3_baseline_v1.md,docs/data/gyu_det_v3_baseline_v1.md,Provenance/license/registry/handoff,PRESENT / PATH VERIFIED,GYU-DET data foundation only; reader gate deferred
+H Documentation,DATASET_REGISTRY.md,docs/data/DATASET_REGISTRY.md,Provenance/license/registry/handoff,PRESENT / PATH VERIFIED,GYU-DET data foundation only; reader gate deferred
+H Documentation,GYU_DET_M1_HANDOFF.md,docs/data/GYU_DET_M1_HANDOFF.md,Provenance/license/registry/handoff,PRESENT / PATH VERIFIED,GYU-DET data foundation only; reader gate deferred
+I Tests and verification,baseline_v1_execution_checks.json,outputs/validation/gyu_det_v3/m1_evidence/baseline_v1_execution_checks.json,Execution or source-verification record,PRESENT / VERIFIED,Prior 89 tests; clean byte-identical finalization
+I Tests and verification,baseline_v1_execution_checks.md,outputs/validation/gyu_det_v3/m1_evidence/baseline_v1_execution_checks.md,Execution or source-verification record,PRESENT / VERIFIED,Prior 89 tests; clean byte-identical finalization
+I Tests and verification,baseline_v1_tests.log,outputs/validation/gyu_det_v3/m1_evidence/baseline_v1_tests.log,Execution or source-verification record,PRESENT / VERIFIED,Prior 89 tests; clean byte-identical finalization
+I Tests and verification,consistency_check.json,outputs/validation/gyu_det_v3/m1_evidence/consistency_check.json,Execution or source-verification record,PRESENT / VERIFIED,Current source/documentation/consistency evidence
+I Tests and verification,documentation_execution_checks.md,outputs/validation/gyu_det_v3/m1_evidence/documentation_execution_checks.md,Execution or source-verification record,PRESENT / VERIFIED,98/0 tests; approved artifacts and raw files unchanged; read-only consistency PASS
+I Tests and verification,documentation_tests.log,outputs/validation/gyu_det_v3/m1_evidence/documentation_tests.log,Execution or source-verification record,PASS,98 tests passed; 0 failed (89 existing + 9 new)
+I Tests and verification,source_verification.json,outputs/validation/gyu_det_v3/m1_evidence/source_verification.json,Execution or source-verification record,PRESENT / VERIFIED,Current source/documentation/consistency evidence
+I Tests and verification,check_gyu_m1.py,scripts/data/check_gyu_m1.py,Read-only documentation/consistency regression checks,PRESENT / PATH VERIFIED,Run all data tests; never regenerate approved artifacts
+I Tests and verification,test_gyu_m1_documentation.py,tests/data/test_gyu_m1_documentation.py,Read-only documentation/consistency regression checks,PRESENT / PATH VERIFIED,Run all data tests; never regenerate approved artifacts

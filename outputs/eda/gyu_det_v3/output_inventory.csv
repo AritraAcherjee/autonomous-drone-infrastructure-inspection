@@ -1,0 +1,31 @@
+path,purpose
+dataset_overview.csv,dataset overview
+class_distribution.csv,class distribution
+class_distribution_by_split.csv,class distribution by split
+annotation_count_distribution.csv,annotation count distribution
+split_comparison.csv,split comparison
+box_statistics.csv,box statistics
+box_statistics_by_class.csv,box statistics by class
+box_statistics_by_split.csv,box statistics by split
+box_size_distribution.csv,box size distribution
+box_measurements.csv,box measurements
+box_examples.csv,box examples
+annotation_count_examples.csv,annotation count examples
+resolution_distribution.csv,resolution distribution
+aspect_ratio_distribution.csv,aspect ratio distribution
+image_statistics.csv,image statistics
+class_cooccurrence.csv,class cooccurrence
+class_cooccurrence_normalized.csv,class cooccurrence normalized
+class_combination_statistics.csv,class combination statistics
+figures/annotations_per_image.png,EDA figure
+figures/box_area_by_class.png,EDA figure
+figures/box_area_distribution.png,EDA figure
+figures/box_aspect_ratio_distribution.png,EDA figure
+figures/class_cooccurrence_heatmap.png,EDA figure
+figures/class_distribution.png,EDA figure
+figures/class_distribution_by_split.png,EDA figure
+figures/image_aspect_ratio_distribution.png,EDA figure
+figures/resolution_distribution.png,EDA figure
+eda_summary.json,"Statistics, provenance and methods"
+eda_report.md,Interpretation and limitations
+output_inventory.csv,Complete generated file inventory
