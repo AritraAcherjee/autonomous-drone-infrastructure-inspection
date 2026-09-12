@@ -23,10 +23,10 @@ class CameraProjectionNode(Node):
         self.info_sub = self.create_subscription(
             CameraInfo, '/aegis/sensors/camera/camera_info', self.cache.add_info, qos_profile_sensor_data)
         self.service = self.create_service(
-            ProjectCamera, '/aegis/mapping/project_camera', self.handle)
+            ProjectCamera, '/aegis/mapping/project_camera', self._handle_projection_request)
         self.metrics_timer = self.create_timer(30.0, self.report_metrics)
 
-    def handle(self, request, response):
+    def _handle_projection_request(self, request, response):
         result = self.cache.handle(request)
         return fill_response(result, response, self.cache.last_latency_ms)
 

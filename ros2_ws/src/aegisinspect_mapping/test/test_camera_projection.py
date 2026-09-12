@@ -330,3 +330,17 @@ def test_actual_node_callback_with_ros_shaped_transport(monkeypatch, case, expec
     else:
         assert isnan(response.point.x) and isnan(response.point.y) and isnan(response.point.z)
         assert response.header.frame_id == ''
+
+
+def test_node_preserves_inherited_handle():
+    """The service callback must not shadow rclpy Node.handle."""
+    import ast
+
+    path = Path(__file__).resolve().parents[1] / 'scripts/camera_projection_node.py'
+    tree = ast.parse(path.read_text(encoding='utf-8'))
+    node_class = next(node for node in tree.body
+                      if isinstance(node, ast.ClassDef) and node.name == 'CameraProjectionNode')
+    # Load only the class definition, without importing or constructing rclpy.
+    namespace = {'Node': object, '__name__': 'projection_node_contract_test'}
+    exec(compile(ast.Module(body=[node_class], type_ignores=[]), str(path), 'exec'), namespace)
+    assert 'handle' not in vars(namespace['CameraProjectionNode'])
