@@ -2,11 +2,16 @@
 <package format="3">
   <name>aegisinspect_mapping</name>
   <version>0.1.0</version>
-  <description>Pure camera depth geometry utilities; no mapping or ROS node implementation.</description>
+  <description>Camera-frame depth geometry and synchronous pixel/ROI projection service.</description>
   <maintainer email="AritraAcherjee@users.noreply.github.com">Aritra Acherjee</maintainer>
   <license>Proprietary</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>ament_cmake_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>aegisinspect_interfaces</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
   <test_depend>ament_cmake_pytest</test_depend>
   <export><build_type>ament_cmake</build_type></export>
 </package>
