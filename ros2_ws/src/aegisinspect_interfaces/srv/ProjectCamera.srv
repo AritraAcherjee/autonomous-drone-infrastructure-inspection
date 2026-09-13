@@ -1,0 +1,36 @@
+# Exact sensor-observation stamp and camera_optical_frame, never "latest".
+std_msgs/Header header
+uint8 PIXEL=0
+uint8 ROI=1
+uint8 mode
+# PIXEL: integer image indices; ROI fields ignored.
+int32 u
+int32 v
+# ROI: inclusive left/top, exclusive right/bottom; u/v ignored.
+int32 left
+int32 top
+int32 right
+int32 bottom
+---
+uint8 SUCCESS=0
+uint8 NO_VALID_DEPTH=1
+uint8 INSUFFICIENT_DEPTH=2
+uint8 INVALID_CAMERA_MODEL=3
+uint8 OUT_OF_BOUNDS=4
+uint8 TIMESTAMP_MISMATCH=5
+uint8 FRAME_MISMATCH=6
+uint8 INVALID_DEPTH_IMAGE=7
+uint8 INVALID_REQUEST=8
+uint8 NUMERICAL_ERROR=9
+uint8 status
+string detail
+# Original observation stamp on success; requested stamp on failure.
+# Frame is camera_optical_frame on success, empty on failure.
+std_msgs/Header header
+# Meters; all coordinates NaN on failure. Z is sampled optical-axis depth.
+geometry_msgs/Point point
+# Representative image location; both NaN on failure.
+float64 sample_u
+float64 sample_v
+# Processing duration only; never an observation timestamp.
+float64 latency_ms

@@ -31,3 +31,14 @@ reserved_dynamic_tf:
   - [odom, base_link]
 ground_truth_namespace: /aegis/sim/ground_truth
 ground_truth_use: evaluation-only
+
+camera_projection_service:
+  name: /aegis/mapping/project_camera
+  type: aegisinspect_interfaces/srv/ProjectCamera
+  frame: camera_optical_frame
+  units: meters
+  synchronization: exact_request_depth_camera_info_stamp
+  depth_topic: /aegis/perception/depth/image
+  camera_info_topic: /aegis/sensors/camera/camera_info
+  failure_xyz: nan
+  runtime_validation: pending

@@ -172,7 +172,8 @@ def test_reserved_contracts_have_no_publishers_or_custom_messages():
     assert contract['ground_truth_namespace'] == '/aegis/sim/ground_truth'
     assert contract['ground_truth_use'] == 'evaluation-only'
     assert not list(SRC.rglob('*.msg'))
-    assert not list(SRC.rglob('*.srv'))
+    assert {p.relative_to(SRC).as_posix() for p in SRC.rglob('*.srv')} == {
+        'aegisinspect_interfaces/srv/ProjectCamera.srv'}
     assert not list(SRC.rglob('*.action'))
 
 

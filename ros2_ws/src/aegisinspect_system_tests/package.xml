@@ -9,6 +9,8 @@
   <exec_depend>rclpy</exec_depend>
   <exec_depend>ament_index_python</exec_depend>
   <exec_depend>aegisinspect_sim</exec_depend>
+  <exec_depend>aegisinspect_interfaces</exec_depend>
+  <exec_depend>aegisinspect_mapping</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>rosgraph_msgs</exec_depend>
   <exec_depend>tf2_msgs</exec_depend>
