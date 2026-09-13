@@ -3,14 +3,16 @@
 TASK: [MSI][CHAT-08] Camera-frame ROS projection
 BRANCH: feat/camera-frame-ros-projection
 BASE MAIN SHA: 043ce54d40708c6bf278f8b07741c1e4afe9ccd6
-CODE STATUS: CODE READY / WSL RUNTIME VALIDATION PENDING
-RUNTIME VALIDATION: PENDING — MSI WSL
-NEXT STEP: Run the WSL acceptance procedure below and retain its output.
-BLOCKERS: No code/static blocker; ROS generation, colcon and live acceptance remain unverified.
+FINAL STATUS: Chat 08 Implementation Phase 3 — Camera-frame ROS Projection:
+READY FOR PR / MERGE
+RUNTIME VALIDATION: PASSED — MSI WSL, evidence supplied by the user.
+VALIDATED CORRECTIVE COMMIT: 021cbf2012e0d64330d208d1d13eb95b1ef8ba7f
+NEXT STEP: PR review of the validated camera-frame-only Phase 3 implementation.
+BLOCKERS: None outstanding for Phase 3 acceptance. This does not complete all Chat 08.
 
 ## 1–5. Baseline, inspection and interface decision
 
-Verified root C:\Dev\aegisinspect-chat08-phase3-codex, existing target branch,
+At implementation start, verified root C:\Dev\aegisinspect-chat08-phase3-codex, existing target branch,
 clean tree, HEAD and origin/main both equal the base above. Phase 2 merge
 57f2973 is an ancestor (exit 0). The branch was not recreated or switched.
 
@@ -156,9 +158,12 @@ the actual node callback with test-double ROS transport. These callback tests
 do not claim generated ROS types, DDS, executor or simulator validation.
 
 Windows Python 3.12.14, pytest 9.1.1; dependencies installed outside the repository.
-Final code suite: **191 passed in 0.27s**, no errors, failures or skips.
+Initial Phase 3 code suite: **191 passed in 0.27s**, no errors, failures or skips.
 Includes all 103 existing relevant Phase 1/2 cases. Earlier implementation run:
-182 passed; final callback/configuration additions increased this to 191.
+182 passed; callback/configuration additions increased this to 191.
+The startup corrective patch added one regression case; the final scoped Windows
+suite passed **192 tests in 0.38s**. The new collision regression was verified to
+fail before the fix and pass afterward.
 
 Exact successful Windows command, from the verified repository root:
 
@@ -169,12 +174,69 @@ $env:PYTHONPATH = "$env:TEMP\aegis-phase3-test-deps"
 ```
 
 Initial attempts were blocked by missing pytest and sandbox access to temporary
-dependencies. No tests failed in a successfully collected suite. Running with
+dependencies. The implementation suite passed once dependencies were available;
+the later collision regression intentionally failed before its corrective fix. Running with
 approved access resolved the environment issue. No ROS/Gazebo installation or
 WSL repair was attempted.
 
 Sensor/bridge/TF/world files and Chat 02/data files are untouched. Existing
 duplicate SDFormat body-name debt is untouched.
+
+## Verified MSI WSL runtime acceptance
+
+The user supplied the following verified runtime evidence for corrective commit
+021cbf2012e0d64330d208d1d13eb95b1ef8ba7f. These results were obtained on MSI WSL;
+they are separate from the Windows static tests and were not rerun during this
+documentation-only closeout.
+
+- Build: **13 packages built successfully**.
+- Colcon test: **196 tests, 0 errors, 0 failures, 0 skipped**.
+- Live service: /aegis/mapping/project_camera.
+- Live type: aegisinspect_interfaces/srv/ProjectCamera.
+
+All XYZ values below are approximate and expressed in camera_optical_frame meters.
+
+| Live case | Result | Observed XYZ | Expected XYZ |
+| --- | --- | --- | --- |
+| Principal | PASS | (0.0, 0.0, 3.6500001) | (0.0, 0.0, 3.65) |
+| Off-center | PASS | (-1.6858631, 0.0, 3.6500006) | (-1.6858628, 0.0, 3.65) |
+| ROI | PASS | (0.0, 0.0, 3.6500001) | (0.0, 0.0, 3.65) |
+
+Failure acceptance: **OUT_OF_BOUNDS PASS** and **TIMESTAMP_MISMATCH PASS**.
+Failed responses returned NaN XYZ rather than fabricated valid points.
+
+Observed node metrics:
+
+- SUCCESS = 3
+- OUT_OF_BOUNDS = 1
+- TIMESTAMP_MISMATCH = 1
+
+Phase 2 regression: **depth_check.py PASS** — metric optical-Z plane and depth
+metadata/calibration/observation timestamps.
+
+Foundation regression: **smoke_check.py PASS** — sensor payloads, frames, static
+TF, timestamps, clock and reserved-interface isolation.
+
+### Runtime startup bug and corrective patch
+
+Initial live rclpy startup failed because CameraProjectionNode.handle shadowed
+the inherited rclpy Node.handle object. Node construction uses that object as a
+context manager, so the callback method caused a TypeError before service
+registration: 'method' object does not support the context manager protocol.
+
+Corrective commit: **021cbf2 — fix(depth): avoid rclpy node handle collision**
+(full SHA: 021cbf2012e0d64330d208d1d13eb95b1ef8ba7f).
+
+The service callback and registration reference were renamed to
+_handle_projection_request. ProjectionCache.handle() and projection semantics
+were unchanged. The deterministic test_node_preserves_inherited_handle regression
+asserts that CameraProjectionNode defines no handle member, without requiring
+rclpy in the Windows test environment. The regression failed before the fix;
+all 192 scoped Windows tests passed after it. The WSL results above confirm the
+corrected node and service passed runtime revalidation.
+
+**Chat 08 Implementation Phase 3 — Camera-frame ROS Projection:
+READY FOR PR / MERGE.** This status applies only to Phase 3, not all Chat 08.
 
 ## 23–25. Exact WSL build, test and launch procedure
 
@@ -206,7 +268,7 @@ ros2 launch aegisinspect_bringup foundation.launch.py headless:=true
 
 Expected build: all packages succeed. Expected tests: no errors/failures/skips.
 Colcon's aggregate count can include ament wrapper tests in addition to the
-191 pytest cases. Preserve complete output. A build or runtime failure means
+192 pytest cases. Preserve complete output. A build or runtime failure means
 runtime acceptance has not passed, regardless of Windows results.
 
 In terminal 2:
@@ -268,8 +330,8 @@ publish world coordinates or any transform.
 
 ## 31. Known limitations
 
-- ROS interface generation, colcon installation, DDS transport and Gazebo
-  execution remain pending; Windows evidence alone is not merge readiness.
+- Acceptance covers the verified MSI WSL configuration and Phase 2 scene;
+  it does not establish support for other camera models or simulation scenes.
 - Only aligned undistorted monocular pinhole images; no registration,
   undistortion, cropping or calibration rescaling.
 - Finite cache and best-effort sensor delivery can produce explicit missing-pair
@@ -280,7 +342,18 @@ publish world coordinates or any transform.
   foreground identification. No uncertainty propagation or per-sample counts.
 - Processing decodes an image per request and samples an ROI twice; suitable for
   the short synchronous Phase 3 path, not a throughput benchmark claim.
-- No map/base_link/odom projection, tf2, ML integration, fusion or localization.
+
+The following remain out of scope / future work:
+
+- camera_optical_frame -> base_link
+- odom projection
+- map projection
+- tf2 localization projection
+- VIO
+- sensor fusion
+- defect-to-map fusion
+
+Phase 3 ends at camera_optical_frame XYZ. All Chat 08 is not complete.
 
 ## 32–37. Git and handoff
 
@@ -297,11 +370,12 @@ Add an exact-observation ProjectCamera service around the existing depth geometr
 and robust ROI sampler. Pixel and ROI requests return camera_optical_frame XYZ
 with the original sensor stamp, or explicit failures with NaN wire coordinates.
 Validate calibration, payload, frames and cache correspondence without changing
-sensor geometry or TF. Add 88 deterministic tests and an opt-in live acceptance
-probe. Windows: 191 tests pass. MSI WSL colcon and ROS/Gazebo acceptance pending;
-not merge-ready until those pass.
+sensor geometry or TF. Add 89 deterministic tests and an opt-in live acceptance
+probe, including protection against shadowing rclpy Node.handle.
+Windows: 192 tests pass. MSI WSL: 13 packages built and 196 colcon tests passed
+with 0 errors, 0 failures and 0 skipped. Live projection, failure paths,
+Phase 2 depth and foundation regression probes passed.
 
-Recommended next Chat 08 milestone: complete and record Phase 3 WSL acceptance,
-then obtain review for this camera-frame-only change. Any later camera-to-body
-or world-frame milestone needs its own scope and authorization. Chat 08 is not
-complete and Phase 4 has not started.
+Recommended next Chat 08 milestone: PR review of the validated camera-frame-only
+Phase 3 implementation. Any later camera-to-body or world-frame milestone needs
+its own scope and authorization. Chat 08 is not complete and Phase 4 has not started.

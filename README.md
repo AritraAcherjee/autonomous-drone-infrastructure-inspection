@@ -19,12 +19,21 @@ downloaded. The rig starts at Gazebo world pose **(0, 0, 1.5 m), RPY (0, 0, 0)**
 looking toward the wall at X=4 m. It remains fixed in place.
 
 **Chat 08 Implementation Phase 2 — Simulated Metric Depth Integration:
-READY FOR PR / MERGE.** The shared RGB-D sensor and direct depth bridge passed
+COMPLETE / MERGED.** PR #6. Merge commit: 57f2973. The shared RGB-D sensor and direct depth bridge passed
 runtime validation on ROS 2 Lyrical / Gazebo Sim 10.5.0: all 13 ROS packages built,
 and the final colcon result was 103 tests, 0 errors, 0 failures, 0 skipped. See the
 [runtime evidence and validation procedure](docs/implementation_reports/simulated_depth_integration.md).
-The full ROS projection node and camera-to-map projection remain out of scope
-and incomplete; this does not complete all of Chat 08.
+
+**Chat 08 Implementation Phase 3 — Camera-frame ROS Projection:
+READY FOR PR / MERGE.** MSI WSL validation passed: 13 packages built and
+196 colcon tests, 0 errors, 0 failures, 0 skipped. The camera-frame service passed
+principal-point, off-center, ROI and explicit-failure acceptance; Phase 2 depth
+and foundation regression probes also passed. See the
+[Phase 3 runtime evidence and corrective-fix record](docs/implementation_reports/camera_frame_ros_projection.md).
+
+camera_optical_frame -> base_link, odom projection, map projection, tf2 localization
+projection, VIO, sensor fusion and defect-to-map fusion remain out of scope /
+future work. This does not complete all of Chat 08.
 
 ## Repository layout
 
