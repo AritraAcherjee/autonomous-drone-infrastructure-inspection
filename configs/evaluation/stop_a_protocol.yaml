@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "state": "PREPARED_NOT_FROZEN",
+  "stop_a_status": "NOT COMPLETE",
+  "dataset": {"identity": "GYU-DET", "version": "v3/baseline-v1", "train": 8305, "validation": 1040, "test": 1053, "supervised_images": 10398, "annotations": 48392, "classes": 6, "split": "test", "split_manifest": "data/processed/gyu_det_v3_baseline_v1/splits/test.txt", "split_sha256": null},
+  "detector": {"status": "PENDING", "checkpoint_path": null, "checkpoint_id": null, "checkpoint_sha256": null, "git_sha": null, "seed": null, "configuration": null, "pretraining_gate": "PENDING"},
+  "external": {"status": "BLOCKED_PENDING_CHAT03", "external_evaluation_authorized": false, "authorization_ref": null, "benchmark": null, "dataset_version": null, "subset": null, "class_mapping_version": null, "checkpoint_sha256": null, "not_used_for_tuning_ref": null},
+  "policy": {"estimated_metrics_prohibited": true, "final_test_tuning_prohibited": true, "checkpoint_hash_required_for_accepted_ml": true, "raw_evidence_preservation_required": true, "failed_experiments_preserved_and_reported": true},
+  "definition_of_done": {"m1_dataset_foundation": "COMPLETE", "pretraining_gate": "PENDING", "baseline_trained": "PENDING", "checkpoint_frozen": "PENDING", "checkpoint_provenance": "PENDING", "held_out_test_evaluation": "PENDING", "external_evaluation_where_valid": "PENDING", "failure_analysis": "PENDING", "metrics_consolidated": "PENDING", "reproducibility": "PENDING", "presentation_evidence": "PENDING"}
+}
