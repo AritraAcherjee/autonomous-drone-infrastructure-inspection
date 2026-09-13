@@ -1,0 +1,13 @@
+{
+  "version": "gyu-codebrim-v1-candidate",
+  "gyu_classes": {"0": "Crack", "1": "Breakage", "2": "Honeycombing", "3": "Hole", "4": "Exposed Reinforcement", "5": "Seepage"},
+  "mappings": [
+    {"gyu_id": 0, "external_label": "Crack", "status": "candidate"},
+    {"gyu_id": 1, "external_label": "Spallation", "status": "candidate", "note": "Breakage equivalence needs explicit semantic review"},
+    {"gyu_id": 2, "external_label": null, "status": "unmapped"},
+    {"gyu_id": 3, "external_label": null, "status": "unmapped"},
+    {"gyu_id": 4, "external_label": "Exposed reinforcement bar", "status": "candidate"},
+    {"gyu_id": 5, "external_label": null, "status": "unmapped"}
+  ],
+  "external_only": ["Efflorescence", "Corrosion/stain"]
+}
