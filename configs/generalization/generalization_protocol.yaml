@@ -1,0 +1,16 @@
+{
+  "version": "generalization-v1-draft",
+  "status": "pre_freeze",
+  "scoring": "independent class-wise greedy xyxy matching; 101-point interpolated AP",
+  "ap_ious": [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],
+  "ap_confidence_floor": null,
+  "operating_confidence": null,
+  "matching_iou": null,
+  "nms_iou": null,
+  "nms_mode": null,
+  "max_detections": null,
+  "calibration_bins": 10,
+  "absent_gt_ap": null,
+  "external_scoring": "approved shared classes only; multi-label regions retained once",
+  "scientific_execution": "requires frozen manifest and frozen protocol; no inference backend included"
+}

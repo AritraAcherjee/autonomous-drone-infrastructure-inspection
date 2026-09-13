@@ -1,0 +1,20 @@
+....uuuuuuuuuuuuuuuuuuuuuuuuuuuuu...uuuu..uuuuuuuuu.........uuuu........ [ 32%]
+.........uuu.........uuuu...uuu.uu.uu..uu.......uuuuu...........uuuuuuu. [ 86%]
+...F.......                                                              [100%]
+================================== FAILURES ===================================
+____________ M1DocumentationTests.test_evidence_index_paths_exist _____________
+
+self = <test_gyu_m1_documentation.M1DocumentationTests testMethod=test_evidence_index_paths_exist>
+
+    def test_evidence_index_paths_exist(self) -> None:
+        rows=read_csv(ROOT/'outputs/validation/gyu_det_v3/M1_EVIDENCE_INDEX.csv')
+        self.assertGreater(len(rows),40)
+        markdown=(ROOT/'outputs/validation/gyu_det_v3/M1_EVIDENCE_INDEX.md').read_text(encoding='utf-8')
+        for row in rows:
+>           self.assertTrue((ROOT/row['repository_relative_path']).exists(),row['repository_relative_path'])
+E           AssertionError: False is not true : data/raw/gyu_det/v3/archives
+
+tests\data\test_gyu_m1_documentation.py:73: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/data/test_gyu_m1_documentation.py::M1DocumentationTests::test_evidence_index_paths_exist
+1 failed, 80 passed, 74 subtests passed in 43.34s

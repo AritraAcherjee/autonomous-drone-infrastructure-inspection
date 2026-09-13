@@ -1,0 +1,14 @@
+{
+  "version": "robustness-v1-draft",
+  "status": "predeclared_not_executed",
+  "policy": "paired against unchanged image inventory; frozen inference; no severity selection using holdout outcomes",
+  "coordinate_policy": "photometric transforms preserve boxes; resize scales boxes; viewpoint needs reviewed clipping/visibility policy",
+  "experiments": {
+    "lighting": {"operation": "multiply RGB intensity, clip to [0,255]", "factors": [0.5, 0.75, 1.25, 1.5]},
+    "blur": {"operation": "Gaussian", "sigma_pixels": [1, 2, 4], "kernel": "2*ceil(3*sigma)+1"},
+    "jpeg": {"operation": "encode/decode once", "quality": [90, 70, 50, 30]},
+    "scale_resolution": {"operation": "downsample then restore original size using bilinear interpolation", "factors": [0.75, 0.5, 0.25]},
+    "perspective_viewpoint": {"enabled": false, "status": "optional; homography and visibility rules require pre-registration"}
+  },
+  "implementation_binding": "record library versions, transform order, seed and config hash before future execution"
+}
