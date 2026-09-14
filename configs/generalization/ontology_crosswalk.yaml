@@ -1,13 +1,63 @@
 {
-  "version": "gyu-codebrim-v1-candidate",
-  "gyu_classes": {"0": "Crack", "1": "Breakage", "2": "Honeycombing", "3": "Hole", "4": "Exposed Reinforcement", "5": "Seepage"},
+  "version": "gyu-codebrim-v1-approved",
+  "gyu_classes": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  },
   "mappings": [
-    {"gyu_id": 0, "external_label": "Crack", "status": "candidate"},
-    {"gyu_id": 1, "external_label": "Spallation", "status": "candidate", "note": "Breakage equivalence needs explicit semantic review"},
-    {"gyu_id": 2, "external_label": null, "status": "unmapped"},
-    {"gyu_id": 3, "external_label": null, "status": "unmapped"},
-    {"gyu_id": 4, "external_label": "Exposed reinforcement bar", "status": "candidate"},
-    {"gyu_id": 5, "external_label": null, "status": "unmapped"}
+    {
+      "gyu_id": 0,
+      "external_label": "Crack",
+      "status": "approved",
+      "approval": "Control Center task [MSI][03] CODEBRIM pre-access freeze"
+    },
+    {
+      "gyu_id": 1,
+      "external_label": "Spallation",
+      "status": "approved",
+      "approval": "Control Center task [MSI][03] CODEBRIM pre-access freeze"
+    },
+    {
+      "gyu_id": 2,
+      "external_label": null,
+      "status": "unmapped"
+    },
+    {
+      "gyu_id": 3,
+      "external_label": null,
+      "status": "unmapped"
+    },
+    {
+      "gyu_id": 4,
+      "external_label": "ExposedBars",
+      "status": "approved",
+      "approval": "Control Center task [MSI][03] CODEBRIM pre-access freeze"
+    },
+    {
+      "gyu_id": 5,
+      "external_label": null,
+      "status": "unmapped"
+    }
   ],
-  "external_only": ["Efflorescence", "Corrosion/stain"]
+  "external_only": [
+    "Efflorescence",
+    "CorrosionStain"
+  ],
+  "excluded_gyu": [
+    "Honeycombing",
+    "Hole",
+    "Seepage"
+  ],
+  "prohibited_mappings": [
+    {
+      "gyu_class": "Seepage",
+      "external_label": "Efflorescence"
+    }
+  ],
+  "external_aggregate_label": "shared-class CODEBRIM mAP",
+  "comparability": "Not equivalent to six-class GYU mAP"
 }
