@@ -1,0 +1,228 @@
+{
+  "status": "PASS",
+  "engineering_smoke": true,
+  "test_accessed": false,
+  "requested_batch": 4,
+  "optimizer_steps": 2,
+  "parameter_updates": 2,
+  "batches": 32,
+  "epochs": 1,
+  "finite_losses": true,
+  "validation_calls": 2,
+  "loss_history": [
+    {
+      "box_loss": 2.3787014484405518,
+      "cls_loss": 16.20249366760254,
+      "l1_loss": 0.01812371239066124
+    },
+    {
+      "box_loss": 2.4147350788116455,
+      "cls_loss": 13.785497665405273,
+      "l1_loss": 0.015167922712862492
+    },
+    {
+      "box_loss": 2.339604616165161,
+      "cls_loss": 27.291332244873047,
+      "l1_loss": 0.02172776870429516
+    },
+    {
+      "box_loss": 2.4046130180358887,
+      "cls_loss": 11.018479347229004,
+      "l1_loss": 0.014277591370046139
+    },
+    {
+      "box_loss": 1.8967292308807373,
+      "cls_loss": 11.961478233337402,
+      "l1_loss": 0.013733752071857452
+    },
+    {
+      "box_loss": 1.7347737550735474,
+      "cls_loss": 10.621785163879395,
+      "l1_loss": 0.011912474408745766
+    },
+    {
+      "box_loss": 2.388723850250244,
+      "cls_loss": 11.532201766967773,
+      "l1_loss": 0.016089538112282753
+    },
+    {
+      "box_loss": 2.2237701416015625,
+      "cls_loss": 12.574552536010742,
+      "l1_loss": 0.01779579184949398
+    },
+    {
+      "box_loss": 2.106860399246216,
+      "cls_loss": 8.006842613220215,
+      "l1_loss": 0.015246167778968811
+    },
+    {
+      "box_loss": 1.8202450275421143,
+      "cls_loss": 16.11839485168457,
+      "l1_loss": 0.017460189759731293
+    },
+    {
+      "box_loss": 1.950920820236206,
+      "cls_loss": 14.26059341430664,
+      "l1_loss": 0.01704513654112816
+    },
+    {
+      "box_loss": 2.2796881198883057,
+      "cls_loss": 9.835200309753418,
+      "l1_loss": 0.01727795973420143
+    },
+    {
+      "box_loss": 2.0854849815368652,
+      "cls_loss": 12.331892967224121,
+      "l1_loss": 0.02647487446665764
+    },
+    {
+      "box_loss": 1.9823462963104248,
+      "cls_loss": 9.639924049377441,
+      "l1_loss": 0.013015840202569962
+    },
+    {
+      "box_loss": 2.00458025932312,
+      "cls_loss": 13.473488807678223,
+      "l1_loss": 0.018498066812753677
+    },
+    {
+      "box_loss": 2.6027822494506836,
+      "cls_loss": 9.702880859375,
+      "l1_loss": 0.016182785853743553
+    },
+    {
+      "box_loss": 1.7365165948867798,
+      "cls_loss": 6.552574634552002,
+      "l1_loss": 0.013211709447205067
+    },
+    {
+      "box_loss": 2.5355618000030518,
+      "cls_loss": 8.224847793579102,
+      "l1_loss": 0.03534296900033951
+    },
+    {
+      "box_loss": 2.22843861579895,
+      "cls_loss": 9.021356582641602,
+      "l1_loss": 0.02993464097380638
+    },
+    {
+      "box_loss": 2.182040214538574,
+      "cls_loss": 9.589265823364258,
+      "l1_loss": 0.03181737661361694
+    },
+    {
+      "box_loss": 1.9777469635009766,
+      "cls_loss": 8.377728462219238,
+      "l1_loss": 0.02286165952682495
+    },
+    {
+      "box_loss": 2.079852819442749,
+      "cls_loss": 6.132532596588135,
+      "l1_loss": 0.013608258217573166
+    },
+    {
+      "box_loss": 1.983353614807129,
+      "cls_loss": 6.482600688934326,
+      "l1_loss": 0.01610189490020275
+    },
+    {
+      "box_loss": 1.7578442096710205,
+      "cls_loss": 5.595614433288574,
+      "l1_loss": 0.011765562929213047
+    },
+    {
+      "box_loss": 2.2122316360473633,
+      "cls_loss": 6.641274452209473,
+      "l1_loss": 0.013473018072545528
+    },
+    {
+      "box_loss": 2.237577438354492,
+      "cls_loss": 5.55849027633667,
+      "l1_loss": 0.0166148841381073
+    },
+    {
+      "box_loss": 2.2075297832489014,
+      "cls_loss": 6.028388500213623,
+      "l1_loss": 0.020413167774677277
+    },
+    {
+      "box_loss": 1.5518383979797363,
+      "cls_loss": 8.984915733337402,
+      "l1_loss": 0.02357473596930504
+    },
+    {
+      "box_loss": 1.9512255191802979,
+      "cls_loss": 7.934363842010498,
+      "l1_loss": 0.030655689537525177
+    },
+    {
+      "box_loss": 2.216468572616577,
+      "cls_loss": 5.992002964019775,
+      "l1_loss": 0.014771570451557636
+    },
+    {
+      "box_loss": 2.2052388191223145,
+      "cls_loss": 7.90578031539917,
+      "l1_loss": 0.026007063686847687
+    },
+    {
+      "box_loss": 2.456550359725952,
+      "cls_loss": 6.1981892585754395,
+      "l1_loss": 0.018474450334906578
+    }
+  ],
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "classes": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  },
+  "resolved_batch": 4,
+  "resolved_optimizer": "SGD",
+  "mean_train_losses": {
+    "box_loss": 2.1292059421539307,
+    "cls_loss": 10.111783981323242,
+    "l1_loss": 0.019020576030015945
+  },
+  "fit_seconds": 50.53028060001088,
+  "train_validation_seconds": 25.071066500007873,
+  "gpu_peak_allocated_bytes": 1367078400,
+  "gpu_peak_reserved_bytes": 1753219072,
+  "metrics": {
+    "metrics/precision(B)": 0.0017974006957057805,
+    "metrics/recall(B)": 0.01794871794871795,
+    "metrics/mAP50(B)": 0.0011798735188632162,
+    "metrics/mAP50-95(B)": 0.0007228295427945125
+  },
+  "checkpoints": {
+    "best.pt": {
+      "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\SMOKE-DET-BASELINE\\weights\\best.pt",
+      "size_bytes": 20313733,
+      "sha256": "0819be799645ff78d52f660756e5f1a692cd15ec871d5b1d582824919d9a7f43"
+    },
+    "last.pt": {
+      "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\SMOKE-DET-BASELINE\\weights\\last.pt",
+      "size_bytes": 20313733,
+      "sha256": "59f0125df8a68277075ce65f1cf8e28a8e436b16f104e7517a681935f85f366c"
+    }
+  },
+  "total_seconds_excluding_snapshot": 53.82120449998183,
+  "raw_immutability": {
+    "files_added": [],
+    "files_removed": [],
+    "size_changes": [],
+    "mtime_ns_changes": [],
+    "sha256_changes": [],
+    "new_cache_files": [],
+    "new_npy_files": [],
+    "status": "PASS",
+    "files_observed": 21559,
+    "content_hashed_development_files": 320,
+    "cache_files": [],
+    "npy_files": []
+  }
+}

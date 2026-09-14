@@ -1,0 +1,689 @@
+{
+  "no_commit_authorized": true,
+  "files": [
+    {
+      "path": ".gitignore",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "aggregate_metrics.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "confusion_matrix.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "confusion_matrix.png",
+      "classification": "MAY COMMIT"
+    },
+    {
+      "path": "confusion_matrix_normalized.png",
+      "classification": "MAY COMMIT"
+    },
+    {
+      "path": "confusion_summary.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "curves.csv",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "curves.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "evaluation_config.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "evaluation_data.yaml",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "evaluator_metrics.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "F1_curve.png",
+      "classification": "MAY COMMIT"
+    },
+    {
+      "path": "fixed_threshold_metrics.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "HELDOUT_REPORT.md",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "images.json",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "integrity.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "metric_stats.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "ONE_TIME_RECEIPT.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "per_class_metrics.csv",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "per_class_metrics.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "preaccess_verification.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "Precision_curve.png",
+      "classification": "MAY COMMIT"
+    },
+    {
+      "path": "Precision_Recall_curve.png",
+      "classification": "MAY COMMIT"
+    },
+    {
+      "path": "predictions/batch_0000.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0001.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0002.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0003.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0004.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0005.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0006.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0007.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0008.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0009.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0010.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0011.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0012.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0013.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0014.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0015.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0016.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0017.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0018.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0019.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0020.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0021.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0022.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0023.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0024.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0025.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0026.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0027.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0028.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0029.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0030.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0031.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0032.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0033.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0034.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0035.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0036.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0037.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0038.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0039.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0040.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0041.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0042.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0043.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0044.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0045.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0046.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0047.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0048.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0049.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0050.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0051.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0052.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0053.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0054.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0055.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0056.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0057.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0058.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0059.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0060.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0061.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0062.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0063.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0064.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0065.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0066.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0067.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0068.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0069.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0070.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0071.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0072.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0073.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0074.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0075.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0076.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0077.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0078.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0079.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0080.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0081.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0082.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0083.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0084.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0085.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0086.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0087.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0088.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0089.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0090.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0091.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0092.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0093.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0094.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0095.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0096.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0097.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0098.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0099.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0100.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0101.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0102.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0103.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0104.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0105.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0106.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0107.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0108.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0109.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0110.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0111.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0112.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0113.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0114.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0115.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0116.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0117.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0118.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0119.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0120.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0121.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0122.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0123.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0124.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0125.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0126.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0127.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0128.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0129.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0130.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "predictions/batch_0131.npz",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "prestart_tests.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "progress.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "provenance.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "raw_after.json",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "raw_before.json",
+      "classification": "REMAIN IGNORED"
+    },
+    {
+      "path": "Recall_curve.png",
+      "classification": "MAY COMMIT"
+    },
+    {
+      "path": "sources/evaluate_det_final_v1_test.py",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "sources/frozen_ap_fixed_index.py",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "sources/heldout_contract.py",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "sources/test_heldout_runner.py",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "STARTED_RECEIPT.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "timing.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "validation_vs_test.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "test_evidence_index.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "commit_review.json",
+      "classification": "MUST COMMIT"
+    },
+    {
+      "path": "result_payload.zip",
+      "classification": "REMAIN IGNORED"
+    }
+  ]
+}

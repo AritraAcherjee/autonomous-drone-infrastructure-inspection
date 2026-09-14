@@ -1,0 +1,105 @@
+{
+  "ranking_basis": "Scientific impact and measurable evidence; categories overlap and are not additive.",
+  "modes": [
+    {
+      "rank": 1,
+      "failure_mode": "Weak confidence separation and missed detections at usable precision",
+      "classes": [
+        "Crack",
+        "Breakage",
+        "Honeycombing",
+        "Hole",
+        "Exposed Reinforcement",
+        "Seepage"
+      ],
+      "evidence": "At the inherited automatic point: 2828/4907 FN and 2267/4346 FP; 2059 FN have a one-to-one correct-class match when the floor is lowered to 0.001. Original/replayed confusion has 147326 background FP at that floor.",
+      "prevalence": "57.6% of annotations missed; 72.8% of those misses have an eligible match at the floor. Different threshold matchings can reassign boxes.",
+      "likely_cause": "Poor score ordering/separation among defects and competing textures; calibration versus representation cannot be disentangled here.",
+      "confidence": "High for observation, moderate/low for mechanism",
+      "addressable": "Potentially model/training; lowering a threshold alone trades in many false positives."
+    },
+    {
+      "rank": 2,
+      "failure_mode": "Localization and instance-extent ambiguity",
+      "classes": [
+        "Crack",
+        "Breakage",
+        "Honeycombing",
+        "Hole",
+        "Exposed Reinforcement",
+        "Seepage"
+      ],
+      "evidence": "mAP50 0.388424 versus mAP50-95 0.216993; Hole AP50 0.418557 versus AP75 0.126640. 654/2267 diagnostic FP overlap same-class GT at IoU 0.1 to <0.5.",
+      "prevalence": "28.8% of diagnostic FP in the exclusive localization category; overlaps with other GT-side failure mechanisms.",
+      "likely_cause": "Box extent errors, thin boxes, nearby instances, and overlapping/ambiguous GT extents.",
+      "confidence": "High for localization weakness; moderate for attribution",
+      "addressable": "Potentially resolution/representation; ambiguous annotation policy cannot be solved by training configuration alone."
+    },
+    {
+      "rank": 3,
+      "failure_mode": "Tiny and thin-object misses",
+      "classes": [
+        "Breakage",
+        "Crack",
+        "Exposed Reinforcement",
+        "Hole",
+        "Seepage"
+      ],
+      "evidence": "Tiny recall 28.1%, tiny FN rate 71.9%; minimum input side <4 px recall 6.9% (5/72). Tiny Breakage 1/41; tiny Reinforcement 115/409. Source crops visibly lose detail at 640.",
+      "prevalence": "Tiny: 441/2828 FN (15.6%); tiny+small: 1283/2828 FN (45.4%) vs 42.1% of instances. Substantial, not the majority of all errors.",
+      "likely_cause": "Limited spatial evidence at input/feature scale; scene density and class composition also contribute.",
+      "confidence": "High for association, moderate for resolution hypothesis",
+      "addressable": "Yes, single input-resolution change is a testable hypothesis."
+    },
+    {
+      "rank": 4,
+      "failure_mode": "Class/texture confusion and overprediction",
+      "classes": [
+        "Breakage",
+        "Honeycombing",
+        "Seepage",
+        "Hole",
+        "Exposed Reinforcement"
+      ],
+      "evidence": "At conf 0.001/IoU 0.45: Breakage GT -> Honeycombing 297, reverse 114; Hole GT -> Reinforcement 61. At the analysis point Honeycombing has 516 FP versus 270 TP.",
+      "prevalence": "1073 off-diagonal foreground matches in original/replayed floor confusion matrix; 196/2267 diagnostic FP are high-overlap wrong-class predictions.",
+      "likely_cause": "Shared damaged-concrete textures and co-located defects; reviewed examples contain ambiguous class semantics.",
+      "confidence": "High for label-based counts, moderate for semantic cause",
+      "addressable": "Potentially; class sampling alone is not supported as the first change."
+    },
+    {
+      "rank": 5,
+      "failure_mode": "Dense-scene association with misses",
+      "classes": [
+        "Crack",
+        "Breakage",
+        "Honeycombing",
+        "Hole",
+        "Exposed Reinforcement",
+        "Seepage"
+      ],
+      "evidence": "Dense >=7 boxes: recall 38.4% vs sparse 1-2: 52.1%; 227 dense images contain 1469 FN. Within small-size strata recall is about 42% across typical/dense scenes.",
+      "prevalence": "51.9% of FN occur in dense scenes containing 48.6% of GT; 506/613 tiny GT are in dense scenes.",
+      "likely_cause": "Partly size/class mixture, plus clustered instances; independent density effect not established.",
+      "confidence": "High for association, low/moderate for mechanism",
+      "addressable": "Potentially, but no NMS change or separate density experiment is justified now."
+    },
+    {
+      "rank": 6,
+      "failure_mode": "Visual/annotation ambiguity and limited source information",
+      "classes": [
+        "Crack",
+        "Breakage",
+        "Honeycombing",
+        "Hole",
+        "Exposed Reinforcement",
+        "Seepage"
+      ],
+      "evidence": "Reviewed 9199, 12001, 12297 and 11992; broad overlapping class regions and plausible defects without matching labels. 12305 is only 550x413 pixels.",
+      "prevalence": "Not estimated: purposive qualitative review is not a prevalence sample.",
+      "likely_cause": "Ambiguous boundaries/semantics, blur and original resolution limits.",
+      "confidence": "Moderate for examples; no dataset-wide annotation-error claim",
+      "addressable": "Not reliably by one training setting; annotations remain untouched."
+    }
+  ]
+}

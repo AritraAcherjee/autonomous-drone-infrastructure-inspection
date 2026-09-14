@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "verified_at": "2026-09-14T01:09:03.910910+00:00",
+  "unit_tests": [
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_exclusive_receipt_never_overwrites_any_existing_state",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_failure_receipt_preserves_start_and_disallows_retry",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_membership_is_exact_and_ordered_without_content_reads",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_membership_substitution_rejected[train]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_membership_substitution_rejected[escape]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_membership_substitution_rejected[duplicate]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_membership_substitution_rejected[label]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_membership_substitution_rejected[class]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_guard_refuses_prestart_raw_and_nonmember_sources",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_fixed_selector_preserves_ap_without_calling_argmax",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "work/heldout/test_heldout_runner.py::test_durable_json_failure_does_not_destroy_existing_receipt",
+      "outcome": "passed"
+    }
+  ],
+  "unit_passed": 11,
+  "unit_failed": 0,
+  "synthetic_evaluation": {
+    "status": "PASS",
+    "images": 6,
+    "classes": 6,
+    "exif_orientations": [
+      1,
+      6,
+      8
+    ],
+    "raw_unchanged": true,
+    "inference_batches": 1,
+    "metric_and_curve_exports": "PASS",
+    "confusion_exports": "PASS",
+    "receipt_completion": "PASS"
+  },
+  "real_heldout_accessed": false,
+  "real_authorization_consumed": false,
+  "frozen_loader_methods_reused": true,
+  "source_sha256": {
+    "heldout_contract.py": "8c2817f30c5ba106a1aa1c9d68656ef3221cfdf5e1e1da7ac1f05a6a277a26d0",
+    "evaluate_det_final_v1_test.py": "142391755b414439b2f711b77a92b764a3a1765673e607774b46b448db9f849d"
+  }
+}

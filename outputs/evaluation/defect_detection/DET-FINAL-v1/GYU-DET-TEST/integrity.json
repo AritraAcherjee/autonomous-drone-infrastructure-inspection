@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "raw_files": 2106,
+  "raw_sha_size_mtime_unchanged": true,
+  "checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+  "manifest_sha256": "5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+  "freeze_commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
+  "images_processed": 1053,
+  "unique_images": 1053,
+  "inference_batch_calls": 132,
+  "threshold": 0.18618618618618618,
+  "test_threshold_optimized": false,
+  "training_executed": false,
+  "codebrim_accessed": false,
+  "det_improved_executed": false
+}

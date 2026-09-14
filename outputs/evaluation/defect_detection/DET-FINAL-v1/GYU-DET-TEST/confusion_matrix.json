@@ -1,0 +1,90 @@
+{
+  "rows_predicted": [
+    "Crack",
+    "Breakage",
+    "Honeycombing",
+    "Hole",
+    "Exposed Reinforcement",
+    "Seepage",
+    "background"
+  ],
+  "columns_truth": [
+    "Crack",
+    "Breakage",
+    "Honeycombing",
+    "Hole",
+    "Exposed Reinforcement",
+    "Seepage",
+    "background"
+  ],
+  "confidence": 0.001,
+  "confidence_comparison": ">",
+  "iou": 0.45,
+  "iou_comparison": ">",
+  "matching": "class-agnostic geometry",
+  "matrix": [
+    [
+      320.0,
+      70.0,
+      28.0,
+      0.0,
+      21.0,
+      2.0,
+      25626.0
+    ],
+    [
+      36.0,
+      2226.0,
+      48.0,
+      9.0,
+      168.0,
+      25.0,
+      76101.0
+    ],
+    [
+      8.0,
+      226.0,
+      184.0,
+      0.0,
+      12.0,
+      4.0,
+      20057.0
+    ],
+    [
+      2.0,
+      16.0,
+      0.0,
+      32.0,
+      29.0,
+      0.0,
+      2307.0
+    ],
+    [
+      6.0,
+      135.0,
+      2.0,
+      14.0,
+      865.0,
+      10.0,
+      23239.0
+    ],
+    [
+      0.0,
+      86.0,
+      5.0,
+      3.0,
+      7.0,
+      52.0,
+      5989.0
+    ],
+    [
+      32.0,
+      869.0,
+      14.0,
+      11.0,
+      279.0,
+      30.0,
+      0.0
+    ]
+  ]
+}

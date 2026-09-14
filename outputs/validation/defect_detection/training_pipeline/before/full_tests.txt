@@ -1,0 +1,16 @@
+................................................................. [ 22%]
+............................................................................................ [ 54%]
+........................................................ [ 73%]
+........................................................................ [ 98%]
+...                                                                      [100%]
+============================== warnings summary ===============================
+data/test_gyu_leakage.py: 13 warnings
+  C:\Users\Aritra\Documents\autonomous-drone-infrastructure-inspection\src\data\validators\gyu_leakage.py:40: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+    horizontal = list(gray.resize((9,8), Image.Resampling.LANCZOS).getdata())
+
+data/test_gyu_leakage.py: 13 warnings
+  C:\Users\Aritra\Documents\autonomous-drone-infrastructure-inspection\src\data\validators\gyu_leakage.py:41: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+    vertical = list(gray.resize((8,9), Image.Resampling.LANCZOS).getdata())
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+288 passed, 26 warnings, 75 subtests passed in 62.66s (0:01:02)

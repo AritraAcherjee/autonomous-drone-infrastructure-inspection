@@ -1,0 +1,432 @@
+{
+  "files": [
+    {
+      "relative_path": "docs/experiments/defect_detection/DET_BASELINE_FAILURE_ANALYSIS.md",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/docs/experiments/defect_detection/DET_BASELINE_FAILURE_ANALYSIS.md",
+      "size": 37237,
+      "sha256": "c20283e3b69c45a25851faab86753419127050c7eab79df7c9cc286effe530ff"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/analysis_source_manifest.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/analysis_source_manifest.json",
+      "size": 710,
+      "sha256": "799c60c15079b901d6e067957306ff0cf78606c61123a27227351037cd4b3d5f"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/baseline_inventory_before.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/baseline_inventory_before.json",
+      "size": 8155,
+      "sha256": "21e75477bb4579a755ac9dc1a044292ba3196442e62bad33416c1f379bb1c947"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/baseline_provenance.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/baseline_provenance.json",
+      "size": 24486,
+      "sha256": "5a31e12f17f9c533facae40bba9b4c7bc8c166a17d2aa5afbcc1bcffe33cea45"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/class_mix_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/class_mix_analysis.csv",
+      "size": 306,
+      "sha256": "bbe22927d6bb93302e33a2c423f5b71880d6f75de87a61d2048d7686ec99322c"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/class_size_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/class_size_analysis.csv",
+      "size": 2470,
+      "sha256": "f11d72f6e18fcda2cf33df03fe7842c336105c337cfc818249c8a66ed2707d96"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/confusion_class_summary.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/confusion_class_summary.csv",
+      "size": 472,
+      "sha256": "6b13b759de12733226e4522825eaaf30b17498ec88565f3e3975187a260f68ea"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/confusion_pairs.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/confusion_pairs.csv",
+      "size": 1251,
+      "sha256": "becaf9441fddf73fa3ee1f6e0d93ed03a7c132bf669a3d8f4b5772f92d308719"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/confusion_summary.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/confusion_summary.json",
+      "size": 2209,
+      "sha256": "84d8f5fee264954cdfc2862369de225cb71ebac1e6f31cfeeb88ae0efcc20367"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/curve_diagnostic_points.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/curve_diagnostic_points.csv",
+      "size": 3580,
+      "sha256": "c1a1708f135e77c8c44812ce530ddc14330631837a6e7e31b3ebd055af640d2a"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/density_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/density_analysis.csv",
+      "size": 383,
+      "sha256": "f622407c426c72727ca295faf14e1daecb28fbd4284542cd66f9c154f1a3f7dd"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/density_size_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/density_size_analysis.csv",
+      "size": 1418,
+      "sha256": "5ed80de6b8f1afa7638cabb4d909c7153be9b00cbe0555a97ee0366d28dbed01"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/det_improved_proposal.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/det_improved_proposal.json",
+      "size": 6439,
+      "sha256": "9e3acc6ef7a5ee42218a8f2d819d5e4201b7a3915a5b4ed55c29850aaa505349"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/error_analysis.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/error_analysis.json",
+      "size": 9368,
+      "sha256": "14ce486da0709546bff53ed1f0a5287f45a1ba51efb9c5a4bd99e1a71d0a80c3"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/11986_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/11986_review.jpg",
+      "size": 218975,
+      "sha256": "f81ed97a819ed6ee842af665f315e51cb4ae5084cca75c4dccbb5b62f9866dcb"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/11992_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/11992_review.jpg",
+      "size": 237755,
+      "sha256": "1b72ffa6a532ef32e1d36207041cd507fe277bc9e865e8feaba4f8dd8ec09096"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12001_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/12001_review.jpg",
+      "size": 262224,
+      "sha256": "6cb87ca64ba4b2c1e454ade2ff10a0633582da13f21e4e5e133c335fcb6ecaf8"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12254_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/12254_review.jpg",
+      "size": 340516,
+      "sha256": "0a53451ab81b654a99c2576f6682e31ce3b2e1f6ec1ca9b5d2f895fe7c32edcd"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12297_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/12297_review.jpg",
+      "size": 345727,
+      "sha256": "b5ec704d42198eb22e0fc2eb737045082cffeb871461a8f6c615e25867007a37"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12305_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/12305_review.jpg",
+      "size": 308357,
+      "sha256": "9cf91fbe97c69adb37bc64430e668cf658ae5f0e027e2251b3fa9a786b0d4c57"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/8622_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/8622_review.jpg",
+      "size": 255391,
+      "sha256": "cb94b40534629012915d7e8387f893694db8e8ea23ad31e94a9c8f64ad239534"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/9194_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/9194_review.jpg",
+      "size": 234325,
+      "sha256": "049b286e17194a8c312fcba41ffcda8e6f5e6643709eb53b970d325cf13fa932"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/9199_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/9199_review.jpg",
+      "size": 297212,
+      "sha256": "a446b1e4875fe549d685f60b206e3ed56edbdc17d0db0e26aaec090a79b38d3b"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/examples/9217_review.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/examples/9217_review.jpg",
+      "size": 247024,
+      "sha256": "6a244a0add8fdba2f8e61669747e6067b7e353b31bccc48d63fcb5f2b4d1d801"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/failure_analysis_overview.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/failure_analysis_overview.png",
+      "size": 128278,
+      "sha256": "8de6b833032025e57732b19fd59ac504455033b1965d28aa3feadcf7e87d2f59"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/failure_modes.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/failure_modes.json",
+      "size": 5532,
+      "sha256": "3e66723ac901b02abdf238a4f58137691596977e29f0a4e3adbc90f658c9ee25"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/ground_truth_errors.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/ground_truth_errors.csv",
+      "size": 1300756,
+      "sha256": "a8ea3e0ee0a344584870ed22d4de6793130c84c2643a0d79bfbb62e5597481cd"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/image_error_summary.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/image_error_summary.csv",
+      "size": 170038,
+      "sha256": "3b2f0ebb3a5ca798f65320f58cefa90d561cf497ed8aeff9398180420cac09a6"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/input_detail_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/input_detail_analysis.csv",
+      "size": 604,
+      "sha256": "f35a30764b042d1e587ce3871f98e4ad4035ef353430f2baf7a61236f8d64558"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/learning_curve_selected_epochs.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/learning_curve_selected_epochs.csv",
+      "size": 1876,
+      "sha256": "c1600fa5fc5e96bc59bb6a7d3153a383b9b84eae9f9166ec372da294b4f7b4d4"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/learning_curve_summary.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/learning_curve_summary.json",
+      "size": 9275,
+      "sha256": "2d2c10e5922cd13ccbccafb1f10f7c4beeea91cca188a5c7ba15bdcf69bc42a6"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/learning_curve_windows.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/learning_curve_windows.csv",
+      "size": 1444,
+      "sha256": "af9db4bae4b1c0e045cff320ec3662b3a0bbcc489bdeeef04e30f6d0e9eedc3a"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/original_per_class_rounded.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/original_per_class_rounded.csv",
+      "size": 648,
+      "sha256": "7d4ff3268afbe61137bb18e7c6c7b6bcd7689a6e44f0ba45928d2e0174d34e31"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/overlap_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/overlap_analysis.csv",
+      "size": 286,
+      "sha256": "4435557b4a121ab6a4339fb3e6f2f66d821bf5be2175a817dc5d969555222304"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/overlapping_error_flags.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/overlapping_error_flags.json",
+      "size": 306,
+      "sha256": "bab3a806283b096beb0a6959fcf1d4efede84d79d47451c286b7f1d1706df05a"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/per_class_metrics.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/per_class_metrics.csv",
+      "size": 1468,
+      "sha256": "f244bee09726d4530c423b22538da6ab860a8e77fc455ba70a92ff0fa984546b"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/prediction_errors.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/prediction_errors.csv",
+      "size": 561629,
+      "sha256": "504dbfb8c6752e93425e8d1b036d29ff4a63ee9e5d3d3dc5371bd3970bd55845"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/qualitative_example_candidates.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/qualitative_example_candidates.json",
+      "size": 12384,
+      "sha256": "cb9a70ce00f4663365ee5fdf62ce4245569f13bdaddfb00bc0c09beaa4a58ac9"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/qualitative_review.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/qualitative_review.csv",
+      "size": 3929,
+      "sha256": "d3246f95eb61a34b7de288af1ad49ada515244a85c751452fdec7d4ebc77b8b9"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/resolution_size_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/resolution_size_analysis.csv",
+      "size": 1655,
+      "sha256": "26a8931565de84684710f9c5a28429d80374dc46e4444cd2e57b1de3dfb78ea1"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/safety_status.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/safety_status.json",
+      "size": 21162,
+      "sha256": "87d022a8ec9bc20d2d8283a9d3b900b396a9dc2399c8bbf3b60e0686fe7e29b2"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/size_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/size_analysis.csv",
+      "size": 483,
+      "sha256": "a2017bbdb74c29107821f17e8648851900e2c35155cbb66acf354dda18283468"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/source_aspect_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/source_aspect_analysis.csv",
+      "size": 297,
+      "sha256": "74621d568d43fd45f43bfba853e1aa3622abce7348f2fa230da6d3c275b9b2bf"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/source_resolution_analysis.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/source_resolution_analysis.csv",
+      "size": 500,
+      "sha256": "be22833a7f0db7355253f3a651b22316daa9851891d505c4e10e89e5787445a3"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxF1_curve.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxF1_curve.png",
+      "size": 240034,
+      "sha256": "76f3e421dab5e2efef8101b7c64676b1bb55ede1d7f2e45ba2d155074cb5a4c5"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxP_curve.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxP_curve.png",
+      "size": 293006,
+      "sha256": "40eff45d03d3dc3d0a87d8b8e2fb6ad1e15fc82cbdf0d09126726b7e85614a77"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxPR_curve.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxPR_curve.png",
+      "size": 247218,
+      "sha256": "ecc2551a3e80f8d82ada3d778e1dff2213d28790d779b5fbaad5d338b6f8a184"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxR_curve.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxR_curve.png",
+      "size": 227039,
+      "sha256": "e264478894d1f4acd3f35655ffcab2666a5faee92c7246f271510212ea5f557e"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/checkpoint_metadata.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/checkpoint_metadata.json",
+      "size": 3860,
+      "sha256": "b49a658ceb8c347e12a4d6c74582edabd306cf24a6fcfede0d75d0576ea7a539"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/completion.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/completion.json",
+      "size": 696,
+      "sha256": "f884b729866e39f474981a38ca0e8f5d0c5cadafe12c8a091fee2608f0ac3dc1"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.json",
+      "size": 1167,
+      "sha256": "88848ed565fdd56f9eae07f6a214f8f2bf91252ea6856c79dd89cdaed2e96e69"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.png",
+      "size": 214554,
+      "sha256": "efd62681f5b4819ed4275e58da04558b549d938717c2c4f2a7f2f4e3e6fdcb98"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix_normalized.png",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix_normalized.png",
+      "size": 225867,
+      "sha256": "cf39ec7de4c59bc31176602e4fd270923c6fa44fffd3f3f19e1e83d971fae386"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/curves.npz",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/curves.npz",
+      "size": 126445,
+      "sha256": "851c4ac377c9ab010816bdf8643683c3909bb1a137b282991adb7c18fd95c429"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/images.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/images.json",
+      "size": 267277,
+      "sha256": "d0fb59588f9115d829e6ceb81049b327a4a1d826a055dbed014bd473376bc739"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/inference_config.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/inference_config.json",
+      "size": 4719,
+      "sha256": "14363372a67043a712f6616bf688b1f7e1f0246c28af5df1c85030b99fbe8821"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/metric_summary.json",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/metric_summary.json",
+      "size": 2882,
+      "sha256": "5c0c6630933a9828dd0f2b304b60913d4c518df697112ebcf82b613c7f19d509"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/per_class_metrics_full_precision.csv",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/per_class_metrics_full_precision.csv",
+      "size": 938,
+      "sha256": "d9a74820095976235ab6359f224f8aa8bfec1eb89862dc7f632ea64ec8ae9294"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/predictions_valid.npz",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/predictions_valid.npz",
+      "size": 2019689,
+      "sha256": "613fdcda98797e9aca86afb9b5f5e411c24b7061f9c68cc8ef00f645d289509b"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_labels.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_labels.jpg",
+      "size": 317991,
+      "sha256": "50256065d7e8a9891706741956dcec575c21a851187af0c0b34cf44569453b66"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_pred.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_pred.jpg",
+      "size": 308699,
+      "sha256": "c858c82c8ef87a99f9dc9c1bdcec4914d2bfbc22d474c87613aa3e9c35da00aa"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_labels.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_labels.jpg",
+      "size": 294434,
+      "sha256": "694bbfbec20993d58f7eeaf8e2d6d32b800c820210cf228e273314e750003223"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_pred.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_pred.jpg",
+      "size": 293542,
+      "sha256": "81bad59f3a987be6108a679a9a8e9069190bd867e752d6fa6e8cac34d0527598"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_labels.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_labels.jpg",
+      "size": 265097,
+      "sha256": "e1f3c095628557df384930f820d53fb7eb1d9b17d135f2eae190dd6739deeb46"
+    },
+    {
+      "relative_path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_pred.jpg",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_pred.jpg",
+      "size": 276396,
+      "sha256": "6aa3883b4e908f2c50c60365b4058dc0d7dc240c6fc09d0d02e5b4d6125eac37"
+    },
+    {
+      "relative_path": "scripts/analysis/closeout_det_baseline.py",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/scripts/analysis/closeout_det_baseline.py",
+      "size": 6286,
+      "sha256": "dfdf3a2cf8b58124b72470cfe4e13989ef36b1fdf239a61d45c3ddac9699987e"
+    },
+    {
+      "relative_path": "scripts/analysis/det_baseline_common.py",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/scripts/analysis/det_baseline_common.py",
+      "size": 3633,
+      "sha256": "d2bf955b21f6df54db9ba9c3c644715c1de82d4ef66a5795d2bf0efd586a886e"
+    },
+    {
+      "relative_path": "scripts/analysis/render_det_baseline_examples.py",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/scripts/analysis/render_det_baseline_examples.py",
+      "size": 5400,
+      "sha256": "64fe007bf4536057c6103317c8c73fe7ba96871f8bde224479ec48bf842300d7"
+    },
+    {
+      "relative_path": "scripts/analysis/summarize_det_baseline.py",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/scripts/analysis/summarize_det_baseline.py",
+      "size": 11740,
+      "sha256": "2755c899225d453cb26dbdc9f98a4853e5bccba7570fc09350e0a100808f1154"
+    },
+    {
+      "relative_path": "scripts/analysis/validate_det_baseline.py",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/scripts/analysis/validate_det_baseline.py",
+      "size": 8221,
+      "sha256": "f1078a0257cfa192d9953806699c7eb5fe415ec8761ecc6eb836427439cd2a2b"
+    },
+    {
+      "relative_path": "tests/analysis/test_det_baseline_analysis.py",
+      "repository_destination": "C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection/tests/analysis/test_det_baseline_analysis.py",
+      "size": 2722,
+      "sha256": "3f4935728ee7d00134930a53123c0a90ee198ada3e73cd2e3cc6fb74962cf870"
+    }
+  ],
+  "note": "72 new repository files including the repository manifest itself; original baseline, raw data and existing files unchanged. Manifest excludes its own hash.",
+  "placement": "COMPLETE"
+}

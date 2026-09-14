@@ -1,0 +1,587 @@
+{
+  "analysis_utc": "2026-09-13T23:23:22.603845+00:00",
+  "source_root": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+  "run": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE",
+  "git": {
+    "branch": "chat02/detector-training",
+    "sha": "8ee410771c8be794d366e5e014f14f748edca97f",
+    "origin_main": "043ce54d40708c6bf278f8b07741c1e4afe9ccd6",
+    "dirty": true,
+    "status": "?? outputs/training/defect_detection/DET-BASELINE/",
+    "diff": ""
+  },
+  "current_git_status": "?? outputs/training/defect_detection/DET-BASELINE/\n",
+  "environment": {
+    "operating_system": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "python_executable": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+    "environment_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection",
+    "active_venv": null,
+    "active_conda": "C:\\Users\\Aritra\\anaconda3",
+    "isolated": true,
+    "pip": "26.2.1",
+    "torch": "2.14.0+cu130",
+    "torchvision": "0.29.0+cu130",
+    "ultralytics": "8.4.145",
+    "numpy": "2.4.6",
+    "opencv-python": "5.0.0.93",
+    "Pillow": "12.3.0",
+    "nvidia_smi": "Sat Sep 12 15:34:58 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 591.94                 Driver Version: 591.94         CUDA Version: 13.1     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4070 ...  WDDM  |   00000000:01:00.0  On |                  N/A |\n| N/A   56C    P5              9W /   91W |    3055MiB /   8188MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A            5364    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\n|    0   N/A  N/A            6120    C+G   ....0.4191.66\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A            7740    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\n|    0   N/A  N/A           10880    C+G   ...IA App\\CEF\\NVIDIA Overlay.exe      N/A      |\n|    0   N/A  N/A           14488    C+G   ...2p2nqsd0c76g0\\app\\ChatGPT.exe      N/A      |\n|    0   N/A  N/A           16056    C+G   ...5n1h2txyewy\\TextInputHost.exe      N/A      |\n|    0   N/A  N/A           16360    C+G   ...cw5n1h2txyewy\\WidgetBoard.exe      N/A      |\n|    0   N/A  N/A           16748    C+G   C:\\Windows\\explorer.exe               N/A      |\n|    0   N/A  N/A           17204    C+G   ...2txyewy\\CrossDeviceResume.exe      N/A      |\n|    0   N/A  N/A           17436    C+G   ...IA App\\CEF\\NVIDIA Overlay.exe      N/A      |\n|    0   N/A  N/A           17624    C+G   ...y\\StartMenuExperienceHost.exe      N/A      |\n|    0   N/A  N/A           17668    C+G   ..._cw5n1h2txyewy\\SearchHost.exe      N/A      |\n|    0   N/A  N/A           19592    C+G   ...4__8wekyb3d8bbwe\\ms-teams.exe      N/A      |\n|    0   N/A  N/A           20276    C+G   ...em32\\ApplicationFrameHost.exe      N/A      |\n|    0   N/A  N/A           21436    C+G   ....0.4191.66\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           23704    C+G   ...lot\\Application\\mscopilot.exe      N/A      |\n|    0   N/A  N/A           24564    C+G   ...ntrolPanel\\SystemSettings.exe      N/A      |\n|    0   N/A  N/A           24960    C+G   ...yb3d8bbwe\\Notepad\\Notepad.exe      N/A      |\n|    0   N/A  N/A           26492    C+G   ...t\\Edge\\Application\\msedge.exe      N/A      |\n|    0   N/A  N/A           27176    C+G   ...crosoft\\OneDrive\\OneDrive.exe      N/A      |\n|    0   N/A  N/A           29788    C+G   ...App_cw5n1h2txyewy\\LockApp.exe      N/A      |\n|    0   N/A  N/A           30424    C+G   ...\\cef.win64\\steamwebhelper.exe      N/A      |\n|    0   N/A  N/A           30852    C+G   ....0.4191.66\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           31808    C+G   ...4__8wekyb3d8bbwe\\ms-teams.exe      N/A      |\n|    0   N/A  N/A           32224    C+G   ...indows\\System32\\ShellHost.exe      N/A      |\n|    0   N/A  N/A           33672    C+G   ...SnippingTool\\SnippingTool.exe      N/A      |\n|    0   N/A  N/A           34884    C+G   ...xyewy\\ShellExperienceHost.exe      N/A      |\n|    0   N/A  N/A           36612    C+G   ...yb3d8bbwe\\WindowsTerminal.exe      N/A      |\n|    0   N/A  N/A           40028    C+G   ...8wekyb3d8bbwe\\M365Copilot.exe      N/A      |\n|    0   N/A  N/A           40812    C+G   ....0.4191.66\\msedgewebview2.exe      N/A      |\n+-----------------------------------------------------------------------------------------+",
+    "nvidia_driver_gpu": "name, driver_version, memory.total [MiB], compute_cap\nNVIDIA GeForce RTX 4070 Laptop GPU, 591.94, 8188 MiB, 8.9",
+    "nvcc": "Not found on PATH",
+    "torch_cuda_runtime": "13.0",
+    "cuda_available": true,
+    "gpu_count": 1,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+        "compute_capability": [
+          8,
+          9
+        ],
+        "total_memory_bytes": 8585216000
+      }
+    ],
+    "cudnn": 92400,
+    "opencv": "5.0.0",
+    "pillow": "12.3.0",
+    "cuda_tensor_check": true,
+    "status": "PASS"
+  },
+  "packages": {
+    "anyio": "4.15.1",
+    "catkin-pkg": "1.1.1",
+    "certifi": "2026.7.22",
+    "charset-normalizer": "3.5.1",
+    "cloudpickle": "3.1.2",
+    "colorama": "0.4.6",
+    "contourpy": "1.3.3",
+    "cycler": "0.12.1",
+    "docutils": "0.23",
+    "filelock": "3.32.3",
+    "fonttools": "4.65.0",
+    "fsspec": "2026.7.0",
+    "h11": "0.16.0",
+    "httpcore": "1.0.9",
+    "httpx": "0.28.1",
+    "idna": "3.19",
+    "iniconfig": "2.3.0",
+    "Jinja2": "3.1.6",
+    "kiwisolver": "1.5.1",
+    "MarkupSafe": "3.0.3",
+    "matplotlib": "3.11.2",
+    "mpmath": "1.3.0",
+    "networkx": "3.6.1",
+    "numpy": "2.4.6",
+    "nvidia-ml-py": "13.610.43",
+    "opencv-python": "5.0.0.93",
+    "packaging": "26.3",
+    "pillow": "12.3.0",
+    "pip": "26.2.1",
+    "pluggy": "1.6.0",
+    "polars": "1.44.2",
+    "polars-runtime-32": "1.44.2",
+    "psutil": "7.2.2",
+    "Pygments": "2.21.0",
+    "pyparsing": "3.3.2",
+    "pytest": "9.1.1",
+    "python-dateutil": "2.9.0.post0",
+    "PyYAML": "6.0.3",
+    "requests": "2.34.2",
+    "setuptools": "78.1.0",
+    "six": "1.17.0",
+    "sympy": "1.14.0",
+    "torch": "2.14.0+cu130",
+    "torchvision": "0.29.0+cu130",
+    "typing_extensions": "4.16.0",
+    "ultralytics": "8.4.145",
+    "ultralytics-platform": "0.1.40",
+    "ultralytics-thop": "2.1.6",
+    "urllib3": "2.7.0",
+    "xacro": "2.1.1"
+  },
+  "acquisition": {
+    "filename": "yolo26s.pt",
+    "model_id": "yolo26s",
+    "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt",
+    "acquisition": "HTTPS download from official ultralytics/assets v8.4.0 release",
+    "local_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\cache\\models\\ultralytics\\v8.4.0\\yolo26s.pt",
+    "size_bytes": 20422725,
+    "sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b"
+  },
+  "resolved_config": {
+    "ultralytics": {
+      "task": "detect",
+      "mode": "train",
+      "model": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\cache\\models\\ultralytics\\v8.4.0\\yolo26s.pt",
+      "data": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\development_data.yaml",
+      "epochs": 100,
+      "time": null,
+      "patience": 30,
+      "batch": 4,
+      "imgsz": 640,
+      "save": true,
+      "save_period": 10,
+      "cache": false,
+      "device": "0",
+      "workers": 0,
+      "project": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection",
+      "name": "DET-BASELINE",
+      "exist_ok": true,
+      "pretrained": true,
+      "cls_remap": true,
+      "optimizer": "SGD",
+      "verbose": true,
+      "seed": 42,
+      "deterministic": true,
+      "single_cls": false,
+      "rect": false,
+      "cos_lr": false,
+      "close_mosaic": 10,
+      "resume": false,
+      "amp": "bf16",
+      "fraction": 1.0,
+      "profile": false,
+      "freeze": null,
+      "multi_scale": 0.0,
+      "compile": false,
+      "channels_last": false,
+      "overlap_mask": true,
+      "mask_ratio": 4,
+      "dropout": 0.0,
+      "val": true,
+      "split": "val",
+      "save_json": false,
+      "conf": 0.001,
+      "iou": 0.7,
+      "max_det": 300,
+      "quantize": null,
+      "dnn": false,
+      "plots": true,
+      "nms": false,
+      "source": null,
+      "vid_stride": 1,
+      "stream_buffer": false,
+      "visualize": false,
+      "augment": false,
+      "agnostic_nms": false,
+      "classes": null,
+      "retina_masks": false,
+      "embed": null,
+      "show": false,
+      "save_frames": false,
+      "save_txt": false,
+      "save_conf": false,
+      "save_crop": false,
+      "show_labels": true,
+      "show_conf": true,
+      "show_boxes": true,
+      "line_width": null,
+      "format": "torchscript",
+      "keras": false,
+      "optimize": false,
+      "dynamic": false,
+      "simplify": true,
+      "opset": null,
+      "workspace": null,
+      "lr0": 0.01,
+      "lrf": 0.01,
+      "momentum": 0.937,
+      "weight_decay": 0.0005,
+      "warmup_epochs": 3.0,
+      "warmup_momentum": 0.8,
+      "warmup_bias_lr": 0.1,
+      "distill_model": null,
+      "dis": 6.0,
+      "box": 7.5,
+      "cls": 0.5,
+      "cls_pw": 0.0,
+      "dfl": 1.5,
+      "pose": 12.0,
+      "kobj": 1.0,
+      "rle": 1.0,
+      "angle": 1.0,
+      "dlog": 1.0,
+      "dgrad": 0.5,
+      "dlam": 1.0,
+      "nbs": 64,
+      "hsv_h": 0.015,
+      "hsv_s": 0.7,
+      "hsv_v": 0.4,
+      "degrees": 0.0,
+      "translate": 0.1,
+      "scale": 0.5,
+      "shear": 0.0,
+      "perspective": 0.0,
+      "flipud": 0.0,
+      "fliplr": 0.5,
+      "bgr": 0.0,
+      "mosaic": 1.0,
+      "mixup": 0.0,
+      "cutmix": 0.0,
+      "copy_paste": 0.0,
+      "copy_paste_mode": "flip",
+      "auto_augment": null,
+      "erasing": 0.0,
+      "cfg": null,
+      "tracker": "tracktrack.yaml",
+      "save_dir": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE"
+    },
+    "optimizer": "SGD",
+    "optimizer_groups": [
+      {
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "param_group": "weight",
+        "dampening": 0,
+        "maximize": false,
+        "foreach": null,
+        "differentiable": false,
+        "fused": null,
+        "initial_lr": 0.01
+      },
+      {
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0,
+        "param_group": "bn",
+        "dampening": 0,
+        "maximize": false,
+        "foreach": null,
+        "differentiable": false,
+        "fused": null,
+        "initial_lr": 0.01
+      },
+      {
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "param_group": "bias",
+        "dampening": 0,
+        "weight_decay": 0,
+        "maximize": false,
+        "foreach": null,
+        "differentiable": false,
+        "fused": null,
+        "initial_lr": 0.01
+      }
+    ],
+    "accumulate": 16,
+    "parameter_count": 9952508,
+    "train_images": 8305,
+    "valid_images": 1040,
+    "validation_batch": 8,
+    "albumentations": "disabled",
+    "image_cache": false,
+    "label_disk_cache": false,
+    "initialization": {
+      "filename": "yolo26s.pt",
+      "model_id": "yolo26s",
+      "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt",
+      "acquisition": "HTTPS download from official ultralytics/assets v8.4.0 release",
+      "local_path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\cache\\models\\ultralytics\\v8.4.0\\yolo26s.pt",
+      "size_bytes": 20422725,
+      "sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b"
+    }
+  },
+  "dataset_identity": {
+    "identity": "GYU-DET V3 baseline-v1",
+    "hashes": {
+      "configs/data/gyu_det_v3_baseline_v1.yaml": "b78bb6f68d51e9a2d98bb18fcce32162d4c15e05ff999dfaf36a0c4d221b639c",
+      "data/processed/gyu_det_v3_baseline_v1/splits/train.txt": "7608451e1e2c3b4a3f54398a50cc6e3687024873f9255fc9b838d0abf719258f",
+      "data/processed/gyu_det_v3_baseline_v1/splits/valid.txt": "949df7d3ba34166f596dc179897b2c70a242a1a05b136ec48502673e54af4bdf",
+      "data/manifests/gyu_det_v3_baseline_v1/train.csv": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+      "data/manifests/gyu_det_v3_baseline_v1/valid.csv": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06"
+    },
+    "counts": {
+      "train": 8305,
+      "valid": 1040
+    },
+    "policy": {
+      "yaml": "configs/data/gyu_det_v3_baseline_v1.yaml",
+      "identity": "GYU-DET V3 baseline-v1",
+      "train_split": "train",
+      "validation_split": "valid",
+      "test_policy": "prohibited"
+    }
+  },
+  "development_data": {
+    "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+    "train": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\train.txt",
+    "val": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\valid.txt",
+    "names": {
+      "0": "Crack",
+      "1": "Breakage",
+      "2": "Honeycombing",
+      "3": "Hole",
+      "4": "Exposed Reinforcement",
+      "5": "Seepage"
+    },
+    "nc": 6,
+    "channels": 3
+  },
+  "run_evidence": {
+    "status": "PASS",
+    "engineering_smoke": false,
+    "test_accessed": false,
+    "requested_batch": 4,
+    "optimizer_steps": 12736,
+    "parameter_updates": 12735,
+    "batches": 191084,
+    "epochs": 92,
+    "finite_losses": true,
+    "validation_calls": 93,
+    "loss_history": [],
+    "device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "classes": {
+      "0": "Crack",
+      "1": "Breakage",
+      "2": "Honeycombing",
+      "3": "Hole",
+      "4": "Exposed Reinforcement",
+      "5": "Seepage"
+    },
+    "resolved_batch": 4,
+    "resolved_optimizer": "SGD",
+    "mean_train_losses": {
+      "box_loss": 1.4315356016159058,
+      "cls_loss": 1.1844160556793213,
+      "l1_loss": 0.011118571273982525
+    },
+    "fit_seconds": 91061.24782680001,
+    "train_validation_seconds": 90976.35977799998,
+    "gpu_peak_allocated_bytes": 1414465024,
+    "gpu_peak_reserved_bytes": 1612709888,
+    "metrics": {
+      "metrics/precision(B)": 0.47223142096534465,
+      "metrics/recall(B)": 0.4130733263020834,
+      "metrics/mAP50(B)": 0.3884237740581788,
+      "metrics/mAP50-95(B)": 0.21699306833671056
+    },
+    "checkpoints": {
+      "best.pt": {
+        "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\weights\\best.pt",
+        "size_bytes": 20301573,
+        "sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3"
+      },
+      "last.pt": {
+        "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\weights\\last.pt",
+        "size_bytes": 20301573,
+        "sha256": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982"
+      }
+    },
+    "total_seconds_excluding_snapshot": 91061.8373411,
+    "raw_immutability": {
+      "files_added": [],
+      "files_removed": [],
+      "size_changes": [],
+      "mtime_ns_changes": [],
+      "sha256_changes": [],
+      "new_cache_files": [],
+      "new_npy_files": [],
+      "status": "PASS",
+      "files_observed": 21559,
+      "content_hashed_development_files": 18690,
+      "cache_files": [],
+      "npy_files": []
+    }
+  },
+  "best_epoch": 62,
+  "reported_hours": 25.248,
+  "train_validation_hours": 25.27121104944444,
+  "fit_hours": 25.294791063,
+  "assertions": {
+    "run_sha": {
+      "actual": "8ee410771c8be794d366e5e014f14f748edca97f",
+      "expected": "8ee410771c8be794d366e5e014f14f748edca97f",
+      "match": true
+    },
+    "current_sha": {
+      "actual": "8ee410771c8be794d366e5e014f14f748edca97f",
+      "expected": "8ee410771c8be794d366e5e014f14f748edca97f",
+      "match": true
+    },
+    "branch": {
+      "actual": "chat02/detector-training",
+      "expected": "chat02/detector-training",
+      "match": true
+    },
+    "best.pt_stored_sha": {
+      "actual": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+      "expected": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+      "match": true
+    },
+    "best.pt_current_sha": {
+      "actual": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+      "expected": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+      "match": true
+    },
+    "last.pt_stored_sha": {
+      "actual": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982",
+      "expected": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982",
+      "match": true
+    },
+    "last.pt_current_sha": {
+      "actual": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982",
+      "expected": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982",
+      "match": true
+    },
+    "initial_checkpoint": {
+      "actual": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+      "expected": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+      "match": true
+    },
+    "src/detection/training/config.py": {
+      "actual": "b5cdb2e469d17e11128bbba5be0a065d9e026e77048d02aefe08617e16e2aec3",
+      "expected": "b5cdb2e469d17e11128bbba5be0a065d9e026e77048d02aefe08617e16e2aec3",
+      "match": true
+    },
+    "src/detection/training/dataset.py": {
+      "actual": "463bc97bff46dcba7aeb2ed017ccc74cde4d9e8ac0664e74f54ea418e06e2208",
+      "expected": "463bc97bff46dcba7aeb2ed017ccc74cde4d9e8ac0664e74f54ea418e06e2208",
+      "match": true
+    },
+    "src/detection/training/exif.py": {
+      "actual": "5e98e7fb9638efdf87d5795ac9ca8af0beb86e1f954c2f9681f45e92454f5679",
+      "expected": "5e98e7fb9638efdf87d5795ac9ca8af0beb86e1f954c2f9681f45e92454f5679",
+      "match": true
+    },
+    "src/detection/training/provenance.py": {
+      "actual": "1b8a87db017a578c03ab48d4e5cdc88e0dba0158a56c12ac2c3e9119d0549fc5",
+      "expected": "1b8a87db017a578c03ab48d4e5cdc88e0dba0158a56c12ac2c3e9119d0549fc5",
+      "match": true
+    },
+    "src/detection/training/trainer.py": {
+      "actual": "0082d8681c0e3a634ed9f26e1c83a907546bb8438e414c4dce0f2dc4b1a38d07",
+      "expected": "0082d8681c0e3a634ed9f26e1c83a907546bb8438e414c4dce0f2dc4b1a38d07",
+      "match": true
+    },
+    "src/detection/training/__init__.py": {
+      "actual": "372bc3ea8cfe0659a0977593efc8756aaa8c2e3c341a490cc4459843e255e1bc",
+      "expected": "372bc3ea8cfe0659a0977593efc8756aaa8c2e3c341a490cc4459843e255e1bc",
+      "match": true
+    },
+    "configs/detection/det_baseline.yaml": {
+      "actual": "d2b8bfd1de031317c79671729ce3ba5ed263edd4cf9cc879ad0148a9c8ed31e3",
+      "expected": "d2b8bfd1de031317c79671729ce3ba5ed263edd4cf9cc879ad0148a9c8ed31e3",
+      "match": true
+    },
+    "configs/detection/det_baseline_smoke.yaml": {
+      "actual": "5865881214ad0b463d743063ef391c5a9e2092de2836e6e62109ac4f3338c31b",
+      "expected": "5865881214ad0b463d743063ef391c5a9e2092de2836e6e62109ac4f3338c31b",
+      "match": true
+    },
+    "configs/data/gyu_det_v3_baseline_v1.yaml": {
+      "actual": "b78bb6f68d51e9a2d98bb18fcce32162d4c15e05ff999dfaf36a0c4d221b639c",
+      "expected": "b78bb6f68d51e9a2d98bb18fcce32162d4c15e05ff999dfaf36a0c4d221b639c",
+      "match": true
+    },
+    "data/processed/gyu_det_v3_baseline_v1/splits/train.txt": {
+      "actual": "7608451e1e2c3b4a3f54398a50cc6e3687024873f9255fc9b838d0abf719258f",
+      "expected": "7608451e1e2c3b4a3f54398a50cc6e3687024873f9255fc9b838d0abf719258f",
+      "match": true
+    },
+    "data/processed/gyu_det_v3_baseline_v1/splits/valid.txt": {
+      "actual": "949df7d3ba34166f596dc179897b2c70a242a1a05b136ec48502673e54af4bdf",
+      "expected": "949df7d3ba34166f596dc179897b2c70a242a1a05b136ec48502673e54af4bdf",
+      "match": true
+    },
+    "data/manifests/gyu_det_v3_baseline_v1/train.csv": {
+      "actual": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+      "expected": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+      "match": true
+    },
+    "data/manifests/gyu_det_v3_baseline_v1/valid.csv": {
+      "actual": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06",
+      "expected": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06",
+      "match": true
+    },
+    "scripts/train_detector.py": {
+      "actual": "ae4fcc4011a67732b6a86e2365cb786bcf02b456778b3c4f2b242adfc2ca1f89",
+      "expected": "ae4fcc4011a67732b6a86e2365cb786bcf02b456778b3c4f2b242adfc2ca1f89",
+      "match": true
+    },
+    "train_membership": {
+      "actual": true,
+      "expected": true,
+      "match": true
+    },
+    "train_count": {
+      "actual": 8305,
+      "expected": 8305,
+      "match": true
+    },
+    "valid_membership": {
+      "actual": true,
+      "expected": true,
+      "match": true
+    },
+    "valid_count": {
+      "actual": 1040,
+      "expected": 1040,
+      "match": true
+    },
+    "epochs_completed": {
+      "actual": 92,
+      "expected": 92,
+      "match": true
+    },
+    "best_epoch_csv": {
+      "actual": 62,
+      "expected": 62,
+      "match": true
+    },
+    "patience": {
+      "actual": 30,
+      "expected": 30,
+      "match": true
+    },
+    "classes": {
+      "actual": [
+        "Crack",
+        "Breakage",
+        "Honeycombing",
+        "Hole",
+        "Exposed Reinforcement",
+        "Seepage"
+      ],
+      "expected": [
+        "Crack",
+        "Breakage",
+        "Honeycombing",
+        "Hole",
+        "Exposed Reinforcement",
+        "Seepage"
+      ],
+      "match": true
+    },
+    "development_metadata_changes": {
+      "actual": [],
+      "expected": [],
+      "match": true
+    }
+  },
+  "raw_existing_immutability": {
+    "files_added": [],
+    "files_removed": [],
+    "size_changes": [],
+    "mtime_ns_changes": [],
+    "sha256_changes": [],
+    "new_cache_files": [],
+    "new_npy_files": [],
+    "status": "PASS",
+    "files_observed": 21559,
+    "content_hashed_development_files": 18690,
+    "cache_files": [],
+    "npy_files": []
+  },
+  "current_development_metadata": {
+    "files": 18690,
+    "changes": []
+  },
+  "original_per_class_precision": "Only 3-significant-digit trainer.log/plot values persisted; fresh inference is separately labeled."
+}

@@ -1,0 +1,14 @@
+{
+  "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+  "test": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\data\\processed\\gyu_det_v3_baseline_v1\\splits\\test.txt",
+  "nc": 6,
+  "channels": 3,
+  "names": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  }
+}

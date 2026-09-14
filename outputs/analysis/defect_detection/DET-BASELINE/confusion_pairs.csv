@@ -1,0 +1,27 @@
+truth,predicted,count,fraction_of_truth
+Breakage,Honeycombing,297,0.1395021136683889
+Honeycombing,Breakage,114,0.23799582463465555
+Exposed Reinforcement,Breakage,98,0.07385079125847777
+Breakage,Seepage,85,0.03992484734617191
+Breakage,Exposed Reinforcement,68,0.03193987787693753
+Seepage,Breakage,65,0.17195767195767195
+Hole,Exposed Reinforcement,61,0.2675438596491228
+Breakage,Crack,58,0.02724283701268201
+Crack,Breakage,31,0.08469945355191257
+Hole,Breakage,26,0.11403508771929824
+Breakage,Hole,24,0.011272898074213245
+Honeycombing,Crack,20,0.04175365344467641
+Seepage,Exposed Reinforcement,20,0.05291005291005291
+Exposed Reinforcement,Hole,19,0.014318010550113038
+Exposed Reinforcement,Crack,17,0.01281085154483798
+Crack,Honeycombing,14,0.03825136612021858
+Honeycombing,Seepage,13,0.027139874739039668
+Seepage,Honeycombing,10,0.026455026455026454
+Exposed Reinforcement,Honeycombing,9,0.006782215523737754
+Exposed Reinforcement,Seepage,7,0.0052750565184626974
+Crack,Exposed Reinforcement,6,0.01639344262295082
+Honeycombing,Hole,3,0.006263048016701462
+Seepage,Crack,3,0.007936507936507936
+Hole,Honeycombing,2,0.008771929824561403
+Hole,Seepage,2,0.008771929824561403
+Honeycombing,Exposed Reinforcement,1,0.0020876826722338203

@@ -1,0 +1,11 @@
+{
+  "phase": "inference",
+  "images_processed": 1053,
+  "batches_processed": 132,
+  "model_inference_began": true,
+  "partial_predictions_exist": true,
+  "partial_metrics_exist": false,
+  "metrics_complete": false,
+  "inference_complete": false,
+  "inference_batch_calls": 132
+}

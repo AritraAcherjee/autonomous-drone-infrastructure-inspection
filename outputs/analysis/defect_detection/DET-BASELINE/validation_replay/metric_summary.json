@@ -1,0 +1,99 @@
+{
+  "metrics": {
+    "metrics/precision(B)": 0.47223142096534465,
+    "metrics/recall(B)": 0.4130733263020834,
+    "metrics/mAP50(B)": 0.3884237740581788,
+    "metrics/mAP50-95(B)": 0.21699306833671056,
+    "fitness": 0.21699306833671056
+  },
+  "automatic_max_mean_f1_confidence": 0.18618618618618618,
+  "confusion_confidence": 0.001,
+  "confusion_iou": 0.45,
+  "metric_iou": [
+    0.5,
+    0.55,
+    0.6000000000000001,
+    0.6500000000000001,
+    0.7000000000000002,
+    0.7500000000000002,
+    0.8000000000000003,
+    0.8500000000000003,
+    0.9000000000000004,
+    0.9500000000000004
+  ],
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "Crack",
+      "precision": 0.46345548044577173,
+      "recall": 0.3907103825136612,
+      "ap50": 0.37945040734324964,
+      "ap50_95": 0.21528315054090097,
+      "ap75": 0.23411647275132685,
+      "instances": 366,
+      "images": 146,
+      "metric_source": "new_validation_replay"
+    },
+    {
+      "class_id": 1,
+      "class_name": "Breakage",
+      "precision": 0.45136603051099844,
+      "recall": 0.38046031000469704,
+      "ap50": 0.364852687240372,
+      "ap50_95": 0.19493097158316824,
+      "ap75": 0.19069985865604638,
+      "instances": 2129,
+      "images": 761,
+      "metric_source": "new_validation_replay"
+    },
+    {
+      "class_id": 2,
+      "class_name": "Honeycombing",
+      "precision": 0.3407275283081562,
+      "recall": 0.5594989561586639,
+      "ap50": 0.4021166632173683,
+      "ap50_95": 0.25719773591981776,
+      "ap75": 0.28451665459268183,
+      "instances": 479,
+      "images": 302,
+      "metric_source": "new_validation_replay"
+    },
+    {
+      "class_id": 3,
+      "class_name": "Hole",
+      "precision": 0.5504310295847963,
+      "recall": 0.41228070175438597,
+      "ap50": 0.4185572609968833,
+      "ap50_95": 0.18675852536428042,
+      "ap75": 0.12663989598660874,
+      "instances": 228,
+      "images": 106,
+      "metric_source": "new_validation_replay"
+    },
+    {
+      "class_id": 4,
+      "class_name": "Exposed Reinforcement",
+      "precision": 0.6062583578213946,
+      "recall": 0.48681235870384326,
+      "ap50": 0.5183876920011132,
+      "ap50_95": 0.29981573193895605,
+      "ap75": 0.3084060261723492,
+      "instances": 1327,
+      "images": 332,
+      "metric_source": "new_validation_replay"
+    },
+    {
+      "class_id": 5,
+      "class_name": "Seepage",
+      "precision": 0.42115009912095114,
+      "recall": 0.24867724867724866,
+      "ap50": 0.24717793355008633,
+      "ap50_95": 0.14797229467314005,
+      "ap75": 0.1561839247189803,
+      "instances": 378,
+      "images": 167,
+      "metric_source": "new_validation_replay"
+    }
+  ],
+  "note": "Fresh validation inference, not recovered historical precision. No deployment threshold selected."
+}

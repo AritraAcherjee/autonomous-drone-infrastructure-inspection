@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-14T00:28:00.540887+00:00",
+  "references": [
+    {
+      "path": "configs/detection/det_baseline.yaml",
+      "sha256": "d2b8bfd1de031317c79671729ce3ba5ed263edd4cf9cc879ad0148a9c8ed31e3",
+      "size_bytes": 1730
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/resolved_config.json",
+      "sha256": "c2cfa26e9316c95bf4060b37b32d4393c9141acb8d52a27f9adfa38a352669ee",
+      "size_bytes": 4764
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/requested_config.json",
+      "sha256": "20d03866ff8a2a8b4ba3052e45365bb623020c0cc575e39a3e8b2cda5ea8d100",
+      "size_bytes": 2397
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/run_evidence.json",
+      "sha256": "c14991da5845a4ac9fc4c2a1cd48e21c7092937ea8cd0aa10edef9f54fc95fe3",
+      "size_bytes": 2142
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/results.csv",
+      "sha256": "c21bf909551571a9f791478ef126c474fbd087755c5ac92bf8e0ee604fb0f941",
+      "size_bytes": 11013
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/provenance.json",
+      "sha256": "4582c0f7eb923e34a8f3f5b1bd4e3d2905a6703706cee4024312c12354c54eb3",
+      "size_bytes": 11173
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/raw_immutability.json",
+      "sha256": "c0541e4e5785ec103441bc923633aa637abcde32047148bce11236a510cbb524",
+      "size_bytes": 313
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/development_data.yaml",
+      "sha256": "afc3e9f808592615f8b73e6da48c7a76f243d88a15800d7984553b872eef75ba",
+      "size_bytes": 580
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/checkpoint_acquisition.json",
+      "sha256": "80d74acd77bf37d0c4e9351c2426a93d2ea69e1f3132f8c7fd6d741e0aa3a390",
+      "size_bytes": 492
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/args.yaml",
+      "sha256": "cea6c6405250da2bf01ee30b669ea34f494975ccbfa94dacc8a65d713db51f13",
+      "size_bytes": 2182
+    },
+    {
+      "path": "docs/experiments/defect_detection/DET_BASELINE_FAILURE_ANALYSIS.md",
+      "sha256": "c20283e3b69c45a25851faab86753419127050c7eab79df7c9cc286effe530ff",
+      "size_bytes": 37237
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/baseline_provenance.json",
+      "sha256": "5a31e12f17f9c533facae40bba9b4c7bc8c166a17d2aa5afbcc1bcffe33cea45",
+      "size_bytes": 24486
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/per_class_metrics.csv",
+      "sha256": "f244bee09726d4530c423b22538da6ab860a8e77fc455ba70a92ff0fa984546b",
+      "size_bytes": 1468
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/failure_modes.json",
+      "sha256": "3e66723ac901b02abdf238a4f58137691596977e29f0a4e3adbc90f658c9ee25",
+      "size_bytes": 5532
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/det_improved_proposal.json",
+      "sha256": "9e3acc6ef7a5ee42218a8f2d819d5e4201b7a3915a5b4ed55c29850aaa505349",
+      "size_bytes": 6439
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/baseline_inventory_before.json",
+      "sha256": "21e75477bb4579a755ac9dc1a044292ba3196442e62bad33416c1f379bb1c947",
+      "size_bytes": 8155
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/safety_status.json",
+      "sha256": "87d022a8ec9bc20d2d8283a9d3b900b396a9dc2399c8bbf3b60e0686fe7e29b2",
+      "size_bytes": 21162
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/analysis_source_manifest.json",
+      "sha256": "799c60c15079b901d6e067957306ff0cf78606c61123a27227351037cd4b3d5f",
+      "size_bytes": 710
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/artifact_manifest.json",
+      "sha256": "a41e4d74f32b5101817bba15cf4677f6eb2d0a67aad88cc2560f53f1b959aed2",
+      "size_bytes": 28656
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/inference_config.json",
+      "sha256": "14363372a67043a712f6616bf688b1f7e1f0246c28af5df1c85030b99fbe8821",
+      "size_bytes": 4719
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/metric_summary.json",
+      "sha256": "5c0c6630933a9828dd0f2b304b60913d4c518df697112ebcf82b613c7f19d509",
+      "size_bytes": 2882
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/per_class_metrics_full_precision.csv",
+      "sha256": "d9a74820095976235ab6359f224f8aa8bfec1eb89862dc7f632ea64ec8ae9294",
+      "size_bytes": 938
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.json",
+      "sha256": "88848ed565fdd56f9eae07f6a214f8f2bf91252ea6856c79dd89cdaed2e96e69",
+      "size_bytes": 1167
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/checkpoint_metadata.json",
+      "sha256": "b49a658ceb8c347e12a4d6c74582edabd306cf24a6fcfede0d75d0576ea7a539",
+      "size_bytes": 3860
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/completion.json",
+      "sha256": "f884b729866e39f474981a38ca0e8f5d0c5cadafe12c8a091fee2608f0ac3dc1",
+      "size_bytes": 696
+    },
+    {
+      "path": "data/manifests/gyu_det_v3_baseline_v1/VERSION.json",
+      "sha256": "840e3ffa18cd6eddcb9fb3b988a40f217ee45e70d5e33c513d1bde342a213b41",
+      "size_bytes": 2023
+    },
+    {
+      "path": "data/manifests/gyu_det_v3_baseline_v1/manifest_metadata.json",
+      "sha256": "53306a33bbe9afefa685cf5c61c5234e4c1f39de16b104ca468989d44418b4b2",
+      "size_bytes": 7515
+    },
+    {
+      "path": "configs/data/gyu_det_v3_baseline_v1.yaml",
+      "sha256": "b78bb6f68d51e9a2d98bb18fcce32162d4c15e05ff999dfaf36a0c4d221b639c",
+      "size_bytes": 387
+    },
+    {
+      "path": "data/manifests/gyu_det_v3_baseline_v1/train.csv",
+      "sha256": "1a1437aa703ebc9225db58d0c78798ac31f9b913be9c04a568915836c10ade61",
+      "size_bytes": 1993730
+    },
+    {
+      "path": "data/manifests/gyu_det_v3_baseline_v1/valid.csv",
+      "sha256": "617dacf909fa990b6e807c17eb346e8b4e80010dfe3e068d744cadcc18945b06",
+      "size_bytes": 249803
+    },
+    {
+      "path": "data/processed/gyu_det_v3_baseline_v1/splits/train.txt",
+      "sha256": "7608451e1e2c3b4a3f54398a50cc6e3687024873f9255fc9b838d0abf719258f",
+      "size_bytes": 532565
+    },
+    {
+      "path": "data/processed/gyu_det_v3_baseline_v1/splits/valid.txt",
+      "sha256": "949df7d3ba34166f596dc179897b2c70a242a1a05b136ec48502673e54af4bdf",
+      "size_bytes": 66889
+    },
+    {
+      "path": "src/detection/training/config.py",
+      "sha256": "b5cdb2e469d17e11128bbba5be0a065d9e026e77048d02aefe08617e16e2aec3",
+      "size_bytes": 10844
+    },
+    {
+      "path": "src/detection/training/dataset.py",
+      "sha256": "463bc97bff46dcba7aeb2ed017ccc74cde4d9e8ac0664e74f54ea418e06e2208",
+      "size_bytes": 4748
+    },
+    {
+      "path": "src/detection/training/exif.py",
+      "sha256": "5e98e7fb9638efdf87d5795ac9ca8af0beb86e1f954c2f9681f45e92454f5679",
+      "size_bytes": 9007
+    },
+    {
+      "path": "src/detection/training/provenance.py",
+      "sha256": "1b8a87db017a578c03ab48d4e5cdc88e0dba0158a56c12ac2c3e9119d0549fc5",
+      "size_bytes": 3851
+    },
+    {
+      "path": "src/detection/data/readonly_verifier.py",
+      "sha256": "ec9311b0746a964d07a1f9678c3ddc67260d601c0f9ee5c085920b3e5eb74d28",
+      "size_bytes": 4898
+    },
+    {
+      "path": "src/detection/data/raw_guard.py",
+      "sha256": "c36e6983ada35819b63e319a2c0293cbfd732a130cecc25872d1956f6e1eb92b",
+      "size_bytes": 3462
+    },
+    {
+      "path": "scripts/analysis/closeout_det_baseline.py",
+      "sha256": "dfdf3a2cf8b58124b72470cfe4e13989ef36b1fdf239a61d45c3ddac9699987e",
+      "size_bytes": 6286
+    },
+    {
+      "path": "scripts/analysis/det_baseline_common.py",
+      "sha256": "d2bf955b21f6df54db9ba9c3c644715c1de82d4ef66a5795d2bf0efd586a886e",
+      "size_bytes": 3633
+    },
+    {
+      "path": "scripts/analysis/render_det_baseline_examples.py",
+      "sha256": "64fe007bf4536057c6103317c8c73fe7ba96871f8bde224479ec48bf842300d7",
+      "size_bytes": 5400
+    },
+    {
+      "path": "scripts/analysis/summarize_det_baseline.py",
+      "sha256": "2755c899225d453cb26dbdc9f98a4853e5bccba7570fc09350e0a100808f1154",
+      "size_bytes": 11740
+    },
+    {
+      "path": "scripts/analysis/validate_det_baseline.py",
+      "sha256": "f1078a0257cfa192d9953806699c7eb5fe415ec8761ecc6eb836427439cd2a2b",
+      "size_bytes": 8221
+    },
+    {
+      "path": "scripts/analysis/verify_det_final_v1.py",
+      "sha256": "05b5cb5a857e79e9e96e8b49a6dc92a1f49159831d46827be08b7071c73da38a",
+      "size_bytes": 9467
+    },
+    {
+      "path": "tests/analysis/test_det_baseline_analysis.py",
+      "sha256": "3f4935728ee7d00134930a53123c0a90ee198ada3e73cd2e3cc6fb74962cf870",
+      "size_bytes": 2722
+    },
+    {
+      "path": "tests/analysis/test_det_final_v1.py",
+      "sha256": "8b032b38b496373c95c698d9be90b534c08409a96bf7e0926e541dc33daef1aa",
+      "size_bytes": 5115
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/candidate_inspection.json",
+      "sha256": "46f49fab7c4d5bb6cee0b277a9dbe6d7167881dc69d8ce8825796b273dc5e1ae",
+      "size_bytes": 6228
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/engine/validator.py",
+      "sha256": "3c34fed7b2974dd7054e0a800a3edc6c6f11b277ca4f5d80dadeaaf65903412e",
+      "size_bytes": 19833
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/models/yolo/detect/val.py",
+      "sha256": "10e7944ede74be2c40c176fea65b81956cbe3837fdff1e4a361f2b57f6483e60",
+      "size_bytes": 28555
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/utils/metrics.py",
+      "sha256": "a2125a0e9269fbb2e186e0a972d35465a9a81049b0cd6b568448abb784587869",
+      "size_bytes": 90347
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/utils/nms.py",
+      "sha256": "8162e70fc11f31e108f2b6ce56ee88873482b33ec249886fc104cf9c83a71952",
+      "size_bytes": 12949
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/utils/ops.py",
+      "sha256": "1a8034386c970fb779ef18f7117083dede6d138d4dbc5f66ed5db76624d36158",
+      "size_bytes": 34578
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/nn/tasks.py",
+      "sha256": "299489e916c39d4fc1b0dbaf7770dc9b41187b0f192cd44d9283209a9c7d1e8b",
+      "size_bytes": 98409
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/nn/modules/head.py",
+      "sha256": "fd14ac4fe568e2bcdde1e50ff0a519c84646b6ccd7fb3d667db1227c12c51eda",
+      "size_bytes": 84505
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/nn/autobackend.py",
+      "sha256": "ec584678dbba82a45617849e7e790506638d1ac0aaaf4e36d59835d11c3c23ae",
+      "size_bytes": 18069
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/nn/backends/pytorch.py",
+      "sha256": "27e3f28fa901d8ff4be36f191eac02fb1a10c1fe107526b64215e0c048561b6c",
+      "size_bytes": 5779
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/data/dataset.py",
+      "sha256": "6c30496c691aefeb0646bea23a1519d2960c927b71dae10c370afcd9765f0e0e",
+      "size_bytes": 58216
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/data/base.py",
+      "sha256": "863018d66387a9904d61368c5058e2ce1cfe830b6fd99a399fe9df159d4b0555",
+      "size_bytes": 22162
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/data/augment.py",
+      "sha256": "83e653664fa459beb66b9f245d90ca50ea25bc3c83caabfa9fab541d4abcb4b3",
+      "size_bytes": 144657
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/data/build.py",
+      "sha256": "cb497ae819998452da08c05cd1f7640b77515ac06dcbafd20ec9aea47523dc9a",
+      "size_bytes": 19283
+    },
+    {
+      "path": ".venv-detection/Lib/site-packages/ultralytics/utils/patches.py",
+      "sha256": "dd25f86ed9ff9598b6d1923d22ecb26a6ad38df8c50ef6f4f1c897701aaf2507",
+      "size_bytes": 10413
+    }
+  ],
+  "heldout_identity_source": "Stored approved M1 metadata only; test split list/manifest/content not opened or rehashed.",
+  "optional_local_artifacts": "The accepted analysis artifact manifest also inventories ignored replay blobs and images. Those are not required in the freeze commit."
+}

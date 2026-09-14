@@ -1,0 +1,73 @@
+{
+  "confidence": 0.001,
+  "iou": 0.45,
+  "major_class_confusions": [
+    {
+      "truth": "Breakage",
+      "predicted": "Honeycombing",
+      "count": 226
+    },
+    {
+      "truth": "Exposed Reinforcement",
+      "predicted": "Breakage",
+      "count": 168
+    },
+    {
+      "truth": "Breakage",
+      "predicted": "Exposed Reinforcement",
+      "count": 135
+    },
+    {
+      "truth": "Breakage",
+      "predicted": "Seepage",
+      "count": 86
+    },
+    {
+      "truth": "Breakage",
+      "predicted": "Crack",
+      "count": 70
+    },
+    {
+      "truth": "Honeycombing",
+      "predicted": "Breakage",
+      "count": 48
+    },
+    {
+      "truth": "Crack",
+      "predicted": "Breakage",
+      "count": 36
+    },
+    {
+      "truth": "Exposed Reinforcement",
+      "predicted": "Hole",
+      "count": 29
+    },
+    {
+      "truth": "Honeycombing",
+      "predicted": "Crack",
+      "count": 28
+    },
+    {
+      "truth": "Seepage",
+      "predicted": "Breakage",
+      "count": 25
+    }
+  ],
+  "misses_to_background": {
+    "Crack": 32,
+    "Breakage": 869,
+    "Honeycombing": 14,
+    "Hole": 11,
+    "Exposed Reinforcement": 279,
+    "Seepage": 30
+  },
+  "background_false_positives": {
+    "Crack": 25626,
+    "Breakage": 76101,
+    "Honeycombing": 20057,
+    "Hole": 2307,
+    "Exposed Reinforcement": 23239,
+    "Seepage": 5989
+  },
+  "interpretation": "Frozen low-floor confusion evidence; distinct from fixed-threshold P/R. Descriptive only; no tuning proposed."
+}

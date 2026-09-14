@@ -1,0 +1,6 @@
+/predictions/
+/*.npz
+/raw_before.json
+/raw_after.json
+/images.json
+/result_payload.zip

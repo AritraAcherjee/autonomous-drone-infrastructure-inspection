@@ -1,0 +1,7 @@
+{
+  "total_fn": 2828,
+  "with_localizable_proposal_at_floor": 2059,
+  "with_wrong_class_iou_ge_05_at_point": 157,
+  "with_same_class_iou_01_to_05_at_point": 664,
+  "note": "Overlapping flags; score-suppressed priority can coexist with high-score localization or class confusion. Do not sum them."
+}
