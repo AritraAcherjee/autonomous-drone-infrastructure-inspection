@@ -1,0 +1,8 @@
+{
+  "metrics/precision(B)": 0.37674095487474335,
+  "metrics/recall(B)": 0.37432339044543,
+  "metrics/mAP50(B)": 0.29669431228680787,
+  "metrics/mAP50-95(B)": 0.17480040543737643,
+  "fitness": 0.17480040543737643,
+  "note": "P/R use fixed validation index 186; AP unchanged; no per-test argmax evaluated"
+}

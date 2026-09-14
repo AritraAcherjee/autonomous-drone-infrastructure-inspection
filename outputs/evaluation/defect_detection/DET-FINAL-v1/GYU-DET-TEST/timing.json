@@ -1,0 +1,12 @@
+{
+  "ms_per_image": {
+    "preprocess": 0.3720399811297853,
+    "inference": 7.681884140178433,
+    "loss": 0.0010659070612539,
+    "postprocess": 0.2483455840962986
+  },
+  "evaluator_seconds": 104.21005439999863,
+  "images": 1053,
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "inference_batch_calls": 132
+}
