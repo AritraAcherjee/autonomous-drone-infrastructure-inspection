@@ -23,9 +23,9 @@ from detection.generalization.reporting import TABLES, write_report, write_table
 
 def crosswalk():
     return dict(version='synthetic-v1', gyu_classes={str(k): v for k, v in CLASSES.items()},
-                mappings=[dict(gyu_id=c, external_label={0: 'Crack', 1: 'Spallation', 4: 'Exposed reinforcement bar'}.get(c),
+                mappings=[dict(gyu_id=c, external_label={0: 'Crack', 1: 'Spallation', 4: 'ExposedBars'}.get(c),
                                status='approved' if c in (0, 1, 4) else 'unmapped', approval='synthetic review') for c in CLASSES],
-                external_only=['Efflorescence', 'Corrosion/stain'])
+                external_only=['Efflorescence', 'CorrosionStain'])
 
 
 def manifest():
@@ -213,7 +213,7 @@ class ScoringTests(unittest.TestCase):
             validate_crosswalk(c)
 
     def test_external_only_labels_cannot_be_mapping_targets(self):
-        for label in ('Efflorescence', 'Corrosion/stain'):
+        for label in ('Efflorescence', 'CorrosionStain'):
             for status in ('candidate', 'approved'):
                 c = crosswalk()
                 c['mappings'][0].update(external_label=label, status=status)

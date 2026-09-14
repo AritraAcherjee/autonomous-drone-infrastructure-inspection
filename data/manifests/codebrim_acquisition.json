@@ -1,0 +1,42 @@
+{
+  "dataset": "CODEBRIM",
+  "role": "protected external benchmark",
+  "experiment_id": "GEN-CODEBRIM-ZS-001",
+  "model_id": "DET-FINAL-v1",
+  "version": "1.0",
+  "source_reference": "docs/data/sources/codebrim.md",
+  "registry_reference": "data/manifests/dataset_registry.json",
+  "source_url": "https://zenodo.org/records/2620293",
+  "doi": "10.5281/zenodo.2620293",
+  "license_reference": "docs/data/licenses/codebrim.md",
+  "archive_filename": null,
+  "archive_filename_status": "NOT SPECIFIED IN APPROVED LOCAL METADATA",
+  "intended_package": "Original full-resolution images and box annotations; no crop packages",
+  "canonical_ignored_destination": "data/raw/codebrim",
+  "resolved_destination": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\data\\raw\\codebrim",
+  "destination_basis": "Existing /data/raw/ ignore rule and existing tests/detection/test_training.py CODEBRIM namespace",
+  "git_check_ignore": ".gitignore:226:/data/raw/ data/raw/codebrim/NOT_ACQUIRED.zip",
+  "expected_checksums": {
+    "sha256": null,
+    "md5": null,
+    "status": "NOT RECORDED IN APPROVED LOCAL METADATA"
+  },
+  "local_checksum": null,
+  "local_status": "NOT ACQUIRED",
+  "download_timestamp": null,
+  "extraction_timestamp": null,
+  "original_payload_immutable": true,
+  "accessed": false,
+  "downloaded": false,
+  "extracted": false,
+  "inference_executed": false,
+  "acquisition_authorized": false,
+  "remote_metadata_fetched": false,
+  "future_requirements": [
+    "Separate Control Center authorization",
+    "Record actual accepted terms/required permission",
+    "Confirm exact archive and expected checksum under separate authorization",
+    "Preserve archive immutable; record acquisition and extraction integrity",
+    "Audit leakage and normalization before any separately authorized inference"
+  ]
+}

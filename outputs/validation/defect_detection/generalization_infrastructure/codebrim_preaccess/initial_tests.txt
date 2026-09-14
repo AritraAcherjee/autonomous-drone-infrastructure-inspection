@@ -1,0 +1,64 @@
+.............................................................uuuuuuuuuuu [ 28%]
+uuuuuuuuuuuuuuuuuu...uuuu..uuuuuuuuu.........uuuu.................uuu... [ 44%]
+......uuuu...uuu.uu.uu..uu.....F.uuuuu...........uuuuuuu...uuuuuuu....uu [ 62%]
+u.....uuuu..uu.uuuu.................uuu............uuuuuu.uuuuuu..uuuuuu [ 81%]
+u...uuuuuu.uuu......uuuu...........uuuu.................F..              [100%]
+================================== FAILURES ===================================
+__________ DatasetTests.test_approved_yaml_lists_counts_and_mapping ___________
+
+self = <test_pretraining_gate.DatasetTests testMethod=test_approved_yaml_lists_counts_and_mapping>
+
+    def test_approved_yaml_lists_counts_and_mapping(self):
+>       config, records = load_approved(ROOT)
+                          ^^^^^^^^^^^^^^^^^^^
+
+tests\detection\test_pretraining_gate.py:238:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\detection\data\readonly_verifier.py:34: in load_approved
+    rows = read_csv(root / MANIFEST_DIR / f'{split}.csv')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\detection\data\readonly_verifier.py:16: in read_csv
+    with path.open(encoding='utf-8-sig', newline='') as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\79aa3\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+event = 'open'
+args = ('C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\data\\manifests\\gyu_det_v3_baseline_v1\\test.csv', 'r', 32896)
+
+    def guard(event, args):
+        if event == 'socket.connect':
+            raise PermissionError('Pre-access verification forbids network access')
+        if event not in ('open','os.listdir','os.scandir') or not args or not isinstance(args[0], (str,bytes,os.PathLike)):
+            return
+        path = Path(os.fsdecode(args[0])).absolute()
+        try:
+            relative = path.relative_to(ROOT).as_posix().lower()
+        except ValueError:
+            return  # Synthetic fixtures in temporary directories are permitted.
+        if (relative == 'data/raw' or relative.startswith('data/raw/')
+                or relative.startswith('outputs/evaluation/defect_detection/det-final-v1/gyu-det-test')
+                or relative in ('data/manifests/gyu_det_v3_baseline_v1/test.csv',
+                                'data/processed/gyu_det_v3_baseline_v1/splits/test.txt')):
+>           raise PermissionError('Scientific payload access prohibited: '+relative)
+E           PermissionError: Scientific payload access prohibited: data/manifests/gyu_det_v3_baseline_v1/test.csv
+
+scripts\verify_codebrim_preaccess.py:36: PermissionError
+____________ DatasetRegistryTests.test_no_false_acquisition_claim _____________
+
+self = <test_dataset_registry.DatasetRegistryTests testMethod=test_no_false_acquisition_claim>
+
+    def test_no_false_acquisition_claim(self) -> None:
+        acquired=[r for r in self.rows if r['acquisition_status']=='ACQUIRED_AND_APPROVED']
+        self.assertEqual([r['dataset_id'] for r in acquired],['gyu_det_v3'])
+        self.assertTrue((ROOT/'data/manifests/gyu_det_v3_source_provenance.json').is_file())
+>       self.assertTrue((ROOT/'data/raw/gyu_det/v3/extracted').is_dir())
+E       AssertionError: False is not true
+
+tests\data\test_dataset_registry.py:122: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/detection/test_pretraining_gate.py::DatasetTests::test_approved_yaml_lists_counts_and_mapping
+FAILED tests/data/test_dataset_registry.py::DatasetRegistryTests::test_no_false_acquisition_claim
+2 failed, 212 passed, 2 deselected, 133 subtests passed in 45.08s

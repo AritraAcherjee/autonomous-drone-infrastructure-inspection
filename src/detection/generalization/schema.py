@@ -33,6 +33,9 @@ def validate_manifest(m, scientific=False):
     require(m.get('phase') in ('pre_freeze', 'frozen'), 'Unknown phase')
     if not scientific and m['phase'] == 'pre_freeze':
         require(m.get('frozen') is False, 'Pre-freeze manifest cannot be frozen')
+        if m.get('experiment_id') == 'GEN-CODEBRIM-ZS-001':
+            from .preaccess import validate_preaccess
+            validate_preaccess(m)
         return m
     require(m['phase'] == 'frozen' and m.get('frozen') is True, 'Scientific scoring requires a frozen baseline')
     for key in ('architecture', 'architecture_version', 'checkpoint_path', 'ontology_version', 'freeze_approval'):

@@ -1,6 +1,8 @@
 """Versioned mappings; unmapped and unapproved semantics are never guessed."""
 from .schema import CLASSES, nonempty, require
 
+APPROVED_TARGETS = {0: 'Crack', 1: 'Spallation', 4: 'ExposedBars'}
+
 
 def validate_crosswalk(c):
     require(nonempty(c.get('version')), 'Missing ontology version')
@@ -18,8 +20,11 @@ def validate_crosswalk(c):
         if r['status'] == 'approved':
             require(nonempty(r.get('approval')), 'Approved mapping requires review reference')
     require(len(set(targets)) == len(targets), 'Ambiguous external target')
-    require(set(c.get('external_only', [])) == {'Efflorescence', 'Corrosion/stain'}, 'External-only classes must be explicit')
+    require(set(c.get('external_only', [])) == {'Efflorescence', 'CorrosionStain'}, 'External-only classes must be explicit')
     require(not set(targets).intersection(c['external_only']), 'External-only labels cannot be mapping targets')
+    for row in rows:
+        if row['status'] != 'unmapped':
+            require(APPROVED_TARGETS.get(row['gyu_id']) == row['external_label'], 'Unapproved semantic mapping')
     return c
 
 

@@ -1,0 +1,30 @@
+{
+  "base_sha": "7ed9160d08876b748754919efd7bba770fb20a87",
+  "commit": null,
+  "scope": "Exact current source/test/dependency bytes; experiment manifest and evidence are excluded to avoid circular hashes",
+  "files": {
+    "requirements/detection.txt": "512660351134b842b03c5941d5d3a1bfde830ec80df29815fb9b68067dd73c88",
+    "requirements/generalization-inference-constraints.txt": "5819f7c3253cf75fecc893510c0aa2db01c6f9e1c1993473591f0d3283f0289b",
+    "requirements/generalization-inference.txt": "c97a479bc9af4a82f3a5f2734aad630b350f7e498acfd31a6169d2342fa41803",
+    "requirements/generalization-test.txt": "85e446e479aaec26a58293100ce76e303f69cb029fe1b39726065fc94c5ce37c",
+    "scripts/evaluate_generalization.py": "08dd45b9d17d689eaea064e61cf4634e0298ea5a789c3ddb62c54ab53c2ebb46",
+    "scripts/prepare_generalization.py": "1ce97e25469c08833799797f6d67f42c96ab63fb4facdf83040554b51f28623e",
+    "scripts/verify_codebrim_preaccess.py": "afc9292cbd3d1ec23edbb1adc8e2cc44ea1ce1d7bb6e4a0bae0c373e87492c4c",
+    "src/detection/generalization/__init__.py": "7895ed27430e740c675436d9dac4532eda831e86681d853788a6c2ee0b253ce3",
+    "src/detection/generalization/calibration.py": "e9f9da850b7c0917c902c7e18612d019d60a54e571e1829fe41b5d46b482c50c",
+    "src/detection/generalization/failures.py": "d275838a85301b54ac26f846a1483c49a6638817fade86fcbc9901b7905f7eee",
+    "src/detection/generalization/manifest.py": "6d0c6f7417e40a5bd7fb1b09fe6d41f7f2fd3cf03934ea3042e77fd151f3dd8b",
+    "src/detection/generalization/matching.py": "3ddb9b46dac0f1ee159858da7960a892b6f1b7626736f1460695430192f82e24",
+    "src/detection/generalization/metrics.py": "52065b1daf5e185fc861f671ab6d7537e17f51d71cebac3b48ba7e90fe733847",
+    "src/detection/generalization/plots.py": "83dd6590038617ab53ca0cb799685aed3f0c87f4ff832558553138355ad484b6",
+    "src/detection/generalization/preaccess.py": "26bf29bd7f87f8db403ceb2fc74ed3cffbf1f7f587f59788062884a910e4ffb7",
+    "src/detection/generalization/prediction_export.py": "25f32e0d0bc2e037aebf3f2b35afbf81ac987ff23e08096ea5729759c053a48e",
+    "src/detection/generalization/reporting.py": "85f9b29eade506205c972e941a1f928b364520bb2c5c304742a63905efc8da36",
+    "src/detection/generalization/schema.py": "1f04ad5dc03885063d52a455bd5b1e17e3849b7391a390d0c1713a17c20201dd",
+    "src/detection/generalization/taxonomy.py": "32ea72f3eda6be27bd714f70e4cdd402a04e2fabb4a1d04e29e4cb18eba9c539",
+    "tests/detection/test_codebrim_preaccess.py": "cf1d2765a70530c145b62cb150915dbc51d59eb91b5bc398c3a4d4804a0254a6",
+    "tests/detection/test_generalization.py": "d46d6c64dff7c071ffa7c0ea82975109d6fa015542ce84c1e45cf3d560bb2dcb",
+    "tests/detection/test_pretraining_gate.py": "1b0bf402917d0d8a7cc45ed9ad59b9f8136d91351a98de15b9c0e850df663074",
+    "tests/detection/test_training.py": "47efd638251adea5d1f37ff603fe1cddd2fe24a392f4d0882b1fce6bbaa50d34"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "exit_code": 1,
+  "pytest_arguments": [
+    "tests/detection",
+    "tests/analysis",
+    "tests/evaluation",
+    "tests/data/test_dataset_registry.py",
+    "-k",
+    "not test_gyu_approved_entry_and_artifacts_unchanged and not test_no_raw_inventory_modifications",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\pytest_results.xml"
+  ],
+  "scope": "Synthetic detector/generalization/analysis/evaluation tests plus metadata-only registry checks",
+  "exclusions": {
+    "test_gyu_approved_entry_and_artifacts_unchanged": "Hashes protected artifacts that can include held-out manifests",
+    "test_no_raw_inventory_modifications": "Would enumerate raw scientific payload"
+  },
+  "scientific_payload_guard": true,
+  "scientific_inference_executed": false
+}

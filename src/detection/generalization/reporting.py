@@ -7,7 +7,7 @@ from .manifest import canonical
 
 
 TABLES = {
-    'domain_comparison': ['domain', 'experiment_id', 'images', 'scored_classes', 'classes_with_gt', 'mAP50', 'mAP50_95', 'precision', 'recall', 'F1', 'TP', 'FP', 'FN', 'FP_per_image', 'FN_per_image'],
+    'domain_comparison': ['domain', 'experiment_id', 'aggregate_label', 'images', 'scored_classes', 'classes_with_gt', 'mAP50', 'mAP50_95', 'precision', 'recall', 'F1', 'TP', 'FP', 'FN', 'FP_per_image', 'FN_per_image'],
     'per_class_transfer': ['domain', 'experiment_id', 'class_id', 'class_name', 'AP50', 'AP50_95', 'precision', 'recall', 'F1'],
     'fp_fn_counts': ['domain', 'experiment_id', 'class_id', 'TP', 'FP', 'FN', 'FP_per_image', 'FN_per_image'],
     'confidence_summary': ['domain', 'experiment_id', 'class_id', 'count', 'ECE'],
@@ -29,6 +29,9 @@ def write_tables(directory, tables):
 
 def write_report(directory, m, result, n_bins=10):
     common = dict(domain=m['dataset']['identity'], experiment_id=m['experiment_id'])
+    if m['dataset']['identity'] == 'CODEBRIM':
+        common['aggregate_label'] = 'shared-class CODEBRIM mAP'
+        result['summary']['aggregate_label'] = common['aggregate_label']
     classes = [dict(common, **r) for r in result['per_class']]
     summaries, bins = [], []
     for class_id in result['summary']['scored_classes']:

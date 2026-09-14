@@ -1,0 +1,76 @@
+{
+  "starting_branch": "main",
+  "starting_HEAD": "7ed9160d08876b748754919efd7bba770fb20a87",
+  "starting_status_short": "",
+  "final_branch": "chat03/codebrim-preaccess-freeze",
+  "final_HEAD": "7ed9160d08876b748754919efd7bba770fb20a87",
+  "checkpoint_exists": true,
+  "checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+  "ontology_path": "configs/generalization/ontology_crosswalk.yaml",
+  "ontology_file_sha256": "0e575df2e3f1488414b8b501e14ac1c8e85454b2396de592d68918e14d06ca04",
+  "protocol_path": "configs/generalization/generalization_protocol.yaml",
+  "protocol_file_sha256": "5705e5d8e5bbbb5273d81d87e97cb787ffe4d28601a88df5274786e044bc8e3d",
+  "experiment_manifest_file_sha256": "c3a254dc466f8df4f3166ea4273cc50481362899e8a43b9fb16ed3aab2f75f2e",
+  "git_diff_check": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "protected_path_diff": {
+    "base": "7ed9160d08876b748754919efd7bba770fb20a87",
+    "paths": [
+      "configs/detection",
+      "configs/data",
+      "configs/evaluation",
+      "src/detection/training",
+      "src/detection/data",
+      "src/evaluation",
+      "scripts/analysis",
+      "scripts/train_detector.py",
+      "outputs/training",
+      "outputs/analysis",
+      "outputs/evaluation",
+      "data/manifests/gyu_det_v3_baseline_v1",
+      "data/processed",
+      "ros2_ws"
+    ],
+    "output": "",
+    "all_other_tracked_paths_unchanged": true,
+    "allowed_changed_tracked_paths": [
+      "configs/generalization/generalization_protocol.yaml",
+      "configs/generalization/ontology_crosswalk.yaml",
+      "src/detection/generalization/reporting.py",
+      "src/detection/generalization/schema.py",
+      "src/detection/generalization/taxonomy.py",
+      "tests/detection/test_generalization.py"
+    ]
+  },
+  "git_check_ignore": ".gitignore:226:/data/raw/\tdata/raw/codebrim/NOT_ACQUIRED.zip",
+  "tests": {
+    "passed": 212,
+    "subtests_passed": 133,
+    "deselected": 4,
+    "groups": {
+      "tests.detection.test_codebrim_preaccess": 57,
+      "tests.detection.test_generalization.ManifestTests": 15,
+      "tests.detection.test_generalization.ScoringTests": 15,
+      "tests.detection.test_pretraining_gate.GuardTests": 14,
+      "tests.detection.test_pretraining_gate.FreshEvidenceTests": 10,
+      "tests.detection.test_pretraining_gate.DatasetTests": 14,
+      "tests.detection.test_pretraining_gate.AggregationTests": 3,
+      "tests.detection.test_training.ConfigTests": 18,
+      "tests.detection.test_training.ProvenanceTests": 7,
+      "tests.detection.test_training.ExifIntegrationTests": 9,
+      "tests.analysis.test_det_baseline_analysis": 7,
+      "tests.analysis.test_det_final_v1.FreezeTests": 8,
+      "tests.evaluation.test_stop_a.StopATests": 24,
+      "tests.data.test_dataset_registry.DatasetRegistryTests": 11
+    },
+    "initial_results": "initial_tests.txt",
+    "final_results": "tests.txt"
+  },
+  "runtime": "PASS",
+  "ontology_freeze": "PASS",
+  "prediction_export_adapter": "PASS",
+  "preaccess_gate": "READY"
+}

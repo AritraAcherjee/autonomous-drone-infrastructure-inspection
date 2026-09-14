@@ -1,0 +1,22 @@
+{
+  "scope": "This pre-access task only",
+  "gyu_heldout_payload_accessed": false,
+  "codebrim_payload_accessed": false,
+  "codebrim_downloaded": false,
+  "codebrim_extracted": false,
+  "external_inference_executed": false,
+  "training_performed": false,
+  "det_improved_executed": false,
+  "det_final_v1_modified": false,
+  "potential_external_benchmark_contamination": "NONE",
+  "commit": null,
+  "push": false,
+  "PR": false,
+  "merge": false,
+  "prevented_access": "Initial regression attempted to open GYU test.csv; audit hook denied it before file read. Initial failure preserved.",
+  "payload_directory_created": false,
+  "remote_codebrim_metadata_fetched": false,
+  "preaccess_gate": "READY",
+  "acquisition_authorized": false,
+  "stop_a": "NOT COMPLETE"
+}

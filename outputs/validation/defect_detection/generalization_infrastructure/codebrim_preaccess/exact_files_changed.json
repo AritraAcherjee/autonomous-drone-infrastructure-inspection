@@ -1,0 +1,145 @@
+{
+  "repository": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect",
+  "files": [
+    {
+      "path": "configs/generalization/experiments/GEN-CODEBRIM-ZS-001.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\configs\\generalization\\experiments\\GEN-CODEBRIM-ZS-001.json",
+      "change": "created"
+    },
+    {
+      "path": "configs/generalization/generalization_protocol.yaml",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\configs\\generalization\\generalization_protocol.yaml",
+      "change": "modified"
+    },
+    {
+      "path": "configs/generalization/ontology_crosswalk.yaml",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\configs\\generalization\\ontology_crosswalk.yaml",
+      "change": "modified"
+    },
+    {
+      "path": "data/manifests/codebrim_acquisition.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\data\\manifests\\codebrim_acquisition.json",
+      "change": "created"
+    },
+    {
+      "path": "docs/generalization_codebrim_preaccess.md",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\docs\\generalization_codebrim_preaccess.md",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/environment.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\environment.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/exact_files_changed.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\exact_files_changed.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/final_checks.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\final_checks.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/initial_pytest_results.xml",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\initial_pytest_results.xml",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/initial_test_results.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\initial_test_results.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/initial_tests.txt",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\initial_tests.txt",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/manifest_recheck.txt",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\manifest_recheck.txt",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/pytest_results.xml",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\pytest_results.xml",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/safety_audit.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\safety_audit.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/source_hashes.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\source_hashes.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/test_results.json",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\test_results.json",
+      "change": "created"
+    },
+    {
+      "path": "outputs/validation/defect_detection/generalization_infrastructure/codebrim_preaccess/tests.txt",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\outputs\\validation\\defect_detection\\generalization_infrastructure\\codebrim_preaccess\\tests.txt",
+      "change": "created"
+    },
+    {
+      "path": "requirements/generalization-inference-constraints.txt",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\requirements\\generalization-inference-constraints.txt",
+      "change": "created"
+    },
+    {
+      "path": "requirements/generalization-inference.txt",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\requirements\\generalization-inference.txt",
+      "change": "created"
+    },
+    {
+      "path": "scripts/verify_codebrim_preaccess.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\scripts\\verify_codebrim_preaccess.py",
+      "change": "created"
+    },
+    {
+      "path": "src/detection/generalization/preaccess.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\src\\detection\\generalization\\preaccess.py",
+      "change": "created"
+    },
+    {
+      "path": "src/detection/generalization/prediction_export.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\src\\detection\\generalization\\prediction_export.py",
+      "change": "created"
+    },
+    {
+      "path": "src/detection/generalization/reporting.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\src\\detection\\generalization\\reporting.py",
+      "change": "modified"
+    },
+    {
+      "path": "src/detection/generalization/schema.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\src\\detection\\generalization\\schema.py",
+      "change": "modified"
+    },
+    {
+      "path": "src/detection/generalization/taxonomy.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\src\\detection\\generalization\\taxonomy.py",
+      "change": "modified"
+    },
+    {
+      "path": "tests/detection/test_codebrim_preaccess.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\tests\\detection\\test_codebrim_preaccess.py",
+      "change": "created"
+    },
+    {
+      "path": "tests/detection/test_generalization.py",
+      "absolute_path": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\tests\\detection\\test_generalization.py",
+      "change": "modified"
+    }
+  ],
+  "ignored_runtime_changes": [
+    "Existing outputs/cache/generalization/venv updated; environment.json records every package/version added or changed",
+    "Library settings/test caches under ignored outputs/cache; generated root settings moved into ignored cache"
+  ],
+  "no_scientific_payload_created": true
+}
