@@ -1,0 +1,680 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-09-14T00:28:51.298513+00:00",
+  "no_staging_or_commit_performed": true,
+  "policy_reference": ".gitignore; scoped proposed outputs/.gitignore",
+  "files": [
+    {
+      "path": "configs/detection/det_final_v1.yaml",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "docs/detection/DET_FINAL_V1_FREEZE.md",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "docs/experiments/defect_detection/DET_BASELINE_FAILURE_ANALYSIS.md",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/.gitignore",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/analysis_source_manifest.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/artifact_manifest.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/baseline_inventory_before.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/baseline_provenance.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/class_mix_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/class_size_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/confusion_class_summary.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/confusion_pairs.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/confusion_summary.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/curve_diagnostic_points.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/density_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/density_size_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/det_improved_proposal.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/error_analysis.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/11986_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/11992_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12001_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12254_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12297_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/12305_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/8622_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/9194_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/9199_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/examples/9217_review.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/failure_analysis_overview.png",
+      "classification": "MAY COMMIT",
+      "reason": "Small validation-only summary figure; useful but numerical evidence is already retained"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/failure_modes.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/ground_truth_errors.csv",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/image_error_summary.csv",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/input_detail_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/learning_curve_selected_epochs.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/learning_curve_summary.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/learning_curve_windows.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/original_per_class_rounded.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/overlap_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/overlapping_error_flags.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/per_class_metrics.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/prediction_errors.csv",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/qualitative_example_candidates.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/qualitative_review.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/resolution_size_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/safety_status.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/size_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/source_aspect_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/source_resolution_analysis.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxF1_curve.png",
+      "classification": "MAY COMMIT",
+      "reason": "Small validation-only summary figure; useful but numerical evidence is already retained"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxPR_curve.png",
+      "classification": "MAY COMMIT",
+      "reason": "Small validation-only summary figure; useful but numerical evidence is already retained"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxP_curve.png",
+      "classification": "MAY COMMIT",
+      "reason": "Small validation-only summary figure; useful but numerical evidence is already retained"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxR_curve.png",
+      "classification": "MAY COMMIT",
+      "reason": "Small validation-only summary figure; useful but numerical evidence is already retained"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/checkpoint_metadata.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/completion.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix_normalized.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/curves.npz",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/images.json",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/inference_config.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/metric_summary.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/per_class_metrics_full_precision.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/predictions_valid.npz",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_pred.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_pred.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_pred.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/candidate_inspection.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/commit_review.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/commit_review.md",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/evidence_index.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/integrity_check.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/manifest.sha256",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/preparation_status.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/test_results.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/BoxF1_curve.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/BoxPR_curve.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/BoxP_curve.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/BoxR_curve.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/args.yaml",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/checkpoint_acquisition.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/confusion_matrix.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/confusion_matrix_normalized.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/dataset_identity.json",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/development_data.yaml",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/provenance.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/raw_after.json",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/raw_before.json",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/raw_immutability.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/requested_config.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/resolved_config.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/results.csv",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/results.png",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/run_evidence.json",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train.txt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train_batch0.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train_batch1.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train_batch186930.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train_batch186931.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train_batch186932.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/train_batch2.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/trainer.log",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/val_batch0_labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/val_batch0_pred.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/val_batch1_labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/val_batch1_pred.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/val_batch2_labels.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/val_batch2_pred.jpg",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/valid.txt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/best.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch0.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch10.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch20.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch30.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch40.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch50.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch60.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch70.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch80.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/epoch90.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "outputs/training/defect_detection/DET-BASELINE/weights/last.pt",
+      "classification": "REMAIN IGNORED",
+      "reason": "Checkpoint, transient log/raw inventory, machine-specific list or reproducible large/duplicate artifact; retain locally"
+    },
+    {
+      "path": "scripts/analysis/closeout_det_baseline.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "scripts/analysis/det_baseline_common.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "scripts/analysis/render_det_baseline_examples.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "scripts/analysis/summarize_det_baseline.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "scripts/analysis/validate_det_baseline.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "scripts/analysis/verify_det_final_v1.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "tests/analysis/test_det_baseline_analysis.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    },
+    {
+      "path": "tests/analysis/test_det_final_v1.py",
+      "classification": "MUST COMMIT",
+      "reason": "Source, test, policy, concise metrics or provenance needed to review/reproduce the freeze"
+    }
+  ],
+  "additional_excluded_roots": [
+    "data/raw/",
+    "outputs/cache/",
+    ".venv-detection/"
+  ],
+  "notes": [
+    "All 72 accepted analysis artifacts reviewed against their hashes and preserved.",
+    "Nine existing baseline text artifacts are supporting MUST COMMIT dependencies; they are not modified.",
+    "MAY COMMIT contains plots without source photographs. Qualitative source-image montages remain ignored under the raw redistribution/disposable-image policy.",
+    "Root .gitignore already ignores checkpoints/training images/logs/raw snapshots. New outputs/.gitignore covers the explicitly listed replay/intermediate and machine-specific development files.",
+    "No tests require a new model forward or access to real test data. Optional/ignored artifact links in the accepted report remain local-only."
+  ]
+}

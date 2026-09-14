@@ -1,0 +1,15 @@
+{
+  "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
+  "train": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\train.txt",
+  "val": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\valid.txt",
+  "names": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  },
+  "nc": 6,
+  "channels": 3
+}

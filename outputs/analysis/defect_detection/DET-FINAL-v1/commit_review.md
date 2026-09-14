@@ -1,0 +1,146 @@
+# Exact proposed commit review
+
+No staging or commit has occurred. Paths are repository-relative to `C:/Users/Aritra/Documents/autonomous-drone-infrastructure-inspection`.
+
+## MUST COMMIT (65)
+
+- `configs/detection/det_final_v1.yaml`
+- `docs/detection/DET_FINAL_V1_FREEZE.md`
+- `docs/experiments/defect_detection/DET_BASELINE_FAILURE_ANALYSIS.md`
+- `outputs/.gitignore`
+- `outputs/analysis/defect_detection/DET-BASELINE/analysis_source_manifest.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/artifact_manifest.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/baseline_inventory_before.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/baseline_provenance.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/class_mix_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/class_size_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/confusion_class_summary.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/confusion_pairs.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/confusion_summary.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/curve_diagnostic_points.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/density_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/density_size_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/det_improved_proposal.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/error_analysis.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/failure_modes.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/input_detail_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/learning_curve_selected_epochs.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/learning_curve_summary.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/learning_curve_windows.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/original_per_class_rounded.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/overlap_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/overlapping_error_flags.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/per_class_metrics.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/qualitative_example_candidates.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/qualitative_review.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/resolution_size_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/safety_status.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/size_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/source_aspect_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/source_resolution_analysis.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/checkpoint_metadata.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/completion.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/inference_config.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/metric_summary.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/per_class_metrics_full_precision.csv`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/candidate_inspection.json`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/commit_review.json`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/commit_review.md`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/evidence_index.json`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/integrity_check.json`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/manifest.sha256`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/preparation_status.json`
+- `outputs/analysis/defect_detection/DET-FINAL-v1/test_results.json`
+- `outputs/training/defect_detection/DET-BASELINE/args.yaml`
+- `outputs/training/defect_detection/DET-BASELINE/checkpoint_acquisition.json`
+- `outputs/training/defect_detection/DET-BASELINE/development_data.yaml`
+- `outputs/training/defect_detection/DET-BASELINE/provenance.json`
+- `outputs/training/defect_detection/DET-BASELINE/raw_immutability.json`
+- `outputs/training/defect_detection/DET-BASELINE/requested_config.json`
+- `outputs/training/defect_detection/DET-BASELINE/resolved_config.json`
+- `outputs/training/defect_detection/DET-BASELINE/results.csv`
+- `outputs/training/defect_detection/DET-BASELINE/run_evidence.json`
+- `scripts/analysis/closeout_det_baseline.py`
+- `scripts/analysis/det_baseline_common.py`
+- `scripts/analysis/render_det_baseline_examples.py`
+- `scripts/analysis/summarize_det_baseline.py`
+- `scripts/analysis/validate_det_baseline.py`
+- `scripts/analysis/verify_det_final_v1.py`
+- `tests/analysis/test_det_baseline_analysis.py`
+- `tests/analysis/test_det_final_v1.py`
+
+## MAY COMMIT (5)
+
+- `outputs/analysis/defect_detection/DET-BASELINE/failure_analysis_overview.png`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxF1_curve.png`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxPR_curve.png`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxP_curve.png`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/BoxR_curve.png`
+
+## REMAIN IGNORED (62)
+
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/11986_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/11992_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/12001_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/12254_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/12297_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/12305_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/8622_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/9194_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/9199_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/examples/9217_review.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/ground_truth_errors.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/image_error_summary.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/prediction_errors.csv`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix.png`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/confusion_matrix_normalized.png`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/curves.npz`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/images.json`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/predictions_valid.npz`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_labels.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch0_pred.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_labels.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch1_pred.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_labels.jpg`
+- `outputs/analysis/defect_detection/DET-BASELINE/validation_replay/val_batch2_pred.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/BoxF1_curve.png`
+- `outputs/training/defect_detection/DET-BASELINE/BoxPR_curve.png`
+- `outputs/training/defect_detection/DET-BASELINE/BoxP_curve.png`
+- `outputs/training/defect_detection/DET-BASELINE/BoxR_curve.png`
+- `outputs/training/defect_detection/DET-BASELINE/confusion_matrix.png`
+- `outputs/training/defect_detection/DET-BASELINE/confusion_matrix_normalized.png`
+- `outputs/training/defect_detection/DET-BASELINE/dataset_identity.json`
+- `outputs/training/defect_detection/DET-BASELINE/labels.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/raw_after.json`
+- `outputs/training/defect_detection/DET-BASELINE/raw_before.json`
+- `outputs/training/defect_detection/DET-BASELINE/results.png`
+- `outputs/training/defect_detection/DET-BASELINE/train.txt`
+- `outputs/training/defect_detection/DET-BASELINE/train_batch0.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/train_batch1.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/train_batch186930.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/train_batch186931.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/train_batch186932.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/train_batch2.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/trainer.log`
+- `outputs/training/defect_detection/DET-BASELINE/val_batch0_labels.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/val_batch0_pred.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/val_batch1_labels.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/val_batch1_pred.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/val_batch2_labels.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/val_batch2_pred.jpg`
+- `outputs/training/defect_detection/DET-BASELINE/valid.txt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/best.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch0.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch10.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch20.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch30.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch40.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch50.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch60.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch70.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch80.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/epoch90.pt`
+- `outputs/training/defect_detection/DET-BASELINE/weights/last.pt`
+
+Entire raw-data, runtime and transient-cache roots also remain excluded. Baseline files in MUST COMMIT are existing unmodified concise dependencies. Source photographs/qualitative montages remain local; five small plots are optional. No blanket `git add` is proposed.

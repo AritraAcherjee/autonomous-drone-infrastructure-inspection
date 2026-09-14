@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "images": 1040,
+  "instances": 4907,
+  "predictions": 151682,
+  "seconds": 97.39818470002501,
+  "speed": {
+    "preprocess": 0.32545759624134424,
+    "inference": 8.004932403883476,
+    "loss": 0.0011380768857914237,
+    "postprocess": 0.2743696153629571
+  },
+  "metrics": {
+    "metrics/precision(B)": 0.47223142096534465,
+    "metrics/recall(B)": 0.4130733263020834,
+    "metrics/mAP50(B)": 0.3884237740581788,
+    "metrics/mAP50-95(B)": 0.21699306833671056,
+    "fitness": 0.21699306833671056
+  },
+  "checkpoint_sha_after": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+  "finished_utc": "2026-09-13T23:27:14.901819+00:00"
+}

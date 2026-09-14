@@ -1,0 +1,89 @@
+{
+  "experiment_id": "DET-IMPROVED-01",
+  "targeted_failure_mode": "Tiny/thin-object misses and associated localization weakness; not all baseline failures.",
+  "single_primary_change": {
+    "parameter": "imgsz",
+    "baseline": 640,
+    "proposed": 800,
+    "scope": "Same scalar input-size setting for training and its validation; all other numerical settings held fixed."
+  },
+  "supporting_evidence": [
+    "Tiny recall 28.1% versus large 57.2%; <4-pixel minimum side recall 6.9%.",
+    "Tiny Breakage recall 2.4%; small Breakage 26.1% versus medium 41.2%. Tiny Reinforcement 28.1% versus small 59.5%.",
+    "8622 Hole target ~6.9x8.3 px and 9217 reinforcement target ~2.0x16.6 px lose visible spatial detail at 640.",
+    "Tiny+small are 45.4% of diagnostic FN. Small overall recall matches medium; this is a targeted hypothesis, not proof that higher resolution improves the whole task."
+  ],
+  "intentionally_unchanged": {
+    "dataset": "GYU-DET V3 baseline-v1, exact existing membership and original labels",
+    "train": 8305,
+    "validation": 1040,
+    "initialization": "Official pretrained yolo26s.pt, SHA-256 646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b; fresh run, not baseline best.pt fine-tuning",
+    "model": "YOLO26s; no P2/head/architecture change",
+    "seed": 42,
+    "deterministic": true,
+    "optimizer": "SGD Nesterov; lr0=.01 lrf=.01 momentum=.937 weight_decay=.0005; linear 100-epoch schedule",
+    "training": "batch=4, nbs=64, accumulate=16 after warmup, max_epochs=100, patience=30, BF16, workers=0, cache=false",
+    "augmentations": "All resolved baseline values identical, including mosaic=1, close_mosaic=10, scale=.5, HSV and flips; Albumentations disabled",
+    "evaluation": "validation only; batch=8 FP16, conf=.001 iou=.7 max_det=300 nms=false; same evaluator and best-epoch selection",
+    "test_policy": "Held-out test blocked; never used for tuning/selection",
+    "codebrim_policy": "Blocked; no access/evaluation",
+    "packages_and_hardware": "Same recorded versions, Laptop 1 and GPU; no automatic batch fallback"
+  },
+  "scientific_comparison": "Compare the baseline 640-input pipeline with the otherwise identical 800-input pipeline, selecting each best epoch by validation mAP50-95. This estimates the complete input-resolution-setting effect; it does not isolate training representation from inference-resolution benefit. One seed is a controlled comparison, not a variance estimate.",
+  "full_retraining_required": true,
+  "runtime": {
+    "baseline_hours": 25.248,
+    "area_scaling_factor": 1.5625,
+    "central_hours_at_92_epochs": 39.45,
+    "central_hours_at_100_epochs": 42.8804347826087,
+    "planning_range_hours": [
+      32,
+      50
+    ],
+    "basis": "Unbenchmarked pixel-area scaling from this Laptop 1 run. CPU/raw decoding, thermal state and early stopping can change scaling; estimate is not measured.",
+    "analysis_report_integration_reserve_hours": [
+      3,
+      5
+    ]
+  },
+  "monday_feasibility": {
+    "assessed_local": "2026-09-13T17:35:17.882468-06:00",
+    "deadline_date": "2026-09-14",
+    "exact_presentation_time": "Not supplied",
+    "central_finish_if_started_now": "2026-09-15T09:02:17.882468-06:00",
+    "decision": "Do not start for Monday. Keep DET-BASELINE as the presentation baseline and defer this proposal for authorization after the deadline.",
+    "reason": "Even the 32-hour planning lower bound extends beyond Monday at the current Sunday-evening assessment, before reporting/integration reserve."
+  },
+  "shorter_valid_experiment": {
+    "can_prove_full_training_hypothesis": false,
+    "limited_diagnostic": "A separately authorized paired 640-vs-800 validation inference of the same frozen best.pt could test inference-time sensitivity in minutes plus review. It cannot establish the retrained DET-IMPROVED result and was not performed here.",
+    "short_training": "A truncated run or baseline-checkpoint fine-tune changes schedule/history and cannot stand in for the full comparison. A paired equal-budget pilot would be a different, separately approved two-arm experiment; none is proposed for execution now."
+  },
+  "validation_success": {
+    "primary_mAP50_95_minimum": 0.22699306833671057,
+    "absolute_improvement": 0.01,
+    "targeted_tiny_small_recall_minimum": 0.42839147286821705,
+    "targeted_recall_baseline": 0.37839147286821706,
+    "recall_measurement": "Same M1 bins; frozen confidence 0.18618618618618618, IoU>=.5 diagnostic matcher and same validation membership. No deployment threshold optimization.",
+    "policy": "Require both primary AP improvement and targeted recall gain; do not select on a favorable isolated number."
+  },
+  "per_class_success": {
+    "guardrail": "No class AP50-95 decrease greater than 0.02 absolute from replay baseline; report all six classes and all size strata.",
+    "target": "Report tiny Reinforcement and small Breakage recall gains explicitly; Hole AP75 should not decrease by >0.02. Tiny Breakage/Crack sample counts are small; do not promote on those alone."
+  },
+  "stop_rollback": {
+    "engineering": "Stop on checkpoint/data identity mismatch, nonfinite behavior, guard violation, OOM/fixed-batch auto-reduction, or output collision. Never rewrite baseline evidence.",
+    "scientific": "Use unchanged patience=30/max_epochs=100. If success conditions fail, retain DET-BASELINE and document failure; no follow-on sweep or post-hoc threshold rescue.",
+    "deadline": "No start before Monday presentation under present timing. Do not shorten the canonical schedule to force a result."
+  },
+  "risks": [
+    "800 may still leave a ~2-pixel target only ~2.5 pixels wide; benefit can be small.",
+    "Higher input cost/latency and VRAM; resource feasibility is not established by the area estimate.",
+    "Changes effective pixel geometry of unchanged relative augmentations.",
+    "No guarantee of benefit for Seepage or ambiguous labels; overfitting can persist.",
+    "Validation selection bias, class imbalance, source correlation and single-seed uncertainty remain."
+  ],
+  "baseline_fallback": true,
+  "authorization": "NOT AUTHORIZED",
+  "implementation_note": "Proposal only. Existing frozen training config validator restricts imgsz=640; any future authorized 800 change must be explicit and reviewed. No training/config code changed by this task."
+}

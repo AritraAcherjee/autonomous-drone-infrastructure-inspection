@@ -1,0 +1,8 @@
+{
+  "scripts/analysis/closeout_det_baseline.py": "dfdf3a2cf8b58124b72470cfe4e13989ef36b1fdf239a61d45c3ddac9699987e",
+  "scripts/analysis/det_baseline_common.py": "d2bf955b21f6df54db9ba9c3c644715c1de82d4ef66a5795d2bf0efd586a886e",
+  "scripts/analysis/render_det_baseline_examples.py": "64fe007bf4536057c6103317c8c73fe7ba96871f8bde224479ec48bf842300d7",
+  "scripts/analysis/summarize_det_baseline.py": "2755c899225d453cb26dbdc9f98a4853e5bccba7570fc09350e0a100808f1154",
+  "scripts/analysis/validate_det_baseline.py": "f1078a0257cfa192d9953806699c7eb5fe415ec8761ecc6eb836427439cd2a2b",
+  "tests/analysis/test_det_baseline_analysis.py": "3f4935728ee7d00134930a53123c0a90ee198ada3e73cd2e3cc6fb74962cf870"
+}

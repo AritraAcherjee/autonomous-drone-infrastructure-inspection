@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "engineering_smoke": false,
+  "test_accessed": false,
+  "requested_batch": 4,
+  "optimizer_steps": 12736,
+  "parameter_updates": 12735,
+  "batches": 191084,
+  "epochs": 92,
+  "finite_losses": true,
+  "validation_calls": 93,
+  "loss_history": [],
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "classes": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  },
+  "resolved_batch": 4,
+  "resolved_optimizer": "SGD",
+  "mean_train_losses": {
+    "box_loss": 1.4315356016159058,
+    "cls_loss": 1.1844160556793213,
+    "l1_loss": 0.011118571273982525
+  },
+  "fit_seconds": 91061.24782680001,
+  "train_validation_seconds": 90976.35977799998,
+  "gpu_peak_allocated_bytes": 1414465024,
+  "gpu_peak_reserved_bytes": 1612709888,
+  "metrics": {
+    "metrics/precision(B)": 0.47223142096534465,
+    "metrics/recall(B)": 0.4130733263020834,
+    "metrics/mAP50(B)": 0.3884237740581788,
+    "metrics/mAP50-95(B)": 0.21699306833671056
+  },
+  "checkpoints": {
+    "best.pt": {
+      "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\weights\\best.pt",
+      "size_bytes": 20301573,
+      "sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3"
+    },
+    "last.pt": {
+      "path": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\training\\defect_detection\\DET-BASELINE\\weights\\last.pt",
+      "size_bytes": 20301573,
+      "sha256": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982"
+    }
+  },
+  "total_seconds_excluding_snapshot": 91061.8373411,
+  "raw_immutability": {
+    "files_added": [],
+    "files_removed": [],
+    "size_changes": [],
+    "mtime_ns_changes": [],
+    "sha256_changes": [],
+    "new_cache_files": [],
+    "new_npy_files": [],
+    "status": "PASS",
+    "files_observed": 21559,
+    "content_hashed_development_files": 18690,
+    "cache_files": [],
+    "npy_files": []
+  }
+}

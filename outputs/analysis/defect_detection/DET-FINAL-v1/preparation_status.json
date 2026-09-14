@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "created_at": "2026-09-14T00:28:00.540887+00:00",
+  "freeze_approved": false,
+  "test_authorized": false,
+  "analysis_review": {
+    "accepted_manifest_files_verified": 71,
+    "all_accepted_files_preserved": true
+  },
+  "manifest_sha256": "5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+  "test_accessed": false,
+  "codebrim_accessed": false,
+  "training_executed": false,
+  "inference_executed": false
+}

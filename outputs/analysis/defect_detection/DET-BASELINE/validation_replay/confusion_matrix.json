@@ -1,0 +1,88 @@
+{
+  "rows_predicted": [
+    "Crack",
+    "Breakage",
+    "Honeycombing",
+    "Hole",
+    "Exposed Reinforcement",
+    "Seepage",
+    "background"
+  ],
+  "columns_truth": [
+    "Crack",
+    "Breakage",
+    "Honeycombing",
+    "Hole",
+    "Exposed Reinforcement",
+    "Seepage",
+    "background"
+  ],
+  "confidence": 0.001,
+  "iou": 0.45,
+  "matrix": [
+    [
+      288.0,
+      58.0,
+      20.0,
+      0.0,
+      17.0,
+      3.0,
+      23108.0
+    ],
+    [
+      31.0,
+      1398.0,
+      114.0,
+      26.0,
+      98.0,
+      65.0,
+      64245.0
+    ],
+    [
+      14.0,
+      297.0,
+      307.0,
+      2.0,
+      9.0,
+      10.0,
+      20667.0
+    ],
+    [
+      0.0,
+      24.0,
+      3.0,
+      96.0,
+      19.0,
+      0.0,
+      3907.0
+    ],
+    [
+      6.0,
+      68.0,
+      1.0,
+      61.0,
+      1008.0,
+      20.0,
+      28008.0
+    ],
+    [
+      0.0,
+      85.0,
+      13.0,
+      2.0,
+      7.0,
+      186.0,
+      7391.0
+    ],
+    [
+      27.0,
+      199.0,
+      21.0,
+      41.0,
+      169.0,
+      94.0,
+      0.0
+    ]
+  ],
+  "source": "new_validation_replay"
+}

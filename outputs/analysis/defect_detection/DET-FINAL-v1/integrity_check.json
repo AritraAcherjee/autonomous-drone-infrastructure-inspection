@@ -1,0 +1,98 @@
+{
+  "verified_at": "2026-09-14T00:28:51.259911+00:00",
+  "status": "PASS",
+  "manifest_sha256": "5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+  "frozen_baseline": {
+    "files": 47,
+    "sha_size_mtime": "unchanged",
+    "best_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+    "last_sha256": "7cb24d3d7397b045330fbf24f2aa54949cfc055c4931cc45ef4eb2302dff1982"
+  },
+  "development_raw": {
+    "files": 19389,
+    "comparison": "All train/valid file sizes and mtimes unchanged; no content opened",
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "cache_files": []
+  },
+  "raw_hash_scope": "Existing post-training PASS for 18690 development files reused; no new full raw content rehash or held-out traversal.",
+  "protected_source_and_development_artifact_hashes": {
+    "files": 14,
+    "status": "PASS"
+  },
+  "accepted_analysis": {
+    "files": 72,
+    "status": "All accepted artifact hashes match; no existing analysis file changed"
+  },
+  "git": {
+    "branch": "chat02/detector-training",
+    "head": "8ee410771c8be794d366e5e014f14f748edca97f",
+    "staged": [],
+    "tracked_unstaged": [],
+    "diff_check": "PASS",
+    "weights_staged": false
+  },
+  "tests": {
+    "tests_passed": 42,
+    "subtests_passed": 51,
+    "failed": 0
+  },
+  "fixed_validation_diagnostic_recovery": {
+    "status": "PASS",
+    "result": {
+      "label": "VALIDATION DIAGNOSTIC THRESHOLD",
+      "confidence": 0.18618618618618618,
+      "grid_index": 186,
+      "precision": 0.47223142096534465,
+      "recall": 0.4130733263020834,
+      "f1": 0.43076138053299545,
+      "per_class": [
+        {
+          "class_id": 0,
+          "precision": 0.46345548044577173,
+          "recall": 0.3907103825136612,
+          "f1": 0.4239852606978277
+        },
+        {
+          "class_id": 1,
+          "precision": 0.45136603051099844,
+          "recall": 0.38046031000469704,
+          "f1": 0.41289113251052123
+        },
+        {
+          "class_id": 2,
+          "precision": 0.3407275283081562,
+          "recall": 0.5594989561586639,
+          "f1": 0.42353052195713603
+        },
+        {
+          "class_id": 3,
+          "precision": 0.5504310295847963,
+          "recall": 0.41228070175438597,
+          "f1": 0.47144349395002094
+        },
+        {
+          "class_id": 4,
+          "precision": 0.6062583578213946,
+          "recall": 0.48681235870384326,
+          "f1": 0.5400090894268091
+        },
+        {
+          "class_id": 5,
+          "precision": 0.42115009912095114,
+          "recall": 0.24867724867724866,
+          "f1": 0.3127087846556574
+        }
+      ],
+      "threshold_optimized": false
+    },
+    "no_new_threshold_search": true
+  },
+  "test_accessed": false,
+  "codebrim_accessed": false,
+  "training_executed": false,
+  "inference_executed": false,
+  "checkpoint_model_inspection": "CPU deserialization only; no forward pass",
+  "chronology": "Preparation precedes any performance access in the accepted project record and this task; approval/commit still pending. Historical absence is an attestation, not independently provable from hashes."
+}
