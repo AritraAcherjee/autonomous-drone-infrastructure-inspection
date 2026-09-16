@@ -2,9 +2,27 @@
 <package format="3">
   <name>aegisinspect_perception</name>
   <version>0.1.0</version>
-  <description>Reserved perception package; no algorithms or publishers.</description>
-  <maintainer email="AritraAcherjee@users.noreply.github.com">Aritra Acherjee</maintainer>
+  <description>Frozen structural-defect detector runtime and detector-to-depth projection integration.</description>
+
+  <maintainer email="AritraAcherjee@users.noreply.github.com">
+    Aritra Acherjee
+  </maintainer>
+
   <license>Proprietary</license>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <export><build_type>ament_cmake</build_type></export>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>aegisinspect_interfaces</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <test_depend>ament_cmake_pytest</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

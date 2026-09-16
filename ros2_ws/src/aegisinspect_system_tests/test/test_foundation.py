@@ -15,7 +15,7 @@ PACKAGES = {
     'safety', 'navigation', 'inspection', 'diagnostics', 'bringup', 'sim', 'system_tests',
 }
 RESERVED_PACKAGES = {
-    'sensors', 'perception', 'localization', 'safety', 'navigation',
+    'sensors', 'localization', 'safety', 'navigation',
     'inspection', 'diagnostics',
 }
 EXPECTED = {
@@ -207,3 +207,23 @@ def test_launch_wiring_and_time_policy():
         text = path.read_text()
         assert 'static_transform_publisher' not in text
         assert 'ground_truth' not in text
+
+
+def test_perception_package_is_intentionally_activated():
+    """Perception is no longer a reserved shell once DET-FINAL-v1 is integrated."""
+    path = SRC / "aegisinspect_perception"
+
+    assert path.is_dir()
+    assert (path / "package.xml").is_file()
+    assert (path / "CMakeLists.txt").is_file()
+    assert (
+        path / "scripts" / "detector_projection_node.py"
+    ).is_file()
+    assert (
+        path / "launch" / "detector_projection.launch.py"
+    ).is_file()
+    assert (
+        path
+        / "aegisinspect_perception"
+        / "detector_projection.py"
+    ).is_file()
