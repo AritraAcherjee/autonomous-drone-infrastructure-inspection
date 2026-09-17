@@ -28,58 +28,244 @@ def probability(value):
 def validate_manifest(m, scientific=False):
     require(isinstance(m, dict), 'Manifest must be an object')
     require(m.get('schema_version') == 1, 'Unsupported manifest schema')
-    require(re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}', str(m.get('experiment_id', ''))) is not None,
-            'Unsafe experiment ID')
-    require(m.get('phase') in ('pre_freeze', 'frozen'), 'Unknown phase')
+    require(
+        re.fullmatch(
+            r'[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}',
+            str(m.get('experiment_id', '')),
+        ) is not None,
+        'Unsafe experiment ID',
+    )
+    require(
+        m.get('phase') in ('pre_freeze', 'frozen'),
+        'Unknown phase',
+    )
+
     if not scientific and m['phase'] == 'pre_freeze':
-        require(m.get('frozen') is False, 'Pre-freeze manifest cannot be frozen')
+        require(
+            m.get('frozen') is False,
+            'Pre-freeze manifest cannot be frozen',
+        )
+
         if m.get('experiment_id') == 'GEN-CODEBRIM-ZS-001':
             from .preaccess import validate_preaccess
             validate_preaccess(m)
+
         elif m.get('experiment_id') == 'GEN-DAMSEGMENT-ZS-001':
             from .damsegment_preaccess import validate_preaccess
             validate_preaccess(m)
+
         return m
-    require(m['phase'] == 'frozen' and m.get('frozen') is True, 'Scientific scoring requires a frozen baseline')
-    for key in ('architecture', 'architecture_version', 'checkpoint_path', 'ontology_version', 'freeze_approval'):
+
+    kind = m.get('manifest_kind')
+
+    if kind == 'portable_scientific_contract':
+        require(
+            not scientific,
+            'Portable scientific contract is not directly executable',
+        )
+        from .damsegment_runtime import validate_portable_contract
+        validate_portable_contract(m)
+        return m
+
+    require(
+        kind in (None, 'runtime_scientific_manifest'),
+        'Unknown scientific manifest kind',
+    )
+
+    require(
+        m['phase'] == 'frozen'
+        and m.get('frozen') is True,
+        'Scientific scoring requires a frozen baseline',
+    )
+
+    for key in (
+        'architecture',
+        'architecture_version',
+        'checkpoint_path',
+        'ontology_version',
+        'freeze_approval',
+    ):
         require(nonempty(m.get(key)), 'Missing ' + key)
-    for key in ('checkpoint_sha256', 'ontology_sha256', 'protocol_sha256'):
+
+    for key in (
+        'checkpoint_sha256',
+        'ontology_sha256',
+        'protocol_sha256',
+    ):
         require(digest(m.get(key)), 'Invalid ' + key)
-    for key in ('training_git_sha', 'evaluation_git_sha'):
-        require(digest(m.get(key), 40), 'Invalid ' + key)
-    for key in ('training_config', 'resolved_inference_config', 'validation_evidence'):
-        require(isinstance(m.get(key), dict) and bool(m[key]), 'Missing ' + key)
+
+    require(
+        digest(m.get('training_git_sha'), 40),
+        'Invalid training_git_sha',
+    )
+    require(
+        digest(m.get('evaluation_git_sha'), 40),
+        'Invalid evaluation_git_sha',
+    )
+
+    for key in (
+        'training_config',
+        'resolved_inference_config',
+        'validation_evidence',
+    ):
+        require(
+            isinstance(m.get(key), dict) and bool(m[key]),
+            'Missing ' + key,
+        )
+
     ds = m.get('dataset', {})
-    require(isinstance(ds, dict) and all(nonempty(ds.get(k)) for k in ('identity', 'version', 'split'))
-            and digest(ds.get('sha256')), 'Incomplete dataset identity/version/split/hash')
-    require(ds['identity'] in ('GYU-DET', 'CODEBRIM', 'DamSegment'), 'Unknown scientific dataset')
+
+    require(
+        isinstance(ds, dict)
+        and all(
+            nonempty(ds.get(k))
+            for k in ('identity', 'version', 'split')
+        )
+        and digest(ds.get('sha256')),
+        'Incomplete dataset identity/version/split/hash',
+    )
+
+    require(
+        ds['identity']
+        in ('GYU-DET', 'CODEBRIM', 'DamSegment'),
+        'Unknown scientific dataset',
+    )
+
     if ds['identity'] == 'GYU-DET':
-        require(ds['version'] == 'v3/baseline-v1' and ds['split'] == 'test', 'Require approved GYU baseline-v1 test')
-        require(digest(ds.get('source_manifest_sha256')), 'GYU source split manifest hash required')
+        require(
+            ds['version'] == 'v3/baseline-v1'
+            and ds['split'] == 'test',
+            'Require approved GYU baseline-v1 test',
+        )
+        require(
+            digest(ds.get('source_manifest_sha256')),
+            'GYU source split manifest hash required',
+        )
     else:
         if ds['identity'] == 'DamSegment':
-            require(ds['version'] == 'v1' and ds['split'] == 'Damage Detection',
-                    'Require approved DamSegment v1 Damage Detection subset')
-        require(m.get('external_review', {}).get('taxonomy_approved') is True
-                and m.get('external_review', {}).get('leakage_audit_passed') is True
-                and nonempty(m.get('external_review', {}).get('evidence')), 'External review evidence required')
-    require(m.get('class_mapping') == {str(k): v for k, v in CLASSES.items()}, 'Class mapping differs from baseline')
+            require(
+                ds['version'] == 'v1'
+                and ds['split'] == 'Damage Detection',
+                'Require approved DamSegment v1 Damage Detection subset',
+            )
+
+        require(
+            m.get('external_review', {}).get(
+                'taxonomy_approved'
+            ) is True
+            and m.get('external_review', {}).get(
+                'leakage_audit_passed'
+            ) is True
+            and nonempty(
+                m.get('external_review', {}).get('evidence')
+            ),
+            'External review evidence required',
+        )
+
+    require(
+        m.get('class_mapping')
+        == {str(k): v for k, v in CLASSES.items()},
+        'Class mapping differs from baseline',
+    )
+
     size = m.get('image_size')
-    require(isinstance(size, list) and len(size) == 2 and all(type(v) is int and v > 0 for v in size), 'Invalid image size')
-    for key in ('ap_confidence_floor', 'operating_confidence', 'nms_iou', 'matching_iou'):
-        require(probability(m.get(key)), 'Invalid ' + key)
-    require(m['matching_iou'] > 0, 'Matching IoU must be positive')
-    require(m['ap_confidence_floor'] <= m['operating_confidence'], 'AP floor exceeds operating confidence')
-    require(m.get('ap_ious') in ([0.5], AP_IOUS), 'AP IoUs must be 0.5 or 0.5:0.95')
-    require(m.get('nms_mode') in ('class_aware', 'class_agnostic', 'none'), 'Invalid NMS mode')
-    require(type(m.get('max_detections')) is int and m['max_detections'] > 0, 'Invalid max detections')
-    require(type(m.get('seed')) is int and m['seed'] >= 0, 'Explicit nonnegative seed required')
+
+    require(
+        isinstance(size, list)
+        and len(size) == 2
+        and all(
+            type(v) is int and v > 0
+            for v in size
+        ),
+        'Invalid image size',
+    )
+
+    for key in (
+        'ap_confidence_floor',
+        'operating_confidence',
+        'nms_iou',
+        'matching_iou',
+    ):
+        require(
+            probability(m.get(key)),
+            'Invalid ' + key,
+        )
+
+    require(
+        m['matching_iou'] > 0,
+        'Matching IoU must be positive',
+    )
+    require(
+        m['ap_confidence_floor']
+        <= m['operating_confidence'],
+        'AP floor exceeds operating confidence',
+    )
+    require(
+        m.get('ap_ious') in ([0.5], AP_IOUS),
+        'AP IoUs must be 0.5 or 0.5:0.95',
+    )
+    require(
+        m.get('nms_mode')
+        in ('class_aware', 'class_agnostic', 'none'),
+        'Invalid NMS mode',
+    )
+    require(
+        type(m.get('max_detections')) is int
+        and m['max_detections'] > 0,
+        'Invalid max detections',
+    )
+    require(
+        type(m.get('seed')) is int
+        and m['seed'] >= 0,
+        'Explicit nonnegative seed required',
+    )
+
     env = m.get('environment', {})
-    require(isinstance(env, dict) and nonempty(env.get('python')) and nonempty(env.get('platform'))
-            and isinstance(env.get('packages'), dict) and bool(env['packages'])
-            and all(nonempty(v) for v in env['packages'].values()), 'Incomplete environment/package versions')
-    for key in ('image_size', 'ap_confidence_floor', 'operating_confidence', 'nms_iou', 'nms_mode', 'max_detections', 'seed'):
-        require(m['resolved_inference_config'].get(key) == m[key], 'Inference configuration disagrees: ' + key)
+
+    require(
+        isinstance(env, dict)
+        and nonempty(env.get('python'))
+        and nonempty(env.get('platform'))
+        and isinstance(env.get('packages'), dict)
+        and bool(env['packages'])
+        and all(
+            nonempty(v)
+            for v in env['packages'].values()
+        ),
+        'Incomplete environment/package versions',
+    )
+
+    # DamSegment scientific execution uses the reviewed runtime-manifest
+    # contract. Its detector configuration uses the exact frozen Ultralytics
+    # names (imgsz/conf/iou/max_det/etc.), so it must not be forced through
+    # the older GYU/CODEBRIM alias binding below.
+    if ds['identity'] == 'DamSegment':
+        require(
+            kind == 'runtime_scientific_manifest',
+            'DamSegment scientific scoring requires runtime manifest',
+        )
+
+    if kind == 'runtime_scientific_manifest':
+        from .damsegment_runtime import validate_runtime_manifest
+        validate_runtime_manifest(m)
+        return m
+
+    # Preserve the historical GYU/CODEBRIM scientific contract unchanged.
+    for key in (
+        'image_size',
+        'ap_confidence_floor',
+        'operating_confidence',
+        'nms_iou',
+        'nms_mode',
+        'max_detections',
+        'seed',
+    ):
+        require(
+            m['resolved_inference_config'].get(key)
+            == m[key],
+            'Inference configuration disagrees: ' + key,
+        )
+
     return m
 
 

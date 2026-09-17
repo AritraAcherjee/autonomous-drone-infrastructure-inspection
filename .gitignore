@@ -241,3 +241,7 @@ ros2_ws/log/
 
 # P16 generated local SQLite databases
 *.sqlite3
+
+# 03 DamSegment runtime scientific artifacts; hashed evidence, never source.
+/outputs/validation/defect_detection/generalization_runtime/GEN-DAMSEGMENT-ZS-001/
+/outputs/validation/defect_detection/generalization/GEN-DAMSEGMENT-ZS-001/

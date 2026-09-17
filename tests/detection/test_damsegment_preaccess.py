@@ -37,7 +37,7 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def test_damsegment_preaccess_manifest_contract():
+def test_damsegment_portable_scientific_contract():
     manifest = load(MANIFEST)
 
     assert validate_manifest(manifest) == manifest
@@ -48,7 +48,12 @@ def test_damsegment_preaccess_manifest_contract():
         "a75a29496ba8bb76f49db5a36b64a992"
         "0911b5e4c420f634a4390deb418e14df"
     )
-    assert manifest["scientific_execution_authorized"] is False
+    assert manifest["manifest_kind"] == "portable_scientific_contract"
+    assert manifest["phase"] == "frozen"
+    assert manifest["frozen"] is True
+    assert manifest["scientific_execution_authorized"] is True
+    assert manifest["heldout_evaluation_count"] == 0
+    assert "evaluation_git_sha" not in manifest
     assert manifest["external_review"]["leakage_audit_passed"] is True
     assert (
         manifest["external_review"]["leakage_gate_status"]

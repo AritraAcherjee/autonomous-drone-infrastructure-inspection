@@ -87,3 +87,50 @@ The tracked deterministic builder is
 The external benchmark is not used for training, threshold tuning,
 augmentation selection, or model selection, and it is not a replacement
 for the locked GYU held-out test.
+
+## Scientific execution preparation transition
+
+On 2026-09-17, 00 Control Center authorized transition from the historical
+pre-access state to a committed **portable scientific contract**. Git history
+retains the original pre-access state.
+
+The committed portable contract is frozen and authorized but deliberately
+omits runtime-only bindings. It keeps `heldout_evaluation_count = 0`.
+
+After the scientific-preparation commit is created and pushed, the committed
+`derive_damsegment_runtime_manifest.py` path derives a separate runtime
+manifest that binds the exact clean current Git HEAD and verified absolute
+DET-FINAL-v1 checkpoint locator. The runtime manifest is generated under the
+ignored scientific runtime-output tree and is not a tracked source mutation.
+
+Only the derived runtime manifest may be supplied to `frozen_gate()` and the
+scientific scorer. The strict `evaluation_git_sha == git rev-parse HEAD`
+requirement remains unchanged.
+
+The committed `run_damsegment_inference.py` bridge owns only frozen model
+inference plus normalized prediction export. Scientific AP/mAP remains owned
+by `scripts/evaluate_generalization.py`.
+
+This preparation does not itself execute DET-FINAL-v1 on DamSegment and does
+not consume the external benchmark.
+
+### Frozen inference-setting runtime bindings
+
+Ultralytics 8.4.145 does not expose every historical frozen field as a
+`predict()` keyword, so the committed runner makes those semantics explicit:
+
+- `workers = 0`: images are decoded serially by the runner in the main process;
+- `batch = 8`: the runner forms explicit deterministic batches of eight;
+- `shuffle = false`: batches follow the frozen prepared-inventory order;
+- `drop_last = false`: the final partial batch is always executed;
+- `cache = false`: only the current batch is retained;
+- `pad = 0.5`: source images are required to be exactly 640x640, so at
+  `imgsz = 640` no letterbox pixels are required and the padding value is
+  operationally inert;
+- `FP16 = true`: Ultralytics 8.4.145 maps the legacy half-precision control to
+  `quantize = 16`, which configures `AutoBackend(fp16=True)`;
+- `end2end = true`: `nms = false` is passed explicitly and the loaded YOLO26
+  head is independently required to report `end2end=True`.
+
+These are bindings of the already-frozen scientific protocol, not new tuning
+parameters.

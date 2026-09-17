@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "experiment_id": "GEN-DAMSEGMENT-ZS-001",
-  "phase": "pre_freeze",
-  "frozen": false,
+  "phase": "frozen",
+  "frozen": true,
   "preaccess_config_frozen": true,
-  "status": "PREACCESS_FROZEN_UNEXECUTED",
+  "status": "FROZEN_AUTHORIZED_UNEXECUTED",
   "training_git_sha": "8ee410771c8be794d366e5e014f14f748edca97f",
   "freeze_commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
   "evaluation_base_sha": "3fc6ac001e71c1ab56b2b810cd2d595358a55e28",
@@ -235,9 +235,41 @@
     "exact_overlap_csv_sha256": "2414cbc40ec805e39037d3b04786290a96c160ac28150a3392b92379cbf8db67",
     "near_candidate_csv_sha256": "10a369867900b0fbbf4a65f115498c8bdc3e08917b3a4a008ca9f50b0a3f2e40"
   },
-  "scientific_execution_authorized": false,
-  "zero_shot_baseline_status": "PREACCESS_FROZEN_UNEXECUTED",
+  "scientific_execution_authorized": true,
+  "zero_shot_baseline_status": "FROZEN_AUTHORIZED_UNEXECUTED",
   "heldout_evaluation_count": 0,
   "heldout_rerun_authorized": false,
-  "normalization_implementation": "scripts/prepare_damsegment_generalization.py"
+  "normalization_implementation": "scripts/prepare_damsegment_generalization.py",
+  "manifest_kind": "portable_scientific_contract",
+  "freeze_approval": "00 Control Center scientific authorization 2026-09-17",
+  "training_config": {
+    "det_final_manifest_path": "configs/detection/det_final_v1.yaml",
+    "det_final_manifest_sha256": "5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+    "training_config_reference": "configs/detection/det_baseline.yaml",
+    "resolved_config_reference": "outputs/training/defect_detection/DET-BASELINE/resolved_config.json",
+    "source_experiment": "DET-BASELINE",
+    "training_git_sha": "8ee410771c8be794d366e5e014f14f748edca97f",
+    "best_epoch": 62
+  },
+  "validation_evidence": {
+    "det_final_manifest_path": "configs/detection/det_final_v1.yaml",
+    "det_final_manifest_sha256": "5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+    "selection_basis": "training and validation evidence only",
+    "validation_count": 1040,
+    "validation_metrics": {
+      "images": 1040,
+      "instances": 4907,
+      "precision": 0.47223142096534465,
+      "recall": 0.4130733263020834,
+      "mAP50": 0.3884237740581788,
+      "mAP50_95": 0.21699306833671056
+    },
+    "evidence_index": {
+      "path": "outputs/analysis/defect_detection/DET-FINAL-v1/evidence_index.json",
+      "sha256": "304253da031bd372929b3cf3ff48fd74f752d718363b39c1dd6352905348f357"
+    },
+    "test_accessed_at_freeze": false
+  },
+  "runtime_manifest_derivation": "scripts/derive_damsegment_runtime_manifest.py",
+  "inference_export_implementation": "scripts/run_damsegment_inference.py"
 }
