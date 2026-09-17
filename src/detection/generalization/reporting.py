@@ -29,8 +29,8 @@ def write_tables(directory, tables):
 
 def write_report(directory, m, result, n_bins=10):
     common = dict(domain=m['dataset']['identity'], experiment_id=m['experiment_id'])
-    if m['dataset']['identity'] == 'CODEBRIM':
-        common['aggregate_label'] = 'shared-class CODEBRIM mAP'
+    if m['dataset']['identity'] != 'GYU-DET':
+        common['aggregate_label'] = m['external_aggregate_label']
         result['summary']['aggregate_label'] = common['aggregate_label']
     classes = [dict(common, **r) for r in result['per_class']]
     summaries, bins = [], []

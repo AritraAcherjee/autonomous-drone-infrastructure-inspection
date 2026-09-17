@@ -1,0 +1,2 @@
+domain,experiment_id,aggregate_label,images,scored_classes,classes_with_gt,mAP50,mAP50_95,precision,recall,F1,TP,FP,FN,FP_per_image,FN_per_image
+DamSegment,GEN-DAMSEGMENT-ZS-001,shared-class DamSegment mAP,1500,"[0, 1]",2,0.053176162102447924,0.031339626242648855,0.25308641975308643,0.006240487062404871,0.01218062982768865,123,363,19587,0.242,13.058

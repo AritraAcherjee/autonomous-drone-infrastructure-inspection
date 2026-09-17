@@ -22,6 +22,35 @@ def _relative(value):
     return value
 
 
+def _provenance_keys(manifest):
+    common = (
+        'model_id',
+        'architecture',
+        'framework',
+        'framework_version',
+        'checkpoint_path',
+        'checkpoint_sha256',
+        'training_git_sha',
+        'freeze_commit_sha',
+        'protocol_sha256',
+        'protocol_file_sha256',
+        'ontology_sha256',
+        'ontology_file_sha256',
+    )
+
+    if (
+        manifest.get('manifest_kind')
+        == 'runtime_scientific_manifest'
+    ):
+        return common + (
+            'evaluation_git_sha',
+            'portable_contract_sha256',
+            'portable_contract_file_sha256',
+        )
+
+    return common + ('evaluation_main_sha',)
+
+
 def normalize_predictions(entries, manifest):
     """Entries: (source-relative identity, Ultralytics-style Results), including empty images.
 
@@ -59,9 +88,7 @@ def normalize_predictions(entries, manifest):
     for index, row in enumerate(predictions):
         row['id'] = f'prediction-{index:09d}'
     validate_records(images, predictions, [])
-    provenance_keys = ('model_id', 'architecture', 'framework', 'framework_version', 'checkpoint_path',
-                       'checkpoint_sha256', 'training_git_sha', 'freeze_commit_sha', 'evaluation_main_sha',
-                       'protocol_sha256', 'protocol_file_sha256', 'ontology_sha256', 'ontology_file_sha256')
+    provenance_keys = _provenance_keys(manifest)
     require(all(manifest.get(k) is not None for k in provenance_keys), 'Missing export provenance')
     return dict(images=images, image_metadata=metadata, predictions=predictions,
                 manifest_sha256=object_hash(manifest),
@@ -92,9 +119,7 @@ def validate_prediction_export(fragment, manifest):
             and fragment.get('inference_config_sha256') == object_hash(manifest['resolved_inference_config']),
             'Inference binding differs')
     provenance = fragment.get('model_provenance', {})
-    keys = ('model_id', 'architecture', 'framework', 'framework_version', 'checkpoint_path',
-            'checkpoint_sha256', 'training_git_sha', 'freeze_commit_sha', 'evaluation_main_sha',
-            'protocol_sha256', 'protocol_file_sha256', 'ontology_sha256', 'ontology_file_sha256')
+    keys = _provenance_keys(manifest)
     require(set(provenance) == set(keys) and all(provenance[k] == manifest[k] for k in keys),
             'Model provenance differs')
     metadata = fragment.get('image_metadata')

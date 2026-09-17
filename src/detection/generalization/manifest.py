@@ -2,6 +2,7 @@
 import hashlib
 import importlib.metadata
 import json
+from copy import deepcopy
 from pathlib import Path
 import platform
 import subprocess
@@ -33,6 +34,82 @@ def read_json_with_hash(path):
     """Hash exactly the immutable byte snapshot that is parsed and scored."""
     payload = Path(path).read_bytes()
     return json.loads(payload.decode('utf-8')), hashlib.sha256(payload).hexdigest()
+
+
+
+def derive_runtime_manifest(portable_path, repo, checkpoint):
+    """Bind a committed portable contract to clean current HEAD and checkpoint."""
+    from .damsegment_runtime import (
+        PORTABLE_KIND,
+        RUNTIME_KIND,
+    )
+
+    portable_path = Path(portable_path).resolve()
+    repo = Path(repo).resolve()
+    checkpoint = Path(checkpoint).resolve()
+
+    portable, portable_file_sha = read_json_with_hash(
+        portable_path
+    )
+
+    validate_manifest(portable)
+
+    require(
+        portable.get('manifest_kind') == PORTABLE_KIND,
+        'Expected portable scientific contract',
+    )
+    require(
+        portable_path.is_relative_to(repo),
+        'Portable contract must be inside evaluation repository',
+    )
+
+    dirty = subprocess.check_output(
+        ['git', 'status', '--porcelain'],
+        cwd=repo,
+        text=True,
+    )
+
+    require(
+        not dirty.strip(),
+        'Runtime manifest requires a clean worktree',
+    )
+
+    head = subprocess.check_output(
+        ['git', 'rev-parse', 'HEAD'],
+        cwd=repo,
+        text=True,
+    ).strip()
+
+    require(
+        file_hash(checkpoint)
+        == portable['checkpoint_sha256'],
+        'Checkpoint hash mismatch before runtime derivation',
+    )
+
+    runtime = deepcopy(portable)
+    runtime['manifest_kind'] = RUNTIME_KIND
+    runtime['evaluation_git_sha'] = head
+    runtime['checkpoint_path'] = str(checkpoint)
+    runtime['portable_contract_sha256'] = object_hash(
+        portable
+    )
+    runtime['portable_contract_file_sha256'] = (
+        portable_file_sha
+    )
+    runtime['runtime_bindings'] = {
+        'portable_contract_path': portable_path
+        .relative_to(repo)
+        .as_posix(),
+        'evaluation_git_sha': head,
+        'portable_checkpoint_path': portable[
+            'checkpoint_path'
+        ],
+        'checkpoint_path': str(checkpoint),
+    }
+
+    validate_manifest(runtime, scientific=True)
+
+    return runtime
 
 
 def environment():
