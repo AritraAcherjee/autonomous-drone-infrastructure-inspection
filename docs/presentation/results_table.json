@@ -1,0 +1,205 @@
+{
+  "canonical_base": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+  "pending_literal": "PENDING",
+  "schema_version": 1,
+  "sections": [
+    {
+      "results": [
+        {
+          "metric": "supervised_images",
+          "scope": "DATA_FOUNDATION",
+          "status": "SUPPORTED",
+          "value": 10398
+        },
+        {
+          "metric": "train_images",
+          "scope": "DATA_FOUNDATION",
+          "status": "SUPPORTED",
+          "value": 8305
+        },
+        {
+          "metric": "validation_images",
+          "scope": "DATA_FOUNDATION",
+          "status": "SUPPORTED",
+          "value": 1040
+        },
+        {
+          "metric": "test_images",
+          "scope": "DATA_FOUNDATION",
+          "status": "SUPPORTED",
+          "value": 1053
+        },
+        {
+          "metric": "annotations",
+          "scope": "DATA_FOUNDATION",
+          "status": "SUPPORTED",
+          "value": 48392
+        },
+        {
+          "metric": "classes",
+          "scope": "DATA_FOUNDATION",
+          "status": "SUPPORTED",
+          "value": 6
+        }
+      ],
+      "section": "DATASET"
+    },
+    {
+      "results": [
+        {
+          "metric": "DET-FINAL-v1 GYU test mAP50",
+          "scope": "REAL_HELD_OUT",
+          "status": "SUPPORTED",
+          "value": 0.29669431228680787
+        },
+        {
+          "metric": "DET-FINAL-v1 GYU test mAP50-95",
+          "scope": "REAL_HELD_OUT",
+          "status": "SUPPORTED",
+          "value": 0.17480040543737643
+        },
+        {
+          "metric": "diagnostic macro precision",
+          "scope": "REAL_HELD_OUT",
+          "status": "SUPPORTED",
+          "value": 0.37674095487474335
+        },
+        {
+          "metric": "diagnostic macro recall",
+          "scope": "REAL_HELD_OUT",
+          "status": "SUPPORTED",
+          "value": 0.37432339044543
+        },
+        {
+          "metric": "diagnostic mean per-class F1",
+          "scope": "REAL_HELD_OUT",
+          "status": "SUPPORTED",
+          "value": 0.3556245448108634
+        }
+      ],
+      "section": "IN_DOMAIN_DETECTION"
+    },
+    {
+      "results": [
+        {
+          "metric": "DamSegment shared-class mAP50",
+          "scope": "EXTERNAL_BENCHMARK",
+          "status": "SUPPORTED",
+          "value": 0.053176162102447924
+        },
+        {
+          "metric": "DamSegment shared-class mAP50-95",
+          "scope": "EXTERNAL_BENCHMARK",
+          "status": "SUPPORTED",
+          "value": 0.031339626242648855
+        },
+        {
+          "metric": "DamSegment precision",
+          "scope": "EXTERNAL_BENCHMARK",
+          "status": "SUPPORTED",
+          "value": 0.25308641975308643
+        },
+        {
+          "metric": "DamSegment recall",
+          "scope": "EXTERNAL_BENCHMARK",
+          "status": "SUPPORTED",
+          "value": 0.006240487062404871
+        },
+        {
+          "metric": "DamSegment F1",
+          "scope": "EXTERNAL_BENCHMARK",
+          "status": "SUPPORTED",
+          "value": 0.01218062982768865
+        }
+      ],
+      "section": "EXTERNAL_GENERALIZATION"
+    },
+    {
+      "results": [
+        {
+          "metric": "VIO ATE translation RMSE m",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "VIO RPE translation RMSE m @ 1 s",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "VIO RPE rotation RMSE deg @ 1 s",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "VIO timestamp alignment coverage",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        }
+      ],
+      "section": "LOCALIZATION"
+    },
+    {
+      "results": [
+        {
+          "metric": "mean error m",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "median error m",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "RMSE m",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "P95 error m",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        },
+        {
+          "metric": "matched real defects",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        }
+      ],
+      "section": "3D DEFECT LOCALIZATION"
+    },
+    {
+      "results": [
+        {
+          "metric": "simulated depth colcon tests",
+          "scope": "SIMULATION_RUNTIME",
+          "status": "SUPPORTED",
+          "value": 103
+        },
+        {
+          "metric": "camera-frame projection colcon tests",
+          "scope": "SIMULATION_RUNTIME",
+          "status": "SUPPORTED",
+          "value": 196
+        },
+        {
+          "metric": "validated end-to-end autonomous mission",
+          "scope": "PENDING",
+          "status": "PENDING_NOT_YET_VERIFIED",
+          "value": "PENDING"
+        }
+      ],
+      "section": "SYSTEM / RUNTIME"
+    }
+  ]
+}

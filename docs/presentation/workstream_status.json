@@ -1,0 +1,102 @@
+{
+  "canonical_base": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+  "schema_version": 1,
+  "workstreams": [
+    {
+      "claim_status": "SUPPORTED",
+      "evidence_scope": "DATA_FOUNDATION",
+      "limitations": "Dataset facts are not detector-performance claims.",
+      "presentation_summary": "Approved GYU-DET baseline-v1 data foundation is evidence-backed.",
+      "title": "Dataset Pipeline",
+      "workstream": "01"
+    },
+    {
+      "claim_status": "SUPPORTED",
+      "evidence_scope": "REAL_HELD_OUT",
+      "limitations": "Do not label detector metrics as accuracy.",
+      "presentation_summary": "DET-FINAL-v1 has one-time held-out GYU-DET test evidence.",
+      "title": "Defect Detection",
+      "workstream": "02"
+    },
+    {
+      "claim_status": "SUPPORTED",
+      "evidence_scope": "EXTERNAL_BENCHMARK",
+      "limitations": "Shared Crack/Breakage classes only; transfer is weak.",
+      "presentation_summary": "DamSegment zero-shot scientific execution is complete and consumed.",
+      "title": "Generalization Testing",
+      "workstream": "03"
+    },
+    {
+      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "evidence_scope": "PENDING",
+      "limitations": "No accepted real ATE/RPE yet.",
+      "presentation_summary": "Architecture/status may be shown; real trajectory metrics remain pending.",
+      "title": "Visual-Inertial SLAM / Odometry",
+      "workstream": "07"
+    },
+    {
+      "claim_status": "SUPPORTED",
+      "evidence_scope": "SIMULATION_RUNTIME",
+      "limitations": "Does not establish real-world depth accuracy or map-frame localization.",
+      "presentation_summary": "Simulated metric depth and camera-frame XYZ projection are runtime-validated.",
+      "title": "Depth + 3D Projection",
+      "workstream": "08"
+    },
+    {
+      "claim_status": "SUPPORTED",
+      "evidence_scope": "SIMULATION_RUNTIME",
+      "limitations": "Not equivalent to completed end-to-end autonomy.",
+      "presentation_summary": "Stop-B ROS/Gazebo sensor foundation has recorded runtime validation.",
+      "title": "ROS 2 Integration / Gazebo Simulation Foundation",
+      "workstream": "P12/P13"
+    },
+    {
+      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "evidence_scope": "IMPLEMENTATION_TEST",
+      "limitations": "Real spatial-localization accuracy remains unverified.",
+      "presentation_summary": "Deterministic defect-to-map fusion software is implemented.",
+      "title": "Defect-to-Map Fusion",
+      "workstream": "P15"
+    },
+    {
+      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "evidence_scope": "SYNTHETIC_DEMO",
+      "limitations": "Current demo records are synthetic/test-only.",
+      "presentation_summary": "Persistent inspection database and human-review dashboard are implemented.",
+      "title": "Database + Dashboard",
+      "workstream": "P16"
+    },
+    {
+      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "evidence_scope": "IMPLEMENTATION_TEST",
+      "limitations": "No completed integrated autonomous-mission report is claimed.",
+      "presentation_summary": "Deterministic report-generation software is implemented.",
+      "title": "Report Generation",
+      "workstream": "P17"
+    },
+    {
+      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "evidence_scope": "PENDING",
+      "limitations": "Do not claim full autonomous inspection validation.",
+      "presentation_summary": "End-to-end mission status remains pending.",
+      "title": "Full Integration",
+      "workstream": "P18"
+    },
+    {
+      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "evidence_scope": "IMPLEMENTATION_TEST",
+      "limitations": "Real spatial metrics remain pending.",
+      "presentation_summary": "Canonical tooling exists for ATE/RPE/alignment coverage/3D location error.",
+      "title": "Evaluation + Experiments",
+      "workstream": "P19"
+    },
+    {
+      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "evidence_scope": "IMPLEMENTATION_TEST",
+      "limitations": "Final title and highest Stop-level claim remain under 00 control.",
+      "presentation_summary": "Evidence-backed presentation material is under active implementation.",
+      "title": "Documentation + Presentation",
+      "workstream": "P20"
+    }
+  ]
+}
