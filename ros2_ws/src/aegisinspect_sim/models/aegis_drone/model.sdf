@@ -1,9 +1,20 @@
 <?xml version="1.0"?>
 <sdf version="1.12">
   <model name="aegis_drone">
-    <!-- Fixed in place deliberately: this is a sensor foundation, not a flight model. -->
-    <static>true</static>
+    <!-- P13 deterministic VIO-motion body. -->
+    <static>false</static>
     <link name="base_link">
+      <inertial>
+        <mass>1.5</mass>
+        <inertia>
+          <ixx>0.0218</ixx>
+          <iyy>0.0218</iyy>
+          <izz>0.0400</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
       <collision name="body"><geometry><box><size>0.4 0.4 0.12</size></box></geometry></collision>
       <visual name="body">
         <geometry><box><size>0.4 0.4 0.12</size></box></geometry>
@@ -56,5 +67,9 @@
     </frame>
     <frame name="imu_link" attached_to="base_link"><pose>0 0 0 0 0 0</pose></frame>
     <frame name="lidar_link" attached_to="base_link"><pose>0 0 0.15 0 0 0</pose></frame>
+
+    <plugin
+      filename="libaegis_deterministic_motion.so"
+      name="aegisinspect::sim::DeterministicMotionSystem"/>
   </model>
 </sdf>

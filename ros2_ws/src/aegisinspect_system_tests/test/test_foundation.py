@@ -25,6 +25,8 @@ EXPECTED = {
     '/aegis/sensors/lidar/points': ('sensor_msgs/msg/PointCloud2', 'lidar_link'),
 }
 DEPTH_TOPIC = '/aegis/perception/depth/image'
+GT_TOPIC = '/aegis/sim/ground_truth/pose'
+GT_GZ_TOPIC = '/aegis/sim/ground_truth/pose_gz'
 EDGES = {
     ('base_link', 'camera_link'), ('camera_link', 'camera_optical_frame'),
     ('base_link', 'imu_link'), ('base_link', 'lidar_link'),
@@ -124,14 +126,19 @@ def test_sensor_types_frames_and_3d_lidar(model):
     assert int(vertical.findtext('samples')) > 1
     assert float(vertical.findtext('min_angle')) < float(vertical.findtext('max_angle'))
     assert sensors['camera'].findtext('camera/image/format') == 'R8G8B8'
-    assert model.findtext('static') == 'true'
-    assert not model.findall('plugin')
+    assert model.findtext('static') == 'false'
+    plugins = model.findall('plugin')
+    assert len(plugins) == 1
+    assert plugins[0].attrib == {
+        'filename': 'libaegis_deterministic_motion.so',
+        'name': 'aegisinspect::sim::DeterministicMotionSystem',
+    }
 
 
 def test_bridge_matches_sensor_outputs_and_frozen_contract(model):
     bridges = load_yaml('aegisinspect_sim/config/bridge.yaml')
-    assert len(bridges) == 6
-    assert {b['ros_topic_name'] for b in bridges} == set(EXPECTED) | {'/clock', DEPTH_TOPIC}
+    assert len(bridges) == 7
+    assert {b['ros_topic_name'] for b in bridges} == set(EXPECTED) | {'/clock', DEPTH_TOPIC, GT_TOPIC}
     sensors = {s.attrib['name']: s for s in model.findall('link/sensor')}
     outputs = {
         sensors['camera'].findtext('topic') + '/image': 'gz.msgs.Image',
@@ -140,17 +147,22 @@ def test_bridge_matches_sensor_outputs_and_frozen_contract(model):
         sensors['imu'].findtext('topic'): 'gz.msgs.IMU',
         sensors['lidar'].findtext('topic') + '/points': 'gz.msgs.PointCloudPacked',
         '/world/inspection_bay/clock': 'gz.msgs.Clock',
+        GT_GZ_TOPIC: 'gz.msgs.Pose',
     }
-    assert len({b['gz_topic_name'] for b in bridges}) == 6
+    assert len({b['gz_topic_name'] for b in bridges}) == 7
     for bridge in bridges:
         topic = bridge['ros_topic_name']
         assert bridge['direction'] == 'GZ_TO_ROS'
         assert bridge['lazy'] is False
         assert bridge['gz_type_name'] == outputs[bridge['gz_topic_name']]
         expected_type = {**{t: spec[0] for t, spec in EXPECTED.items()},
-                         DEPTH_TOPIC: 'sensor_msgs/msg/Image', '/clock': 'rosgraph_msgs/msg/Clock'}
+                         DEPTH_TOPIC: 'sensor_msgs/msg/Image',
+                         '/clock': 'rosgraph_msgs/msg/Clock',
+                         GT_TOPIC: 'geometry_msgs/msg/PoseStamped'}
         assert bridge['ros_type_name'] == expected_type[topic]
         assert bridge['qos_profile'] == ('CLOCK' if topic == '/clock' else 'SENSOR_DATA')
+        if topic == GT_TOPIC:
+            assert bridge['frame_id'] == 'world'
 
 
 def test_reserved_contracts_have_no_publishers_or_custom_messages():
