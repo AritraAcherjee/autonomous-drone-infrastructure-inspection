@@ -1,0 +1,1 @@
+﻿"""Cross-workstream integration adapters."""
