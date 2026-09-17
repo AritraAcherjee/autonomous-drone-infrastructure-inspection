@@ -238,3 +238,6 @@ ros2_ws/log/
 /outputs/training/defect_detection/**/raw_after.json
 /outputs/validation/defect_detection/exif_alignment/raw_before.json
 /outputs/validation/defect_detection/exif_alignment/raw_after.json
+
+# P16 generated local SQLite databases
+*.sqlite3
