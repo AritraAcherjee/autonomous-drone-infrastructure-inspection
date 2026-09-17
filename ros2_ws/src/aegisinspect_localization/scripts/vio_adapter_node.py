@@ -27,10 +27,25 @@ class VioAdapterNode(Node):
 
         self._tf_broadcaster = TransformBroadcaster(self)
 
-        # OpenVINS creates odomimu with a depth-2 default ROS QoS profile.
+        self.declare_parameter(
+            "native_odom_topic",
+            NATIVE_ODOM_TOPIC,
+        )
+        native_odom_topic = self.get_parameter(
+            "native_odom_topic"
+        ).value
+
+        if (
+            not isinstance(native_odom_topic, str)
+            or not native_odom_topic.strip()
+        ):
+            raise ValueError(
+                "native_odom_topic must be a non-empty string"
+            )
+
         self._subscription = self.create_subscription(
             Odometry,
-            NATIVE_ODOM_TOPIC,
+            native_odom_topic,
             self._on_native_odometry,
             2,
         )
