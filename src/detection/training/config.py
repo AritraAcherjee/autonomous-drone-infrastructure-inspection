@@ -41,9 +41,14 @@ def load_config(path: Path, root: Path) -> dict:
     if not isinstance(requested, dict):
         raise ValueError('Configuration must be a mapping')
     if 'extends' in requested:
-        if set(requested) != {'extends', 'smoke'} or requested['extends'] != 'det_baseline.yaml':
-            raise ValueError('Smoke config must extend det_baseline.yaml with smoke fields only')
-        config = load_config(path.parent/'det_baseline.yaml', root)
+        smoke_bases = {
+            'det_baseline.yaml': 'SMOKE-DET-BASELINE',
+            'det_improved_01.yaml': 'SMOKE-DET-IMPROVED-01',
+        }
+        if set(requested) != {'extends', 'smoke'} or requested['extends'] not in smoke_bases:
+            raise ValueError('Smoke config must extend an explicitly approved detector config')
+        base_name = requested['extends']
+        config = load_config(path.parent/base_name, root)
         smoke = requested['smoke']
         keys = {'name', 'epochs', 'train_images', 'valid_images', 'selection', 'warmup_epochs', 'close_mosaic', 'save_period'}
         if not isinstance(smoke, dict) or set(smoke) != keys:
@@ -51,7 +56,7 @@ def load_config(path: Path, root: Path) -> dict:
         if (smoke['epochs'] not in (1, 2) or not 64 <= smoke['train_images'] <= 256
                 or not 8 <= smoke['valid_images'] <= 64
                 or smoke['selection'] != 'sha256(seed:split:relative_path)'
-                or smoke['name'] != 'SMOKE-DET-BASELINE'
+                or smoke['name'] != smoke_bases[base_name]
                 or (smoke['warmup_epochs'], smoke['close_mosaic'], smoke['save_period']) != (0, 0, 1)):
             raise ValueError('Smoke restrictions must remain deliberately small and deterministic')
         config['smoke'] = deepcopy(smoke)
@@ -89,6 +94,7 @@ def validate_config(config: dict, root: Path) -> None:
         'DET-BASELINE': 640,
         'SMOKE-DET-BASELINE': 640,
         'DET-IMPROVED-01': 800,
+        'SMOKE-DET-IMPROVED-01': 800,
     }
     if experiment_id not in approved_imgsz:
         raise ValueError('Unapproved detector experiment identity')

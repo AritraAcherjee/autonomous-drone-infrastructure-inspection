@@ -27,12 +27,29 @@ def implementation_identity(root: Path) -> dict:
     return {p.relative_to(root).as_posix(): sha256(p) for p in sorted(paths)}
 
 
-def require_tests(root: Path) -> dict:
-    """Refuse acquisition/training without passing tests for the current implementation."""
-    path = root/'outputs/validation/defect_detection/training_pipeline/before/ready.json'
+def readiness_evidence_path(root: Path, experiment_id: str) -> tuple[Path, str]:
+    """Keep baseline historical evidence separate from DET-IMPROVED readiness."""
+    baseline_ids = {'DET-BASELINE', 'SMOKE-DET-BASELINE'}
+    improved_ids = {'DET-IMPROVED-01', 'SMOKE-DET-IMPROVED-01'}
+    base = root/'outputs/validation/defect_detection/training_pipeline'
+
+    if experiment_id in baseline_ids:
+        return base/'before/ready.json', 'baseline'
+    if experiment_id in improved_ids:
+        return base/'det-improved-01/before/ready.json', 'det-improved-01'
+
+    raise ValueError(f'No readiness evidence namespace for experiment: {experiment_id}')
+
+
+def require_tests(root: Path, experiment_id: str = 'DET-BASELINE') -> dict:
+    """Refuse acquisition/training without correctly scoped passing test evidence."""
+    path, expected_scope = readiness_evidence_path(root, experiment_id)
     if not path.is_file():
         raise ValueError('Run scripts/check_detector_training.py --stage before before downloading/training')
     record = json.loads(path.read_text(encoding='utf-8'))
+    actual_scope = record.get('experiment_scope', 'baseline')
+    if actual_scope != expected_scope:
+        raise ValueError('Required test evidence belongs to a different experiment scope')
     if record.get('status') != 'PASS' or record.get('implementation') != implementation_identity(root):
         raise ValueError('Required test evidence failed or is stale')
     for rel, digest in record['evidence_sha256'].items():
@@ -151,7 +168,7 @@ def run(root: Path, config_path: Path, *, acquire: bool = False, check_only: boo
     with development_access(root):
         _, all_records = load_development_data(root, config['data']['yaml'])
         geometry = require_pass(root)
-        tests = require_tests(root)
+        tests = require_tests(root, config['experiment']['id'])
         if check_only:
             return dict(status='READY', run=config['experiment']['id'], geometry=geometry['status'], tests=tests['status'])
         records = select_records(all_records, config)

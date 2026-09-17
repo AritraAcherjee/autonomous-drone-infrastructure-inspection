@@ -245,3 +245,9 @@ ros2_ws/log/
 # 03 DamSegment runtime scientific artifacts; hashed evidence, never source.
 /outputs/validation/defect_detection/generalization_runtime/GEN-DAMSEGMENT-ZS-001/
 /outputs/validation/defect_detection/generalization/GEN-DAMSEGMENT-ZS-001/
+
+# DET-IMPROVED local runtime/readiness artifacts.
+# Compact reviewed evidence may be promoted explicitly after execution.
+/outputs/validation/defect_detection/training_pipeline/det-improved-01/
+/outputs/training/defect_detection/SMOKE-DET-IMPROVED-01/
+/outputs/training/defect_detection/DET-IMPROVED-01/

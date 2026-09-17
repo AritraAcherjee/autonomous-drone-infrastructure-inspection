@@ -12,13 +12,24 @@ sys.path.insert(0, str(ROOT/'src'))
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--stage', choices=('before', 'after'), required=True)
+    parser.add_argument(
+        '--experiment-scope',
+        choices=('baseline', 'det-improved-01'),
+        default='baseline',
+        help='Evidence namespace; legacy baseline remains the default',
+    )
     args = parser.parse_args()
     from detection.data.raw_guard import sha256
     from detection.training.provenance import configure_runtime, write_json
     from detection.training.trainer import implementation_identity
     from detection.test_evidence import generate
     configure_runtime(ROOT)
-    out = ROOT/'outputs/validation/defect_detection/training_pipeline'/args.stage
+    base = ROOT/'outputs/validation/defect_detection/training_pipeline'
+    out = (
+        base/args.stage
+        if args.experiment_scope == 'baseline'
+        else base/'det-improved-01'/args.stage
+    )
     out.mkdir(parents=True, exist_ok=True)
     write_json(out/'ready.json', {'status': 'FAIL'}, ROOT)
     env = os.environ.copy()
@@ -33,6 +44,7 @@ if __name__ == '__main__':
     print('Running required M1 and full Python suite...', flush=True)
     result = generate(ROOT, out)
     record = dict(status=result['status'], implementation=implementation_identity(ROOT),
+                  experiment_scope=args.experiment_scope,
                   detector_command=command, required_tests=result,
                   evidence_sha256={p.relative_to(ROOT).as_posix(): sha256(p) for p in out.iterdir()
                                    if p.name != 'ready.json' and p.is_file()})
