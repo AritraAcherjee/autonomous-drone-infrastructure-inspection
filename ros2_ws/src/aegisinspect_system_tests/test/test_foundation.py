@@ -15,7 +15,7 @@ PACKAGES = {
     'safety', 'navigation', 'inspection', 'diagnostics', 'bringup', 'sim', 'system_tests',
 }
 RESERVED_PACKAGES = {
-    'sensors', 'localization', 'safety', 'navigation',
+    'sensors', 'safety', 'navigation',
     'inspection', 'diagnostics',
 }
 EXPECTED = {
@@ -159,16 +159,36 @@ def test_reserved_contracts_have_no_publishers_or_custom_messages():
     assert contract['active_sensor_topics'] == {
         topic: {'type': msg, 'frame': frame} for topic, (msg, frame) in EXPECTED.items()}
     assert {tuple(pair) for pair in contract['static_tf']} == EDGES
-    assert contract['reserved_dynamic_tf'] == [['map', 'odom'], ['odom', 'base_link']]
-    reserved = contract['reserved_topics']
-    assert set(reserved) == {'/aegis/localization/vio/odom'}
+    assert contract['active_dynamic_tf'] == [['odom', 'base_link']]
+    assert contract['reserved_dynamic_tf'] == [['map', 'odom']]
+    assert ['odom', 'base_link'] not in contract['reserved_dynamic_tf']
+    assert ['map', 'odom'] not in contract['active_dynamic_tf']
+    assert 'reserved_topics' not in contract
+
+    active_localization = contract['active_localization_topics']
+    assert set(active_localization) == {'/aegis/localization/vio/odom'}
+
     assert set(contract['active_perception_topics']) == {DEPTH_TOPIC}
     depth = contract['active_perception_topics'][DEPTH_TOPIC]
     assert (depth['encoding'], depth['units'], depth['quantity']) == ('32FC1', 'meters', 'optical-axis Z')
     assert (depth['type'], depth['frame'], depth['implemented']) == ('sensor_msgs/msg/Image', 'camera_optical_frame', True)
-    vio = reserved['/aegis/localization/vio/odom']
-    assert (vio['type'], vio['frame'], vio['child_frame'], vio['publishes_tf']) == ('nav_msgs/msg/Odometry', 'odom', 'base_link', False)
-    assert all(value['implemented'] is False for value in reserved.values())
+
+    vio = active_localization['/aegis/localization/vio/odom']
+    assert (
+        vio['type'],
+        vio['frame'],
+        vio['child_frame'],
+        vio['publishes_tf'],
+        vio['implemented'],
+        vio['runtime_validation'],
+    ) == (
+        'nav_msgs/msg/Odometry',
+        'odom',
+        'base_link',
+        True,
+        True,
+        'pending',
+    )
     assert contract['ground_truth_namespace'] == '/aegis/sim/ground_truth'
     assert contract['ground_truth_use'] == 'evaluation-only'
     assert not list(SRC.rglob('*.msg'))

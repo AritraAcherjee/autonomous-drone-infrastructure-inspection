@@ -1,0 +1,98 @@
+%YAML:1.0
+
+# AegisInspect OpenVINS MVP
+# Frozen for 07 Gate 5A first acceptance runtime.
+# OpenVINS base:
+# 69488123ed9362dd44b6f28e7f4680abbff1442b
+#
+# Do not tune during integration without a new 00 decision.
+
+verbosity: "DEBUG"
+
+use_fej: true
+integration: "rk4"
+
+use_stereo: false
+max_cameras: 1
+
+calib_cam_extrinsics: false
+calib_cam_intrinsics: false
+calib_cam_timeoffset: false
+calib_imu_intrinsics: false
+calib_imu_g_sensitivity: false
+
+max_clones: 11
+max_slam: 0
+max_slam_in_update: 0
+max_msckf_in_update: 1000
+dt_slam_delay: 2.0
+
+gravity_mag: 9.81
+
+feat_rep_msckf: "GLOBAL_3D"
+feat_rep_slam: "GLOBAL_3D"
+feat_rep_aruco: "GLOBAL_3D"
+
+# ZUPT disabled. Subordinate values remain frozen source defaults.
+try_zupt: false
+zupt_chi2_multipler: 5.0
+zupt_max_velocity: 1.0
+zupt_noise_multiplier: 1.0
+zupt_max_disparity: 1.0
+zupt_only_at_beginning: false
+
+# Static initializer.
+init_window_time: 1.0
+init_imu_thresh: 1.0
+init_max_disparity: 1.0
+init_max_features: 50
+init_dyn_use: false
+
+# Inactive dynamic initializer values serialized at frozen source defaults.
+init_dyn_mle_opt_calib: false
+init_dyn_mle_max_iter: 20
+init_dyn_mle_max_threads: 20
+init_dyn_mle_max_time: 5.0
+init_dyn_num_pose: 5
+init_dyn_min_deg: 45.0
+init_dyn_inflation_ori: 10
+init_dyn_inflation_vel: 10
+init_dyn_inflation_bg: 100
+init_dyn_inflation_ba: 100
+init_dyn_min_rec_cond: 1.0e-15
+init_dyn_bias_g: [0.0, 0.0, 0.0]
+init_dyn_bias_a: [0.0, 0.0, 0.0]
+
+record_timing_information: false
+record_timing_filepath: "ov_msckf_timing.txt"
+
+# Visual front end.
+use_klt: true
+num_pts: 150
+fast_threshold: 20
+grid_x: 5
+grid_y: 5
+min_px_dist: 10
+knn_ratio: 0.85
+track_frequency: 20.0
+downsample_cameras: false
+num_opencv_threads: 4
+histogram_method: "HISTOGRAM"
+
+# Fiducial tracking disabled.
+use_aruco: false
+num_aruco: 1024
+downsize_aruco: true
+
+# Frozen source-default updater values.
+up_msckf_sigma_px: 1.0
+up_msckf_chi2_multipler: 5.0
+up_slam_sigma_px: 1.0
+up_slam_chi2_multipler: 5.0
+up_aruco_sigma_px: 1.0
+up_aruco_chi2_multipler: 5.0
+
+use_mask: false
+
+relative_config_imu: "kalibr_imu_chain.yaml"
+relative_config_imucam: "kalibr_imucam_chain.yaml"
