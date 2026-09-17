@@ -18,8 +18,39 @@ FIELDS = {
 }
 TYPES = {"SW", "ML", "GEO", "SIM"}
 STATUSES = {"PLANNED", "BLOCKED", "PENDING_INPUT", "READY", "RUNNING", "COMPLETE", "ACCEPTED", "REJECTED"}
+
+# Current producers must use P19. Chat19 remains validator-compatible only
+# for historical records; no new P19 producer should emit Chat19.
+WORKSTREAMS_CURRENT = {"Chat02", "Chat03", "P19"}
+WORKSTREAMS_HISTORICAL = {"Chat19"}
+WORKSTREAMS_ACCEPTED = WORKSTREAMS_CURRENT | WORKSTREAMS_HISTORICAL
+
 PREDICTIVE = {"mAP@0.5", "mAP@0.5:0.95", "precision", "recall", "F1", "per-class AP", "detection count"}
-METRICS = {**dict.fromkeys(PREDICTIVE, "ML"), "inference latency": "SIM", "FPS": "SIM", "tests passed": "SW", "projection error": "GEO"}
+
+SPATIAL_GEO_METRICS = {
+    "vio_ate_translation_rmse_m",
+    "vio_rpe_translation_rmse_m_1s",
+    "vio_rpe_rotation_rmse_deg_1s",
+    "vio_aligned_sample_count",
+    "vio_timestamp_alignment_coverage",
+    "vio_evaluated_duration_s",
+    "defect_localization_mean_error_m",
+    "defect_localization_median_error_m",
+    "defect_localization_rmse_m",
+    "defect_localization_p95_error_m",
+    "defect_localization_matched_count",
+    "defect_localization_unmatched_estimated_count",
+    "defect_localization_unmatched_gt_count",
+}
+
+METRICS = {
+    **dict.fromkeys(PREDICTIVE, "ML"),
+    **dict.fromkeys(SPATIAL_GEO_METRICS, "GEO"),
+    "inference latency": "SIM",
+    "FPS": "SIM",
+    "tests passed": "SW",
+    "projection error": "GEO",
+}
 TAGS = set("LOW_LIGHT SMALL_DEFECT OCCLUSION TEXTURE BACKGROUND_CONFUSION EDGE_OF_FRAME MULTIPLE_DEFECTS LOW_CONTRAST AMBIGUOUS_LABEL OTHER".split())
 
 
@@ -58,7 +89,7 @@ def external_gate(protocol):
 def validate_experiment(record, protocol):
     shape("experiment", record)
     required(record, "experiment_id name claim_id workstream owner dataset dataset_version split".split())
-    require(record["workstream"] in {"Chat02", "Chat03", "Chat19"}, "Unknown workstream")
+    require(record["workstream"] in WORKSTREAMS_ACCEPTED, "Unknown workstream")
     require(record["status"] in STATUSES, "Invalid experiment status")
     require(type(record["synthetic"]) is bool and type(record["accepted"]) is bool, "Boolean flags required")
     require(record["accepted"] == (record["status"] == "ACCEPTED"), "Inconsistent acceptance")

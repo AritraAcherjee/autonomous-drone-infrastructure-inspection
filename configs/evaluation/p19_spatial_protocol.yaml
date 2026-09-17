@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "state": "FROZEN",
+  "workstream": "P19",
+  "synthetic_fixture_only_during_tooling": true,
+  "real_project_metrics_authorized": false,
+  "trajectory": {
+    "sample_fields": [
+      "timestamp_ns",
+      "x_m",
+      "y_m",
+      "z_m",
+      "qx",
+      "qy",
+      "qz",
+      "qw",
+      "frame_id",
+      "child_frame_id"
+    ],
+    "estimated": {
+      "topic": "/aegis/localization/vio/odom",
+      "message_type": "nav_msgs/msg/Odometry",
+      "frame_id": "odom",
+      "child_frame_id": "base_link"
+    },
+    "ground_truth": {
+      "topic": "/aegis/sim/ground_truth/pose",
+      "message_type": "geometry_msgs/msg/PoseStamped",
+      "frame_id": "world",
+      "child_frame_id": "base_link",
+      "use": "evaluation-only"
+    },
+    "timestamp_association": {
+      "method": "bracket_linear_translation_slerp_orientation",
+      "max_gt_bracket_span_ns": 50000000,
+      "extrapolation": false,
+      "coverage": "aligned_sample_count / eligible_estimator_sample_count"
+    },
+    "alignment": {
+      "method": "least_squares_umeyama_rigid_se3",
+      "scale": 1.0,
+      "rescale_estimated_trajectory": false
+    },
+    "ate": {
+      "primary_metric": "translation_rmse_m",
+      "detail_metrics": [
+        "mean_translation_error_m",
+        "median_translation_error_m",
+        "rmse_translation_error_m",
+        "p95_translation_error_m",
+        "aligned_sample_count"
+      ]
+    },
+    "rpe": {
+      "headline_delta_ns": 1000000000,
+      "max_delta_mismatch_ns": 50000000,
+      "translation_metric": "rmse_m",
+      "rotation_metric": "rmse_deg",
+      "rotation_angle": "shortest",
+      "quaternion_sign_equivalent": true
+    },
+    "windows": {
+      "origin": "explicit_p13_run_start_timestamp",
+      "primary": {
+        "start_offset_ns": 3000000000,
+        "end_offset_ns": 18000000000
+      },
+      "secondary": {
+        "start_offset_ns": 0,
+        "end_offset_ns": 20000000000
+      }
+    }
+  },
+  "defect_localization": {
+    "ground_truth_schema": "GroundTruthDefect",
+    "ground_truth_frame": "world",
+    "estimated_frame": "map",
+    "evaluation_transform": {
+      "name": "T_map_from_world",
+      "representation": "4x4 rigid homogeneous SE(3)",
+      "scale": 1.0,
+      "convention": "p_map = T_map_from_world * p_world",
+      "operational_use": false
+    },
+    "correspondence": {
+      "method": "explicit_identity_mapping_only",
+      "nearest_neighbor_fallback": false,
+      "spatial_matching_tolerance": null,
+      "require_class_name_agreement": true,
+      "duplicate_mappings_allowed": false
+    },
+    "aggregate_metrics": [
+      "matched_count",
+      "unmatched_estimated_count",
+      "unmatched_gt_count",
+      "mean_euclidean_error_m",
+      "median_euclidean_error_m",
+      "rmse_euclidean_error_m",
+      "p95_euclidean_error_m"
+    ],
+    "pass_fail_accuracy_threshold": null
+  },
+  "metric_taxonomy": {
+    "evidence_type": "GEO",
+    "metrics": [
+      "vio_ate_translation_rmse_m",
+      "vio_rpe_translation_rmse_m_1s",
+      "vio_rpe_rotation_rmse_deg_1s",
+      "vio_aligned_sample_count",
+      "vio_timestamp_alignment_coverage",
+      "vio_evaluated_duration_s",
+      "defect_localization_mean_error_m",
+      "defect_localization_median_error_m",
+      "defect_localization_rmse_m",
+      "defect_localization_p95_error_m",
+      "defect_localization_matched_count",
+      "defect_localization_unmatched_estimated_count",
+      "defect_localization_unmatched_gt_count"
+    ]
+  },
+  "serialization": {
+    "format": "canonical_json_utf8",
+    "sort_keys": true,
+    "separators": [",", ":"],
+    "ensure_ascii": false,
+    "allow_nan": false,
+    "serializer_generated_timestamp": false
+  },
+  "workstream_compatibility": {
+    "new_records": "P19",
+    "historical_accepted": ["Chat19"],
+    "rewrite_historical_records": false,
+    "generate_new_Chat19_records": false
+  }
+}
