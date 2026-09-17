@@ -1,0 +1,60 @@
+{
+  "version": "gyu-damsegment-v1-approved",
+  "external_dataset": "DamSegment",
+  "gyu_classes": {
+    "0": "Crack",
+    "1": "Breakage",
+    "2": "Honeycombing",
+    "3": "Hole",
+    "4": "Exposed Reinforcement",
+    "5": "Seepage"
+  },
+  "source_class_ids": {
+    "0": "Crack",
+    "1": "Spalling"
+  },
+  "mappings": [
+    {
+      "gyu_id": 0,
+      "external_label": "Crack",
+      "status": "approved",
+      "approval": "00 Control Center DamSegment pre-access authorization + Task62C payload class-ID review"
+    },
+    {
+      "gyu_id": 1,
+      "external_label": "Spalling",
+      "status": "approved",
+      "approval": "00 Control Center DamSegment pre-access authorization + Task62C payload class-ID review"
+    },
+    {
+      "gyu_id": 2,
+      "external_label": null,
+      "status": "unmapped"
+    },
+    {
+      "gyu_id": 3,
+      "external_label": null,
+      "status": "unmapped"
+    },
+    {
+      "gyu_id": 4,
+      "external_label": null,
+      "status": "unmapped"
+    },
+    {
+      "gyu_id": 5,
+      "external_label": null,
+      "status": "unmapped"
+    }
+  ],
+  "external_only": [],
+  "excluded_gyu": [
+    "Honeycombing",
+    "Hole",
+    "Exposed Reinforcement",
+    "Seepage"
+  ],
+  "semantic_binding_basis": "Authoritative two-class DamSegment semantics plus payload-level YOLO/JSON agreement and human visual class-ID review",
+  "external_aggregate_label": "shared-class DamSegment mAP",
+  "comparability": "Not equivalent to six-class GYU mAP"
+}

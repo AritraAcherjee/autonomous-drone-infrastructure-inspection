@@ -36,6 +36,9 @@ def validate_manifest(m, scientific=False):
         if m.get('experiment_id') == 'GEN-CODEBRIM-ZS-001':
             from .preaccess import validate_preaccess
             validate_preaccess(m)
+        elif m.get('experiment_id') == 'GEN-DAMSEGMENT-ZS-001':
+            from .damsegment_preaccess import validate_preaccess
+            validate_preaccess(m)
         return m
     require(m['phase'] == 'frozen' and m.get('frozen') is True, 'Scientific scoring requires a frozen baseline')
     for key in ('architecture', 'architecture_version', 'checkpoint_path', 'ontology_version', 'freeze_approval'):
@@ -49,11 +52,14 @@ def validate_manifest(m, scientific=False):
     ds = m.get('dataset', {})
     require(isinstance(ds, dict) and all(nonempty(ds.get(k)) for k in ('identity', 'version', 'split'))
             and digest(ds.get('sha256')), 'Incomplete dataset identity/version/split/hash')
-    require(ds['identity'] in ('GYU-DET', 'CODEBRIM'), 'Unknown scientific dataset')
+    require(ds['identity'] in ('GYU-DET', 'CODEBRIM', 'DamSegment'), 'Unknown scientific dataset')
     if ds['identity'] == 'GYU-DET':
         require(ds['version'] == 'v3/baseline-v1' and ds['split'] == 'test', 'Require approved GYU baseline-v1 test')
         require(digest(ds.get('source_manifest_sha256')), 'GYU source split manifest hash required')
     else:
+        if ds['identity'] == 'DamSegment':
+            require(ds['version'] == 'v1' and ds['split'] == 'Damage Detection',
+                    'Require approved DamSegment v1 Damage Detection subset')
         require(m.get('external_review', {}).get('taxonomy_approved') is True
                 and m.get('external_review', {}).get('leakage_audit_passed') is True
                 and nonempty(m.get('external_review', {}).get('evidence')), 'External review evidence required')

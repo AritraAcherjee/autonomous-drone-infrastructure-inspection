@@ -9,8 +9,8 @@ sys.path.insert(0, str(ROOT / 'src'))
 from detection.generalization.manifest import canonical, frozen_gate, read_json, read_json_with_hash, reserve, validate_bundle
 from detection.generalization.metrics import evaluate
 from detection.generalization.reporting import write_report
-from detection.generalization.schema import CLASSES, require
-from detection.generalization.taxonomy import shared_classes, validate_crosswalk
+from detection.generalization.schema import require
+from detection.generalization.taxonomy import scored_classes, validate_crosswalk
 
 
 def run(manifest_path, bundle_path, ontology_path, protocol_path):
@@ -18,14 +18,15 @@ def run(manifest_path, bundle_path, ontology_path, protocol_path):
     # Gate metadata before even considering a scoring-payload read.
     from detection.generalization.schema import validate_manifest
     validate_manifest(m, scientific=True)
-    ontology = validate_crosswalk(read_json(ontology_path))
+    ontology = read_json(ontology_path)
+    expected_ontology_dataset = None if m['dataset']['identity'] == 'GYU-DET' else m['dataset']['identity']
+    ontology = validate_crosswalk(ontology, expected_dataset=expected_ontology_dataset)
     protocol = read_json(protocol_path)
     require(protocol.get('status') == 'frozen', 'Protocol is not frozen')
     for key in ('ap_ious', 'ap_confidence_floor', 'operating_confidence', 'matching_iou', 'nms_iou', 'nms_mode', 'max_detections'):
         require(protocol.get(key) == m[key], 'Protocol disagrees: ' + key)
     frozen_gate(m, ROOT, ontology, protocol)
-    classes = shared_classes(ontology) if m['dataset']['identity'] == 'CODEBRIM' else sorted(CLASSES)
-    require(bool(classes), 'No approved shared classes')
+    classes = scored_classes(m['dataset']['identity'], ontology)
     out = reserve(ROOT / 'outputs/validation/defect_detection/generalization', m)
     bundle, export_sha256 = read_json_with_hash(bundle_path)
     validate_bundle(bundle, m)
