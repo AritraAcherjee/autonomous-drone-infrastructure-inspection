@@ -41,3 +41,11 @@
   direction: GZ_TO_ROS
   qos_profile: SENSOR_DATA
   lazy: false
+- ros_topic_name: /aegis/sim/ground_truth/pose
+  gz_topic_name: /aegis/sim/ground_truth/pose_gz
+  ros_type_name: geometry_msgs/msg/PoseStamped
+  gz_type_name: gz.msgs.Pose
+  direction: GZ_TO_ROS
+  qos_profile: SENSOR_DATA
+  lazy: false
+  frame_id: world
