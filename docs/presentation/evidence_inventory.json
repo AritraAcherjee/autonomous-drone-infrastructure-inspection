@@ -1,0 +1,118 @@
+{
+  "canonical_base": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+  "evidence": [
+    {
+      "artifact_hash_or_test_result": "10,398 supervised images; 48,392 annotations; 6 classes",
+      "commit_sha": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+      "evidence_id": "P20-E001",
+      "reference": "docs/data/gyu_det_v3_baseline_v1.md",
+      "scope": "DATA_FOUNDATION"
+    },
+    {
+      "artifact_hash_or_test_result": "checkpoint_sha256=4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+      "commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
+      "evidence_id": "P20-E002",
+      "reference": "outputs/evaluation/defect_detection/DET-FINAL-v1/GYU-DET-TEST/aggregate_metrics.json",
+      "scope": "REAL_HELD_OUT"
+    },
+    {
+      "artifact_hash_or_test_result": "manifest_sha256=5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+      "commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
+      "evidence_id": "P20-E003",
+      "reference": "outputs/evaluation/defect_detection/DET-FINAL-v1/GYU-DET-TEST/provenance.json",
+      "scope": "REAL_HELD_OUT"
+    },
+    {
+      "artifact_hash_or_test_result": "results_sha256=8cafd13c1f9695f006fbebcd1c66892acfcba031be8d93cb360c53e208d4040b",
+      "commit_sha": "d57937abc1b74d652aeccf60ce3d6456e945eb7a",
+      "evidence_id": "P20-E004",
+      "reference": "docs/generalization_damsegment_scientific_result.md",
+      "scope": "EXTERNAL_BENCHMARK"
+    },
+    {
+      "artifact_hash_or_test_result": "scientific_execution=COMPLETE; scorer_exit=0",
+      "commit_sha": "d57937abc1b74d652aeccf60ce3d6456e945eb7a",
+      "evidence_id": "P20-E005",
+      "reference": "outputs/validation/defect_detection/generalization/GEN-DAMSEGMENT-ZS-001/scientific_completion.json",
+      "scope": "EXTERNAL_BENCHMARK"
+    },
+    {
+      "artifact_hash_or_test_result": "manual runtime validation=PASSED",
+      "commit_sha": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+      "evidence_id": "P20-E006",
+      "reference": "docs/implementation_reports/stop_b_runtime_validation.md",
+      "scope": "SIMULATION_RUNTIME"
+    },
+    {
+      "artifact_hash_or_test_result": "103 tests; 0 errors; 0 failures; 0 skipped",
+      "commit_sha": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+      "evidence_id": "P20-E007",
+      "reference": "docs/implementation_reports/simulated_depth_integration.md",
+      "scope": "SIMULATION_RUNTIME"
+    },
+    {
+      "artifact_hash_or_test_result": "MSI WSL colcon: 196 tests; 0 errors; 0 failures; 0 skipped",
+      "commit_sha": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+      "evidence_id": "P20-E008",
+      "reference": "docs/implementation_reports/camera_frame_ros_projection.md",
+      "scope": "SIMULATION_RUNTIME"
+    },
+    {
+      "artifact_hash_or_test_result": "P15 canonical implementation",
+      "commit_sha": "7293c89afd2310a124d3076b3202a9d178e6c47c",
+      "evidence_id": "P20-E009",
+      "reference": "src/defect_mapping/",
+      "scope": "IMPLEMENTATION_TEST"
+    },
+    {
+      "artifact_hash_or_test_result": "P16 synthetic demo explicitly marked test-only",
+      "commit_sha": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
+      "evidence_id": "P20-E010",
+      "reference": "database/README.md",
+      "scope": "SYNTHETIC_DEMO"
+    },
+    {
+      "artifact_hash_or_test_result": "P17 canonical implementation",
+      "commit_sha": "66d33acd00704d2f79b157471702e3709ce9d716",
+      "evidence_id": "P20-E011",
+      "reference": "src/reporting/",
+      "scope": "IMPLEMENTATION_TEST"
+    },
+    {
+      "artifact_hash_or_test_result": "P19 tests/evaluation=132 passed; real_project_metrics_authorized=false",
+      "commit_sha": "1a947321e1efe667802e2b93c7c29e1cc28dbc98",
+      "evidence_id": "P20-E012",
+      "reference": "configs/evaluation/p19_spatial_protocol.yaml",
+      "scope": "IMPLEMENTATION_TEST"
+    },
+    {
+      "artifact_hash_or_test_result": "one-time held-out report; test threshold optimization=false",
+      "commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
+      "evidence_id": "P20-E013",
+      "reference": "outputs/evaluation/defect_detection/DET-FINAL-v1/GYU-DET-TEST/HELDOUT_REPORT.md",
+      "scope": "REAL_HELD_OUT"
+    },
+    {
+      "artifact_hash_or_test_result": "RTX 4070 Laptop GPU; inference=7.681884140178433 ms/image",
+      "commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
+      "evidence_id": "P20-E014",
+      "reference": "outputs/evaluation/defect_detection/DET-FINAL-v1/GYU-DET-TEST/timing.json",
+      "scope": "REAL_HELD_OUT"
+    },
+    {
+      "artifact_hash_or_test_result": "sha256=576bd23eb9f4141f8725c1d09f17bb33d8ca143d5ea15a78c23c7d003e885fd9",
+      "commit_sha": "d57937abc1b74d652aeccf60ce3d6456e945eb7a",
+      "evidence_id": "P20-E015",
+      "reference": "outputs/validation/defect_detection/generalization/GEN-DAMSEGMENT-ZS-001/domain_comparison.csv",
+      "scope": "EXTERNAL_BENCHMARK"
+    },
+    {
+      "artifact_hash_or_test_result": "descriptive six-class held-out per-class metrics",
+      "commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
+      "evidence_id": "P20-E016",
+      "reference": "outputs/evaluation/defect_detection/DET-FINAL-v1/GYU-DET-TEST/per_class_metrics.csv",
+      "scope": "REAL_HELD_OUT"
+    }
+  ],
+  "schema_version": 1
+}
