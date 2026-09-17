@@ -1,0 +1,107 @@
+{
+  "assembly_base": "a0d9271813c78c6a773379468045c5be507f9097",
+  "core_sections": [
+    {
+      "content_status": "READY",
+      "section": 1,
+      "title": "Problem / Motivation"
+    },
+    {
+      "content_status": "READY",
+      "section": 2,
+      "title": "AegisInspect Objective"
+    },
+    {
+      "content_status": "READY",
+      "section": 3,
+      "title": "Overall System Architecture"
+    },
+    {
+      "content_status": "READY",
+      "section": 4,
+      "title": "GYU-DET Dataset / Six Defect Classes"
+    },
+    {
+      "content_status": "READY",
+      "section": 5,
+      "title": "Detector Training + Scientific Evaluation Methodology"
+    },
+    {
+      "content_status": "READY",
+      "section": 6,
+      "title": "DET-FINAL Held-Out GYU Results"
+    },
+    {
+      "content_status": "READY",
+      "section": 7,
+      "title": "External Generalization - DamSegment"
+    },
+    {
+      "content_status": "READY",
+      "section": 8,
+      "title": "ROS 2 / Gazebo Simulation Foundation"
+    },
+    {
+      "content_status": "READY",
+      "section": 9,
+      "title": "Simulated Metric Depth"
+    },
+    {
+      "content_status": "READY",
+      "section": 10,
+      "title": "Camera-Frame 3D Projection"
+    },
+    {
+      "content_status": "READY_WITH_PENDING_RUNTIME",
+      "section": 11,
+      "title": "Defect-to-Map Architecture"
+    },
+    {
+      "content_status": "READY",
+      "section": 12,
+      "title": "Database / Dashboard"
+    },
+    {
+      "content_status": "READY",
+      "section": 13,
+      "title": "Deterministic Reporting"
+    },
+    {
+      "content_status": "READY_WITH_PENDING_RUNTIME",
+      "section": 14,
+      "title": "P19 Evaluation Methodology"
+    },
+    {
+      "content_status": "READY",
+      "section": 15,
+      "title": "Limitations"
+    },
+    {
+      "content_status": "READY",
+      "section": 16,
+      "title": "Contributions / Engineering Decisions"
+    },
+    {
+      "content_status": "READY",
+      "section": 17,
+      "title": "Next Steps"
+    },
+    {
+      "content_status": "READY",
+      "section": 18,
+      "title": "Q&A / Evidence References"
+    }
+  ],
+  "final_title": "PENDING",
+  "highest_stop_level": "PENDING",
+  "insertable_sections": [
+    {
+      "content_status": "READY_WITH_PENDING_RUNTIME",
+      "current_backend": "RTAB-Map RGB-D + IMU",
+      "reason": "00 requires a localization slide placeholder while runtime results remain replaceable.",
+      "runtime_result": "PENDING",
+      "title": "Localization / Stop-B Backend Status"
+    }
+  ],
+  "schema_version": 1
+}
