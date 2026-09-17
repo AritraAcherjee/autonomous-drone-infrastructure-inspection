@@ -82,8 +82,20 @@ def validate_config(config: dict, root: Path) -> None:
     for key in ('imgsz', 'batch', 'epochs', 'nbs', 'patience', 'save_period'):
         if type(train[key]) is not int or train[key] <= 0:
             raise ValueError(f'training.{key} must be a positive integer')
-    if train['batch'] > 4 or train['imgsz'] != 640 or train['epochs'] > 100:
-        raise ValueError('Unapproved baseline capacity; use batch <=4, imgsz=640, epochs<=100')
+    if train['batch'] > 4 or train['epochs'] > 100:
+        raise ValueError('Unapproved detector capacity; use batch <=4, epochs<=100')
+    experiment_id = config['experiment']['id']
+    approved_imgsz = {
+        'DET-BASELINE': 640,
+        'SMOKE-DET-BASELINE': 640,
+        'DET-IMPROVED-01': 800,
+    }
+    if experiment_id not in approved_imgsz:
+        raise ValueError('Unapproved detector experiment identity')
+    if train['imgsz'] != approved_imgsz[experiment_id]:
+        raise ValueError(
+            f'{experiment_id} requires imgsz={approved_imgsz[experiment_id]}'
+        )
     if type(train['seed']) is not int or train['seed'] < 0 or train['workers'] != 0:
         raise ValueError('Use an integer seed and workers=0 for the in-process raw guard')
     if any(train[k] is not False for k in ('cache', 'resume', 'single_cls', 'compile', 'profile', 'rect', 'channels_last')):
