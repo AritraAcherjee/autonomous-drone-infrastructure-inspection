@@ -23,6 +23,7 @@ def generate_launch_description():
                 "publish_tf": False,
                 "wait_imu_to_init": True,
                 "approx_sync": True,
+                "GFTT/MinDistance": 1,
             }
         ],
         remappings=[

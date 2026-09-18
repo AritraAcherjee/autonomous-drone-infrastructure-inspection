@@ -1,5 +1,7 @@
 from copy import deepcopy
 import math
+import re
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -212,3 +214,47 @@ def test_package_activation_files_exist():
     assert (ROOT / "CMakeLists.txt").is_file()
     assert (ROOT / "scripts" / "vio_adapter_node.py").is_file()
     assert (ROOT / "launch" / "vio_adapter.launch.py").is_file()
+
+def test_rtab_v3_visual_frontend_static_contract():
+    """Freeze the authorized RTAB V3 visual-front-end contract."""
+    launch_text = (
+        ROOT / "launch" / "rtabmap_fallback.launch.py"
+    ).read_text(encoding="utf-8")
+
+    # The one authorized V3 scientific/runtime change.
+    assert '"GFTT/MinDistance": 1' in launch_text
+    assert launch_text.count('"GFTT/MinDistance"') == 1
+
+    # Vis/MinInliers must remain the installed RTAB default, not an
+    # Aegis override.
+    assert '"Vis/MinInliers"' not in launch_text
+
+    # Frozen localization / TF contract.
+    assert '"publish_tf": False' in launch_text
+    assert '"frame_id": "base_link"' in launch_text
+    assert '"odom_frame_id": "odom"' in launch_text
+    assert '"wait_imu_to_init": True' in launch_text
+    assert '"approx_sync": True' in launch_text
+
+    prefix = subprocess.run(
+        ["ros2", "pkg", "prefix", "rtabmap_odom"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+    headers = sorted(
+        Path(prefix).glob(
+            "include/rtabmap-*/rtabmap/core/Parameters.h"
+        )
+    )
+
+    assert headers, "Installed RTAB Parameters.h not found"
+
+    parameters_text = headers[0].read_text(encoding="utf-8")
+
+    assert re.search(
+        r"RTABMAP_PARAM\("
+        r"Vis,\s*MinInliers,\s*int,\s*20\s*,",
+        parameters_text,
+    )
