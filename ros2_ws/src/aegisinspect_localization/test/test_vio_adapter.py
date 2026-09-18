@@ -221,9 +221,18 @@ def test_rtab_v3_visual_frontend_static_contract():
         ROOT / "launch" / "rtabmap_fallback.launch.py"
     ).read_text(encoding="utf-8")
 
-    # The one authorized V3 scientific/runtime change.
-    assert '"GFTT/MinDistance": 1' in launch_text
+    # Scientific value remains 1. RTAB's ROS wrapper requires the
+    # RTAB ParametersMap value to be supplied as a ROS string.
+    assert '"GFTT/MinDistance": "1"' in launch_text
+    assert '"GFTT/MinDistance": 1' not in launch_text
     assert launch_text.count('"GFTT/MinDistance"') == 1
+
+    serialized_match = re.search(
+        r'"GFTT/MinDistance":\s*"([^"]+)"',
+        launch_text,
+    )
+    assert serialized_match
+    assert float(serialized_match.group(1)) == pytest.approx(1.0)
 
     # Vis/MinInliers must remain the installed RTAB default, not an
     # Aegis override.
@@ -252,6 +261,23 @@ def test_rtab_v3_visual_frontend_static_contract():
     assert headers, "Installed RTAB Parameters.h not found"
 
     parameters_text = headers[0].read_text(encoding="utf-8")
+
+    # Installed RTAB core stores parameter values in a string map,
+    # while GFTT/MinDistance is parsed into a double internally.
+    assert (
+        "typedef std::map<std::string, std::string> ParametersMap;"
+        in parameters_text
+    )
+    assert re.search(
+        r"RTABMAP_PARAM\("
+        r"GFTT,\s*MinDistance,\s*double,\s*7\s*,",
+        parameters_text,
+    )
+    assert (
+        "static bool parse(const ParametersMap & parameters, "
+        "const std::string & key, double & value);"
+        in parameters_text
+    )
 
     assert re.search(
         r"RTABMAP_PARAM\("
