@@ -284,3 +284,46 @@ def test_rtab_v3_visual_frontend_static_contract():
         r"Vis,\s*MinInliers,\s*int,\s*20\s*,",
         parameters_text,
     )
+
+
+def test_rtab_icp_fallback_static_contract():
+    """Freeze the authorized Stop-B LiDAR ICP fallback wiring."""
+    launch_path = ROOT / "launch" / "rtabmap_icp_fallback.launch.py"
+
+    assert launch_path.is_file()
+
+    launch_text = launch_path.read_text(encoding="utf-8")
+
+    # Installed/default RTAB ICP backend.
+    assert 'package="rtabmap_odom"' in launch_text
+    assert 'executable="icp_odometry"' in launch_text
+    assert 'name="icp_odometry"' in launch_text
+
+    # Minimum authorized runtime/frame configuration only.
+    assert '"use_sim_time": True' in launch_text
+    assert '"frame_id": "base_link"' in launch_text
+    assert '"odom_frame_id": "odom"' in launch_text
+    assert '"publish_tf": False' in launch_text
+
+    # Frozen Aegis PointCloud2 input and native odometry surface.
+    assert (
+        '("scan_cloud", "/aegis/sensors/lidar/points")'
+        in launch_text
+    )
+    assert '("odom", "/odom")' in launch_text
+
+    # Existing canonical Aegis adapter is reused unchanged.
+    assert 'package="aegisinspect_localization"' in launch_text
+    assert 'executable="vio_adapter_node.py"' in launch_text
+    assert '"native_odom_topic": "/odom"' in launch_text
+
+    # ICP launch must not introduce mapping, GT, static-TF ownership,
+    # or sensor/extrinsic reconfiguration.
+    assert "ground_truth" not in launch_text
+    assert "static_transform_publisher" not in launch_text
+    assert '"map"' not in launch_text
+    assert "0.15" not in launch_text
+
+    # No scientific ICP parameter tuning is authorized in this gate.
+    assert '"Icp/' not in launch_text
+    assert '"Reg/' not in launch_text
