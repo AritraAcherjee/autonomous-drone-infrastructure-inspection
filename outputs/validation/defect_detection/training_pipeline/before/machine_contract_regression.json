@@ -1,0 +1,151 @@
+{
+  "schema_version": "aegis-machine-contract-regression-v1",
+  "status": "PASS",
+  "authority": "00 Control Center: preserved canonical M1 Windows evidence; no fresh WSL M1 replay required.",
+  "reason": "ARMOURY logical role bound exactly to physical hostname AritraA; scientific/data scope unchanged.",
+  "pre_patch_head": "d72869650b5ba0e44046cef4e27ad3e5df35dd4d",
+  "original_ready_sha256": "d22949d420a4c3290de8cd45dbd3857a573ca375f2315103dcbfb593e923bec9",
+  "source_patch_sha256": "e497dd4ccf5580083b6671aec61c4be27f8a0117e5e8dcd69212ef33338fcb52",
+  "patch_file_sha256": {
+    "scripts/low_light/prepare_desktop_handoff.py": "b0504e9f9e1eabbf0adb13ada73758edbc1f4643f9a65ec7e3e7da08dcd97253",
+    "src/low_light/evaluation.py": "5d45de289e7048294692af23e3ba3997ce9886b699ffac781b87931d752b59cb",
+    "src/low_light/latency.py": "efb5d3bce136d62bfce303a47a4076210057ee4672554b4910e04fd0f3824b87",
+    "tests/low_light/test_evaluation.py": "0ee209d033a342db25b08a6ab5110eb37b7429a459ec23607c9d0c5e04825ca5",
+    "tests/low_light/test_handoff.py": "84a14979b643a24a885aff49ec4fa0f63d3fd5da007b2770555978c0c8e6ac12",
+    "tests/low_light/test_latency.py": "811131468287f58f109ec5d63042a6580378401876bfd055ea87eace9f3c8906"
+  },
+  "implementation": {
+    "configs/detection/det_baseline.yaml": "d2b8bfd1de031317c79671729ce3ba5ed263edd4cf9cc879ad0148a9c8ed31e3",
+    "configs/detection/det_baseline_smoke.yaml": "5865881214ad0b463d743063ef391c5a9e2092de2836e6e62109ac4f3338c31b",
+    "configs/detection/det_final_v1.yaml": "5883001e9b8ad7738612280d1a717157291d1655a47100aa75ba9298832ff560",
+    "configs/low_light/benchmark_v1.yaml": "0aa7923c99ae075d33ec0ce4ac79ddc926b5ba703db83d7c043f64ba440dedfd",
+    "configs/low_light/ll_detector_01.yaml": "0a60ee9e1011079c8d7948ecb7ecc59c8b185f353a4db82f2907cf77039aa0dc",
+    "scripts/check_detector_training.py": "9a7f9b1af367a294e832f4967c0f4e48855329496ff2cd3980d8d7bf98027f53",
+    "scripts/train_detector.py": "ae4fcc4011a67732b6a86e2365cb786bcf02b456778b3c4f2b242adfc2ca1f89",
+    "scripts/verify_detector_exif.py": "a45f250496782a9ed6785ea79d000857bd03b16c8a48b36cf1e160aa0038b600",
+    "src/detection/training/__init__.py": "372bc3ea8cfe0659a0977593efc8756aaa8c2e3c341a490cc4459843e255e1bc",
+    "src/detection/training/config.py": "48129ae76166dc00e823e1480a1fcd6c974543f47a23cbbd5f03941010dc4604",
+    "src/detection/training/dataset.py": "bc7f65e789181d33dfde2e86f93d8133a6831e0a7ad2a6fdcdfd26abc883dbf8",
+    "src/detection/training/exif.py": "5e98e7fb9638efdf87d5795ac9ca8af0beb86e1f954c2f9681f45e92454f5679",
+    "src/detection/training/provenance.py": "1b8a87db017a578c03ab48d4e5cdc88e0dba0158a56c12ac2c3e9119d0549fc5",
+    "src/detection/training/trainer.py": "377430f098474bd779ed4ac03e7fde4b8ef93580831a20282a4e3baae7b52dc5",
+    "src/low_light/__init__.py": "b3b7f5fa85df3ea27d0308337425fcbf6aab046c09987d87cf7e7de2a10fabb1",
+    "src/low_light/clahe.py": "a78e8dcf1a55f03d962c350608d5732e0456bd190dd334601efa30adceb021e7",
+    "src/low_light/evaluation.py": "5d45de289e7048294692af23e3ba3997ce9886b699ffac781b87931d752b59cb",
+    "src/low_light/latency.py": "efb5d3bce136d62bfce303a47a4076210057ee4672554b4910e04fd0f3824b87",
+    "src/low_light/manifest.py": "70fa40953c36e4110edd2eea28ce0767898d5d885a6dde54384150a186f935f7",
+    "src/low_light/severity.py": "c110797af01fa72244e16c0a2f6a77ef350ab3d3497d313599a1ab8bb2621ff3",
+    "src/low_light/training.py": "07d7298b5aa83e09cc21810df10eaab5525d01ef0638d534bb1f156c6d9a4ab3",
+    "src/low_light/transforms.py": "a11ebcb64a5641e8e373affe0c8136230aeeeebb86d5d465b057671219aef3b5",
+    "src/low_light/validation_variants.py": "1fff672f8cfdf31e03df18ee1ed127e4cbc24ff91b5267115c6157d2a0bb1fd1",
+    "tests/detection/test_codebrim_preaccess.py": "cf1d2765a70530c145b62cb150915dbc51d59eb91b5bc398c3a4d4804a0254a6",
+    "tests/detection/test_damsegment_preaccess.py": "ec2da567f196c73fde428dbc3bde406dfb0f381b652e8f1384ee2f941ab7426d",
+    "tests/detection/test_damsegment_runtime.py": "d161f81ff402a549dc229fc110ea4c67b3e120aa039b5c4994ee416d0096fcdf",
+    "tests/detection/test_generalization.py": "d46d6c64dff7c071ffa7c0ea82975109d6fa015542ce84c1e45cf3d560bb2dcb",
+    "tests/detection/test_pretraining_gate.py": "1b0bf402917d0d8a7cc45ed9ad59b9f8136d91351a98de15b9c0e850df663074",
+    "tests/detection/test_training.py": "47efd638251adea5d1f37ff603fe1cddd2fe24a392f4d0882b1fce6bbaa50d34",
+    "tests/low_light/__init__.py": "3be0916999eae3f6f8d64abf8d69eabb45df46e07d52746262c79d2848321b2b",
+    "tests/low_light/test_clahe.py": "68a6e56e14634979cea2aace60ea9c176d4287e356f9a356cc06458adb3b900a",
+    "tests/low_light/test_evaluation.py": "0ee209d033a342db25b08a6ab5110eb37b7429a459ec23607c9d0c5e04825ca5",
+    "tests/low_light/test_handoff.py": "84a14979b643a24a885aff49ec4fa0f63d3fd5da007b2770555978c0c8e6ac12",
+    "tests/low_light/test_latency.py": "811131468287f58f109ec5d63042a6580378401876bfd055ea87eace9f3c8906",
+    "tests/low_light/test_manifest.py": "1579505d88dcb4668b5ae8de8198e74231fc7cb7714a1bb3ac63b56e94e3c006",
+    "tests/low_light/test_split_lock.py": "c00e6b590b02329e6f4c5fe776e54e88e73b47e55814994d570437a1a35365d4",
+    "tests/low_light/test_training.py": "06a9d497035171a915a84f07d210a479bde0fd1a60a4875d4aa9dcf60bc05854",
+    "tests/low_light/test_transforms.py": "7c1ebb4864cc838110c8035d17d0b8da1a05743b0d62d78aec6d9890f138c055"
+  },
+  "m1": {
+    "disposition": "M1 regression satisfied by preserved canonical upstream evidence; current patch is outside M1/data scope.",
+    "M1_CANONICAL_EVIDENCE": "112/112 PASS",
+    "M1_CANONICAL_PLATFORM": "NATIVE WINDOWS",
+    "M1_FRESH_WSL_REPLAY_REQUIRED": false,
+    "M1_SOURCE_OR_SNAPSHOT_CHANGED": false,
+    "run_id": "72737cf7bf22401fbc3159e7ed434d0a",
+    "command": {
+      "suite": "m1",
+      "command": [
+        "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\.venv-detection\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/data",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
+      "started_at": "2026-09-19T00:55:13.431989+00:00",
+      "returncode": 0,
+      "finished_at": "2026-09-19T00:55:25.901118+00:00"
+    },
+    "evidence_sha256": {
+      "outputs/validation/defect_detection/training_pipeline/before/detector.xml": "82ce1b89e0202ea01d2237b60330781530a82bea2c548fe084ad94cba7a1f3f7",
+      "outputs/validation/defect_detection/training_pipeline/before/detector_tests.txt": "4a0bdf49e1b02bcb1ef74bf530b04ab537aac6a2284b9d9949dfce649bffa64b",
+      "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "0ebc7db38e7fb519ed40b77e7c407b5997c60b01aaa5a9ee3e1a823ae56b978d",
+      "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "0adc99f42116a318eec1c733bc93c4af86e868a5215ca150c715250658648c48",
+      "outputs/validation/defect_detection/training_pipeline/before/pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75",
+      "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "b6d639ba3db2852c8c4018065116901c18c128891de5509eadf16f89192a3816"
+    }
+  },
+  "fresh_regressions": {
+    "detector": {
+      "command": [
+        "/tmp/aegisinspect-04-test-env/bin/python",
+        "-B",
+        "-c",
+        "import importlib.machinery\nimport importlib.util\nfrom pathlib import Path\nimport sys\n\nrepo = Path.cwd().resolve()\nspec = importlib.machinery.PathFinder.find_spec(\"tests\", [str(repo)])\nassert spec is not None and spec.origin is None\nassert list(spec.submodule_search_locations) == [str(repo / \"tests\")]\nassert \"tests\" not in sys.modules\nsys.modules[\"tests\"] = importlib.util.module_from_spec(spec)\nhelper = importlib.util.find_spec(\"tests.low_light.test_manifest\")\nassert Path(helper.origin).resolve() == repo / \"tests/low_light/test_manifest.py\"\n\nimport os\nlocked = repo / \"data/raw/gyu_det/v3/extracted/test\"\ndef guard(event,args):\n    if event in (\"open\", \"os.scandir\") and isinstance(args[0], (str,bytes,os.PathLike)):\n        path=Path(os.fsdecode(args[0])).resolve()\n        if path.is_relative_to(locked):\n            raise PermissionError(\"Locked GYU test access prohibited: \" + str(path))\nsys.addaudithook(guard)\nimport pytest\nraise SystemExit(pytest.main([\"tests/detection\",\"-q\",\"-p\",\"no:cacheprovider\",\"--junitxml=/tmp/aegisinspect-04-test-env/evidence/canonical-resume-detector.xml\"]))\n"
+      ],
+      "exit_code": 0,
+      "wall_duration_seconds": 8.282553869008552,
+      "collected": 196,
+      "passed": 195,
+      "failed": 0,
+      "skipped": 1,
+      "subtests_passed": 97,
+      "stdout_stderr": "........................................................................ [ 36%]\n.............................. [ 52%]\n...............................s............... [ 76%]\n...............................................                                                                    [100%]\n195 passed, 1 skipped, 97 subtests passed in 7.41s\n",
+      "junit": "outputs/validation/defect_detection/training_pipeline/before/machine_contract_detector.xml",
+      "skip_disposition": "Native Windows semantics only; preserved canonical Windows case PASS verified."
+    },
+    "full": {
+      "command": [
+        "/tmp/aegisinspect-04-test-env/bin/python",
+        "-B",
+        "-c",
+        "import importlib.machinery\nimport importlib.util\nfrom pathlib import Path\nimport sys\n\nrepo = Path.cwd().resolve()\nspec = importlib.machinery.PathFinder.find_spec(\"tests\", [str(repo)])\nassert spec is not None and spec.origin is None\nassert list(spec.submodule_search_locations) == [str(repo / \"tests\")]\nassert \"tests\" not in sys.modules\nsys.modules[\"tests\"] = importlib.util.module_from_spec(spec)\nhelper = importlib.util.find_spec(\"tests.low_light.test_manifest\")\nassert Path(helper.origin).resolve() == repo / \"tests/low_light/test_manifest.py\"\n\nimport os\nlocked = repo / \"data/raw/gyu_det/v3/extracted/test\"\ndef guard(event,args):\n    if event in (\"open\", \"os.scandir\") and isinstance(args[0], (str,bytes,os.PathLike)):\n        path=Path(os.fsdecode(args[0])).resolve()\n        if path.is_relative_to(locked):\n            raise PermissionError(\"Locked GYU test access prohibited: \" + str(path))\nsys.addaudithook(guard)\nimport pytest\nraise SystemExit(pytest.main([\"tests\",\"ros2_ws/src/aegisinspect_mapping/test\",\"ros2_ws/src/aegisinspect_system_tests/test\",\"--ignore=tests/data\",\"-q\",\"-p\",\"no:cacheprovider\",\"--junitxml=/tmp/aegisinspect-04-test-env/evidence/canonical-resume-full.xml\"]))\n"
+      ],
+      "exit_code": 0,
+      "wall_duration_seconds": 11.790963665989693,
+      "collected": 1878,
+      "passed": 1877,
+      "failed": 0,
+      "skipped": 1,
+      "subtests_passed": 133,
+      "stdout_stderr": "............................................ [  2%]\n........................................................................ [  6%]\n........................................................................ [ 10%]\n........................................................................ [ 13%]\n..................................................................................s............................................................................................................ [ 24%]\n................................................................ [ 27%]\n........................................................................ [ 31%]\n........................................................................ [ 35%]\n........................................................................ [ 38%]\n........................................................................ [ 42%]\n........................................................................ [ 46%]\n........................................................................ [ 50%]\n........................................................................ [ 54%]\n........................................................................ [ 58%]\n........................................................................ [ 61%]\n........................................................................ [ 65%]\n........................................................................ [ 69%]\n........................................................................ [ 73%]\n........................................................................ [ 77%]\n........................................................................ [ 81%]\n........................................................................ [ 84%]\n........................................................................ [ 88%]\n........................................................................ [ 92%]\n........................................................................ [ 96%]\n...................................................................      [100%]\n1877 passed, 1 skipped, 133 subtests passed in 11.29s\n",
+      "junit": "outputs/validation/defect_detection/training_pipeline/before/machine_contract_full_python.xml",
+      "skip_disposition": "Native Windows semantics only; preserved canonical Windows case PASS verified."
+    }
+  },
+  "applicable_full_scope": "Accepted tests + both ROS test directories, with tests/data satisfied by preserved M1 evidence.",
+  "prior_targeted_identity": {
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0
+  },
+  "related_04": {
+    "passed": 203,
+    "failed": 0,
+    "skipped": 0,
+    "also_verified_in_fresh_full_suite": true
+  },
+  "full_count_reconciliation": {
+    "canonical_full": 1950,
+    "preserved_m1": 112,
+    "added_identity_cases": 40,
+    "fresh_collected": 1878
+  },
+  "geometry_sha256": "736b3201834286504c3b37706232bb6b7ecf50d86e5dd0f0b2aec9a0244758eb",
+  "scientific_configuration_changed": false,
+  "locked_gyu_test_accessed": false,
+  "scientific_inference_executed": false,
+  "training_executed": false,
+  "benchmark_generation_executed": false
+}

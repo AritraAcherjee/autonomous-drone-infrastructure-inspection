@@ -32,6 +32,9 @@ from .validation_variants import (
 )
 
 BRANCH = "04/low-light-detector"
+# Control Center: ARMOURY is the logical role; AritraA is its physical hostname.
+# WSL2 Ubuntu 26.04 on that desktop is authorized; native Windows is not required.
+ARMOURY_PHYSICAL_HOSTNAME = "aritraa"
 CANONICAL_BASE = "013067277d331246959af1f6176584b5305828f4"
 EVALUATION_ROOT = "outputs/experiments/low_light/evaluation"
 TRAINING_ROOT = "outputs/training/low_light/LL-DETECTOR-01"
@@ -244,7 +247,7 @@ def require_desktop(repo: Path, accepted_commit: str, host: str) -> dict:
     if identity != dict(branch=BRANCH, sha=accepted_commit, source_status=""):
         raise ValueError("checkout must be the exact accepted branch/commit with clean task sources")
     env = environment_identity()
-    if env["host"].casefold() != "armoury" or env["versions"] != REQUIRED_VERSIONS:
+    if env["host"].casefold() != ARMOURY_PHYSICAL_HOSTNAME or env["versions"] != REQUIRED_VERSIONS:
         raise ValueError("ARMOURY machine identity or required software versions differ")
     subprocess.run(["git", "merge-base", "--is-ancestor", CANONICAL_BASE, accepted_commit],
                    cwd=repo, check=True, capture_output=True, timeout=30)
@@ -353,7 +356,7 @@ def validate_result(result: dict) -> None:
             or evidence["official_scientific_performance"] is not False
             or evidence["label"] not in (NON_OFFICIAL, "ARMOURY VALIDATION DEVELOPMENT — NOT LOCKED-TEST EVIDENCE")):
         raise ValueError("results must be unambiguously validation development evidence")
-    if env["host"].casefold() != "armoury" and evidence["label"] != NON_OFFICIAL:
+    if env["host"].casefold() != ARMOURY_PHYSICAL_HOSTNAME and evidence["label"] != NON_OFFICIAL:
         raise ValueError("Laptop results require the smoke/debug label")
     validate_metrics(result["metrics"])
 

@@ -109,6 +109,31 @@ def test_handoff_deterministic_and_no_performance_claim():
     assert h.handoff()["smoke"]["evidence"] == e.NON_OFFICIAL
 
 
+@pytest.mark.parametrize("hostname,cuda,bf16,accepted", [
+    ("AritraA", True, True, True), ("aritraa", True, True, True), ("ARITRAA", True, True, True),
+    ("OtherMachine", True, True, False), ("armoury", True, True, False),
+    ("AritraA", False, True, False), ("AritraA", True, False, False),
+])
+def test_desktop_check_machine_identity_and_cuda_gates(tmp_path, monkeypatch, capsys, hostname, cuda, bf16, accepted):
+    monkeypatch.setattr(e, "git_identity", lambda _: dict(branch=e.BRANCH, sha="a" * 40, source_status=""))
+    monkeypatch.setattr(e, "environment_identity", lambda: dict(
+        versions=e.REQUIRED_VERSIONS.copy(), host=hostname, system="Linux", machine="x86_64"))
+    monkeypatch.setattr(e.subprocess, "run", lambda *a, **k: None)
+    monkeypatch.setattr(h, "preflight", lambda *a: dict(status="STATIC_PREFLIGHT_PASS"))
+    monkeypatch.setitem(sys.modules, "torch", SimpleNamespace(cuda=SimpleNamespace(
+        is_available=lambda: cuda, is_bf16_supported=lambda: bf16, get_device_name=lambda _: "synthetic GPU")))
+    command = ["--mode", "desktop-check", "--repo-root", str(tmp_path), "--accepted-commit", "a" * 40, "--host", "ARMOURY"]
+    if accepted:
+        assert h.main(command) == 0
+        assert h.strict_json_loads(capsys.readouterr().out.encode())["cuda_checked"] is True
+    else:
+        with pytest.raises(SystemExit) as exc:
+            h.main(command)
+        assert exc.value.code == 1
+        expected = "machine identity" if hostname in ("OtherMachine", "armoury") else "CUDA with BF16 required"
+        assert expected in capsys.readouterr().err
+
+
 @pytest.mark.parametrize("commit", [None, "main", "TBD", "a" * 39, e.CANONICAL_BASE])
 def test_preflight_requires_exact_commit_before_any_access(tmp_path, commit, monkeypatch):
     monkeypatch.setattr(e, "git_identity", lambda *_: pytest.fail("unexpected Git access"))

@@ -92,3 +92,16 @@ def test_laptop_cannot_claim_official_by_argument(monkeypatch):
     monkeypatch.setattr(l.platform, "node", lambda: "Laptop1")
     with pytest.raises(ValueError, match="different machine"):
         run(host="ARMOURY", hardware={"gpu": "synthetic"}, device="cuda:0", synchronize=lambda: None)
+
+
+@pytest.mark.parametrize("hostname,authorized", [("AritraA", True), ("aritraa", True), ("ARITRAA", True), ("armoury", False), ("OtherMachine", False)])
+def test_latency_machine_identity_requires_physical_hostname(monkeypatch, hostname, authorized):
+    monkeypatch.setattr(l.platform, "node", lambda: hostname)
+    kwargs = dict(host="ARMOURY", hardware={"host": hostname, "gpu": "synthetic"},
+                  device="cuda:0", synchronize=lambda: None)
+    if authorized:
+        report, _ = run(**kwargs)
+        assert report["official"] is True
+    else:
+        with pytest.raises(ValueError, match="different machine"):
+            run(**kwargs)

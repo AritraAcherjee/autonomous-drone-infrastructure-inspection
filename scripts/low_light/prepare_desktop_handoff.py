@@ -444,7 +444,7 @@ def verify_result_bundle(repo, accepted_commit):
             result = strict_json_loads(blob)
             e.validate_result(result)
             if (result["strategy"] != strategy or result["severity"] != level or result["git_sha"] != accepted_commit
-                    or result["model"] != model or result["environment"]["host"].casefold() != "armoury"):
+                    or result["model"] != model or result["environment"]["host"].casefold() != e.ARMOURY_PHYSICAL_HOSTNAME):
                 raise ValueError("evaluation evidence identity mismatch")
             sidecar = strict_json_loads(e.checked_path(repo, relative.removesuffix(".json") + ".sha256.json").read_bytes())
             if sidecar != {"result.json": e.sha256_bytes(blob)}:
@@ -457,7 +457,7 @@ def verify_result_bundle(repo, accepted_commit):
                     or timing.get("git_sha") != accepted_commit or timing.get("source_split") != "valid"
                     or timing.get("locked_test_accessed") is not False or timing.get("official") is not True
                     or timing.get("protocol") != latency_contract() or timing.get("benchmark") != result["benchmark"]
-                    or timing.get("hardware", {}).get("host", "").casefold() != "armoury"):
+                    or timing.get("hardware", {}).get("host", "").casefold() != e.ARMOURY_PHYSICAL_HOSTNAME):
                 raise ValueError("official latency evidence identity/contract mismatch")
             from src.low_light.latency import summarize
             samples = timing.get("samples", [])

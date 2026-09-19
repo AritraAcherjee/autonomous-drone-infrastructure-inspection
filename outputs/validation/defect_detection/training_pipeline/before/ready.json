@@ -17,8 +17,8 @@
     "src/detection/training/trainer.py": "377430f098474bd779ed4ac03e7fde4b8ef93580831a20282a4e3baae7b52dc5",
     "src/low_light/__init__.py": "b3b7f5fa85df3ea27d0308337425fcbf6aab046c09987d87cf7e7de2a10fabb1",
     "src/low_light/clahe.py": "a78e8dcf1a55f03d962c350608d5732e0456bd190dd334601efa30adceb021e7",
-    "src/low_light/evaluation.py": "6acb48a268ca2cab25659dab9a45f2b837493e704bf21aaf57e045e051262f77",
-    "src/low_light/latency.py": "c8aa856ad0ab83883a656acecd2a09fe7f061aac68ae032def65588cd974f7d2",
+    "src/low_light/evaluation.py": "5d45de289e7048294692af23e3ba3997ce9886b699ffac781b87931d752b59cb",
+    "src/low_light/latency.py": "efb5d3bce136d62bfce303a47a4076210057ee4672554b4910e04fd0f3824b87",
     "src/low_light/manifest.py": "70fa40953c36e4110edd2eea28ce0767898d5d885a6dde54384150a186f935f7",
     "src/low_light/severity.py": "c110797af01fa72244e16c0a2f6a77ef350ab3d3497d313599a1ab8bb2621ff3",
     "src/low_light/training.py": "07d7298b5aa83e09cc21810df10eaab5525d01ef0638d534bb1f156c6d9a4ab3",
@@ -32,9 +32,9 @@
     "tests/detection/test_training.py": "47efd638251adea5d1f37ff603fe1cddd2fe24a392f4d0882b1fce6bbaa50d34",
     "tests/low_light/__init__.py": "3be0916999eae3f6f8d64abf8d69eabb45df46e07d52746262c79d2848321b2b",
     "tests/low_light/test_clahe.py": "68a6e56e14634979cea2aace60ea9c176d4287e356f9a356cc06458adb3b900a",
-    "tests/low_light/test_evaluation.py": "a70d3c960e3a0df1a516619fcad7df334a0219db75dfd8cfdce440dc1b2c9948",
-    "tests/low_light/test_handoff.py": "a90b5c9dd3c0976c692878cb301c45488eca5ea93df89be2405955e1577a218e",
-    "tests/low_light/test_latency.py": "db3ea34efac131f1c1481d32652148efcd95ef25d2147b722d19a4c06161b6e7",
+    "tests/low_light/test_evaluation.py": "0ee209d033a342db25b08a6ab5110eb37b7429a459ec23607c9d0c5e04825ca5",
+    "tests/low_light/test_handoff.py": "84a14979b643a24a885aff49ec4fa0f63d3fd5da007b2770555978c0c8e6ac12",
+    "tests/low_light/test_latency.py": "811131468287f58f109ec5d63042a6580378401876bfd055ea87eace9f3c8906",
     "tests/low_light/test_manifest.py": "1579505d88dcb4668b5ae8de8198e74231fc7cb7714a1bb3ac63b56e94e3c006",
     "tests/low_light/test_split_lock.py": "c00e6b590b02329e6f4c5fe776e54e88e73b47e55814994d570437a1a35365d4",
     "tests/low_light/test_training.py": "06a9d497035171a915a84f07d210a479bde0fd1a60a4875d4aa9dcf60bc05854",
@@ -126,6 +126,14 @@
     "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "0ebc7db38e7fb519ed40b77e7c407b5997c60b01aaa5a9ee3e1a823ae56b978d",
     "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "0adc99f42116a318eec1c733bc93c4af86e868a5215ca150c715250658648c48",
     "outputs/validation/defect_detection/training_pipeline/before/pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75",
-    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "b6d639ba3db2852c8c4018065116901c18c128891de5509eadf16f89192a3816"
+    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "b6d639ba3db2852c8c4018065116901c18c128891de5509eadf16f89192a3816",
+    "outputs/validation/defect_detection/training_pipeline/before/machine_contract_detector.xml": "e98f59bcf6cfd5c924591f2f0e7c5e710ca33e2e0e6e9f89f1bb9ecde37758bf",
+    "outputs/validation/defect_detection/training_pipeline/before/machine_contract_full_python.xml": "fcb9006f549ce88f97dfbec779d6ab1b349583bddb4abf7b032b042c047efe2e",
+    "outputs/validation/defect_detection/training_pipeline/before/machine_contract_regression.json": "69dfb4de773d150eabafd7a7b3a99714c01f861d068bbed690329b7d6999d251"
+  },
+  "validation_amendment": {
+    "evidence": "outputs/validation/defect_detection/training_pipeline/before/machine_contract_regression.json",
+    "basis": "Preserved canonical M1 Windows PASS plus fresh applicable ARMOURY detector/full-Python PASS.",
+    "historical_required_tests_preserved": true
   }
 }

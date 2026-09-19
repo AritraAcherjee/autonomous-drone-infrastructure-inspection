@@ -12,7 +12,7 @@ import platform
 import statistics
 import time
 
-from .evaluation import NON_OFFICIAL, STRATEGIES, enhance, require_condition
+from .evaluation import ARMOURY_PHYSICAL_HOSTNAME, NON_OFFICIAL, STRATEGIES, enhance, require_condition
 
 WARMUPS = 50
 BATCH = 1
@@ -57,7 +57,7 @@ for debug runs. Raw strategies have exactly 0.0 enhancement latency. Exactly
         raise ValueError("GPU timing requires an explicit CUDA synchronization callable")
     if host == "ARMOURY" and (device != "cuda:0" or not hardware):
         raise ValueError("official ARMOURY latency requires CUDA and hardware identity")
-    if host == "ARMOURY" and platform.node().casefold() != "armoury":
+    if host == "ARMOURY" and platform.node().casefold() != ARMOURY_PHYSICAL_HOSTNAME:
         raise ValueError("official latency cannot be labelled ARMOURY on a different machine")
     sync = synchronize if device.startswith("cuda") else lambda: None
     for i in range(WARMUPS):

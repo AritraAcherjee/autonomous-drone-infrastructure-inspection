@@ -259,6 +259,70 @@ def test_desktop_gate_rejects_laptop_before_inference(tmp_path, monkeypatch):
         e.require_desktop(tmp_path, "1" * 40, "ARMOURY")
 
 
+@pytest.fixture
+def desktop_identity(tmp_path, monkeypatch):
+    identity = dict(branch=e.BRANCH, sha="1" * 40, source_status="")
+    monkeypatch.setattr(e, "git_identity", lambda _: identity)
+    monkeypatch.setattr(e.platform, "node", lambda: "AritraA")
+    monkeypatch.setattr(e.platform, "system", lambda: "Linux")
+    monkeypatch.setattr(e.platform, "machine", lambda: "x86_64")
+    monkeypatch.setattr(e.platform, "python_version", lambda: e.REQUIRED_VERSIONS["python"])
+    monkeypatch.setattr(e.importlib.metadata, "version", lambda name: e.REQUIRED_VERSIONS[name])
+    calls = []
+    monkeypatch.setattr(e.subprocess, "run", lambda command, **kwargs: calls.append(command))
+    return identity, calls
+
+
+@pytest.mark.parametrize("hostname", ["AritraA", "aritraa", "ARITRAA"])
+def test_desktop_machine_identity_accepts_exact_physical_hostname(tmp_path, monkeypatch, desktop_identity, hostname):
+    monkeypatch.setattr(e.platform, "node", lambda: hostname)
+    provenance = e.require_desktop(tmp_path, "1" * 40, "ARMOURY")
+    assert provenance["environment"] == dict(versions=e.REQUIRED_VERSIONS, system="Linux", machine="x86_64", host=hostname)
+    assert desktop_identity[1] == [["git", "merge-base", "--is-ancestor", e.CANONICAL_BASE, "1" * 40]]
+
+
+@pytest.mark.parametrize("hostname", ["OtherMachine", "armoury-dev", "AritraA-test", "localhost", "armoury", " AritraA"])
+def test_desktop_machine_identity_role_does_not_authorize_hostname(tmp_path, monkeypatch, desktop_identity, hostname):
+    monkeypatch.setattr(e.platform, "node", lambda: hostname)
+    with pytest.raises(ValueError, match="ARMOURY machine identity"):
+        e.require_desktop(tmp_path, "1" * 40, "ARMOURY")
+    assert desktop_identity[1] == []
+
+
+@pytest.mark.parametrize("role", [None, "AritraA", "armoury", "OtherMachine"])
+def test_desktop_machine_identity_requires_logical_acknowledgement(tmp_path, desktop_identity, role):
+    with pytest.raises(ValueError, match="explicit ARMOURY host"):
+        e.require_desktop(tmp_path, "1" * 40, role)
+
+
+@pytest.mark.parametrize("package", list(e.REQUIRED_VERSIONS))
+def test_desktop_machine_identity_preserves_version_gate(tmp_path, monkeypatch, desktop_identity, package):
+    env = e.environment_identity()
+    env["versions"][package] = "wrong"
+    monkeypatch.setattr(e, "environment_identity", lambda: env)
+    with pytest.raises(ValueError, match="required software versions differ"):
+        e.require_desktop(tmp_path, "1" * 40, "ARMOURY")
+
+
+@pytest.mark.parametrize("key,value", [("branch", "main"), ("sha", "2" * 40), ("source_status", " M src/low_light/evaluation.py")])
+def test_desktop_machine_identity_preserves_checkout_gate(tmp_path, desktop_identity, key, value):
+    desktop_identity[0][key] = value
+    with pytest.raises(ValueError, match="exact accepted branch/commit"):
+        e.require_desktop(tmp_path, "1" * 40, "ARMOURY")
+
+
+@pytest.mark.parametrize("hostname,authorized", [("AritraA", True), ("aritraa", True), ("ARITRAA", True), ("armoury", False), ("OtherMachine", False)])
+def test_result_machine_identity_requires_physical_hostname(hostname, authorized):
+    payload = result()
+    payload["environment"]["host"] = hostname
+    payload["evidence"]["label"] = "ARMOURY VALIDATION DEVELOPMENT — NOT LOCKED-TEST EVIDENCE"
+    if authorized:
+        e.validate_result(payload)
+    else:
+        with pytest.raises(ValueError, match="smoke/debug label"):
+            e.validate_result(payload)
+
+
 def test_benchmark_exif_restoration_and_no_raw_pixels(tmp_path):
     from PIL import Image
     import cv2
