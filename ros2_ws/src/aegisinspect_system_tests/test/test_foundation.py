@@ -223,9 +223,26 @@ def test_launch_wiring_and_time_policy():
     bringup = (SRC / 'aegisinspect_bringup/launch/foundation.launch.py').read_text()
     assert "'description.launch.py', {'use_sim_time': 'true'}" in bringup
     assert "'sim.launch.py'" in bringup
+    # Stop-B explicitly authorizes one opt-in identity map relation, not a
+    # second owner of any existing description/localization transform.
+    assert 'session_map.launch.py' not in bringup
     for path in SRC.glob('*/launch/*.py'):
         text = path.read_text()
-        assert 'static_transform_publisher' not in text
+        if path == SRC / 'aegisinspect_mapping/launch/session_map.launch.py':
+            tree = ast.parse(text)
+            nodes = [n for n in ast.walk(tree) if isinstance(n, ast.Call)
+                     and isinstance(n.func, ast.Name) and n.func.id == 'Node']
+            assert len(nodes) == 1
+            keywords = {k.arg: ast.literal_eval(k.value) for k in nodes[0].keywords}
+            assert keywords == {
+                'package': 'tf2_ros', 'executable': 'static_transform_publisher',
+                'name': 'session_map_origin', 'namespace': '/aegis/mapping',
+                'arguments': ['--x', '0', '--y', '0', '--z', '0',
+                              '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+                              '--frame-id', 'map', '--child-frame-id', 'odom'],
+                'parameters': [{'use_sim_time': True}], 'output': 'screen'}
+        else:
+            assert 'static_transform_publisher' not in text
         assert 'ground_truth' not in text
 
 

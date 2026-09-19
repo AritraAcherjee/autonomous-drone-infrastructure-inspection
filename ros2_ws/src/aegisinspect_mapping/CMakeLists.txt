@@ -15,6 +15,9 @@ if(BUILD_TESTING)
   ament_add_pytest_test(depth_geometry test/test_depth_geometry.py
     APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR}
     TIMEOUT 60)
+  ament_add_pytest_test(spatial_projection test/test_spatial_projection.py
+    APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR}
+    TIMEOUT 60)
 endif()
 
 ament_package()
