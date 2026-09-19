@@ -1,0 +1,8 @@
+{
+  "two_independent_reads_equal": true,
+  "database_unchanged_by_reporting": true,
+  "renderer": "src.reporting.rendering.render_report",
+  "adapter": "src.integrations.p16_p17_adapter.build_inspection_report",
+  "sha256": "b5d506de2136349bafbec15aa225eb255ecb7c0ede348e2b29f98bc439c2551e",
+  "unsupported_fields_absent": true
+}

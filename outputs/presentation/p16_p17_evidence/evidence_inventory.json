@@ -1,0 +1,15 @@
+{
+  "package_status": "VERIFIED_ORIGINALS",
+  "authoritative_transfer": {"source_zip":"C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\aegisinspect_stop_b_p16_p17_real_handoff_evidence.zip","source_zip_sha256":"df3f87f0edcea09f50394ca4ef7ca8d44e8718d93c3ca648b5a38a689f313ec2","copy":"source_archive/aegisinspect_stop_b_p16_p17_real_handoff_evidence.zip","manifest":"108 / 108 PASS; 0 missing; 0 mismatches","sha256sums_sha256":"34141b8ff49c61eabaa4e127089bf20f64ad9a35490d566d40e5fe2b42426833"},
+  "git_preservation_provenance":{"canonical_p17_preservation_sha":"eb4013fa236ab758c6b84e1a3ae02579bbfe488f","scope":"Source correction preservation, distinct from runtime evidence provenance."},
+  "accepted_record":{"defect_id":"P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee","class_name":"Honeycombing","confidence":"0.004553093574941158","map_xyz":["3.9000027127470087","-0.09877989958311785","0.0032930137079122536"],"timestamp":"1970-01-01T00:00:21.813000Z","observation_count":1,"review_status":"UNREVIEWED","model_version":"DET-FINAL-v1","interpretation_constraint":"Extremely-low-confidence unreviewed machine output; not a confirmed physical defect, diagnosis, severity, repair recommendation, or safety conclusion."},
+  "artifacts":[
+    {"workstream":"P15","type":"mapped defect input","copy":"input/mapped_defect.json","status":"VERIFIED"},
+    {"workstream":"P16","type":"handoff DTO","copy":"input/p16_handoff_dto.json","status":"VERIFIED"},
+    {"workstream":"P16","type":"SQLite database","copy":"database/real_handoff.sqlite3","sha256":"5297ed89c50ea362ed229bc74155e1582882dd8284ebf07b2d951f27fe96bbd5","status":"VERIFIED"},
+    {"workstream":"P16","type":"dashboard screenshots","copy":"dashboard/dashboard_overview.png; dashboard/dashboard_detail.png","status":"VERIFIED"},
+    {"workstream":"P17","type":"deterministic report","copy":"report/inspection_2026091901.md","sha256":"b5d506de2136349bafbec15aa225eb255ecb7c0ede348e2b29f98bc439c2551e","status":"VERIFIED"},
+    {"workstream":"P15-P17","type":"lineage","copy":"provenance/lineage.json","status":"VERIFIED"}
+  ],
+  "p19_3d_status":"BLOCKED_NO_ACCEPTED_EXPLICIT_CORRESPONDENCE"
+}

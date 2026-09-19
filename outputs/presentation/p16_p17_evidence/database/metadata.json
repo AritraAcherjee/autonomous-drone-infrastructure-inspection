@@ -1,0 +1,100 @@
+{
+  "engine": "SQLite",
+  "sqlite_version": "3.46.1",
+  "path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_p16_p17_real_handoff/database/real_handoff.sqlite3",
+  "user_version": 0,
+  "integrity_check": [
+    [
+      "ok"
+    ]
+  ],
+  "foreign_key_check": [],
+  "schema": [
+    [
+      "index",
+      "idx_defects_class",
+      "CREATE INDEX idx_defects_class\nON defects(class_name)"
+    ],
+    [
+      "index",
+      "idx_defects_confidence",
+      "CREATE INDEX idx_defects_confidence\nON defects(confidence)"
+    ],
+    [
+      "index",
+      "idx_defects_inspection",
+      "CREATE INDEX idx_defects_inspection\nON defects(inspection_id)"
+    ],
+    [
+      "index",
+      "idx_defects_inspection_review",
+      "CREATE INDEX idx_defects_inspection_review\nON defects(inspection_id, review_status)"
+    ],
+    [
+      "index",
+      "idx_defects_review_status",
+      "CREATE INDEX idx_defects_review_status\nON defects(review_status)"
+    ],
+    [
+      "index",
+      "idx_evidence_defect",
+      "CREATE INDEX idx_evidence_defect\nON evidence(defect_id)"
+    ],
+    [
+      "index",
+      "idx_evidence_defect_timestamp",
+      "CREATE INDEX idx_evidence_defect_timestamp\nON evidence(defect_id, timestamp)"
+    ],
+    [
+      "index",
+      "idx_inspections_status",
+      "CREATE INDEX idx_inspections_status\nON inspections(status)"
+    ],
+    [
+      "index",
+      "idx_inspections_structure",
+      "CREATE INDEX idx_inspections_structure\nON inspections(structure_id)"
+    ],
+    [
+      "index",
+      "idx_structures_name",
+      "CREATE INDEX idx_structures_name\nON structures(name)"
+    ],
+    [
+      "index",
+      "sqlite_autoindex_defects_1",
+      null
+    ],
+    [
+      "index",
+      "sqlite_autoindex_evidence_1",
+      null
+    ],
+    [
+      "table",
+      "defects",
+      "CREATE TABLE defects (\n    defect_id TEXT PRIMARY KEY,\n\n    inspection_id INTEGER NOT NULL,\n\n    track_id TEXT,\n\n    class_name TEXT NOT NULL,\n\n    confidence REAL NOT NULL\n        CHECK (\n            confidence >= 0.0\n            AND confidence <= 1.0\n        ),\n\n    x_m REAL NOT NULL,\n    y_m REAL NOT NULL,\n    z_m REAL NOT NULL,\n\n    coordinate_frame TEXT NOT NULL,\n\n    observation_count INTEGER NOT NULL\n        CHECK (observation_count >= 1),\n\n    first_seen TEXT NOT NULL,\n    last_seen TEXT NOT NULL,\n\n    model_version TEXT NOT NULL,\n\n    review_status TEXT NOT NULL\n        DEFAULT 'UNREVIEWED'\n        CHECK (\n            review_status IN (\n                'UNREVIEWED',\n                'CONFIRMED',\n                'REJECTED',\n                'NEEDS_INVESTIGATION'\n            )\n        ),\n\n    review_notes TEXT,\n\n    created_at TEXT NOT NULL,\n    updated_at TEXT NOT NULL,\n\n    FOREIGN KEY (inspection_id)\n        REFERENCES inspections(inspection_id)\n        ON DELETE CASCADE\n)"
+    ],
+    [
+      "table",
+      "evidence",
+      "CREATE TABLE evidence (\n    evidence_id INTEGER PRIMARY KEY AUTOINCREMENT,\n\n    defect_id TEXT NOT NULL,\n\n    frame_id TEXT NOT NULL,\n\n    timestamp TEXT NOT NULL,\n\n    image_path TEXT,\n    crop_path TEXT,\n\n    confidence REAL NOT NULL\n        CHECK (\n            confidence >= 0.0\n            AND confidence <= 1.0\n        ),\n\n    bbox_x1 REAL NOT NULL,\n    bbox_y1 REAL NOT NULL,\n    bbox_x2 REAL NOT NULL,\n    bbox_y2 REAL NOT NULL,\n\n    FOREIGN KEY (defect_id)\n        REFERENCES defects(defect_id)\n        ON DELETE CASCADE,\n\n    UNIQUE (\n        defect_id,\n        frame_id,\n        bbox_x1,\n        bbox_y1,\n        bbox_x2,\n        bbox_y2\n    )\n)"
+    ],
+    [
+      "table",
+      "inspections",
+      "CREATE TABLE inspections (\n    inspection_id INTEGER PRIMARY KEY AUTOINCREMENT,\n    structure_id INTEGER NOT NULL,\n    started_at TEXT NOT NULL,\n    completed_at TEXT,\n    status TEXT NOT NULL\n        CHECK (\n            status IN (\n                'PLANNED',\n                'RUNNING',\n                'PROCESSING',\n                'REVIEW',\n                'COMPLETED',\n                'FAILED'\n            )\n        ),\n    system_version TEXT NOT NULL,\n    notes TEXT,\n    FOREIGN KEY (structure_id)\n        REFERENCES structures(structure_id)\n        ON DELETE RESTRICT\n)"
+    ],
+    [
+      "table",
+      "sqlite_sequence",
+      "CREATE TABLE sqlite_sequence(name,seq)"
+    ],
+    [
+      "table",
+      "structures",
+      "CREATE TABLE structures (\n    structure_id INTEGER PRIMARY KEY AUTOINCREMENT,\n    name TEXT NOT NULL,\n    description TEXT NOT NULL,\n    location_text TEXT,\n    created_at TEXT NOT NULL\n)"
+    ]
+  ],
+  "schema_source_sha256": "1217e4a5ed243829cfeef6d1d332ca1eab5705852df3d20d5f6d8187b8d42ecc"
+}

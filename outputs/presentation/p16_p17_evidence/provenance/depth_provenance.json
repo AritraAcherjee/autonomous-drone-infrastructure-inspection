@@ -1,0 +1,52 @@
+{
+  "utc": "2026-09-19T04:03:28.672204+00:00",
+  "observation_stamp_ns": 21813000000,
+  "frame": "camera_optical_frame",
+  "rgb_depth_camera_info_exact_stamps": true,
+  "bbox_original": [
+    31.05999755859375,
+    0.0,
+    640.0,
+    480.0
+  ],
+  "roi": [
+    31,
+    0,
+    640,
+    480
+  ],
+  "sample_pixel": [
+    335.0,
+    239.5
+  ],
+  "central_fraction": 0.5,
+  "min_valid_fraction": 0.5,
+  "statistic": "median positive finite optical-axis Z",
+  "sample_region": [
+    183,
+    120,
+    488,
+    360
+  ],
+  "valid_depth_count": 73200,
+  "invalid_depth_count": 0,
+  "sample_count": 73200,
+  "depth_m": 3.6500000953674316,
+  "camera_xyz": [
+    0.0987810269730641,
+    -0.0032927008991021365,
+    3.6500000953674316
+  ],
+  "intrinsics": {
+    "fx": 554.2562484741211,
+    "fy": 554.2562484741211,
+    "cx": 320.0,
+    "cy": 240.0
+  },
+  "width": 640,
+  "height": 480,
+  "encoding": "32FC1",
+  "units": "meters",
+  "provenance": "Unchanged Gazebo RGB-D depth via accepted ros_gz bridge; no manual depth substitution",
+  "independent_08_reprojection_exact_match": true
+}

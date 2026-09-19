@@ -1,0 +1,206 @@
+{
+  "created_utc": "2026-09-19T05:08:46.516871+00:00",
+  "accepted_inputs": {
+    "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/mapped_defect.json": "6d1644b8cd01e23449bf55fd85ca4ac2766b4261df4466f09efbfdbe84525567",
+    "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/p16_handoff_dto.json": "42aa03601008156f30a2ca3668f4e8cd38b6209b03fd0c1db6986f975f2a2e82"
+  },
+  "accepted_manifest_sha256": "f6010a7a6b63765281f2819ce0b461b14450cb9f3965aa423c8a06a60d5ef97e",
+  "localization_preservation_sha": "190bf7653b203c97418842474aa7cbd8016bfd44",
+  "reporting_base_sha": "66d33acd00704d2f79b157471702e3709ce9d716",
+  "detector": {
+    "utc": "2026-09-19T04:02:10.608544+00:00",
+    "checkpoint": "/mnt/c/Users/79aa3/OneDrive/Documents/INbetween Folder MSI/3/best.pt",
+    "checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+    "model_version": "DET-FINAL-v1",
+    "checkpoint_bytes": 20301573,
+    "canonical_repository": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection",
+    "canonical_HEAD": "3fc6ac001e71c1ab56b2b810cd2d595358a55e28",
+    "localization_HEAD": "8ff6f6ed842333565ada94b87327dfcd1a1923c2",
+    "inspection_id": 2026091901,
+    "inspection_id_scope": "Evidence-session ID only; no P16 inspection/database write",
+    "map_semantics": "Identity with session odometry origin; not global correction",
+    "timestamp_encoding": "P15 UTC-aware datetime represents ROS simulation seconds since epoch; not wall time; original nanoseconds retained",
+    "safety": {
+      "P13_START_CALL_COUNT_THIS_TASK": 0,
+      "ICP_START_CALL_COUNT_THIS_TASK": 0,
+      "RESET_CALL_COUNT_THIS_TASK": 0,
+      "PRIOR_SCIENTIFIC_MOTION_ATTEMPT_CONSUMED": "YES"
+    }
+  },
+  "detection": {
+    "detection_id": "21.813000000-0",
+    "class_id": 2,
+    "class_name": "Honeycombing",
+    "confidence": 0.004553093574941158,
+    "bbox_xyxy": [
+      31.05999755859375,
+      0.0,
+      640.0,
+      480.0
+    ],
+    "image_width": 640,
+    "image_height": 480,
+    "frame_id": "camera_optical_frame",
+    "stamp_sec": 21,
+    "stamp_nanosec": 813000000,
+    "model_version": "DET-FINAL-v1"
+  },
+  "source_image": {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/rgb_21813000000.png",
+    "sha256": "4a673b0bf8a28ba9276474234403b03d32f4d63d5b348e7b7cacbe946229ecd0",
+    "copy": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_p16_p17_real_handoff/input/rgb_21813000000.png"
+  },
+  "depth": {
+    "utc": "2026-09-19T04:03:28.672204+00:00",
+    "observation_stamp_ns": 21813000000,
+    "frame": "camera_optical_frame",
+    "rgb_depth_camera_info_exact_stamps": true,
+    "bbox_original": [
+      31.05999755859375,
+      0.0,
+      640.0,
+      480.0
+    ],
+    "roi": [
+      31,
+      0,
+      640,
+      480
+    ],
+    "sample_pixel": [
+      335.0,
+      239.5
+    ],
+    "central_fraction": 0.5,
+    "min_valid_fraction": 0.5,
+    "statistic": "median positive finite optical-axis Z",
+    "sample_region": [
+      183,
+      120,
+      488,
+      360
+    ],
+    "valid_depth_count": 73200,
+    "invalid_depth_count": 0,
+    "sample_count": 73200,
+    "depth_m": 3.6500000953674316,
+    "camera_xyz": [
+      0.0987810269730641,
+      -0.0032927008991021365,
+      3.6500000953674316
+    ],
+    "intrinsics": {
+      "fx": 554.2562484741211,
+      "fy": 554.2562484741211,
+      "cx": 320.0,
+      "cy": 240.0
+    },
+    "width": 640,
+    "height": 480,
+    "encoding": "32FC1",
+    "units": "meters",
+    "provenance": "Unchanged Gazebo RGB-D depth via accepted ros_gz bridge; no manual depth substitution",
+    "independent_08_reprojection_exact_match": true
+  },
+  "camera_to_map": {
+    "stamp_ns": 21813000000,
+    "source_frame": "camera_optical_frame",
+    "frame_id": "map",
+    "camera_xyz": [
+      0.0987810269730641,
+      -0.0032927008991021365,
+      3.6500000953674316
+    ],
+    "map_xyz": [
+      3.9000027127470087,
+      -0.09877989958311785,
+      0.0032930137079122536
+    ],
+    "translation": [
+      0.25000261856007316,
+      1.1616794739328628e-06,
+      3.291159238621036e-08
+    ],
+    "quaternion_xyzw": [
+      0.4999999749202882,
+      -0.4999999865498453,
+      0.5000000181410896,
+      -0.5000000203887751
+    ],
+    "transform_stamp_ns": 21813000000
+  },
+  "tf_chain": [
+    "map",
+    "odom",
+    "base_link",
+    "camera_link",
+    "camera_optical_frame"
+  ],
+  "source_timestamp_semantics": "ROS simulation; P15 datetime is explicit epoch encoding, not wall UTC",
+  "P15": {
+    "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee",
+    "inspection_id": 2026091901,
+    "creator_observation_id": "21.813000000-0",
+    "class_id": 2,
+    "class_name": "Honeycombing",
+    "confidence": 0.004553093574941158,
+    "x_m": 3.9000027127470087,
+    "y_m": -0.09877989958311785,
+    "z_m": 0.0032930137079122536,
+    "coordinate_frame": "map",
+    "observation_count": 1,
+    "first_seen": "1970-01-01T00:00:21.813000Z",
+    "last_seen": "1970-01-01T00:00:21.813000Z",
+    "canonical_track_id": null,
+    "track_ids": [],
+    "track_observation_counts": [],
+    "model_version": "DET-FINAL-v1",
+    "observation_ids": [
+      "21.813000000-0"
+    ],
+    "provenance": [
+      {
+        "observation_id": "21.813000000-0",
+        "detection_id": "21.813000000-0",
+        "inspection_id": 2026091901,
+        "track_id": null,
+        "class_id": 2,
+        "class_name": "Honeycombing",
+        "confidence": 0.004553093574941158,
+        "x_m": 3.9000027127470087,
+        "y_m": -0.09877989958311785,
+        "z_m": 0.0032930137079122536,
+        "coordinate_frame": "map",
+        "timestamp": "1970-01-01T00:00:21.813000Z",
+        "source_frame_id": "camera_optical_frame",
+        "bbox_xyxy": [
+          31.05999755859375,
+          0.0,
+          640.0,
+          480.0
+        ],
+        "image_width": 640,
+        "image_height": 480,
+        "model_version": "DET-FINAL-v1",
+        "image_path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/rgb_21813000000.png",
+        "crop_path": null
+      }
+    ]
+  },
+  "P16": {
+    "database": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_p16_p17_real_handoff/database/real_handoff.sqlite3",
+    "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee",
+    "inspection_id": 2026091901,
+    "evidence_ids": [
+      1
+    ]
+  },
+  "P17": {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_p16_p17_real_handoff/report/inspection_2026091901.md",
+    "sha256": "b5d506de2136349bafbec15aa225eb255ecb7c0ede348e2b29f98bc439c2551e",
+    "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee"
+  },
+  "NO_UNEXPLAINED_IDENTITY_SUBSTITUTION": true,
+  "GT_OPERATIONAL_USE": "NO",
+  "no_scientific_runtime_started_this_task": true
+}

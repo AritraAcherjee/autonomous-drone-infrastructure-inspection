@@ -1,0 +1,19 @@
+{
+  "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee",
+  "inspection_id": 2026091901,
+  "track_id": null,
+  "class_name": "Honeycombing",
+  "confidence": 0.004553093574941158,
+  "x_m": 3.9000027127470087,
+  "y_m": -0.09877989958311785,
+  "z_m": 0.0032930137079122536,
+  "coordinate_frame": "map",
+  "observation_count": 1,
+  "first_seen": "1970-01-01T00:00:21.813000+00:00",
+  "last_seen": "1970-01-01T00:00:21.813000+00:00",
+  "model_version": "DET-FINAL-v1",
+  "review_status": "UNREVIEWED",
+  "review_notes": null,
+  "created_at": "2026-09-19T05:08:46+00:00",
+  "updated_at": "2026-09-19T05:08:46+00:00"
+}

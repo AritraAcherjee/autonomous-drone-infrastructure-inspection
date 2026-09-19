@@ -1,0 +1,9 @@
+evidence_id,workstream,artifact,status,source_path,p20_copy,hash_or_provenance,presentation_safe_interpretation
+P15-MAPPED-DEFECT,P15,mapped defect input,VERIFIED,input/mapped_defect.json,input/mapped_defect.json,manifest verified,Detector classification Honeycombing at exact accepted confidence and session-local map coordinates
+P15-P16-DTO,P15-P16,handoff DTO,VERIFIED,input/p16_handoff_dto.json,input/p16_handoff_dto.json,manifest verified,Direct P15 to P16 boundary record
+P16-DATABASE,P16,persisted SQLite record,VERIFIED,database/real_handoff.sqlite3,database/real_handoff.sqlite3,5297ed89c50ea362ed229bc74155e1582882dd8284ebf07b2d951f27fe96bbd5,One inspection one defect one evidence; UNREVIEWED machine output
+P16-REPLAY,P16,replay idempotency evidence,VERIFIED,database/replay.json,database/replay.json,manifest verified,Duplicate input rejected and observation count remains 1
+P16-DASHBOARD,P16,dashboard screenshots,VERIFIED,dashboard/dashboard_overview.png; dashboard/dashboard_detail.png,dashboard/,manifest verified,Original dashboard artifacts display the accepted persisted record
+P16-P17-LINEAGE,P15-P17,lineage provenance,VERIFIED,provenance/lineage.json,provenance/lineage.json,manifest verified,Trace detector observation through P15 P16 and P17
+P17-REPORT,P17,deterministic inspection report,VERIFIED,report/inspection_2026091901.md,report/inspection_2026091901.md,b5d506de2136349bafbec15aa225eb255ecb7c0ede348e2b29f98bc439c2551e,Report preserves low confidence provenance and limitations
+P17-DETERMINISM,P17,determinism record,VERIFIED,report/determinism.json,report/determinism.json,manifest verified,Two independent reads equal; database unchanged by reporting

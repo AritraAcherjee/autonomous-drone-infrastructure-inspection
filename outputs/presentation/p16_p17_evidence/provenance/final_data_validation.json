@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "DTO_unchanged": true,
+  "all_persisted_values_still_equal": true,
+  "report_still_equal_after_dashboard": true,
+  "no_review_mutation": true,
+  "database_integrity": "ok",
+  "accepted_manifest_unchanged": true,
+  "database_sha256": "5297ed89c50ea362ed229bc74155e1582882dd8284ebf07b2d951f27fe96bbd5",
+  "report_sha256": "b5d506de2136349bafbec15aa225eb255ecb7c0ede348e2b29f98bc439c2551e",
+  "dashboard_screenshots_visually_inspected": true,
+  "residual_task_server_and_browser_count": 0
+}

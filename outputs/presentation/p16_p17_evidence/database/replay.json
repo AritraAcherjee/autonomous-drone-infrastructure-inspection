@@ -1,0 +1,19 @@
+{
+  "record_count_before_insert": 0,
+  "record_count_before": 1,
+  "record_count_after": 1,
+  "duplicate_replay_disposition": {
+    "type": "DuplicateDefectError",
+    "message": "defect_id already exists: P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee"
+  },
+  "evidence_replay_disposition": {
+    "type": "DuplicateEvidenceError",
+    "message": "Exact evidence already exists for this defect/frame/bbox"
+  },
+  "evidence_count_after": 1,
+  "final_observation_count": 1,
+  "first_seen": "1970-01-01T00:00:21.813000+00:00",
+  "last_seen": "1970-01-01T00:00:21.813000+00:00",
+  "all_fields_unchanged": true,
+  "contract": "Create-only ingestion rejects duplicates; it does not merge or increment on replay."
+}

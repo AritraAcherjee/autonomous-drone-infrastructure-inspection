@@ -1,0 +1,189 @@
+{
+  "utc": "2026-09-19T04:03:28.592069+00:00",
+  "detection": {
+    "detection_id": "21.813000000-0",
+    "class_id": 2,
+    "class_name": "Honeycombing",
+    "confidence": 0.004553093574941158,
+    "bbox_xyxy": [
+      31.05999755859375,
+      0.0,
+      640.0,
+      480.0
+    ],
+    "image_width": 640,
+    "image_height": 480,
+    "frame_id": "camera_optical_frame",
+    "stamp_sec": 21,
+    "stamp_nanosec": 813000000,
+    "model_version": "DET-FINAL-v1"
+  },
+  "roi": [
+    31,
+    0,
+    640,
+    480
+  ],
+  "map_projection": {
+    "stamp_ns": 21813000000,
+    "source_frame": "camera_optical_frame",
+    "frame_id": "map",
+    "camera_xyz": [
+      0.0987810269730641,
+      -0.0032927008991021365,
+      3.6500000953674316
+    ],
+    "map_xyz": [
+      3.9000027127470087,
+      -0.09877989958311785,
+      0.0032930137079122536
+    ],
+    "translation": [
+      0.25000261856007316,
+      1.1616794739328628e-06,
+      3.291159238621036e-08
+    ],
+    "quaternion_xyzw": [
+      0.4999999749202882,
+      -0.4999999865498453,
+      0.5000000181410896,
+      -0.5000000203887751
+    ],
+    "transform_stamp_ns": 21813000000
+  },
+  "tf_chain": [
+    "map",
+    "odom",
+    "base_link",
+    "camera_link",
+    "camera_optical_frame"
+  ],
+  "tf_ownership": [
+    {
+      "parent": "map",
+      "child": "odom",
+      "gids": [
+        "010f5c480ab15b4b0000000000001403"
+      ]
+    },
+    {
+      "parent": "odom",
+      "child": "base_link",
+      "gids": [
+        "010f5c4876ad97410000000000001503"
+      ]
+    }
+  ],
+  "gid_owners": {
+    "010f5c4875ad2e290000000000002b03": "/icp_odometry",
+    "010f5c4876ad97410000000000001503": "/vio_adapter",
+    "010f5c4895ab3b2d0000000000001603": "/aegis/robot_state_publisher",
+    "010f5c480ab15b4b0000000000001403": "/aegis/mapping/session_map_origin",
+    "010f5c4895ab3b2d0000000000001703": "/aegis/robot_state_publisher"
+  },
+  "image_path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/rgb_21813000000.png",
+  "checkpoint": {
+    "utc": "2026-09-19T04:02:10.608544+00:00",
+    "checkpoint": "/mnt/c/Users/79aa3/OneDrive/Documents/INbetween Folder MSI/3/best.pt",
+    "checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+    "model_version": "DET-FINAL-v1",
+    "checkpoint_bytes": 20301573,
+    "canonical_repository": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection",
+    "canonical_HEAD": "3fc6ac001e71c1ab56b2b810cd2d595358a55e28",
+    "localization_HEAD": "8ff6f6ed842333565ada94b87327dfcd1a1923c2",
+    "inspection_id": 2026091901,
+    "inspection_id_scope": "Evidence-session ID only; no P16 inspection/database write",
+    "map_semantics": "Identity with session odometry origin; not global correction",
+    "timestamp_encoding": "P15 UTC-aware datetime represents ROS simulation seconds since epoch; not wall time; original nanoseconds retained",
+    "safety": {
+      "P13_START_CALL_COUNT_THIS_TASK": 0,
+      "ICP_START_CALL_COUNT_THIS_TASK": 0,
+      "RESET_CALL_COUNT_THIS_TASK": 0,
+      "PRIOR_SCIENTIFIC_MOTION_ATTEMPT_CONSUMED": "YES"
+    }
+  },
+  "P15_observation": {
+    "inspection_id": 2026091901,
+    "observation_id": "21.813000000-0",
+    "detection_id": "21.813000000-0",
+    "track_id": null,
+    "class_id": 2,
+    "class_name": "Honeycombing",
+    "confidence": 0.004553093574941158,
+    "x_m": 3.9000027127470087,
+    "y_m": -0.09877989958311785,
+    "z_m": 0.0032930137079122536,
+    "coordinate_frame": "map",
+    "timestamp": "1970-01-01T00:00:21.813000+00:00",
+    "source_frame_id": "camera_optical_frame",
+    "bbox_xyxy": [
+      31.05999755859375,
+      0.0,
+      640.0,
+      480.0
+    ],
+    "image_width": 640,
+    "image_height": 480,
+    "model_version": "DET-FINAL-v1",
+    "image_path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/rgb_21813000000.png",
+    "crop_path": null
+  },
+  "P15_record": {
+    "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee",
+    "inspection_id": 2026091901,
+    "creator_observation_id": "21.813000000-0",
+    "class_id": 2,
+    "class_name": "Honeycombing",
+    "confidence": 0.004553093574941158,
+    "x_m": 3.9000027127470087,
+    "y_m": -0.09877989958311785,
+    "z_m": 0.0032930137079122536,
+    "coordinate_frame": "map",
+    "observation_count": 1,
+    "first_seen": "1970-01-01T00:00:21.813000Z",
+    "last_seen": "1970-01-01T00:00:21.813000Z",
+    "canonical_track_id": null,
+    "track_ids": [],
+    "track_observation_counts": [],
+    "model_version": "DET-FINAL-v1",
+    "observation_ids": [
+      "21.813000000-0"
+    ],
+    "provenance": [
+      {
+        "observation_id": "21.813000000-0",
+        "detection_id": "21.813000000-0",
+        "inspection_id": 2026091901,
+        "track_id": null,
+        "class_id": 2,
+        "class_name": "Honeycombing",
+        "confidence": 0.004553093574941158,
+        "x_m": 3.9000027127470087,
+        "y_m": -0.09877989958311785,
+        "z_m": 0.0032930137079122536,
+        "coordinate_frame": "map",
+        "timestamp": "1970-01-01T00:00:21.813000Z",
+        "source_frame_id": "camera_optical_frame",
+        "bbox_xyxy": [
+          31.05999755859375,
+          0.0,
+          640.0,
+          480.0
+        ],
+        "image_width": 640,
+        "image_height": 480,
+        "model_version": "DET-FINAL-v1",
+        "image_path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/rgb_21813000000.png",
+        "crop_path": null
+      }
+    ]
+  },
+  "aggregation": {
+    "first_decision": "CREATED",
+    "same_observation_replay": "REPLAY",
+    "count_after_replay": 1,
+    "state_roundtrip_equal": true
+  },
+  "GT_OPERATIONAL_USE": "NO",
+  "timestamp_domain": "ROS simulation; P15 datetime is explicit epoch encoding, not wall UTC"
+}

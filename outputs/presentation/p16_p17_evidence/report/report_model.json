@@ -1,0 +1,54 @@
+{
+  "structure": {
+    "structure_id": 1,
+    "name": "Stop-B inspection_bay simulation session",
+    "description": "Evidence-session container for the accepted real DET-FINAL-v1 model observation from simulated RGB-D; not a surveyed physical structure.",
+    "location_text": null,
+    "created_at": "2026-09-19T05:08:46+00:00"
+  },
+  "inspection": {
+    "inspection_id": 2026091901,
+    "structure_id": 1,
+    "started_at": "2026-09-19T04:02:49.673541+00:00",
+    "completed_at": null,
+    "status": "PROCESSING",
+    "system_version": "P15 190bf7653b203c97418842474aa7cbd8016bfd44; P17 66d33acd00704d2f79b157471702e3709ce9d716 + scoped P16 boundary corrections",
+    "notes": "Detector classification: Honeycombing. Detector confidence: 0.004553093574941158. Extremely low confidence; unreviewed machine output, not physical defect confirmation or an engineering/safety conclusion. Coordinates are metric in a session-local map, not globally drift-corrected. First/last seen and evidence time encode ROS simulation 21.813 s as 1970-01-01T00:00:21.813000Z; this is not wall-clock capture time. Inspection started_at records the accepted runtime invocation UTC; no completed_at is asserted."
+  },
+  "defects": [
+    {
+      "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee",
+      "inspection_id": 2026091901,
+      "track_id": null,
+      "class_name": "Honeycombing",
+      "confidence": 0.004553093574941158,
+      "x_m": 3.9000027127470087,
+      "y_m": -0.09877989958311785,
+      "z_m": 0.0032930137079122536,
+      "coordinate_frame": "map",
+      "observation_count": 1,
+      "first_seen": "1970-01-01T00:00:21.813000+00:00",
+      "last_seen": "1970-01-01T00:00:21.813000+00:00",
+      "model_version": "DET-FINAL-v1",
+      "review_status": "UNREVIEWED",
+      "review_notes": null,
+      "created_at": "2026-09-19T05:08:46+00:00",
+      "updated_at": "2026-09-19T05:08:46+00:00",
+      "evidence": [
+        {
+          "evidence_id": 1,
+          "defect_id": "P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee",
+          "frame_id": "camera_optical_frame",
+          "timestamp": "1970-01-01T00:00:21.813000+00:00",
+          "image_path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/stop_b_map_frame_spatial_chain/corrected_capture/rgb_21813000000.png",
+          "crop_path": null,
+          "confidence": 0.004553093574941158,
+          "bbox_x1": 31.05999755859375,
+          "bbox_y1": 0.0,
+          "bbox_x2": 640.0,
+          "bbox_y2": 480.0
+        }
+      ]
+    }
+  ]
+}
