@@ -1,0 +1,13 @@
+{
+  "name": "aegisinspect-p20-deck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproducible PowerPoint deck source for AegisInspect P20.",
+  "scripts": {
+    "build": "node generate_deck.js"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  }
+}
