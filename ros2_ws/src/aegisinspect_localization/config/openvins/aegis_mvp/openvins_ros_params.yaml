@@ -1,0 +1,7 @@
+run_subscribe_msckf:
+  ros__parameters:
+    use_sim_time: true
+    publish_global_to_imu_tf: false
+    publish_calibration_tf: false
+    save_total_state: false
+    path_gt: ""
