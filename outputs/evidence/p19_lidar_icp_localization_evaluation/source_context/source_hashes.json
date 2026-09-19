@@ -1,0 +1,107 @@
+[
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/scripts/diagnostics/icp_graph_ready.py",
+    "sha256": "4888509d003208e4ee44d210d5800856ba5dd447ccd5d6ea703dcdd037aa8899",
+    "evidence_copy": "frozen_inputs/00_icp_graph_ready.py"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/ros2_ws/src/aegisinspect_localization/launch/rtabmap_icp_fallback.launch.py",
+    "sha256": "f41c7fbfc78bee06e94ef16b5f143ec4278d2104fd9591b5719d11f91470ef0e",
+    "evidence_copy": "frozen_inputs/01_rtabmap_icp_fallback.launch.py"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/ros2_ws/src/aegisinspect_localization/scripts/vio_adapter_node.py",
+    "sha256": "ebdd5a42ce8bd7f748b821d86d70c3c984a8f02213a792e9b0a6cf65a121103d",
+    "evidence_copy": "frozen_inputs/02_vio_adapter_node.py"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/ros2_ws/src/aegisinspect_localization/aegisinspect_localization/vio_adapter.py",
+    "sha256": "dd9459c77e71b477d6e85d1f3d649507da335a00470b565afe7c4d40b643558b",
+    "evidence_copy": "frozen_inputs/03_vio_adapter.py"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_sim/launch/sim.launch.py",
+    "sha256": "4640432666224c0157f224fa064d31f2235fb2656b232e11eb445a4159f63ed9",
+    "evidence_copy": "frozen_inputs/04_sim.launch.py"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_sim/config/bridge.yaml",
+    "sha256": "fe8229c394fdce626c630e5d4b37f1a6a6f1736cd040b945806459c14dad650b",
+    "evidence_copy": "frozen_inputs/05_bridge.yaml"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_sim/worlds/inspection_bay.sdf",
+    "sha256": "51871726443c3c1715390d3fc6b1f026d4518815a4ae35034852ad8d69898c68",
+    "evidence_copy": "frozen_inputs/06_inspection_bay.sdf"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_description/urdf/drone.urdf.xacro",
+    "sha256": "5ce318d1455ffecd687a82655074679a774dbd40db6a510aeef1e30548dc4327",
+    "evidence_copy": "frozen_inputs/07_drone.urdf.xacro"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_sim/src/motion_control_node.cpp",
+    "sha256": "a695504780ca3e67999b0290756fd2ef7c93821278d913b997775d9956cc907c",
+    "evidence_copy": "frozen_inputs/08_motion_control_node.cpp"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_sim/src/deterministic_motion_system.cpp",
+    "sha256": "ddc7e9180280b8c56cffa8b92729e3efa0aaab70c91e930c74e86e6f2799761a",
+    "evidence_copy": "frozen_inputs/09_deterministic_motion_system.cpp"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_sim/models/aegis_drone/model.sdf",
+    "sha256": "67e2cfaf13b96ff2c840551a2d7817277d731eee13e0c9147aea31512607f35a",
+    "evidence_copy": "frozen_inputs/10_model.sdf"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/src/aegisinspect_description/launch/description.launch.py",
+    "sha256": "19f12f7e21e1275d7223eb093fa1982a2f2894cd706ef0fbb06730d8237a2805",
+    "evidence_copy": "frozen_inputs/11_description.launch.py"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/build/aegisinspect_sim/motion_control_node",
+    "sha256": "551119534d16fb0486f2822e749aa11b6a9ddc3fc34505203608eb9296addaa9",
+    "evidence_copy": "frozen_inputs/12_motion_control_node"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/07_lidar_icp_stationary_gate/gate.py",
+    "sha256": "d7cd420192bef1082447cf998740e8a7ad9d6736381c74973c4a291e0a936f84",
+    "evidence_copy": "frozen_inputs/13_gate.py"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/outputs/evidence/07_lidar_icp_stationary_gate/evidence.py",
+    "sha256": "708c3b22b9eedba3ef4fabfe1b09ba3bbcdec31f3af56fa3fb813704d5dd40c9",
+    "evidence_copy": "frozen_inputs/14_evidence.py"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/ros2_ws/src/aegisinspect_localization/test/test_vio_adapter.py",
+    "sha256": "edbb44fa4f4705521565842d6bcb1a579e0600b125159a262b3b81ae4f8dd3d4",
+    "evidence_copy": "frozen_inputs/15_test_vio_adapter.py"
+  },
+  {
+    "path": "/opt/ros/lyrical/lib/ros_gz_bridge/parameter_bridge",
+    "sha256": "895356108d87f33e52d2567d3c3fd93be27fb1cbde7e010fa66020b807e57df9",
+    "evidence_copy": "frozen_inputs/16_parameter_bridge"
+  },
+  {
+    "path": "/opt/ros/lyrical/lib/rtabmap_odom/icp_odometry",
+    "sha256": "7bb0c103ab5a0611367e7d20d5b40f44bc3b8ec7d60f29ab66755dbf1c20bc19",
+    "evidence_copy": "frozen_inputs/17_icp_odometry"
+  },
+  {
+    "path": "/mnt/c/Dev/autonomous-drone-infrastructure-inspection/ros2_ws/build/aegisinspect_sim/libaegis_deterministic_motion.so",
+    "sha256": "ac296cf15e077a9b8ded8806e3bf826954f786551328925098f4953710acb4a8",
+    "evidence_copy": "frozen_inputs/18_libaegis_deterministic_motion.so"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/scripts/diagnostics/gazebo_runtime_identity.py",
+    "sha256": "8c0dfebdaf14d25c792bc6c7c7f939d19b62fb4e3ae12b3c12fdc9528dec17df",
+    "evidence_copy": "frozen_inputs/gazebo_runtime_identity.py"
+  },
+  {
+    "path": "/mnt/c/Dev/aegisinspect-07-vio/tests/diagnostics/test_gazebo_runtime_identity.py",
+    "sha256": "69feee61857ac3eafa4975006bb1d85d997dddc497619aa28dc7a0006c36f0fb",
+    "evidence_copy": "frozen_inputs/test_gazebo_runtime_identity.py"
+  }
+]

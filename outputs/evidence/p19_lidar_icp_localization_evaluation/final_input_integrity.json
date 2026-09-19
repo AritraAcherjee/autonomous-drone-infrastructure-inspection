@@ -1,0 +1,9 @@
+{
+  "canonical_sha256": "0198293d29ad5746ebb889431333d9de9374afb456fb0bcc0198bb8415dbdbc3",
+  "checked_utc": "2026-09-19T03:15:52.570464+00:00",
+  "gt_sha256": "7e44a9558d62c8cedb2fa272fe47709f5dbf18d7e30c74ad7ff12cba631f62e2",
+  "input_copies_byte_identical": true,
+  "source_csvs_byte_identical_to_initial_hashes": true,
+  "source_manifest_artifacts_reverified": 236,
+  "status": "VERIFIED"
+}

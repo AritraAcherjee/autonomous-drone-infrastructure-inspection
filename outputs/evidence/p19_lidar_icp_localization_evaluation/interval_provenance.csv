@@ -1,0 +1,16 @@
+field,value
+source_branch,07/lidar-icp-fallback
+source_runtime_head,8ff6f6ed842333565ada94b87327dfcd1a1923c2
+p19_head,013067277d331246959af1f6176584b5305828f4
+execution_utc,2026-09-19T03:10:59.834981+00:00
+origin_ns,35763000000
+primary_start_ns,38763000000
+primary_end_ns,53763000000
+interval_boundaries,inclusive
+canonical_input_count,427
+gt_input_count,5670
+canonical_primary_count,76
+gt_primary_count,1500
+matched_count,76
+unmatched_count,0
+plugin_epoch_known,False

@@ -1,0 +1,10 @@
+{
+  "utc": "2026-09-19T01:50:21.154478+00:00",
+  "wall_ns": 1789782621154491166,
+  "simulation_stamp_ns": 35763000000,
+  "service": "/aegis/sim/motion/start",
+  "type": "std_srvs/srv/Trigger",
+  "request": {},
+  "exact_call": "self.start_client.call_async(Trigger.Request())",
+  "invocation_count": 1
+}

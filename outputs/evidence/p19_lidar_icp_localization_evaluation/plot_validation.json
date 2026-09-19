@@ -1,0 +1,38 @@
+{
+  "status": "VERIFIED",
+  "plots": [
+    {
+      "path": "plots/aligned_trajectory_vs_gt.png",
+      "sha256": "d03c702de27786cd16f0f62df329b7e233b06bf63e5b1137fb08e7b3929d0407",
+      "independent_render_bytes_identical": true
+    },
+    {
+      "path": "plots/aligned_trajectory_vs_gt.svg",
+      "sha256": "f264bcfc3f89184dc32b54b1bbeefda0d59b56300871364188e1b7d3231e40a5",
+      "independent_render_bytes_identical": true
+    },
+    {
+      "path": "plots/rotation_error_over_time.png",
+      "sha256": "12a0b09f6981a9b77ec3a078f981c2c3287a1c5ce774b581b2dcd5e881013ed3",
+      "independent_render_bytes_identical": true
+    },
+    {
+      "path": "plots/rotation_error_over_time.svg",
+      "sha256": "303381636f04eddfd8a15a5282cbf75e991e6e04fcb61e45c05b022d3e7eea4c",
+      "independent_render_bytes_identical": true
+    },
+    {
+      "path": "plots/translation_error_over_time.png",
+      "sha256": "c19bbceb16c2ed64f7b8dd94ed633db4434f2ccf81a19606076995cf5c3d9b71",
+      "independent_render_bytes_identical": true
+    },
+    {
+      "path": "plots/translation_error_over_time.svg",
+      "sha256": "76bd46b70a6b38e13221a04d1c4705db57fc1abcf23f1215f5e58319038bdb64",
+      "independent_render_bytes_identical": true
+    }
+  ],
+  "visual_review": "All three PNG plots inspected: legible titles/labels/units, complete primary interval, equal spatial axis scales, zero-based error axes; saved CSV values verified independently.",
+  "rerender_command": "import evaluator.plots; render from copied saved CSVs in outputs/cache/p19_plot_recheck; compare SHA-256 of all PNG and SVG files",
+  "plot_series_verified_by": "independent_validation.json"
+}

@@ -1,0 +1,140 @@
+{
+  "alignment": {
+    "convention": "p_world_aligned = R @ p_odom + t; Q_world_aligned = R @ Q_odom",
+    "det_R": 1.000000000000001,
+    "fit_sample_count": 76,
+    "method": "SE(3) no-scale Umeyama",
+    "orthogonality_max_abs_error": 1.1102230246251565e-15,
+    "rotation": [
+      [
+        0.9837820047096749,
+        0.06233568422624133,
+        0.16818807829766047
+      ],
+      [
+        -0.17683231161942267,
+        0.17994319061587266,
+        0.9676522008027018
+      ],
+      [
+        0.030054962597631466,
+        -0.9816999086396143,
+        0.1880478359360428
+      ]
+    ],
+    "scale": 1.0,
+    "scale_estimated": false,
+    "translation_m": [
+      0.029472395633596438,
+      0.2071506730330161,
+      1.0817462405773695
+    ],
+    "use": "evaluation only"
+  },
+  "authorization": "00 authorization in current user request supersedes historical tooling-only authorization flag; frozen protocol file unchanged",
+  "canonical_sha256": "0198293d29ad5746ebb889431333d9de9374afb456fb0bcc0198bb8415dbdbc3",
+  "code_bundle_definition": "SHA256(canonical JSON of code_file_sha256 mapping)",
+  "code_file_sha256": {
+    "configs/evaluation/p19_lidar_icp_accepted.json": "8371eaeef955e89e546de4cae6854421bf04477521c6304d374104651f02d9ad",
+    "configs/evaluation/p19_spatial_protocol.yaml": "3f18b2d9575f1bc9303d6c39e7a312ae8e0c2e3aac791a8e581bc7bdffc32edf",
+    "scripts/evaluation/evaluate_lidar_icp_accepted.py": "366ebf3c4af00441ff3dfc7ef7978dad3711ac7f8f3b61936faa54d88b66eea0",
+    "scripts/evaluation/verify_lidar_icp_evidence.py": "345b5fa3f40bdc7e53ea23aa5ec095dcbb26e3a2706797cf9e8c6433988be9da",
+    "src/evaluation/__init__.py": "9b856634e2e946b26f65a43bb3988ff36ea80c29d4f14dfd889b6ae245921d44",
+    "src/evaluation/defect_localization.py": "40b2080d8d137110b1f1dbfe9d0e7f38059bb920cfe562eec7362f577649155c",
+    "src/evaluation/serialization.py": "07334c1b17d209066d349142c065cb7c7d425f1a5dabb166198a0f0777be8212",
+    "src/evaluation/trajectory.py": "3a0484cad0065f404025ac9d7e48d8ed18cea32960ed6823321a4502bb5411bd"
+  },
+  "environment": {
+    "dependencies": {
+      "Pillow": "12.0.0",
+      "matplotlib": "3.10.6",
+      "numpy": "2.3.5",
+      "pytest": "8.4.2",
+      "scipy": "1.16.3"
+    },
+    "matplotlib_backend": "Agg",
+    "numerics": "CPU float64; CUDA/RTX GPU not used",
+    "numpy_build_configuration": "Build Dependencies:\n  blas:\n    detection method: pkgconfig\n    found: true\n    include directory: C:/Users/Aritra/anaconda3/Library/include\n    lib directory: C:/Users/Aritra/anaconda3/Library/lib\n    name: mkl-sdl\n    openblas configuration: unknown\n    pc file directory: C:\\miniconda3\\conda-bld\\numpy_and_numpy_base_1763980694785\\_h_env\\Library\\lib\\pkgconfig\n    version: '2025'\n  lapack:\n    detection method: pkgconfig\n    found: true\n    include directory: C:/Users/Aritra/anaconda3/Library/include\n    lib directory: C:/Users/Aritra/anaconda3/Library/lib\n    name: mkl-sdl\n    openblas configuration: unknown\n    pc file directory: C:\\miniconda3\\conda-bld\\numpy_and_numpy_base_1763980694785\\_h_env\\Library\\lib\\pkgconfig\n    version: '2025'\nCompilers:\n  c:\n    commands: cl.exe\n    linker: link\n    name: msvc\n    version: 19.29.30159\n  c++:\n    commands: cl.exe\n    linker: link\n    name: msvc\n    version: 19.29.30159\n  cython:\n    commands: cython\n    linker: cython\n    name: cython\n    version: 3.1.4\nMachine Information:\n  build:\n    cpu: x86_64\n    endian: little\n    family: x86_64\n    system: windows\n  host:\n    cpu: x86_64\n    endian: little\n    family: x86_64\n    system: windows\nPython Information:\n  path: C:\\miniconda3\\conda-bld\\numpy_and_numpy_base_1763980694785\\_h_env\\python.exe\n  version: '3.13'\nSIMD Extensions:\n  baseline:\n  - SSE\n  - SSE2\n  - SSE3\n  found:\n  - SSSE3\n  - SSE41\n  - POPCNT\n  - SSE42\n  - AVX\n  - F16C\n\n",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "python_executable": "C:\\Users\\Aritra\\anaconda3\\python.exe"
+  },
+  "evaluation_code_bundle_sha256": "9733fc6b7f31fcc3a00dddf98b56acb0e64bcdb20b087ee2aed5f50861799aa2",
+  "evaluation_core_sha256": "3a0484cad0065f404025ac9d7e48d8ed18cea32960ed6823321a4502bb5411bd",
+  "exact_evaluation_command": "C:\\Users\\Aritra\\anaconda3\\python.exe -B C:\\Dev\\aegisinspect-p19-lidar-eval\\scripts\\evaluation\\evaluate_lidar_icp_accepted.py --config C:\\Dev\\aegisinspect-p19-lidar-eval\\configs\\evaluation\\p19_lidar_icp_accepted.json",
+  "execution_utc": "2026-09-19T03:10:59.834981+00:00",
+  "gt_sha256": "7e44a9558d62c8cedb2fa272fe47709f5dbf18d7e30c74ad7ff12cba631f62e2",
+  "input_evidence_copies": {
+    "canonical": "inputs/canonical.csv",
+    "gt": "inputs/gt.csv"
+  },
+  "input_rows": {
+    "canonical": 427,
+    "gt": 5670
+  },
+  "interval": {
+    "boundary_rule": "inclusive",
+    "canonical_after_window": 12,
+    "canonical_before_window": 339,
+    "canonical_primary_count": 76,
+    "end_ns": 53763000000,
+    "end_relative_s": 18,
+    "exact_plugin_epoch_known": false,
+    "first_selected_ns": 38800000000,
+    "gt_primary_count": 1500,
+    "invocation": {
+      "exact_call": "self.start_client.call_async(Trigger.Request())",
+      "invocation_count": 1,
+      "request": {},
+      "service": "/aegis/sim/motion/start",
+      "simulation_stamp_ns": 35763000000,
+      "type": "std_srvs/srv/Trigger",
+      "utc": "2026-09-19T01:50:21.154478+00:00",
+      "wall_ns": 1789782621154491166
+    },
+    "invocation_response_clock_difference_ns": 42000000,
+    "last_selected_ns": 53700000000,
+    "origin_authority": "accepted exports/metadata.json, start_invocation.json and source REPORT.md section D",
+    "origin_definition": "Relative time is latest observed /clock at START invocation; response /clock also retained. Plugin epoch is adopted on a following update, not directly instrumented. No GT-based temporal correction applied.",
+    "origin_ns": 35763000000,
+    "origin_simulation_s": 35.763,
+    "response": {
+      "invocation_count": 1,
+      "message": "START accepted.",
+      "simulation_stamp_ns": 35805000000,
+      "success": true,
+      "utc": "2026-09-19T01:50:21.265514+00:00",
+      "wall_ns": 1789782621265517502
+    },
+    "selected_duration_s": 14.9,
+    "start_ns": 38763000000,
+    "start_relative_s": 3,
+    "temporal_adjustment": "none; no fitting to GT, CSV onset, or first motion"
+  },
+  "issued_evaluation_command": "python -B scripts/evaluation/evaluate_lidar_icp_accepted.py --config configs/evaluation/p19_lidar_icp_accepted.json",
+  "matching": {
+    "GT_rule": "exact timestamps accepted directly, otherwise bracket <=50 ms; linear translation, quaternion SLERP; no extrapolation",
+    "aligned_sample_count": 76,
+    "dropped_sample_count": 0,
+    "estimator_sample_count": 76,
+    "evaluated_duration_s": 14.9,
+    "exact_timestamp_matches": 76,
+    "gt_distinct_samples_used": 76,
+    "gt_samples_in_primary_interval": 1500,
+    "interpolated_matches": 0,
+    "maximum_accepted_bracket_ns": 0,
+    "maximum_accepted_nonzero_bracket_ns": null,
+    "primary_estimator_max_gap_ns": 400000000,
+    "timestamp_alignment_coverage": 1.0,
+    "unmatched_reasons": {}
+  },
+  "p19_branch": "p19/lidar-icp-localization-eval",
+  "p19_head": "013067277d331246959af1f6176584b5305828f4",
+  "repository_path": "C:\\Dev\\aegisinspect-p19-lidar-eval",
+  "rpe_rule": "for each matched start, nearest future sample to t+1s; earlier timestamp breaks ties; reject mismatch >50 ms",
+  "scientific_methodology_changed": false,
+  "source_branch": "07/lidar-icp-fallback",
+  "source_csv_modified": false,
+  "source_runtime_head": "8ff6f6ed842333565ada94b87327dfcd1a1923c2",
+  "zip_sha256": "e9f4545c11c415675a53f0bf46da3b33d5477ad5dba939dfe63075e993e980bf"
+}

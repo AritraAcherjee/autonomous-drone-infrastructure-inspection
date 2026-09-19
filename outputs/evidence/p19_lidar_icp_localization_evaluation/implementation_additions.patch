@@ -1,0 +1,598 @@
+--- /dev/null
++++ scripts/evaluation/evaluate_lidar_icp_accepted.py
+@@ -0,0 +1,390 @@
++"""Evidence IO/plots for one accepted run; scientific metrics use frozen P19.
++
++No ROS/runtime imports. Inputs are opened read-only. No scientific constants
++or algorithms in src/evaluation are modified by this adapter.
++"""
++from __future__ import annotations
++
++import argparse
++from bisect import bisect_left
++from collections import Counter
++import csv
++from dataclasses import asdict
++from datetime import datetime, timezone
++from decimal import Decimal
++import difflib
++import hashlib
++import importlib.metadata
++import io
++import json
++import os
++from pathlib import Path
++import platform
++import shutil
++import subprocess
++import sys
++import zipfile
++
++ROOT = Path(__file__).resolve().parents[2]
++sys.path.insert(0, str(ROOT))
++os.environ.setdefault('MPLCONFIGDIR', str(ROOT / 'outputs/cache/p19_matplotlib'))
++import numpy as np
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++from scipy.spatial.transform import Rotation
++from src.evaluation import trajectory as p19
++from src.evaluation.serialization import canonical_json_bytes
++
++
++def sha(path):
++    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
++
++
++def read_json(path):
++    return json.loads(Path(path).read_text(encoding='utf-8'))
++
++
++def write_json(path, value):
++    Path(path).parent.mkdir(parents=True, exist_ok=True)
++    Path(path).write_bytes(canonical_json_bytes(value) + b'\n')
++
++
++def write_csv(path, rows):
++    with Path(path).open('w', newline='', encoding='utf-8') as stream:
++        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
++        writer.writeheader()
++        writer.writerows(rows)
++
++
++def read_csv(path):
++    with Path(path).open(newline='', encoding='utf-8') as stream:
++        return list(csv.DictReader(stream))
++
++
++def git(*args):
++    return subprocess.check_output(['git', '--no-optional-locks', *args], cwd=ROOT, text=True).strip()
++
++
++def integrity(config):
++    package = Path(config['package'])
++    archive = Path(config['zip'])
++    assert sha(archive) == config['expected_zip_sha256'], 'ZIP SHA mismatch'
++    extracted = package.parent
++    comparisons = []
++    with zipfile.ZipFile(archive) as z:
++        assert z.testzip() is None, 'ZIP CRC failure'
++        names = [i.filename for i in z.infolist() if not i.is_dir()]
++        assert len(names) == len(set(names)), 'Duplicate ZIP paths'
++        for name in names:
++            local = (extracted / name).resolve()
++            assert local.is_relative_to(extracted.resolve()), 'Unsafe ZIP path'
++            digest = hashlib.sha256(z.read(name)).hexdigest()
++            assert sha(local) == digest, f'ZIP/extracted mismatch: {name}'
++            comparisons.append({'path': name, 'sha256': digest, 'matches_extracted': True})
++        local_names = {f.relative_to(extracted).as_posix() for f in extracted.rglob('*') if f.is_file()}
++        assert local_names == set(names), 'ZIP/extracted inventory mismatch'
++    entries = []
++    for line in (package / 'SHA256SUMS.txt').read_text().splitlines():
++        digest, name = line.split('  ', 1)
++        local = (package / name).resolve()
++        assert local.is_relative_to(package.resolve()) and sha(local) == digest, name
++        entries.append({'path': name, 'sha256': digest, 'verified': True})
++    expected_names = {f.relative_to(package).as_posix() for f in package.rglob('*') if f.is_file() and f.name != 'SHA256SUMS.txt'}
++    assert len(entries) == len(expected_names) and {r['path'] for r in entries} == expected_names
++    metadata = read_json(package / 'exports/metadata.json')
++    sources = metadata['source_hashes']
++    for entry in sources:
++        assert sha(package / entry['evidence_copy']) == entry['sha256'], entry['evidence_copy']
++    assert metadata['branch'] == config['source_branch']
++    assert metadata['post_fix_commit'] == config['source_runtime_head']
++    assert metadata['dataset_complete'] and metadata['GT_evaluation_only']
++    assert metadata['safety']['P13_START_CALL_COUNT'] == 1
++    assert metadata['safety']['RESET_CALL_COUNT'] == 0
++    return {'zip_sha256': sha(archive), 'zip_crc_verified': True,
++            'zip_extracted_files': comparisons, 'source_manifest': entries,
++            'source_manifest_sha256': sha(package / 'SHA256SUMS.txt'),
++            'source_configuration_hashes_verified': sources}, metadata
++
++
++def load_trajectory(path, name, origin):
++    rows = read_csv(path)
++    assert len(rows) == {'canonical': 427, 'gt': 5670}[name]
++    expected_columns = 'timestamp_ns,timestamp_sec,relative_to_start_sec,px,py,pz,qx,qy,qz,qw,frame_id,child_frame_id,valid'.split(',')
++    assert list(rows[0]) == expected_columns
++    samples = []
++    for r in rows:
++        t = int(r['timestamp_ns'])
++        assert Decimal(r['timestamp_sec']) * 10**9 == t
++        assert Decimal(r['relative_to_start_sec']) * 10**9 == t - origin
++        assert r['valid'] == 'True'
++        assert r['frame_id'] == ('odom' if name == 'canonical' else 'world')
++        assert r['child_frame_id'] == ('base_link' if name == 'canonical' else '')
++        # GT PoseStamped has no child field. The frozen producer explicitly
++        # publishes worldPose(linkEntity_) named base_link (lines 519-524).
++        sample = p19.TrajectorySample(t, *(float(r[k]) for k in ['px','py','pz','qx','qy','qz','qw']), r['frame_id'], 'base_link')
++        samples.append(sample)
++    samples = p19.validate_trajectory(samples, expected_frame_id=('odom' if name == 'canonical' else 'world'), expected_child_frame_id='base_link')
++    norms = [sum(getattr(s,k)**2 for k in ['qx','qy','qz','qw'])**0.5 for s in samples]
++    ts = [s.timestamp_ns for s in samples]
++    return samples, {'path': str(path), 'sha256': sha(path), 'data_rows': len(rows),
++                     'columns': expected_columns, 'all_valid': True, 'strictly_increasing_timestamps': True,
++                     'first_timestamp_ns': ts[0], 'last_timestamp_ns': ts[-1],
++                     'minimum_gap_ns': min(np.diff(ts)).item(), 'maximum_gap_ns': max(np.diff(ts)).item(),
++                     'quaternion_norm_min': min(norms), 'quaternion_norm_max': max(norms),
++                     'timestamp_decimal_and_relative_columns_verified': True,
++                     'adapter': 'px,py,pz -> x_m,y_m,z_m; GT absent child -> base_link from frozen producer; no source edits'}
++
++
++def statistics(values, unit):
++    values = np.asarray(values, dtype=float)
++    return {'count': len(values), 'unit': unit, 'rmse': float(np.sqrt(np.mean(values**2))),
++            'mean': float(values.mean()), 'median': float(np.median(values)),
++            'p95': float(np.percentile(values, 95, method='linear')), 'max': float(values.max())}
++
++
++def pose_columns(prefix, sample):
++    return {prefix + k: getattr(sample, k) for k in ['x_m','y_m','z_m','qx','qy','qz','qw']}
++
++
++def plots(out):
++    """Render exclusively from persisted CSVs; record every plotted series."""
++    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 10,
++                         'svg.hashsalt': 'p19-accepted-lidar-icp', 'axes.grid': True})
++    trajectory = read_csv(out / 'aligned_trajectory.csv')
++    ate = read_csv(out / 'per_sample_ate.csv')
++    series = []
++    plot_dir = out / 'plots'
++    plot_dir.mkdir(exist_ok=True)
++    label = 'Accepted LiDAR ICP run | primary +3 to +18 s (sim 38.763-53.763 s)'
++    def save(fig, name):
++        fig.savefig(plot_dir / (name+'.png'), dpi=180, metadata={'Software': 'P19 accepted LiDAR ICP evaluation'})
++        fig.savefig(plot_dir / (name+'.svg'), metadata={'Date': None, 'Creator': 'P19 accepted LiDAR ICP evaluation'})
++        plt.close(fig)
++    fig, axes = plt.subplots(1, 3, figsize=(15, 5), layout='constrained')
++    fig.suptitle(label+'\nRigid alignment to GT; scale fixed at 1')
++    for ax, (x, y) in zip(axes, [('x_m','y_m'), ('x_m','z_m'), ('y_m','z_m')]):
++        for prefix, title, color in [('est_aligned_', 'Aligned ICP', '#d55e00'), ('gt_', 'GT at estimator timestamps', '#0072b2')]:
++            xv = [float(r[prefix+x]) for r in trajectory]
++            yv = [float(r[prefix+y]) for r in trajectory]
++            ax.plot(xv, yv, '.-', ms=3, lw=1.2, label=title, color=color)
++            ax.scatter(xv[0], yv[0], marker='o', facecolors='none', edgecolors=color, s=65)
++            ax.scatter(xv[-1], yv[-1], marker='x', color=color, s=45)
++            for i, (xx, yy) in enumerate(zip(xv, yv)):
++                series.append({'plot': 'aligned_trajectory_vs_gt', 'panel': x+'_'+y, 'series': prefix,
++                               'source': 'aligned_trajectory.csv', 'row': i, 'x_column': prefix+x,
++                               'y_column': prefix+y, 'x': xx, 'y': yy})
++        ax.set(xlabel=x.replace('_m','')+' (m)', ylabel=y.replace('_m','')+' (m)', title='World frame; equal spatial scale')
++        ax.set_aspect('equal', adjustable='box')
++    axes[0].legend(loc='best', fontsize=8)
++    save(fig, 'aligned_trajectory_vs_gt')
++    for name, column, ylabel in [('translation_error_over_time','translation_error_m','Translation error (m)'),
++                                ('rotation_error_over_time','rotation_error_deg','Absolute orientation error (degrees)')]:
++        fig, ax = plt.subplots(figsize=(11, 5), layout='constrained')
++        x = [float(r['relative_to_start_s']) for r in ate]
++        y = [float(r[column]) for r in ate]
++        ax.plot(x, y, '.-', color='#d55e00', label='Aligned ICP versus interpolated GT')
++        ax.set(xlabel='Time from recorded START reference (s)', ylabel=ylabel, xlim=(3,18), ylim=(0,max(y)*1.08),
++               title=label + ('\nAbsolute orientation diagnostic; same position-fitted rigid transform' if 'rotation' in name else '\nPer-sample translation ATE'))
++        ax.legend(loc='best')
++        for i, (xx, yy) in enumerate(zip(x,y)):
++            series.append({'plot': name, 'panel': 'time', 'series': column, 'source': 'per_sample_ate.csv',
++                           'row': i, 'x_column': 'relative_to_start_s', 'y_column': column, 'x': xx, 'y': yy})
++        save(fig, name)
++    write_csv(out / 'plot_series.csv', series)
++    write_json(out / 'plot_provenance.json', {'sources': {n: sha(out/n) for n in ['aligned_trajectory.csv','per_sample_ate.csv','plot_series.csv']},
++        'formats': ['PNG 180 dpi','SVG'], 'spatial_axes': 'equal scale within each projection',
++        'error_axes': 'linear, zero-based; complete primary-window extent', 'no_smoothing_or_resampling': True,
++        'open_circle': 'first selected pose', 'cross': 'last selected pose',
++        'rotation_diagnostic': 'shortest absolute orientation angle after the same position-fitted SE(3); not RPE'})
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--config', required=True)
++    args = parser.parse_args()
++    config_path = Path(args.config).resolve()
++    config = read_json(config_path)
++    out = ROOT / config['output']
++    out.mkdir(parents=True, exist_ok=True)
++    assert not (out/'metrics_summary.json').exists(), 'Refusing to overwrite an existing evaluation'
++    executed = datetime.now(timezone.utc).isoformat()
++    assert git('rev-parse','HEAD') == config['p19_head']
++    assert git('branch','--show-current') == config['p19_branch']
++    assert not git('diff','HEAD','--name-only'), 'Tracked worktree changes require review'
++    code_files = ['src/evaluation/__init__.py','src/evaluation/trajectory.py','src/evaluation/serialization.py',
++                  'src/evaluation/defect_localization.py','configs/evaluation/p19_spatial_protocol.yaml',
++                  'scripts/evaluation/evaluate_lidar_icp_accepted.py','scripts/evaluation/verify_lidar_icp_evidence.py',
++                  'configs/evaluation/p19_lidar_icp_accepted.json']
++    file_hashes = {name: sha(ROOT/name) for name in code_files}
++    bundle = hashlib.sha256(canonical_json_bytes(file_hashes)).hexdigest()
++    write_json(out/'git_state_initial.json', {'repository': git('rev-parse','--show-toplevel'), 'cwd': str(Path.cwd()),
++        'branch': git('branch','--show-current'), 'HEAD': git('rev-parse','HEAD'),
++        'status_porcelain': git('status','--porcelain=v1','--untracked-files=all'),
++        'tracked_diff': git('diff','HEAD'), 'initial_session_worktree': 'clean, verified before additions',
++        'commits_or_pushes': False})
++    verification, metadata = integrity(config)
++    write_json(out/'input_integrity.json', verification)
++    package = Path(config['package'])
++    invocation = read_json(package/'start_invocation.json')
++    response = read_json(package/'start_response.json')
++    assert invocation == metadata['start_invocation'] and response == metadata['start_response']
++    assert invocation['invocation_count'] == 1 and response['success']
++    origin = invocation['simulation_stamp_ns']
++    assert origin == config['run_start_timestamp_ns']
++    canonical, cschema = load_trajectory(package/'exports/canonical.csv','canonical',origin)
++    gt, gschema = load_trajectory(package/'exports/gt.csv','gt',origin)
++    write_json(out/'schema_validation.json', {'canonical': cschema, 'gt': gschema, 'result': 'VERIFIED'})
++    assert cschema['sha256'] == config['expected_canonical_sha256']
++    assert gschema['sha256'] == config['expected_gt_sha256']
++    protocol = read_json(ROOT/'configs/evaluation/p19_spatial_protocol.yaml')
++    assert protocol['trajectory']['alignment']['scale'] == 1.0
++    assert p19.MAX_GT_BRACKET_SPAN_NS == 50_000_000
++    assert (p19.RPE_DELTA_NS, p19.RPE_MAX_DELTA_MISMATCH_NS) == (1_000_000_000, 50_000_000)
++    assert (p19.PRIMARY_WINDOW_START_NS,p19.PRIMARY_WINDOW_END_NS)==(3_000_000_000,18_000_000_000)
++    selected = p19.primary_window(canonical, run_start_timestamp_ns=origin)
++    start, end = origin+3_000_000_000, origin+18_000_000_000
++    window = {'origin_ns': origin, 'origin_simulation_s': origin/1e9, 'invocation': invocation, 'response': response,
++              'invocation_response_clock_difference_ns': response['simulation_stamp_ns']-origin,
++              'origin_definition': metadata['time_reference_note'], 'exact_plugin_epoch_known': False,
++              'origin_authority': 'accepted exports/metadata.json, start_invocation.json and source REPORT.md section D',
++              'temporal_adjustment': 'none; no fitting to GT, CSV onset, or first motion',
++              'start_ns': start, 'end_ns': end, 'boundary_rule': 'inclusive',
++              'start_relative_s':3, 'end_relative_s':18, 'canonical_primary_count':len(selected),
++              'gt_primary_count':sum(start<=s.timestamp_ns<=end for s in gt),
++              'canonical_before_window':sum(s.timestamp_ns<start for s in canonical),
++              'canonical_after_window':sum(s.timestamp_ns>end for s in canonical),
++              'first_selected_ns':selected[0].timestamp_ns,'last_selected_ns':selected[-1].timestamp_ns,
++              'selected_duration_s':(selected[-1].timestamp_ns-selected[0].timestamp_ns)/1e9}
++    assert len(selected)==76 and window['gt_primary_count']==1500
++    write_json(out/'timestamp_window.json',window)
++    association = p19.associate_ground_truth(selected,gt)
++    gt_ts = [s.timestamp_ns for s in gt]
++    matching = []
++    gt_used = set()
++    for sample in selected:
++        t = sample.timestamp_ns
++        j = bisect_left(gt_ts,t)
++        if j<len(gt) and gt_ts[j]==t:
++            left=right=j; reason=''; method='exact_timestamp'
++        elif j==0 or j==len(gt):
++            left=right=None; reason='outside_gt_coverage'; method='unmatched'
++        else:
++            left,right=j-1,j
++            reason='gt_bracket_exceeds_50_ms' if gt_ts[right]-gt_ts[left]>50_000_000 else ''
++            method='unmatched' if reason else 'linear_translation_quaternion_slerp'
++        if not reason: gt_used.update([left,right])
++        matching.append({'timestamp_ns':t,'relative_to_start_s':(t-origin)/1e9,'matched':not reason,'method':method,
++            'reason':reason,'gt_left_ns':gt_ts[left] if left is not None else '',
++            'gt_right_ns':gt_ts[right] if right is not None else '',
++            'bracket_span_ns':gt_ts[right]-gt_ts[left] if left is not None else '',
++            'fraction':(t-gt_ts[left])/(gt_ts[right]-gt_ts[left]) if left is not None and left!=right else 0.0})
++    assert [r['timestamp_ns'] for r in matching if r['matched']]==[r.timestamp_ns for r in association.aligned]
++    write_csv(out/'matching_samples.csv',matching)
++    matching_summary = {**{k:v for k,v in asdict(association).items() if k!='aligned'},
++        'unmatched_reasons':dict(Counter(r['reason'] for r in matching if r['reason'])),
++        'exact_timestamp_matches':sum(r['method']=='exact_timestamp' for r in matching),
++        'interpolated_matches':sum(r['method']=='linear_translation_quaternion_slerp' for r in matching),
++        'maximum_accepted_bracket_ns':max(r['bracket_span_ns'] for r in matching if r['matched']),
++        'maximum_accepted_nonzero_bracket_ns':max([r['bracket_span_ns'] for r in matching if r['matched'] and r['bracket_span_ns']>0],default=None),
++        'gt_distinct_samples_used':len(gt_used),'gt_samples_in_primary_interval':window['gt_primary_count'],
++        'primary_estimator_max_gap_ns':max(np.diff([s.timestamp_ns for s in selected])).item(),
++        'GT_rule':'exact timestamps accepted directly, otherwise bracket <=50 ms; linear translation, quaternion SLERP; no extrapolation'}
++    write_json(out/'matching_statistics.json',matching_summary)
++    metrics = p19.evaluate_trajectory_metrics(association.aligned)
++    write_json(out/'frozen_p19_result.json',metrics)
++    R=np.asarray(metrics.alignment.rotation); t=np.asarray(metrics.alignment.translation_m)
++    alignment = {**asdict(metrics.alignment),'method':'SE(3) no-scale Umeyama', 'scale':1.0,'scale_estimated':False,
++                 'convention':'p_world_aligned = R @ p_odom + t; Q_world_aligned = R @ Q_odom',
++                 'fit_sample_count':len(selected),'det_R':float(np.linalg.det(R)),
++                 'orthogonality_max_abs_error':float(np.max(np.abs(R.T@R-np.eye(3)))),'use':'evaluation only'}
++    write_json(out/'alignment_transform.json',alignment)
++    ate_rows=[]; traj_rows=[]
++    for index, (record,error) in enumerate(zip(association.aligned,metrics.ate.per_sample_translation_error_m)):
++        aligned=p19.apply_rigid_alignment(record.estimated,metrics.alignment,target_frame_id='world')
++        est_q=[getattr(aligned,k) for k in ['qx','qy','qz','qw']]
++        gt_q=[getattr(record.ground_truth,k) for k in ['qx','qy','qz','qw']]
++        angle=float((Rotation.from_quat(gt_q).inv()*Rotation.from_quat(est_q)).magnitude()*180/np.pi)
++        delta=np.array([aligned.x_m-record.ground_truth.x_m,aligned.y_m-record.ground_truth.y_m,aligned.z_m-record.ground_truth.z_m])
++        ate_rows.append({'sample_index':index,'timestamp_ns':record.timestamp_ns,'relative_to_start_s':(record.timestamp_ns-origin)/1e9,
++                         'translation_error_m':error,'error_x_m':float(delta[0]),'error_y_m':float(delta[1]),'error_z_m':float(delta[2]),'rotation_error_deg':angle})
++        traj_rows.append({'timestamp_ns':record.timestamp_ns,'relative_to_start_s':(record.timestamp_ns-origin)/1e9,
++                         **pose_columns('est_raw_',record.estimated),**pose_columns('est_aligned_',aligned),**pose_columns('gt_',record.ground_truth)})
++    write_csv(out/'per_sample_ate.csv',ate_rows)
++    write_csv(out/'aligned_trajectory.csv',traj_rows)
++    write_csv(out/'rpe_translation.csv',[{'start_timestamp_ns':p.start_timestamp_ns,'end_timestamp_ns':p.end_timestamp_ns,
++        'start_relative_s':(p.start_timestamp_ns-origin)/1e9,'end_relative_s':(p.end_timestamp_ns-origin)/1e9,
++        'actual_delta_ns':p.actual_delta_ns,'delta_mismatch_ns':abs(p.actual_delta_ns-1_000_000_000),'translation_error_m':p.translation_error_m} for p in metrics.rpe.pairs])
++    write_csv(out/'rpe_rotation.csv',[{'start_timestamp_ns':p.start_timestamp_ns,'end_timestamp_ns':p.end_timestamp_ns,
++        'actual_delta_ns':p.actual_delta_ns,'rotation_error_deg':p.rotation_error_deg,'rotation_error_rad':float(np.deg2rad(p.rotation_error_deg))} for p in metrics.rpe.pairs])
++    summary={'ate_translation':statistics([r['translation_error_m'] for r in ate_rows],'m'),
++             'rpe_translation':statistics([p.translation_error_m for p in metrics.rpe.pairs],'m'),
++             'rpe_rotation':statistics([p.rotation_error_deg for p in metrics.rpe.pairs],'degrees'),
++             'absolute_rotation_diagnostic':statistics([r['rotation_error_deg'] for r in ate_rows],'degrees'),
++             'matching':matching_summary,'rpe_delta_ns':1_000_000_000,'rpe_tolerance_ns':50_000_000,
++             'rpe_actual_delta_min_ns':min(p.actual_delta_ns for p in metrics.rpe.pairs),
++             'rpe_actual_delta_max_ns':max(p.actual_delta_ns for p in metrics.rpe.pairs),
++             'rpe_pairing_rule':'for each matched start, nearest future sample to t+1s; earlier timestamp breaks ties; reject mismatch >50 ms',
++             'accuracy_status':'QUANTIFIED — NO ACCEPTANCE THRESHOLD AUTHORIZED'}
++    # Headline values are the established P19 outputs, not redefined statistics.
++    summary['ate_translation'].update(rmse=metrics.ate.rmse_translation_error_m,mean=metrics.ate.mean_translation_error_m,
++                                     median=metrics.ate.median_translation_error_m,p95=metrics.ate.p95_translation_error_m)
++    summary['rpe_translation']['rmse']=metrics.rpe.translation_rmse_m
++    summary['rpe_rotation']['rmse']=metrics.rpe.rotation_rmse_deg
++    write_json(out/'metrics_summary.json',summary)
++    write_csv(out/'metrics_summary.csv',[{'metric':k,**summary[k]} for k in ['ate_translation','rpe_translation','rpe_rotation','absolute_rotation_diagnostic']])
++    diagnostics={}
++    for name,samples in [('canonical',canonical),('gt',gt)]:
++        post=[s for s in samples if s.timestamp_ns>=origin]
++        positions=np.array([[s.x_m,s.y_m,s.z_m] for s in post])
++        diagnostics[name]={'post_start_count':len(post),'first_timestamp_ns':post[0].timestamp_ns,'last_timestamp_ns':post[-1].timestamp_ns,
++                           'raw_net_displacement_m':float(np.linalg.norm(positions[-1]-positions[0]))}
++    diagnostics['raw_displacement_is_not_ATE']=True
++    diagnostics['absolute_rotation_definition']='shortest orientation discrepancy after the same position-fitted alignment; distinct from RPE'
++    diagnostics['ate_first_m']=ate_rows[0]['translation_error_m']; diagnostics['ate_last_m']=ate_rows[-1]['translation_error_m']
++    diagnostics['ate_peak_relative_s']=max(ate_rows,key=lambda r:r['translation_error_m'])['relative_to_start_s']
++    diagnostics['absolute_rotation_first_deg']=ate_rows[0]['rotation_error_deg']; diagnostics['absolute_rotation_last_deg']=ate_rows[-1]['rotation_error_deg']
++    write_json(out/'trajectory_diagnostics.json',diagnostics)
++    plots(out)
++    env={'python_executable':sys.executable,'python':sys.version,'platform':platform.platform(),
++         'dependencies':{n:importlib.metadata.version(n) for n in ['numpy','scipy','matplotlib','Pillow','pytest']},
++         'numerics':'CPU float64; CUDA/RTX GPU not used','matplotlib_backend':matplotlib.get_backend()}
++    with io.StringIO() as buf:
++        from contextlib import redirect_stdout
++        with redirect_stdout(buf): np.show_config()
++        env['numpy_build_configuration']=buf.getvalue()
++    write_json(out/'environment.json',env)
++    write_json(out/'evaluation_configuration.json',config)
++    exact_command=subprocess.list2cmdline([sys.executable,'-B',str(Path(__file__).resolve()),'--config',str(config_path)])
++    provenance={'execution_utc':executed,'repository_path':str(ROOT),'p19_branch':config['p19_branch'],'p19_head':config['p19_head'],
++                'source_branch':metadata['branch'],'source_runtime_head':metadata['post_fix_commit'],
++                'zip_sha256':verification['zip_sha256'],'canonical_sha256':cschema['sha256'],'gt_sha256':gschema['sha256'],
++                'input_rows':{'canonical':len(canonical),'gt':len(gt)},'evaluation_core_sha256':file_hashes['src/evaluation/trajectory.py'],
++                'evaluation_code_bundle_sha256':bundle,'code_bundle_definition':'SHA256(canonical JSON of code_file_sha256 mapping)',
++                'code_file_sha256':file_hashes,'exact_evaluation_command':exact_command,'environment':env,
++                'interval':window,'matching':matching_summary,'alignment':alignment,'rpe_rule':summary['rpe_pairing_rule'],
++                'authorization':'00 authorization in current user request supersedes historical tooling-only authorization flag; frozen protocol file unchanged',
++                'scientific_methodology_changed':False,'source_csv_modified':False}
++    write_json(out/'provenance.json',provenance)
++    snapshots=out/'code_snapshot'
++    additions=[]
++    for name in code_files:
++        dest=snapshots/name; dest.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(ROOT/name,dest)
++        if name.startswith('scripts/evaluation/') or name.endswith('p19_lidar_icp_accepted.json'):
++            additions.extend(difflib.unified_diff([], (ROOT/name).read_text(encoding='utf-8').splitlines(keepends=True),fromfile='/dev/null',tofile=name))
++    (out/'implementation_additions.patch').write_text(''.join(additions),encoding='utf-8')
++    for name in ['REPORT.md','exports/metadata.json','start_invocation.json','start_dispatched.json','start_response.json',
++                 'source_hashes.json','final_source_hashes.json','scientific_analysis.json','final_decision.json','SHA256SUMS.txt',
++                 'frozen_inputs/09_deterministic_motion_system.cpp']:
++        dest=out/'source_context'/name
++        dest.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(package/name,dest)
++    assert sha(package/'exports/canonical.csv')==cschema['sha256'] and sha(package/'exports/gt.csv')==gschema['sha256']
++    write_json(out/'command_transcript.json',{'cwd':str(ROOT),'execution_utc':executed,'evaluation_command':exact_command,
++        'evaluation_result':'metrics and evidence generated; independent verification and final sealing pending',
++        'tests':{'command':'python -B -m pytest tests/evaluation -q -p no:cacheprovider',
++                 'result':'132 passed in 1.04s','exit_code':0,'performed_before_evaluation':True}})
++    print(json.dumps({'output':str(out),'metrics':summary,'alignment':alignment,'code_bundle_sha256':bundle},indent=2))
++
++
++if __name__=='__main__':
++    main()
+--- /dev/null
++++ scripts/evaluation/verify_lidar_icp_evidence.py
+@@ -0,0 +1,176 @@
++"""Independent saved-evidence audit; deliberately does not import P19 metrics."""
++from __future__ import annotations
++import argparse
++import csv
++from datetime import datetime, timezone
++import hashlib
++import json
++from pathlib import Path
++import statistics
++import sys
++import math
++import numpy as np
++from scipy.spatial.transform import Rotation, Slerp
++
++
++def load(path):
++    return json.loads(path.read_text(encoding='utf-8'))
++
++
++def rows(path):
++    with path.open(newline='',encoding='utf-8') as stream:
++        return list(csv.DictReader(stream))
++
++
++def digest(path):
++    return hashlib.sha256(path.read_bytes()).hexdigest()
++
++
++def values(row,prefix,fields):
++    return np.array([float(row[prefix+k]) for k in fields])
++
++
++def pose(row,prefix):
++    result=np.eye(4)
++    result[:3,:3]=Rotation.from_quat(values(row,prefix,['qx','qy','qz','qw'])).as_matrix()
++    result[:3,3]=values(row,prefix,['x_m','y_m','z_m'])
++    return result
++
++
++def check_summary(actual,summary):
++    ordered=sorted(actual); n=len(actual); p=.95*(n-1); lo=math.floor(p); hi=math.ceil(p)
++    expected={'count':n,'rmse':math.sqrt(math.fsum(x*x for x in actual)/n),
++              'mean':statistics.fmean(actual),'median':statistics.median(actual),
++              'p95':ordered[lo]+(p-lo)*(ordered[hi]-ordered[lo]),'max':max(actual)}
++    for k,v in expected.items():
++        assert math.isclose(v,summary[k],rel_tol=1e-12,abs_tol=1e-12),(k,v,summary[k])
++    return expected
++
++
++def main():
++    parser=argparse.ArgumentParser(); parser.add_argument('--evidence',required=True)
++    args=parser.parse_args(); out=Path(args.evidence).resolve()
++    summary=load(out/'metrics_summary.json'); alignment=load(out/'alignment_transform.json')
++    provenance=load(out/'provenance.json'); window=load(out/'timestamp_window.json')
++    config=load(out/'evaluation_configuration.json'); package=Path(config['package'])
++    trajectory=rows(out/'aligned_trajectory.csv'); ate=rows(out/'per_sample_ate.csv')
++    translation=rows(out/'rpe_translation.csv'); rotation=rows(out/'rpe_rotation.csv')
++    matching=rows(out/'matching_samples.csv')
++    R=np.asarray(alignment['rotation']); t=np.asarray(alignment['translation_m'])
++    assert alignment['scale']==1 and alignment['scale_estimated'] is False
++    assert np.allclose(R.T@R,np.eye(3),atol=1e-12,rtol=0) and abs(np.linalg.det(R)-1)<1e-12
++    canonical=rows(package/'exports/canonical.csv'); gt=rows(package/'exports/gt.csv')
++    assert len(canonical)==427 and len(gt)==5670
++    assert digest(package/'exports/canonical.csv')==provenance['canonical_sha256']
++    assert digest(package/'exports/gt.csv')==provenance['gt_sha256']
++    assert digest(Path(config['zip']))==provenance['zip_sha256']
++    assert window['origin_ns']==load(package/'start_invocation.json')['simulation_stamp_ns']
++    assert window['start_ns']==window['origin_ns']+3_000_000_000
++    assert window['end_ns']==window['origin_ns']+18_000_000_000
++    candidates=[r for r in canonical if window['start_ns']<=int(r['timestamp_ns'])<=window['end_ns']]
++    assert len(candidates)==len(matching)==summary['matching']['estimator_sample_count']
++    assert len(trajectory)==len(ate)==summary['matching']['aligned_sample_count']
++    assert len(matching)-len(ate)==summary['matching']['dropped_sample_count']
++    assert sum(window['start_ns']<=int(r['timestamp_ns'])<=window['end_ns'] for r in gt)==window['gt_primary_count']
++    raw_by_time={int(r['timestamp_ns']):r for r in canonical}
++    gt_ts=np.array([int(r['timestamp_ns']) for r in gt])
++    max_translation_residual=0.; max_rotation_residual=0.
++    for tr,er in zip(trajectory,ate):
++        stamp=int(tr['timestamp_ns']); assert stamp==int(er['timestamp_ns'])
++        assert window['start_ns']<=stamp<=window['end_ns']
++        assert float(tr['relative_to_start_s'])==(stamp-window['origin_ns'])/1e9
++        raw=raw_by_time[stamp]
++        assert np.array_equal(values(tr,'est_raw_',['x_m','y_m','z_m']),values(raw,'',['px','py','pz']))
++        assert np.array_equal(values(tr,'est_raw_',['qx','qy','qz','qw']),values(raw,'',['qx','qy','qz','qw']))
++        j=int(np.searchsorted(gt_ts,stamp))
++        if j<len(gt_ts) and gt_ts[j]==stamp:
++            gp=values(gt[j],'',['px','py','pz']); gq=Rotation.from_quat(values(gt[j],'',['qx','qy','qz','qw']))
++        else:
++            assert 0<j<len(gt_ts) and gt_ts[j]-gt_ts[j-1]<=50_000_000
++            f=(stamp-int(gt_ts[j-1]))/(int(gt_ts[j])-int(gt_ts[j-1]))
++            gp=(1-f)*values(gt[j-1],'',['px','py','pz'])+f*values(gt[j],'',['px','py','pz'])
++            gq=Slerp([0,1],Rotation.from_quat([values(gt[j-1],'',['qx','qy','qz','qw']),values(gt[j],'',['qx','qy','qz','qw'])]))(f)
++        assert np.allclose(gp,values(tr,'gt_',['x_m','y_m','z_m']),atol=1e-12,rtol=0)
++        assert (gq.inv()*Rotation.from_quat(values(tr,'gt_',['qx','qy','qz','qw']))).magnitude()<1e-10
++        expected=R@values(tr,'est_raw_',['x_m','y_m','z_m'])+t
++        assert np.allclose(expected,values(tr,'est_aligned_',['x_m','y_m','z_m']),atol=1e-12,rtol=0)
++        expected_q=Rotation.from_matrix(R)*Rotation.from_quat(values(tr,'est_raw_',['qx','qy','qz','qw']))
++        assert (expected_q.inv()*Rotation.from_quat(values(tr,'est_aligned_',['qx','qy','qz','qw']))).magnitude()<1e-10
++        error=float(np.linalg.norm(expected-gp)); max_translation_residual=max(max_translation_residual,abs(error-float(er['translation_error_m'])))
++        absolute_angle=float((gq.inv()*expected_q).magnitude()*180/np.pi)
++        assert abs(absolute_angle-float(er['rotation_error_deg']))<1e-8
++    assert max_translation_residual<1e-12
++    # Independent optimality check using orthogonal Procrustes on saved positions.
++    X=np.array([values(r,'est_raw_',['x_m','y_m','z_m']) for r in trajectory])
++    Y=np.array([values(r,'gt_',['x_m','y_m','z_m']) for r in trajectory])
++    u,s,vt=np.linalg.svd((X-X.mean(0)).T@(Y-Y.mean(0)))
++    correction=np.diag([1,1,np.linalg.det(vt.T@u.T)])
++    independent_R=vt.T@correction@u.T
++    assert np.allclose(R,independent_R,atol=1e-12,rtol=0)
++    assert np.allclose(t,Y.mean(0)-R@X.mean(0),atol=1e-12,rtol=0)
++    # Rigid transforms preserve all consecutive distances; no trajectory scale fit.
++    AX=np.array([values(r,'est_aligned_',['x_m','y_m','z_m']) for r in trajectory])
++    assert np.allclose(np.linalg.norm(np.diff(X,axis=0),axis=1),np.linalg.norm(np.diff(AX,axis=0),axis=1),atol=1e-12,rtol=0)
++    timestamps=[int(r['timestamp_ns']) for r in trajectory]
++    expected_pairs=[]; rejected=[]
++    for i,stamp in enumerate(timestamps):
++        if i==len(timestamps)-1:
++            rejected.append({'start_timestamp_ns':stamp,'reason':'no_future_sample'}); continue
++        j=min(range(i+1,len(timestamps)),key=lambda j:(abs(timestamps[j]-(stamp+1_000_000_000)),timestamps[j]))
++        if abs(timestamps[j]-stamp-1_000_000_000)>50_000_000:
++            rejected.append({'start_timestamp_ns':stamp,'reason':'nearest_future_delta_outside_tolerance'}); continue
++        expected_pairs.append((stamp,timestamps[j]))
++    actual_pairs=[(int(r['start_timestamp_ns']),int(r['end_timestamp_ns'])) for r in translation]
++    assert actual_pairs==expected_pairs
++    assert actual_pairs==[(int(r['start_timestamp_ns']),int(r['end_timestamp_ns'])) for r in rotation]
++    tr_by_stamp={int(r['timestamp_ns']):r for r in trajectory}
++    for tr,rot in zip(translation,rotation):
++        a=tr_by_stamp[int(tr['start_timestamp_ns'])]; b=tr_by_stamp[int(tr['end_timestamp_ns'])]
++        est_delta=np.linalg.inv(pose(a,'est_aligned_'))@pose(b,'est_aligned_')
++        gt_delta=np.linalg.inv(pose(a,'gt_'))@pose(b,'gt_')
++        E=np.linalg.inv(gt_delta)@est_delta
++        assert abs(np.linalg.norm(E[:3,3])-float(tr['translation_error_m']))<1e-12
++        angle=float(Rotation.from_matrix(E[:3,:3]).magnitude()*180/np.pi)
++        max_rotation_residual=max(max_rotation_residual,abs(angle-float(rot['rotation_error_deg'])))
++        assert int(tr['actual_delta_ns'])==int(tr['end_timestamp_ns'])-int(tr['start_timestamp_ns'])
++        assert abs(int(tr['actual_delta_ns'])-1_000_000_000)<=50_000_000
++        assert abs(float(rot['rotation_error_rad'])-np.deg2rad(float(rot['rotation_error_deg'])))<1e-12
++    assert max_rotation_residual<1e-6
++    recalculated={k:check_summary([float(r[column]) for r in data],summary[k]) for k,data,column in [
++        ('ate_translation',ate,'translation_error_m'),('rpe_translation',translation,'translation_error_m'),
++        ('rpe_rotation',rotation,'rotation_error_deg'),('absolute_rotation_diagnostic',ate,'rotation_error_deg')]}
++    series=rows(out/'plot_series.csv')
++    tables={'aligned_trajectory.csv':trajectory,'per_sample_ate.csv':ate}
++    for item in series:
++        source=tables[item['source']][int(item['row'])]
++        assert float(item['x'])==float(source[item['x_column']])
++        assert float(item['y'])==float(source[item['y_column']])
++    plot_provenance=load(out/'plot_provenance.json')
++    for name,expected in plot_provenance['sources'].items(): assert digest(out/name)==expected
++    for name,expected in provenance['code_file_sha256'].items():
++        assert digest(Path(provenance['repository_path'])/name)==expected
++        assert digest(out/'code_snapshot'/name)==expected
++    for field in ['source_branch','source_runtime_head','zip_sha256','canonical_sha256','gt_sha256','input_rows',
++                  'p19_head','evaluation_core_sha256','evaluation_code_bundle_sha256','exact_evaluation_command',
++                  'environment','execution_utc','interval','matching','alignment','rpe_rule']:
++        assert provenance.get(field) is not None,field
++    result={'status':'VERIFIED','execution_utc':datetime.now(timezone.utc).isoformat(),
++            'command':f'"{sys.executable}" -B scripts/evaluation/verify_lidar_icp_evidence.py --evidence "{out}"',
++            'independent_of_frozen_evaluator':True,'checks':[
++                'source input byte hashes and counts','metadata origin and inclusive interval',
++                'candidate/matched/unmatched counts','saved GT exact matches / interpolation',
++                'proper rigid transform and position/orientation application','independent no-scale optimum',
++                'distance preservation','ATE recomputed from saved poses','RPE brute-force temporal pairing',
++                'RPE recomputed with homogeneous transforms and SciPy rotation','summary metrics from saved errors',
++                'plot series equal persisted CSV values','code snapshot hashes','required provenance'],
++            'summary_recalculated':recalculated,'max_ate_difference_m':max_translation_residual,
++            'max_rpe_rotation_difference_deg':max_rotation_residual,'plot_series_points_verified':len(series),
++            'rpe_matched_start_count':len(expected_pairs),'rpe_rejected_starts':rejected,
++            'position_covariance_singular_values':s.tolist(),
++            'source_inputs_unchanged':True,'scale_fixed':1.0}
++    (out/'independent_validation.json').write_text(json.dumps(result,sort_keys=True,indent=2,allow_nan=False)+'\n',encoding='utf-8')
++    print(json.dumps(result,indent=2))
++
++
++if __name__=='__main__':
++    main()
+--- /dev/null
++++ configs/evaluation/p19_lidar_icp_accepted.json
+@@ -0,0 +1,23 @@
++{
++  "source_branch": "07/lidar-icp-fallback",
++  "source_runtime_head": "8ff6f6ed842333565ada94b87327dfcd1a1923c2",
++  "p19_branch": "p19/lidar-icp-localization-eval",
++  "p19_head": "013067277d331246959af1f6176584b5305828f4",
++  "package": "C:/Dev/P19-LiDAR-ICP-Input/aegisinspect_07_lidar_icp_motion_acceptance_resume_evidence/07_lidar_icp_motion_acceptance_resume",
++  "zip": "C:/Dev/P19-LiDAR-ICP-Input/aegisinspect_07_lidar_icp_motion_acceptance_resume_evidence.zip",
++  "expected_zip_sha256": "e9f4545c11c415675a53f0bf46da3b33d5477ad5dba939dfe63075e993e980bf",
++  "expected_canonical_sha256": "0198293d29ad5746ebb889431333d9de9374afb456fb0bcc0198bb8415dbdbc3",
++  "expected_gt_sha256": "7e44a9558d62c8cedb2fa272fe47709f5dbf18d7e30c74ad7ff12cba631f62e2",
++  "output": "outputs/evidence/p19_lidar_icp_localization_evaluation",
++  "run_start_timestamp_ns": 35763000000,
++  "primary_start_offset_ns": 3000000000,
++  "primary_end_offset_ns": 18000000000,
++  "max_gt_bracket_span_ns": 50000000,
++  "alignment": "SE(3) no-scale Umeyama",
++  "scale": 1.0,
++  "scale_estimated": false,
++  "rpe_delta_ns": 1000000000,
++  "rpe_tolerance_ns": 50000000,
++  "accuracy_acceptance_threshold": null,
++  "authorization": "00 Control Center user authorization for this accepted run only; historical tooling-only flag superseded without editing frozen protocol"
++}

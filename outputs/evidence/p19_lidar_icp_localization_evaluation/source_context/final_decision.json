@@ -1,0 +1,26 @@
+{
+  "utc": "2026-09-19T01:54:40.209033+00:00",
+  "classification": "LIDAR ICP RUNTIME ACCEPTANCE \u2014 PASS",
+  "checks": {
+    "scientific_acceptance_checks": true,
+    "offline_evidence_audit": true,
+    "allowed_vendor_exception": true,
+    "git_final_check": true,
+    "conditional_resume_gate": true,
+    "clock_advancing": true,
+    "LiDAR_live_and_valid": true,
+    "no_active_ICP_errors": true
+  },
+  "safety": {
+    "P13_START_CALL_COUNT": 1,
+    "ICP_START_CALL_COUNT": 0,
+    "RESET_CALL_COUNT": 0,
+    "SCIENTIFIC_MOTION_ATTEMPT_CONSUMED": "YES"
+  },
+  "PARAMETER_BRIDGE_VENDOR_TEARDOWN_DEFECT_REPRODUCED": "YES",
+  "RELEVANT_RESIDUAL_PROCESS_COUNT": 0,
+  "accuracy_caveat": "Sustained runtime validity is demonstrated; accuracy is not qualified. Raw ICP displacement 2.255362245 m versus GT 0.450000021 m is a significant discrepancy for Laptop 1/P19. No alignment/ATE/RPE headline metric or GT correction was applied.",
+  "manifest_verification": "PASS",
+  "manifest_artifact_count": 236,
+  "manifest_note": "All artifacts verified; final report/transcript resealing is followed by a final sha256sum --check --quiet verification, recorded in the tool result."
+}

@@ -1,0 +1,12 @@
+{
+  "artifact_count": 58,
+  "excluded": [
+    "SHA256SUMS.txt"
+  ],
+  "independent_metrics_verified": true,
+  "method": "SHA256 of each artifact; reload root manifest, compare every digest and exact file inventory",
+  "note": "This receipt is included in the manifest; final verification occurs after manifest creation. No self-referential manifest hash is embedded.",
+  "plots_verified": true,
+  "result": "VERIFIED",
+  "source_inputs_unchanged": true
+}

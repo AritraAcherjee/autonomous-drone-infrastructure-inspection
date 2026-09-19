@@ -1,0 +1,197 @@
+{
+  "checks": [
+    "source input byte hashes and counts",
+    "metadata origin and inclusive interval",
+    "candidate/matched/unmatched counts",
+    "saved GT exact matches / interpolation",
+    "proper rigid transform and position/orientation application",
+    "independent no-scale optimum",
+    "distance preservation",
+    "ATE recomputed from saved poses",
+    "RPE brute-force temporal pairing",
+    "RPE recomputed with homogeneous transforms and SciPy rotation",
+    "summary metrics from saved errors",
+    "plot series equal persisted CSV values",
+    "code snapshot hashes",
+    "required provenance"
+  ],
+  "command": "\"C:\\Users\\Aritra\\anaconda3\\python.exe\" -B scripts/evaluation/verify_lidar_icp_evidence.py --evidence \"C:\\Dev\\aegisinspect-p19-lidar-eval\\outputs\\evidence\\p19_lidar_icp_localization_evaluation\"",
+  "execution_utc": "2026-09-19T03:11:15.528516+00:00",
+  "independent_of_frozen_evaluator": true,
+  "max_ate_difference_m": 0.0,
+  "max_rpe_rotation_difference_deg": 6.389472284595854e-12,
+  "plot_series_points_verified": 608,
+  "position_covariance_singular_values": [
+    3.95096754560866,
+    0.68988285931071,
+    0.4970323770198424
+  ],
+  "rpe_matched_start_count": 44,
+  "rpe_rejected_starts": [
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 39000000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 39200000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 39400000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 39600000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 39800000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 45100000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 45300000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 45500000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 45700000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 45900000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 46200000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 46400000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 46600000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 46800000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 47300000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 47500000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 47700000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 49200000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 49400000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 49600000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 49800000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 50000000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 50300000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 50700000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 51500000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 52200000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 52400000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 52900000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 53100000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 53300000000
+    },
+    {
+      "reason": "nearest_future_delta_outside_tolerance",
+      "start_timestamp_ns": 53500000000
+    },
+    {
+      "reason": "no_future_sample",
+      "start_timestamp_ns": 53700000000
+    }
+  ],
+  "scale_fixed": 1.0,
+  "source_inputs_unchanged": true,
+  "status": "VERIFIED",
+  "summary_recalculated": {
+    "absolute_rotation_diagnostic": {
+      "count": 76,
+      "max": 82.79825757603464,
+      "mean": 79.71090771397282,
+      "median": 79.88826130625321,
+      "p95": 82.52526927897271,
+      "rmse": 79.73413342180127
+    },
+    "ate_translation": {
+      "count": 76,
+      "max": 1.7907110496821634,
+      "mean": 0.481032528924518,
+      "median": 0.4226100026201506,
+      "p95": 1.4325881562795357,
+      "rmse": 0.5953967821920382
+    },
+    "rpe_rotation": {
+      "count": 44,
+      "max": 4.712332013602503,
+      "mean": 1.1094379400717058,
+      "median": 0.5112191047972927,
+      "p95": 4.375270769287841,
+      "rmse": 1.7072652440627887
+    },
+    "rpe_translation": {
+      "count": 44,
+      "max": 0.6977561936830826,
+      "mean": 0.29542108061270533,
+      "median": 0.26945051306904144,
+      "p95": 0.5933631507833984,
+      "rmse": 0.34060474332965046
+    }
+  }
+}

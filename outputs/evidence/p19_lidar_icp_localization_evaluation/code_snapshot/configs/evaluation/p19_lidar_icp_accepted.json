@@ -1,0 +1,23 @@
+{
+  "source_branch": "07/lidar-icp-fallback",
+  "source_runtime_head": "8ff6f6ed842333565ada94b87327dfcd1a1923c2",
+  "p19_branch": "p19/lidar-icp-localization-eval",
+  "p19_head": "013067277d331246959af1f6176584b5305828f4",
+  "package": "C:/Dev/P19-LiDAR-ICP-Input/aegisinspect_07_lidar_icp_motion_acceptance_resume_evidence/07_lidar_icp_motion_acceptance_resume",
+  "zip": "C:/Dev/P19-LiDAR-ICP-Input/aegisinspect_07_lidar_icp_motion_acceptance_resume_evidence.zip",
+  "expected_zip_sha256": "e9f4545c11c415675a53f0bf46da3b33d5477ad5dba939dfe63075e993e980bf",
+  "expected_canonical_sha256": "0198293d29ad5746ebb889431333d9de9374afb456fb0bcc0198bb8415dbdbc3",
+  "expected_gt_sha256": "7e44a9558d62c8cedb2fa272fe47709f5dbf18d7e30c74ad7ff12cba631f62e2",
+  "output": "outputs/evidence/p19_lidar_icp_localization_evaluation",
+  "run_start_timestamp_ns": 35763000000,
+  "primary_start_offset_ns": 3000000000,
+  "primary_end_offset_ns": 18000000000,
+  "max_gt_bracket_span_ns": 50000000,
+  "alignment": "SE(3) no-scale Umeyama",
+  "scale": 1.0,
+  "scale_estimated": false,
+  "rpe_delta_ns": 1000000000,
+  "rpe_tolerance_ns": 50000000,
+  "accuracy_acceptance_threshold": null,
+  "authorization": "00 Control Center user authorization for this accepted run only; historical tooling-only flag superseded without editing frozen protocol"
+}

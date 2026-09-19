@@ -1,0 +1,301 @@
+{
+  "utc": "2026-09-19T01:51:10.977114+00:00",
+  "start_reference_ns": 35763000000,
+  "native": {
+    "total_captured": 427,
+    "post_start_count": 118,
+    "primary_count": 76,
+    "valid_count": 118,
+    "primary_valid_count": 76,
+    "invalid_count": 0,
+    "finite_position_count": 118,
+    "finite_quaternion_count": 118,
+    "zero_norm_quaternion_count": 0,
+    "nonfinite_sample_count": 0,
+    "frame_ids": [
+      "odom"
+    ],
+    "child_frame_ids": [
+      "base_link"
+    ],
+    "primary_valid_rate_hz": 5.066666666666666,
+    "start_stamp_ns": 35800000000,
+    "end_stamp_ns": 56400000000,
+    "duration_sec": 20.6,
+    "first_pose": {
+      "stamp_ns": 35800000000,
+      "position": [
+        1.9081608115811832e-05,
+        6.81067785990308e-06,
+        -2.14916539675869e-07
+      ],
+      "quaternion": [
+        -8.613051249994865e-08,
+        8.694717834600818e-09,
+        -3.043181928674687e-09,
+        0.9999999999999962
+      ]
+    },
+    "last_pose": {
+      "stamp_ns": 56400000000,
+      "position": [
+        0.42556414008140564,
+        -2.214449644088745,
+        -0.04186750203371048
+      ],
+      "quaternion": [
+        0.005073986339254303,
+        -0.003444081426977046,
+        -0.0056465512266093984,
+        0.999965254108861
+      ]
+    },
+    "output_rate_hz": 5.679611650485437,
+    "largest_timestamp_gap_sec": 0.4,
+    "strictly_advancing": true,
+    "covariance_finite_count": 118,
+    "covariance_negative_diagonal_count": 0,
+    "covariance_nonzero_count": 118,
+    "translation_displacement_m": 2.2553622450903688,
+    "rotation_change_deg": 0.9552640230205072,
+    "max_translation_excursion_m": 2.2747338103104746,
+    "max_rotation_excursion_deg": 18.460740058180203,
+    "sampled_path_length_m": 5.527561258524013,
+    "largest_primary_valid_gap_including_edges_sec": 0.4,
+    "primary_valid_1sec_bin_counts": [
+      9,
+      6,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      5,
+      5,
+      3,
+      4,
+      5
+    ]
+  },
+  "canonical": {
+    "total_captured": 427,
+    "post_start_count": 118,
+    "primary_count": 76,
+    "valid_count": 118,
+    "primary_valid_count": 76,
+    "invalid_count": 0,
+    "finite_position_count": 118,
+    "finite_quaternion_count": 118,
+    "zero_norm_quaternion_count": 0,
+    "nonfinite_sample_count": 0,
+    "frame_ids": [
+      "odom"
+    ],
+    "child_frame_ids": [
+      "base_link"
+    ],
+    "primary_valid_rate_hz": 5.066666666666666,
+    "start_stamp_ns": 35800000000,
+    "end_stamp_ns": 56400000000,
+    "duration_sec": 20.6,
+    "first_pose": {
+      "stamp_ns": 35800000000,
+      "position": [
+        1.9081608115811832e-05,
+        6.81067785990308e-06,
+        -2.14916539675869e-07
+      ],
+      "quaternion": [
+        -8.613051249994865e-08,
+        8.694717834600818e-09,
+        -3.043181928674687e-09,
+        0.9999999999999962
+      ]
+    },
+    "last_pose": {
+      "stamp_ns": 56400000000,
+      "position": [
+        0.42556414008140564,
+        -2.214449644088745,
+        -0.04186750203371048
+      ],
+      "quaternion": [
+        0.005073986339254303,
+        -0.003444081426977046,
+        -0.0056465512266093984,
+        0.999965254108861
+      ]
+    },
+    "output_rate_hz": 5.679611650485437,
+    "largest_timestamp_gap_sec": 0.4,
+    "strictly_advancing": true,
+    "covariance_finite_count": 118,
+    "covariance_negative_diagonal_count": 0,
+    "covariance_nonzero_count": 118,
+    "translation_displacement_m": 2.2553622450903688,
+    "rotation_change_deg": 0.9552640230205072,
+    "max_translation_excursion_m": 2.2747338103104746,
+    "max_rotation_excursion_deg": 18.460740058180203,
+    "sampled_path_length_m": 5.527561258524013,
+    "largest_primary_valid_gap_including_edges_sec": 0.4,
+    "primary_valid_1sec_bin_counts": [
+      9,
+      6,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      5,
+      5,
+      3,
+      4,
+      5
+    ]
+  },
+  "gt": {
+    "total_captured": 5670,
+    "post_start_count": 2104,
+    "primary_count": 1500,
+    "valid_count": 2104,
+    "primary_valid_count": 1500,
+    "invalid_count": 0,
+    "finite_position_count": 2104,
+    "finite_quaternion_count": 2104,
+    "zero_norm_quaternion_count": 0,
+    "nonfinite_sample_count": 0,
+    "frame_ids": [
+      "world"
+    ],
+    "child_frame_ids": [
+      ""
+    ],
+    "primary_valid_rate_hz": 100.0,
+    "start_stamp_ns": 35770000000,
+    "end_stamp_ns": 56800000000,
+    "duration_sec": 21.03,
+    "first_pose": {
+      "stamp_ns": 35770000000,
+      "position": [
+        0.0,
+        0.0,
+        1.5
+      ],
+      "quaternion": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "last_pose": {
+      "stamp_ns": 56800000000,
+      "position": [
+        0.4500000214645096,
+        -1.7913117656328837e-08,
+        1.4999999852836652
+      ],
+      "quaternion": [
+        1.2384449709907195e-07,
+        -1.934119998432913e-07,
+        2.0528026481727205e-07,
+        0.9999999999999526
+      ]
+    },
+    "output_rate_hz": 100.0,
+    "largest_timestamp_gap_sec": 0.01,
+    "strictly_advancing": true,
+    "covariance_finite_count": 2104,
+    "covariance_negative_diagonal_count": 0,
+    "covariance_nonzero_count": 0,
+    "translation_displacement_m": 0.4500000214645102,
+    "rotation_change_deg": 3.528472023227109e-05,
+    "max_translation_excursion_m": 0.7269458533665043,
+    "max_rotation_excursion_deg": 18.7866607544005,
+    "sampled_path_length_m": 1.6025989694841178,
+    "largest_primary_valid_gap_including_edges_sec": 0.01,
+    "primary_valid_1sec_bin_counts": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ]
+  },
+  "correspondence": {
+    "valid_native_unique_stamps": 118,
+    "canonical_unique_stamps": 118,
+    "missing_canonical_stamps": [],
+    "field_mismatch_stamps": [],
+    "fields_compared": [
+      "position",
+      "quaternion",
+      "linear_velocity",
+      "angular_velocity",
+      "pose_covariance",
+      "twist_covariance"
+    ],
+    "all_captured_native_invalid_count": 0
+  },
+  "tf": {
+    "operational_count": 118,
+    "primary_count": 76,
+    "owners": {
+      "/vio_adapter": 118
+    },
+    "publisher_gids": {
+      "010f5c48ac7c61650000000000001503": 118
+    },
+    "competing_icp_count": 0,
+    "duplicate_owner_count": 0,
+    "map_to_odom_count": 0,
+    "canonical_mismatch_stamps": []
+  },
+  "icp_diagnostics": {
+    "message_count": 118,
+    "lost_count": 0,
+    "not_lost_count": 118,
+    "lost_timestamps_ns": [],
+    "correspondence_range": [
+      1180,
+      1986
+    ],
+    "inlier_ratio_range": [
+      0.20518170297145844,
+      0.3459930419921875
+    ]
+  },
+  "checks": {
+    "native_sustained_primary_updates": true,
+    "native_valid_finite_nondegenerate": true,
+    "native_actually_changes": true,
+    "native_timestamps_advancing": true,
+    "native_correct_frames": true,
+    "canonical_sustained_primary_updates": true,
+    "canonical_valid_finite_nondegenerate": true,
+    "canonical_actually_changes": true,
+    "canonical_timestamps_advancing": true,
+    "canonical_correct_frames": true,
+    "meaningful_p13_motion_proven_by_gt": true,
+    "gt_export_has_complete_coverage": true,
+    "canonical_preserves_all_valid_native": true,
+    "tf_contract": true
+  },
+  "pass": true
+}

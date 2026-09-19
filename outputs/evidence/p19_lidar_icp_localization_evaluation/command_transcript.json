@@ -1,0 +1,253 @@
+{
+  "cwd": "C:\\Dev\\aegisinspect-p19-lidar-eval",
+  "evaluation_command": "C:\\Users\\Aritra\\anaconda3\\python.exe -B C:\\Dev\\aegisinspect-p19-lidar-eval\\scripts\\evaluation\\evaluate_lidar_icp_accepted.py --config C:\\Dev\\aegisinspect-p19-lidar-eval\\configs\\evaluation\\p19_lidar_icp_accepted.json",
+  "evaluation_exit_code": 0,
+  "evaluation_result": "Complete; authoritative results in frozen_p19_result.json and metrics_summary.json",
+  "execution_utc": "2026-09-19T03:10:59.834981+00:00",
+  "independent_validation_command": "python -B scripts/evaluation/verify_lidar_icp_evidence.py --evidence outputs/evidence/p19_lidar_icp_localization_evaluation",
+  "independent_validation_exit_code": 0,
+  "independent_validation_result": {
+    "checks": [
+      "source input byte hashes and counts",
+      "metadata origin and inclusive interval",
+      "candidate/matched/unmatched counts",
+      "saved GT exact matches / interpolation",
+      "proper rigid transform and position/orientation application",
+      "independent no-scale optimum",
+      "distance preservation",
+      "ATE recomputed from saved poses",
+      "RPE brute-force temporal pairing",
+      "RPE recomputed with homogeneous transforms and SciPy rotation",
+      "summary metrics from saved errors",
+      "plot series equal persisted CSV values",
+      "code snapshot hashes",
+      "required provenance"
+    ],
+    "command": "\"C:\\Users\\Aritra\\anaconda3\\python.exe\" -B scripts/evaluation/verify_lidar_icp_evidence.py --evidence \"C:\\Dev\\aegisinspect-p19-lidar-eval\\outputs\\evidence\\p19_lidar_icp_localization_evaluation\"",
+    "execution_utc": "2026-09-19T03:11:15.528516+00:00",
+    "independent_of_frozen_evaluator": true,
+    "max_ate_difference_m": 0.0,
+    "max_rpe_rotation_difference_deg": 6.389472284595854e-12,
+    "plot_series_points_verified": 608,
+    "position_covariance_singular_values": [
+      3.95096754560866,
+      0.68988285931071,
+      0.4970323770198424
+    ],
+    "rpe_matched_start_count": 44,
+    "rpe_rejected_starts": [
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 39000000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 39200000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 39400000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 39600000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 39800000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 45100000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 45300000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 45500000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 45700000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 45900000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 46200000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 46400000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 46600000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 46800000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 47300000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 47500000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 47700000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 49200000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 49400000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 49600000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 49800000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 50000000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 50300000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 50700000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 51500000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 52200000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 52400000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 52900000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 53100000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 53300000000
+      },
+      {
+        "reason": "nearest_future_delta_outside_tolerance",
+        "start_timestamp_ns": 53500000000
+      },
+      {
+        "reason": "no_future_sample",
+        "start_timestamp_ns": 53700000000
+      }
+    ],
+    "scale_fixed": 1.0,
+    "source_inputs_unchanged": true,
+    "status": "VERIFIED",
+    "summary_recalculated": {
+      "absolute_rotation_diagnostic": {
+        "count": 76,
+        "max": 82.79825757603464,
+        "mean": 79.71090771397282,
+        "median": 79.88826130625321,
+        "p95": 82.52526927897271,
+        "rmse": 79.73413342180127
+      },
+      "ate_translation": {
+        "count": 76,
+        "max": 1.7907110496821634,
+        "mean": 0.481032528924518,
+        "median": 0.4226100026201506,
+        "p95": 1.4325881562795357,
+        "rmse": 0.5953967821920382
+      },
+      "rpe_rotation": {
+        "count": 44,
+        "max": 4.712332013602503,
+        "mean": 1.1094379400717058,
+        "median": 0.5112191047972927,
+        "p95": 4.375270769287841,
+        "rmse": 1.7072652440627887
+      },
+      "rpe_translation": {
+        "count": 44,
+        "max": 0.6977561936830826,
+        "mean": 0.29542108061270533,
+        "median": 0.26945051306904144,
+        "p95": 0.5933631507833984,
+        "rmse": 0.34060474332965046
+      }
+    }
+  },
+  "issued_evaluation_command": "python -B scripts/evaluation/evaluate_lidar_icp_accepted.py --config configs/evaluation/p19_lidar_icp_accepted.json",
+  "packaging_command": "python -B outputs/evidence/p19_lidar_icp_localization_evaluation/finalize_evidence.py",
+  "packaging_result": "All saved artifacts hashed; root SHA256SUMS.txt re-read and verified before process success",
+  "plot_validation_result": {
+    "plot_series_verified_by": "independent_validation.json",
+    "plots": [
+      {
+        "independent_render_bytes_identical": true,
+        "path": "plots/aligned_trajectory_vs_gt.png",
+        "sha256": "d03c702de27786cd16f0f62df329b7e233b06bf63e5b1137fb08e7b3929d0407"
+      },
+      {
+        "independent_render_bytes_identical": true,
+        "path": "plots/aligned_trajectory_vs_gt.svg",
+        "sha256": "f264bcfc3f89184dc32b54b1bbeefda0d59b56300871364188e1b7d3231e40a5"
+      },
+      {
+        "independent_render_bytes_identical": true,
+        "path": "plots/rotation_error_over_time.png",
+        "sha256": "12a0b09f6981a9b77ec3a078f981c2c3287a1c5ce774b581b2dcd5e881013ed3"
+      },
+      {
+        "independent_render_bytes_identical": true,
+        "path": "plots/rotation_error_over_time.svg",
+        "sha256": "303381636f04eddfd8a15a5282cbf75e991e6e04fcb61e45c05b022d3e7eea4c"
+      },
+      {
+        "independent_render_bytes_identical": true,
+        "path": "plots/translation_error_over_time.png",
+        "sha256": "c19bbceb16c2ed64f7b8dd94ed633db4434f2ccf81a19606076995cf5c3d9b71"
+      },
+      {
+        "independent_render_bytes_identical": true,
+        "path": "plots/translation_error_over_time.svg",
+        "sha256": "76bd46b70a6b38e13221a04d1c4705db57fc1abcf23f1215f5e58319038bdb64"
+      }
+    ],
+    "rerender_command": "import evaluator.plots; render from copied saved CSVs in outputs/cache/p19_plot_recheck; compare SHA-256 of all PNG and SVG files",
+    "status": "VERIFIED",
+    "visual_review": "All three PNG plots inspected: legible titles/labels/units, complete primary interval, equal spatial axis scales, zero-based error axes; saved CSV values verified independently."
+  },
+  "tests": {
+    "command": "python -B -m pytest tests/evaluation -q -p no:cacheprovider",
+    "exit_code": 0,
+    "performed_before_evaluation": true,
+    "result": "132 passed in 1.04s"
+  }
+}
