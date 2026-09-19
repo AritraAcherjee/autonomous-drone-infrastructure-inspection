@@ -7,6 +7,12 @@ from collections.abc import Iterable
 from src.storage.models import Defect, Evidence
 
 
+def format_confidence(value: float) -> str:
+    """Preserve the stored value, including very low detector confidence."""
+
+    return repr(value)
+
+
 def _timestamp_text(value) -> str:
     if value is None:
         return "N/A"
@@ -23,7 +29,7 @@ def defect_table_rows(
         {
             "Defect ID": defect.defect_id,
             "Class": defect.class_name,
-            "Confidence": round(defect.confidence, 3),
+            "Confidence": format_confidence(defect.confidence),
             "X (m)": defect.x_m,
             "Y (m)": defect.y_m,
             "Z (m)": defect.z_m,
@@ -46,7 +52,7 @@ def evidence_table_rows(
             "Evidence ID": item.evidence_id,
             "Frame ID": item.frame_id,
             "Timestamp": _timestamp_text(item.timestamp),
-            "Confidence": round(item.confidence, 3),
+            "Confidence": format_confidence(item.confidence),
             "BBox": (
                 f"({item.bbox_x1:.1f}, {item.bbox_y1:.1f}) - "
                 f"({item.bbox_x2:.1f}, {item.bbox_y2:.1f})"

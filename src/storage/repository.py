@@ -51,7 +51,7 @@ def _utc_now() -> datetime:
 def _datetime_to_text(value: datetime) -> str:
     return (
         value.astimezone(timezone.utc)
-        .isoformat(timespec="seconds")
+        .isoformat()
         .replace("+00:00", "Z")
     )
 
@@ -226,15 +226,25 @@ class SQLiteInspectionRepository:
     def create_inspection(
         self,
         record: InspectionCreate,
+        *,
+        inspection_id: int | None = None,
     ) -> Inspection:
-        """Persist and return a new Inspection."""
+        """Create an inspection, optionally preserving an upstream identity."""
 
         validate_inspection_create(record)
+        if inspection_id is not None and (
+            type(inspection_id) is not int
+            or not 1 <= inspection_id <= 2**63 - 1
+        ):
+            raise ValidationError(
+                "inspection_id must be a positive SQLite signed 64-bit integer"
+            )
 
         with self._connection() as connection:
             cursor = connection.execute(
                 """
                 INSERT INTO inspections (
+                    inspection_id,
                     structure_id,
                     started_at,
                     completed_at,
@@ -242,9 +252,10 @@ class SQLiteInspectionRepository:
                     system_version,
                     notes
                 )
-                VALUES (?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
+                    inspection_id,
                     record.structure_id,
                     _datetime_to_text(record.started_at),
                     (

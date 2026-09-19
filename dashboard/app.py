@@ -18,6 +18,7 @@ import streamlit as st  # noqa: E402
 from dashboard.components import (  # noqa: E402
     defect_table_rows,
     evidence_table_rows,
+    format_confidence,
 )
 from src.storage.models import ReviewStatus  # noqa: E402
 from src.storage.service import InspectionService  # noqa: E402
@@ -59,7 +60,7 @@ st.set_page_config(
 
 st.title("AegisInspect Inspection Review")
 st.caption(
-    "P16 synthetic/test dashboard — human review remains "
+    "P16 persisted inspection dashboard — human review remains "
     "separate from machine-generated defect output."
 )
 
@@ -281,7 +282,7 @@ with detail_1:
     st.write("**Class:**", defect.class_name)
     st.write(
         "**Confidence:**",
-        f"{defect.confidence:.3f}",
+        format_confidence(defect.confidence),
     )
 
 with detail_2:

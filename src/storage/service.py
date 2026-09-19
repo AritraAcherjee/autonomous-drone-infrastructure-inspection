@@ -56,8 +56,10 @@ class InspectionService:
     def create_inspection(
         self,
         record: InspectionCreate,
+        *,
+        inspection_id: int | None = None,
     ) -> Inspection:
-        return self.repository.create_inspection(record)
+        return self.repository.create_inspection(record, inspection_id=inspection_id)
 
     def get_inspection(
         self,
