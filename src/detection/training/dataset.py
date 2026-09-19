@@ -10,7 +10,7 @@ import numpy as np
 from PIL import Image
 from ultralytics.data.dataset import YOLODataset
 from ultralytics.data.base import imread
-from ultralytics.data.augment import Albumentations
+from ultralytics.data.augment import Albumentations, Format, RandomHSV
 
 from detection.data.readonly_verifier import verify_label
 
@@ -31,13 +31,27 @@ class ReadOnlyDetectionDataset(YOLODataset):
     source repair, .npy reads or writes, or directory enumeration is performed.
     """
 
-    def __init__(self, *, records: list[dict], **kwargs):
+    def __init__(self, *, records: list[dict], low_light_config=None, **kwargs):
         if not records or any(r['split'] not in ('train', 'valid') for r in records):
             raise ValueError('Dataset requires approved development records')
         if kwargs.get('cache') not in (False, None) or kwargs.get('fraction', 1.0) != 1.0:
             raise ValueError('Disk/RAM caches and implicit fraction selection prohibited')
+        self.low_light_hook = None
+        if low_light_config is not None:
+            from detection.training.config import low_light_training
+            if kwargs.get('augment') is not True or any(r['split'] != 'train' for r in records):
+                raise ValueError('Low-light augmentation is train-only')
+            if getattr(kwargs.get('hyp'), 'hsv_v', None) != 0.0:
+                raise ValueError('Low-light augmentation requires hsv_v=0.0')
+            self.low_light_hook = low_light_training().LowLightTrainingHook(records, low_light_config)
         self.records = records
         super().__init__(**kwargs)
+
+    def set_training_epoch(self, epoch: int) -> None:
+        """Explicit scientific epoch, independent of access order and mosaic buffer reuse."""
+        if self.low_light_hook is None:
+            raise ValueError('Dataset has no low-light training hook')
+        self.low_light_hook.set_epoch(epoch)
 
     def get_img_files(self, img_path) -> list[str]:
         """Use exact approved records; do not discover images or sample a split."""
@@ -72,6 +86,13 @@ class ReadOnlyDetectionDataset(YOLODataset):
             for child in getattr(transform, 'transforms', []):
                 disable(child)
         disable(result)
+        if self.low_light_hook is not None:
+            # Installed v8_transforms completes geometry/HSV/flips before its final Format.
+            # Rebuilding after close_mosaic reinserts the same hook with its current epoch.
+            if (not self.augment or not isinstance(result.transforms[-1], Format)
+                    or not any(isinstance(t, RandomHSV) for t in result.transforms[:-1])):
+                raise ValueError('Unsupported low-light transform placement')
+            result.insert(len(result.transforms) - 1, self.low_light_hook)
         return result
 
     def load_image(self, i: int, rect_mode: bool = True, resize_short: bool = False):

@@ -12,7 +12,7 @@ from unittest.mock import patch
 import urllib.request
 
 from detection.data.raw_guard import compare, sha256, snapshot
-from detection.training.config import APPROVED_HASHES, load_config, load_development_data, run_directory, select_records
+from detection.training.config import APPROVED_HASHES, load_config, load_development_data, low_light_training, run_directory, select_records
 from detection.training.provenance import capture, configure_runtime, development_access, write_json
 
 LOGGER = logging.getLogger(__name__)
@@ -21,7 +21,8 @@ CHECKPOINT_URL = 'https://github.com/ultralytics/assets/releases/download/v8.4.0
 
 def implementation_identity(root: Path) -> dict:
     """Bind required test evidence to all current implementation and test files."""
-    paths = [p for folder in ('src/detection/training', 'configs/detection', 'tests/detection')
+    paths = [p for folder in ('src/detection/training', 'configs/detection', 'tests/detection',
+                             'src/low_light', 'configs/low_light', 'tests/low_light')
              for p in (root/folder).rglob('*') if p.is_file() and p.suffix in ('.py', '.yaml')]
     paths.extend(root/'scripts'/name for name in ('train_detector.py', 'verify_detector_exif.py', 'check_detector_training.py'))
     return {p.relative_to(root).as_posix(): sha256(p) for p in sorted(paths)}
@@ -42,7 +43,19 @@ def require_tests(root: Path) -> dict:
 
 
 def checkpoint(config: dict, root: Path, acquire: bool) -> tuple[Path, dict]:
-    """Acquire only the selected official checkpoint, or require a verified local receipt."""
+    """Verify the frozen local parent for LL, or acquire the official baseline checkpoint."""
+    if 'low_light' in config:
+        low_light = low_light_training()
+        low_light.validate_config(config)
+        if acquire:
+            raise ValueError('DET-FINAL-v1 is local-only; checkpoint downloading is prohibited')
+        path = (root/config['model']['checkpoint']).resolve()
+        if not path.is_file():
+            raise FileNotFoundError(f'DET-FINAL-v1 checkpoint missing: {path}')
+        if sha256(path) != low_light.CHECKPOINT_SHA256:
+            raise ValueError('DET-FINAL-v1 checkpoint SHA-256 mismatch')
+        return path, dict(model_id=low_light.PARENT_ID, local_path=str(path), sha256=low_light.CHECKPOINT_SHA256,
+                          acquisition='verified local frozen parent')
     path = (root/config['model']['cache_dir']/config['model']['checkpoint']).resolve()
     receipt = path.with_suffix('.json')
     if not path.exists():
@@ -73,6 +86,10 @@ def checkpoint(config: dict, root: Path, acquire: bool) -> tuple[Path, dict]:
 
 def training_arguments(config: dict, root: Path, weights: Path, data_path: Path) -> dict:
     """Translate recorded baseline values into explicit Ultralytics arguments."""
+    if 'low_light' in config:
+        low_light_training().validate_config(config)
+        if weights.resolve() != (root/config['model']['checkpoint']).resolve():
+            raise ValueError('Low-light training requires the frozen DET-FINAL-v1 checkpoint path')
     augmentation = {k: v for k, v in config['augmentation'].items() if k != 'albumentations'}
     return dict(config['training'], **augmentation, **config['validation'], task='detect', mode='train',
                 model=str(weights), pretrained=True, data=str(data_path),
@@ -88,14 +105,29 @@ def trainer_class():
     from detection.training.dataset import ReadOnlyDetectionDataset
 
     class GuardedDetectionTrainer(DetectionTrainer):
-        def __init__(self, *, records, development_data, expected_output, evidence, **kwargs):
+        def __init__(self, *, records, development_data, expected_output, evidence, low_light_config=None, **kwargs):
             self.records = records
             self.development_data = development_data
             self.expected_output = expected_output.resolve()
             self.evidence = evidence
+            self.low_light_config = None
+            if low_light_config is not None:
+                low_light = low_light_training()
+                low_light.validate_config(low_light_config)
+                self.low_light_config = low_light.canonical_config()
+                overrides = kwargs.get('overrides', {})
+                for section in ('training', 'augmentation', 'validation'):
+                    for key, value in self.low_light_config[section].items():
+                        if key != 'albumentations' and (type(overrides.get(key)) is not type(value)
+                                                       or overrides.get(key) != value):
+                            raise ValueError(f'Frozen low-light runtime argument changed: {key}')
+                if 'test' in development_data:
+                    raise ValueError('Low-light development data must not contain test')
             super().__init__(**kwargs)
             if self.save_dir.resolve() != self.expected_output or self.device.type != 'cuda':
                 raise ValueError('Trainer output/device differs from requested controlled CUDA run')
+            if self.low_light_config is not None:
+                self.add_callback('on_train_epoch_start', low_light_training().propagate_training_epoch)
 
         def get_dataset(self):
             return self.development_data.copy()
@@ -105,6 +137,7 @@ def trainer_class():
                 raise ValueError('Only exact approved train/validation lists are permitted')
             split = 'valid' if mode == 'val' else 'train'
             return ReadOnlyDetectionDataset(records=self.records[split], img_path=img_path,
+                low_light_config=getattr(self, 'low_light_config', None) if mode == 'train' else None,
                 imgsz=self.args.imgsz, batch_size=batch, augment=mode == 'train', hyp=copy(self.args),
                 rect=mode == 'val', cache=False, single_cls=False,
                 stride=max(int(unwrap_model(self.model).stride.max()), 32), pad=0.0 if mode == 'train' else 0.5,
@@ -144,7 +177,8 @@ def run(root: Path, config_path: Path, *, acquire: bool = False, check_only: boo
     from ultralytics.utils.downloads import GITHUB_ASSETS_NAMES
     import torch
     import ultralytics
-    if ultralytics.__version__ != '8.4.145' or config['model']['checkpoint'] not in GITHUB_ASSETS_NAMES:
+    if (ultralytics.__version__ != '8.4.145'
+            or ('low_light' not in config and config['model']['checkpoint'] not in GITHUB_ASSETS_NAMES)):
         raise ValueError('Installed model/API version differs from reviewed 8.4.145')
     if not torch.cuda.is_available() or not torch.cuda.is_bf16_supported():
         raise ValueError('CUDA device 0 with native BF16 support is required')
@@ -242,7 +276,8 @@ def run(root: Path, config_path: Path, *, acquire: bool = False, check_only: boo
             with patch.object(callbacks, 'add_integration_callbacks', lambda _: None), patch(
                     'ultralytics.utils.downloads.safe_download', side_effect=RuntimeError('Implicit download prohibited')):
                 trainer = trainer_class()(records=records, development_data=data, expected_output=out,
-                    evidence=evidence, overrides=args, _callbacks=callback_map)
+                    evidence=evidence, overrides=args, _callbacks=callback_map,
+                    low_light_config=config if 'low_light' in config else None)
                 fit_started = time.perf_counter()
                 trainer.train()
                 torch.cuda.synchronize(0)

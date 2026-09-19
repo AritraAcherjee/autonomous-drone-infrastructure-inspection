@@ -1,0 +1,110 @@
+# Frozen protocol: values and keys are validated exactly by load_config.
+protocol_id: aegis-low-light-benchmark-v1
+global_seed: 42
+input:
+  color_space: BGR
+  dtype: uint8
+working:
+  dtype: float32
+  range: [0.0, 1.0]
+l0: unchanged
+operation_order:
+  - brightness
+  - gamma
+  - contrast
+  - smooth_uneven_illumination
+  - gaussian_blur
+  - gaussian_sensor_noise
+  - clip
+  - uint8_round
+brightness: x * brightness
+gamma: x ** gamma
+contrast:
+  mean: current_per_channel
+  axes: [0, 1]
+  keepdims: true
+  formula: mu + contrast * (x - mu)
+  clip: [0.0, 1.0]
+illumination:
+  kind: single_rotated_elliptical_attenuation
+  sample_order: [cx, cy, axis_x, axis_y, theta]
+  cx_width_fraction: [0.25, 0.75]
+  cy_height_fraction: [0.25, 0.75]
+  axis_x_width_fraction: [0.35, 0.70]
+  axis_y_height_fraction: [0.35, 0.70]
+  theta_radians: "[0, pi)"
+  rotation: xr = cos(theta)*dx + sin(theta)*dy; yr = -sin(theta)*dx + cos(theta)*dy
+  r2: (xr / axis_x) ** 2 + (yr / axis_y) ** 2
+  field: 1.0 - attenuation * exp(-0.5 * r2)
+  shared_across_channels: true
+blur:
+  kind: gaussian
+  backend: opencv
+  # OpenCV derives kernel support from sigma; standard reflected borders.
+  kernel_size: [0, 0]
+  border_type: BORDER_REFLECT_101
+noise:
+  kind: gaussian
+  mean: 0.0
+  sigma_units: uint8_intensity
+  normalization: noise_sigma / 255.0
+  rng: image_specific
+  sample_shape: HWC
+output:
+  clip: [0.0, 1.0]
+  conversion: np.rint(x * 255.0).astype(np.uint8)
+seed:
+  path_separators: "/"
+  template: "aegis-low-light-benchmark-v1|42|{source_split}|{source_relative_posix_path}|{severity}"
+  encoding: utf-8
+  hash: sha256
+  digest_bytes: 8
+  byteorder: big
+  signed: false
+  rng: np.random.default_rng
+  severities: [L1, L2, L3, L4]
+severities:
+  L0:
+    name: Normal
+    parameters: null
+  L1:
+    name: Mild
+    parameters:
+      brightness: 0.85
+      gamma: 1.10
+      contrast: 0.95
+      blur_sigma: 0.30
+      noise_sigma: 2.0
+      illumination_attenuation: 0.08
+  L2:
+    name: Moderate
+    parameters:
+      brightness: 0.70
+      gamma: 1.20
+      contrast: 0.88
+      blur_sigma: 0.55
+      noise_sigma: 5.0
+      illumination_attenuation: 0.15
+  L3:
+    name: Heavy
+    parameters:
+      brightness: 0.52
+      gamma: 1.35
+      contrast: 0.80
+      blur_sigma: 0.85
+      noise_sigma: 8.0
+      illumination_attenuation: 0.25
+  L4:
+    name: Extreme
+    parameters:
+      brightness: 0.38
+      gamma: 1.55
+      contrast: 0.70
+      blur_sigma: 1.20
+      noise_sigma: 12.0
+      illumination_attenuation: 0.38
+clahe:
+  color_conversion: [BGR, LAB, BGR]
+  channel: L
+  clip_limit: 2.0
+  tile_grid_size: [8, 8]

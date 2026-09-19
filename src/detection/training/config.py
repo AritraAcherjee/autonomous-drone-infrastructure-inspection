@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 import hashlib
+import importlib
 import json
 from pathlib import Path
 import re
@@ -32,6 +33,16 @@ REQUIRED = {
 }
 
 
+def low_light_training():
+    """Support the repository namespace and the existing CLI's src-on-sys.path layout."""
+    try:
+        return importlib.import_module('src.low_light.training')
+    except ModuleNotFoundError as exc:
+        if exc.name != 'src':
+            raise
+        return importlib.import_module('low_light.training')
+
+
 def load_config(path: Path, root: Path) -> dict:
     """Load a complete config or the narrowly scoped explicit smoke overlay."""
     path = path.resolve()
@@ -40,6 +51,10 @@ def load_config(path: Path, root: Path) -> dict:
     requested = yaml.safe_load(path.read_text(encoding='utf-8'))
     if not isinstance(requested, dict):
         raise ValueError('Configuration must be a mapping')
+    if 'low_light' in requested:
+        config = low_light_training().load_config(path)
+        validate_config(config, root)
+        return config
     if 'extends' in requested:
         if set(requested) != {'extends', 'smoke'} or requested['extends'] != 'det_baseline.yaml':
             raise ValueError('Smoke config must extend det_baseline.yaml with smoke fields only')
@@ -67,6 +82,10 @@ def load_config(path: Path, root: Path) -> dict:
 
 def validate_config(config: dict, root: Path) -> None:
     """Reject unsafe paths, split substitution, implicit critical values and unsupported modes."""
+    if 'low_light' in config:
+        low_light_training().validate_config(config)
+        run_directory(config, root)
+        return
     if config.get('schema_version') != 1 or set(config) - (set(REQUIRED) | {'schema_version', 'smoke'}):
         raise ValueError('Unknown config fields or schema_version')
     for section, fields in REQUIRED.items():
@@ -114,8 +133,13 @@ def validate_config(config: dict, root: Path) -> None:
 
 def run_directory(config: dict, root: Path) -> Path:
     """Resolve a fresh run path, following junctions before checking containment."""
+    project = PROJECT
+    if 'low_light' in config:
+        low_light = low_light_training()
+        low_light.validate_config(config)
+        project = Path(low_light.PROJECT)
     path = mutable_path(root/config['output']['project']/config['output']['name'], root/'data/raw')
-    if not inside(path, root/PROJECT):
+    if not inside(path, root/project):
         raise ValueError('Run path escapes controlled output root')
     return path
 

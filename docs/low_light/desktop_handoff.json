@@ -1,0 +1,326 @@
+{
+  "accepted_commit": "TBD",
+  "branch": "04/low-light-detector",
+  "canonical_base": "013067277d331246959af1f6176584b5305828f4",
+  "confidence_policy": {
+    "AP": {
+      "confidence_floor": 0.001,
+      "confidence_sweep": true,
+      "implementation": "Ultralytics 8.4.145 DetectionValidator/DetMetrics",
+      "iou_thresholds": [
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95
+      ]
+    },
+    "aggregate": "micro counts",
+    "comparison": ">=",
+    "operating_confidence": 0.25,
+    "operating_matching_iou": 0.5
+  },
+  "configs": [
+    "configs/low_light/benchmark_v1.yaml",
+    "configs/low_light/ll_detector_01.yaml"
+  ],
+  "cuda_required": true,
+  "desktop_execution_authorized": false,
+  "det_final": {
+    "architecture": "YOLO26s",
+    "checkpoint": "outputs/training/defect_detection/DET-BASELINE/weights/best.pt",
+    "checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+    "id": "DET-FINAL-v1"
+  },
+  "development_splits": [
+    "train",
+    "valid"
+  ],
+  "engineering_readiness": {
+    "blocker": null,
+    "status": "READY_FOR_FINAL_COMMIT",
+    "target": "04 ENGINEERING HANDOFF — READY FOR FINAL COMMIT"
+  },
+  "environment_setup": "Use the reviewed Python 3.11.15 environment with requirements/detection.txt; no detector downloads.",
+  "execution_authorization": "DESKTOP EXECUTION AUTHORIZED only after a real 40-character accepted Workstream 04 commit exists, ARMOURY checks out that exact commit cleanly, and preflight plus desktop-check pass. ENGINEERING HANDOFF READY alone does not authorize execution; TBD and canonical base cannot authorize it.",
+  "execution_shell": "PowerShell; stop on every nonzero exit code",
+  "existing_training_gate_paths": [
+    "outputs/validation/defect_detection/exif_alignment/geometry.json",
+    "outputs/validation/defect_detection/training_pipeline/before/ready.json"
+  ],
+  "gate_resolution": "The existing geometry.json and training_pipeline/before/ready.json are the required source-specific/current-implementation detector safety receipts. They were refreshed after the authorized Workstream 04 changes and must travel with the accepted 04 commit. Current local engineering readiness is determined by the existing require_pass and require_tests gates without regenerating receipts. Missing, non-PASS, stale, hash-mismatched or checkout-inconsistent receipts fail closed; neither gate may be bypassed or replaced by a parallel gate path.",
+  "laptop_execution": "static/help/synthetic unit tests only; no stages 5-13",
+  "latency": {
+    "batch": 1,
+    "cuda_synchronization": "explicit before and after each measured boundary, including total",
+    "detector": "preprocess + host/device transfer + forward + postprocess",
+    "fps": "1000 / mean end_to_end_ms",
+    "imgsz": 640,
+    "input": "decoded BGR host memory; disk I/O/model load excluded",
+    "percentile": "linear interpolation at (n-1)*0.95",
+    "raw_enhancement_ms": 0.0,
+    "total": "enhancement + detector + orchestration/synchronization overhead",
+    "warmups": 50
+  },
+  "locked_test": "PROHIBITED; no opt-in exists",
+  "output_roots": {
+    "benchmark": "outputs/experiments/low_light/benchmark_v1",
+    "evaluation": "outputs/experiments/low_light/evaluation",
+    "smoke": "outputs/training/low_light/LL-DETECTOR-01-SMOKE",
+    "training": "outputs/training/low_light/LL-DETECTOR-01"
+  },
+  "preconditions": [
+    "Transfer approved local DET-FINAL checkpoint and approved dataset without modifying raw data.",
+    "Use a clean accepted source checkout; do not substitute canonical base for the accepted commit.",
+    "Output namespaces must be empty; failed/previous evidence is never overwritten.",
+    "Stage 5 onward runs only on ARMOURY after successful preflight and desktop-check.",
+    "The full config requests 100 epochs with accepted patience=30; early stopping is retained and actual epochs must be reported.",
+    "AP is the existing sweep, operating metrics are at 0.25; accuracy is prohibited.",
+    "Both refreshed detector safety gates and their supporting evidence must travel with the accepted 04 commit and pass preflight before stage 5.",
+    "Do not run full repository data-validation commands that access locked test to regenerate a gate.",
+    "If an existing training gate is missing/stale, STOP and return the explicit blocker; never bypass it."
+  ],
+  "preflight_contract": [
+    "Exact branch and supplied accepted commit; clean source checkout; canonical base is a strict ancestor.",
+    "Both existing gate files and supporting test evidence are tracked in the accepted checkout.",
+    "Geometry PASS, checked/passed 594/594, test_accessed false, raw immutability PASS, current loader/adapter hashes.",
+    "ready.json PASS, exact current implementation/test hashes and unchanged supporting evidence hashes.",
+    "Local DET-FINAL-v1 checkpoint exists and matches the frozen SHA-256; both frozen configs load.",
+    "Source split valid; development splits train/valid only; locked test prohibited; output roots outside raw.",
+    "CUDA requirement declared; required software versions recorded and checked.",
+    "No training, detector inference, benchmark generation or locked-test image access."
+  ],
+  "readiness": "04 ENGINEERING HANDOFF — READY FOR FINAL COMMIT",
+  "required_versions": {
+    "PyYAML": "6.0.3",
+    "numpy": "2.4.6",
+    "opencv-python": "5.0.0.93",
+    "python": "3.11.15",
+    "torch": "2.14.0+cu130",
+    "torchvision": "0.29.0+cu130",
+    "ultralytics": "8.4.145"
+  },
+  "return_evidence": {
+    "benchmark": [
+      "validation_manifest.csv",
+      "validation_manifest.json",
+      "benchmark_summary.json",
+      "sanity_luminance_report.json",
+      "SHA-256 hashes"
+    ],
+    "clahe": [
+      "L0-L4 aggregate metrics",
+      "L0-L4 per-class metrics",
+      "result SHA-256 hashes"
+    ],
+    "det_final_raw": [
+      "L0-L4 aggregate metrics",
+      "L0-L4 per-class metrics",
+      "result SHA-256 hashes"
+    ],
+    "latency": [
+      "per-strategy raw timing samples",
+      "mean",
+      "median",
+      "p95",
+      "end-to-end FPS",
+      "hardware identity",
+      "batch=1",
+      "imgsz=640",
+      "50 untimed warmups",
+      "CUDA synchronization",
+      "timing boundary definition"
+    ],
+    "ll_detector_01": [
+      "exact config",
+      "training log",
+      "best.pt",
+      "last.pt",
+      "checkpoint hashes",
+      "best epoch",
+      "validation metrics",
+      "environment/provenance"
+    ],
+    "ll_smoke": [
+      "smoke config",
+      "finite-loss evidence",
+      "optimizer-update evidence",
+      "validation evidence",
+      "checkpoint-save evidence",
+      "no-OOM evidence",
+      "raw immutability result",
+      "locked-test non-access statement"
+    ],
+    "post_training": [
+      "L0-L4 aggregate metrics",
+      "L0-L4 per-class metrics",
+      "normal-light regression deltas",
+      "low-light retention metrics",
+      "result SHA-256 hashes"
+    ]
+  },
+  "schema_version": "aegis-low-light-desktop-handoff-v1",
+  "scientific_performance_claim": false,
+  "shell_setup": [
+    "$ErrorActionPreference = \"Stop\"",
+    "$PSNativeCommandUseErrorActionPreference = $true",
+    "function python { & ./.venv-detection/Scripts/python.exe @args; if ($LASTEXITCODE -ne 0) { throw \"Python failed\" } }",
+    "function git { & git.exe @args; if ($LASTEXITCODE -ne 0) { throw \"Git failed\" } }"
+  ],
+  "smoke": {
+    "batch": 4,
+    "close_mosaic": 0,
+    "cuda_required": true,
+    "device": "0",
+    "epochs": 1,
+    "evidence": "SMOKE / DEBUG ONLY — NOT OFFICIAL PERFORMANCE EVIDENCE",
+    "id": "LL-DETECTOR-01-SMOKE",
+    "imgsz": 640,
+    "low_light_hook": "accepted Task D canonical config, train only",
+    "output_root": "outputs/training/low_light/LL-DETECTOR-01-SMOKE",
+    "parent_checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3",
+    "parent_config": "configs/low_light/ll_detector_01.yaml",
+    "raw_policy": "read-only; hash selected files before/after, never enumerate test",
+    "seed": 42,
+    "selection": "sha256('42:{split}:{source_relative_path}') sorted prefix",
+    "test_policy": "prohibited",
+    "train_images": 16,
+    "valid_images": 8
+  },
+  "source_split": "valid",
+  "stages": [
+    {
+      "commands": [
+        "$AcceptedCommit = \"TBD\"",
+        "if ($AcceptedCommit -notmatch \"^[0-9a-f]{40}$\") { throw \"Set accepted Laptop commit; TBD cannot execute\" }",
+        "if ($AcceptedCommit -eq \"013067277d331246959af1f6176584b5305828f4\") { throw \"Canonical base is not the accepted Workstream 04 commit\" }",
+        "git fetch origin 04/low-light-detector",
+        "git switch 04/low-light-detector",
+        "git merge --ff-only $AcceptedCommit",
+        "if ((git rev-parse HEAD) -ne $AcceptedCommit) { throw \"Exact accepted commit required\" }",
+        "git merge-base --is-ancestor 013067277d331246959af1f6176584b5305828f4 $AcceptedCommit"
+      ],
+      "number": 1,
+      "stage": "checkout accepted 04 commit"
+    },
+    {
+      "commands": [
+        "python --version",
+        "python -m pip check",
+        "python scripts/low_light/prepare_desktop_handoff.py --mode preflight --accepted-commit $AcceptedCommit",
+        "python scripts/low_light/prepare_desktop_handoff.py --mode desktop-check --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 2,
+      "stage": "verify environment"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/prepare_desktop_handoff.py --mode preflight --accepted-commit $AcceptedCommit"
+      ],
+      "number": 3,
+      "stage": "verify DET-FINAL checkpoint/hash"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/prepare_desktop_handoff.py --mode preflight --accepted-commit $AcceptedCommit"
+      ],
+      "number": 4,
+      "stage": "verify dataset identity"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/generate_validation_variants.py --config configs/low_light/benchmark_v1.yaml --source-split valid"
+      ],
+      "number": 5,
+      "stage": "generate full validation benchmark"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/prepare_desktop_handoff.py --mode validate-benchmark --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 6,
+      "stage": "validate benchmark manifests/sanity"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy det-final-raw --severity L0 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy det-final-raw --severity L1 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy det-final-raw --severity L2 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy det-final-raw --severity L3 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy det-final-raw --severity L4 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 7,
+      "stage": "evaluate DET-FINAL raw L0-L4"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy clahe-det-final --severity L0 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy clahe-det-final --severity L1 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy clahe-det-final --severity L2 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy clahe-det-final --severity L3 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy clahe-det-final --severity L4 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 8,
+      "stage": "evaluate CLAHE + DET-FINAL L0-L4"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/prepare_desktop_handoff.py --mode smoke --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 9,
+      "stage": "bounded LL-DETECTOR smoke training"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/prepare_desktop_handoff.py --mode train-full --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 10,
+      "stage": "if smoke passes, full LL-DETECTOR-01 100-epoch configured run"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy ll-detector-raw --severity L0 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy ll-detector-raw --severity L1 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy ll-detector-raw --severity L2 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy ll-detector-raw --severity L3 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode evaluate --strategy ll-detector-raw --severity L4 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/prepare_desktop_handoff.py --mode compare --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 11,
+      "stage": "evaluate LL-DETECTOR-01 L0-L4"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy det-final-raw --severity L0 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy det-final-raw --severity L1 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy det-final-raw --severity L2 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy det-final-raw --severity L3 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy det-final-raw --severity L4 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy clahe-det-final --severity L0 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy clahe-det-final --severity L1 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy clahe-det-final --severity L2 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy clahe-det-final --severity L3 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy clahe-det-final --severity L4 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy ll-detector-raw --severity L0 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy ll-detector-raw --severity L1 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy ll-detector-raw --severity L2 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy ll-detector-raw --severity L3 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY",
+        "python scripts/low_light/evaluate_low_light.py --mode latency --strategy ll-detector-raw --severity L4 --config configs/low_light/benchmark_v1.yaml --source-split valid --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 12,
+      "stage": "official latency protocol"
+    },
+    {
+      "commands": [
+        "python scripts/low_light/prepare_desktop_handoff.py --mode bundle --accepted-commit $AcceptedCommit --host ARMOURY"
+      ],
+      "number": 13,
+      "stage": "return evidence bundle"
+    }
+  ]
+}

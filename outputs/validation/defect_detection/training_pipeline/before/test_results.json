@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "run_id": "61f56e18452f4473adbda93d84917e9d",
-  "started_at": "2026-09-12T21:14:23.746997+00:00",
+  "run_id": "72737cf7bf22401fbc3159e7ed434d0a",
+  "started_at": "2026-09-19T00:55:13.334233+00:00",
   "commands": [
     {
       "suite": "m1",
@@ -14,10 +14,10 @@
         "tests/data",
         "-v"
       ],
-      "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
-      "started_at": "2026-09-12T21:14:23.820757+00:00",
+      "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
+      "started_at": "2026-09-19T00:55:13.431989+00:00",
       "returncode": 0,
-      "finished_at": "2026-09-12T21:14:36.906657+00:00"
+      "finished_at": "2026-09-19T00:55:25.901118+00:00"
     },
     {
       "suite": "full_python_suite",
@@ -31,18 +31,18 @@
         "-q",
         "-p",
         "no:cacheprovider",
-        "--junitxml=C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-5wee5y0b\\pytest_results.xml"
+        "--junitxml=C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-qx_o20c9\\pytest_results.xml"
       ],
-      "cwd": "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection",
-      "started_at": "2026-09-12T21:14:36.919250+00:00",
+      "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
+      "started_at": "2026-09-19T00:55:25.916160+00:00",
       "returncode": 0,
-      "finished_at": "2026-09-12T21:15:40.698702+00:00"
+      "finished_at": "2026-09-19T00:57:25.673151+00:00"
     }
   ],
-  "git_sha": "043ce54d40708c6bf278f8b07741c1e4afe9ccd6",
+  "git_sha": "013067277d331246959af1f6176584b5305828f4",
   "PYTHONPATH": [
-    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\src",
-    "C:\\Users\\Aritra\\Documents\\autonomous-drone-infrastructure-inspection\\ros2_ws\\src\\aegisinspect_mapping"
+    "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\src",
+    "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\ros2_ws\\src\\aegisinspect_mapping"
   ],
   "m1": {
     "passed": 112,
@@ -50,20 +50,20 @@
     "skipped": 0
   },
   "full_python_suite": {
-    "passed": 288,
+    "passed": 1950,
     "failed": 0,
     "skipped": 0,
-    "subtests_passed": 75
+    "subtests_passed": 157
   },
   "detector": {
-    "passed": 76,
+    "passed": 196,
     "failed": 0,
     "skipped": 0
   },
   "artifacts": {
-    "m1_tests.txt": "c212d470791f37efb9c5e5e8cbeeb7cf9218679991b88b43aff880f17e209b93",
-    "full_tests.txt": "c006752b46a6e43e76afc962235afa2e8b9826c85a7f2b8ab1507d9633833f29",
-    "pytest_results.xml": "175043d6b4776e022e83e5292a5c54dcf5cba7209d835de91bad8c1c48255c88"
+    "m1_tests.txt": "2d0966e0f66d03630619b730c1d4e056764330d08b71a4ca56569ae86d17a357",
+    "full_tests.txt": "bae61d70fcebce3a168e8a5297712c8c30d459be7f9449c5f05b1d53a491c5f4",
+    "pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75"
   },
-  "finished_at": "2026-09-12T21:15:40.735165+00:00"
+  "finished_at": "2026-09-19T00:57:25.714214+00:00"
 }
