@@ -114,18 +114,18 @@
       "skipped": 0
     },
     "artifacts": {
-      "m1_tests.txt": "2d0966e0f66d03630619b730c1d4e056764330d08b71a4ca56569ae86d17a357",
-      "full_tests.txt": "bae61d70fcebce3a168e8a5297712c8c30d459be7f9449c5f05b1d53a491c5f4",
+      "m1_tests.txt": "0adc99f42116a318eec1c733bc93c4af86e868a5215ca150c715250658648c48",
+      "full_tests.txt": "0ebc7db38e7fb519ed40b77e7c407b5997c60b01aaa5a9ee3e1a823ae56b978d",
       "pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75"
     },
     "finished_at": "2026-09-19T00:57:25.714214+00:00"
   },
   "evidence_sha256": {
     "outputs/validation/defect_detection/training_pipeline/before/detector.xml": "82ce1b89e0202ea01d2237b60330781530a82bea2c548fe084ad94cba7a1f3f7",
-    "outputs/validation/defect_detection/training_pipeline/before/detector_tests.txt": "a4a38683429c7be3846e288e86b408b4f2128e87be783d6043e3126eb30db5a8",
-    "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "bae61d70fcebce3a168e8a5297712c8c30d459be7f9449c5f05b1d53a491c5f4",
-    "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "2d0966e0f66d03630619b730c1d4e056764330d08b71a4ca56569ae86d17a357",
+    "outputs/validation/defect_detection/training_pipeline/before/detector_tests.txt": "4a0bdf49e1b02bcb1ef74bf530b04ab537aac6a2284b9d9949dfce649bffa64b",
+    "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "0ebc7db38e7fb519ed40b77e7c407b5997c60b01aaa5a9ee3e1a823ae56b978d",
+    "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "0adc99f42116a318eec1c733bc93c4af86e868a5215ca150c715250658648c48",
     "outputs/validation/defect_detection/training_pipeline/before/pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75",
-    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "f808bb416910aa602b71c377aafce08937e414ca2181b8fe4cf19d00adb3ce78"
+    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "b6d639ba3db2852c8c4018065116901c18c128891de5509eadf16f89192a3816"
   }
 }
