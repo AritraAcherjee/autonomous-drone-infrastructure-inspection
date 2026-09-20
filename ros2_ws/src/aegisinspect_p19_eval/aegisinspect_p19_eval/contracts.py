@@ -183,6 +183,15 @@ def verify_detached_seal(manifest_bytes: bytes, seal_text: str) -> None:
         raise ContractError("manifest changed after sealing")
 
 
+def write_detached_seal(manifest_path: Path, seal_path: Path) -> str:
+    """Write the bare lowercase digest consumed by ``verify_detached_seal``."""
+    manifest_bytes = manifest_path.read_bytes()
+    digest = sha256_bytes(manifest_bytes)
+    seal_path.write_text(digest + "\n", encoding="utf-8", newline="\n")
+    verify_detached_seal(manifest_bytes, seal_path.read_text(encoding="utf-8"))
+    return digest
+
+
 @dataclass(frozen=True)
 class CameraGeometry:
     parent_frame: str

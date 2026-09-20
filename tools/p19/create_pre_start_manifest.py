@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -19,7 +18,7 @@ from aegisinspect_p19_eval.contracts import (  # noqa: E402
     ALIGNMENT_RULE, BINDING_RULE, CHECKPOINT_SHA256, CORRESPONDENCE_RULE,
     EXPOSURE_RULE, GT_ID, MANIFEST_SCHEMA, TARGET_ANCHOR, TARGET_CLASS,
     TARGET_LINK, TARGET_MODEL, TARGET_VISUAL, canonical_json_bytes,
-    sha256_file, validate_manifest, verify_detached_seal,
+    sha256_file, validate_manifest, write_detached_seal,
 )
 
 
@@ -85,9 +84,7 @@ def main() -> None:
     validate_manifest(manifest)
     payload = canonical_json_bytes(manifest) + b"\n"
     args.output.write_bytes(payload)
-    digest = hashlib.sha256(payload).hexdigest()
-    args.seal.write_text(digest + "\n", encoding="utf-8")
-    verify_detached_seal(payload, args.seal.read_text(encoding="utf-8"))
+    digest = write_detached_seal(args.output, args.seal)
     print(digest)
 
 
