@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import subprocess
 from typing import Any
+import xml.etree.ElementTree as ET
 
 
 DIAGNOSTIC_SCHEMA = "aegisinspect.p19.runtime_diagnostic_observability.v1"
@@ -23,6 +24,29 @@ STATIC_EVIDENCE_SHA256 = (
 )
 STATIC_EVIDENCE_CLASSIFICATION = (
     "P19 PASSIVE DIAGNOSTIC OBSERVABILITY — IMPLEMENTATION/STATIC PASS"
+)
+
+SOURCE_WORLD_RELATIVE = Path(
+    "ros2_ws/src/aegisinspect_p19_eval/worlds/"
+    "p19_correspondence_readiness_batch_v1.sdf"
+)
+INSTALLED_WORLD_RELATIVE = Path(
+    "aegisinspect_p19_eval/share/aegisinspect_p19_eval/worlds/"
+    "p19_correspondence_readiness_batch_v1.sdf"
+)
+EXPECTED_SENSORS_PATH = Path(
+    "/tmp/p19-gazebo-instrumented/lib/gz-sim-10/plugins/"
+    "libgz-sim-sensors-system.so.10.5.0"
+)
+EXPECTED_SENSORS_CANONICAL_PATH = EXPECTED_SENSORS_PATH
+EXPECTED_SENSORS_SHA256 = (
+    "99b44134931986c500e40464864c00d6a09c8328c37d4e451b96f0e8ab7229e2"
+)
+EXPECTED_SENSORS_NAME = "gz::sim::systems::Sensors"
+EXPECTED_RENDER_ENGINE = "ogre2"
+SENSORS_RESOLUTION_RESULT = "PASS"
+SENSORS_RESOLUTION_CONTRACT = (
+    "absolute-existing-path-short-circuits-gz-common-find-shared-library-v1"
 )
 
 P19_LIBRARY_HASHES = {
@@ -85,6 +109,82 @@ def _require_file_hash(path: Path, expected: str, label: str) -> None:
         raise BindingError(f"{label} SHA-256 expected={expected} actual={actual}")
 
 
+def verify_gz_sim_sensors_system_selection(
+    *, root: Path, overlay: Path,
+) -> dict[str, Any]:
+    """Verify the exact project-controlled Sensors system request and install."""
+    source_world = root / SOURCE_WORLD_RELATIVE
+    installed_world = overlay / INSTALLED_WORLD_RELATIVE
+    if not source_world.is_file():
+        raise BindingError(f"missing source readiness world: {source_world}")
+    if not installed_world.is_file():
+        raise BindingError(f"missing installed readiness world: {installed_world}")
+    source_bytes = source_world.read_bytes()
+    installed_bytes = installed_world.read_bytes()
+    if source_bytes != installed_bytes:
+        raise BindingError("source and installed readiness world bytes differ")
+    try:
+        document = ET.fromstring(installed_bytes)
+    except ET.ParseError as exc:
+        raise BindingError(f"malformed installed readiness world XML: {exc}") from exc
+    sensors_plugins = [
+        plugin for plugin in document.findall("./world/plugin")
+        if plugin.get("name") == EXPECTED_SENSORS_NAME
+    ]
+    if len(sensors_plugins) != 1:
+        raise BindingError(
+            "expected exactly one world-level Sensors plugin, "
+            f"found={len(sensors_plugins)}"
+        )
+    plugin = sensors_plugins[0]
+    requested = plugin.get("filename")
+    if not requested:
+        raise BindingError("Sensors plugin filename is missing")
+    requested_path = Path(requested)
+    if not requested_path.is_absolute():
+        raise BindingError(f"Sensors plugin path is not absolute: {requested}")
+    if requested_path != EXPECTED_SENSORS_PATH:
+        raise BindingError(
+            f"Sensors plugin path expected={EXPECTED_SENSORS_PATH} actual={requested_path}"
+        )
+    if not requested_path.is_file():
+        raise BindingError(f"missing requested Sensors plugin: {requested_path}")
+    canonical = requested_path.resolve(strict=True)
+    if canonical != EXPECTED_SENSORS_CANONICAL_PATH:
+        raise BindingError(
+            "Sensors plugin canonical path "
+            f"expected={EXPECTED_SENSORS_CANONICAL_PATH} actual={canonical}"
+        )
+    _require_file_hash(
+        canonical, EXPECTED_SENSORS_SHA256, "requested Sensors plugin"
+    )
+    render = plugin.find("render_engine")
+    render_engine = None if render is None else render.text
+    if render_engine != EXPECTED_RENDER_ENGINE:
+        raise BindingError(
+            f"Sensors render engine expected={EXPECTED_RENDER_ENGINE} "
+            f"actual={render_engine}"
+        )
+    return {
+        "result": SENSORS_RESOLUTION_RESULT,
+        "source_world_path": str(source_world),
+        "source_world_sha256": hashlib.sha256(source_bytes).hexdigest(),
+        "installed_world_path": str(installed_world),
+        "installed_world_sha256": hashlib.sha256(installed_bytes).hexdigest(),
+        "sensors_plugin_count": len(sensors_plugins),
+        "sensors_plugin_name": plugin.get("name"),
+        "sensors_requested_filename": requested,
+        "sensors_requested_path_is_absolute": requested_path.is_absolute(),
+        "sensors_requested_canonical_path": str(canonical),
+        "sensors_requested_sha256": sha256_file(canonical),
+        "expected_sensors_path": str(EXPECTED_SENSORS_PATH),
+        "expected_sensors_sha256": EXPECTED_SENSORS_SHA256,
+        "render_engine": render_engine,
+        "source_installed_world_bytes_match": True,
+        "resolution_contract": SENSORS_RESOLUTION_CONTRACT,
+    }
+
+
 def verify_execution_bindings(
     *, root: Path, implementation_sha: str, actual_head: str,
     overlay: Path, runner_path: Path, static_evidence_path: Path,
@@ -117,6 +217,9 @@ def verify_execution_bindings(
     )
     if not runner_path.is_file():
         raise BindingError(f"missing runner: {runner_path}")
+    sensors_selection = verify_gz_sim_sensors_system_selection(
+        root=root, overlay=overlay
+    )
     producer_path = Path(__file__).resolve()
     return {
         "implementation_sha": implementation_sha,
@@ -129,6 +232,7 @@ def verify_execution_bindings(
         "diagnostic_runtime_source_sha256": dict(sorted(DIAGNOSTIC_SOURCE_HASHES.items())),
         "static_evidence_sha256": STATIC_EVIDENCE_SHA256,
         "static_evidence_classification": STATIC_EVIDENCE_CLASSIFICATION,
+        "gz_sim_sensors_system_selection": sensors_selection,
     }
 
 
@@ -145,6 +249,33 @@ def _changed_paths(left: Any, right: Any, prefix: str = "") -> list[str]:
     return [] if left == right else [prefix]
 
 
+def _validate_sensors_selection_provenance(selection: Any) -> None:
+    if not isinstance(selection, dict):
+        raise BindingError("missing or malformed Sensors selection provenance")
+    expected = {
+        "result": SENSORS_RESOLUTION_RESULT,
+        "sensors_plugin_count": 1,
+        "sensors_plugin_name": EXPECTED_SENSORS_NAME,
+        "sensors_requested_filename": str(EXPECTED_SENSORS_PATH),
+        "sensors_requested_path_is_absolute": True,
+        "sensors_requested_canonical_path": str(EXPECTED_SENSORS_CANONICAL_PATH),
+        "sensors_requested_sha256": EXPECTED_SENSORS_SHA256,
+        "expected_sensors_path": str(EXPECTED_SENSORS_PATH),
+        "expected_sensors_sha256": EXPECTED_SENSORS_SHA256,
+        "render_engine": EXPECTED_RENDER_ENGINE,
+        "source_installed_world_bytes_match": True,
+        "resolution_contract": SENSORS_RESOLUTION_CONTRACT,
+    }
+    for field, value in expected.items():
+        if selection.get(field) != value:
+            raise BindingError(
+                f"Sensors selection provenance {field} expected={value!r} "
+                f"actual={selection.get(field)!r}"
+            )
+    if selection.get("source_world_sha256") != selection.get("installed_world_sha256"):
+        raise BindingError("Sensors selection provenance world hashes differ")
+
+
 def build_runtime_manifest(
     *, prior: dict[str, Any], execution_bindings: dict[str, Any],
     host_identity_sha256: str, host_capability_path: Path,
@@ -156,11 +287,14 @@ def build_runtime_manifest(
         "manifest_producer_sha256", "p19_native_library_sha256",
         "diagnostic_schema", "diagnostic_schema_sha256",
         "diagnostic_runtime_source_sha256", "static_evidence_sha256",
-        "static_evidence_classification",
+        "static_evidence_classification", "gz_sim_sensors_system_selection",
     }
     missing = sorted(required - execution_bindings.keys())
     if missing:
         raise BindingError(f"missing required execution provenance: {missing}")
+    _validate_sensors_selection_provenance(
+        execution_bindings["gz_sim_sensors_system_selection"]
+    )
     new = copy.deepcopy(prior)
     new["creation_timestamp"] = creation_timestamp
     new["manifest_identity"] = "P19-3D-CORRESPONDENCE-NORMAL-HOST-READINESS-v3"
