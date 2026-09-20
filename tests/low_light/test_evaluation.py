@@ -323,7 +323,17 @@ def test_result_machine_identity_requires_physical_hostname(hostname, authorized
             e.validate_result(payload)
 
 
-def test_benchmark_exif_restoration_and_no_raw_pixels(tmp_path):
+@pytest.mark.parametrize(
+    ("orientation", "rotation", "expected_shape"),
+    [
+        (None, None, (12, 20)),
+        (1, None, (12, 20)),
+        (3, "ROTATE_180", (12, 20)),
+        (6, "ROTATE_90_CLOCKWISE", (20, 12)),
+        (8, "ROTATE_90_COUNTERCLOCKWISE", (20, 12)),
+    ],
+)
+def test_benchmark_exif_restoration_and_no_raw_pixels(tmp_path, orientation, rotation, expected_shape):
     from PIL import Image
     import cv2
     from src.low_light.manifest import sha256_file
@@ -336,8 +346,8 @@ def test_benchmark_exif_restoration_and_no_raw_pixels(tmp_path):
         pixels[:, :10, 0] = 200
         image = Image.fromarray(pixels)
         exif = Image.Exif()
-        if level == "L0":
-            exif[274] = 6
+        if level == "L0" and orientation is not None:
+            exif[274] = orientation
         image.save(path, exif=exif)
         rows.append(dict(source_relative_path="synthetic/example.jpg", output_relative_path=relative,
                          severity=level, generated_height=12, generated_width=20, generated_image_sha256=sha256_file(path)))
@@ -345,8 +355,24 @@ def test_benchmark_exif_restoration_and_no_raw_pixels(tmp_path):
     for row in rows:
         path = tmp_path / row["output_relative_path"]
         stored = cv2.imdecode(np.frombuffer(path.read_bytes(), np.uint8), cv2.IMREAD_COLOR | cv2.IMREAD_IGNORE_ORIENTATION)
-        assert np.array_equal(reader(path), cv2.rotate(stored, cv2.ROTATE_90_CLOCKWISE))
-        assert shape(path) == (20, 12)
+        expected = stored if rotation is None else cv2.rotate(stored, getattr(cv2, rotation))
+        assert np.array_equal(reader(path), expected)
+        assert shape(path) == expected_shape
+
+
+def test_benchmark_exif_rejects_unreviewed_orientation(tmp_path):
+    from PIL import Image
+    from src.low_light.manifest import sha256_file
+    relative = f"{e.BENCHMARK_ROOT}/valid/L0/images/example.jpg"
+    path = tmp_path / relative
+    path.parent.mkdir(parents=True)
+    exif = Image.Exif()
+    exif[274] = 2
+    Image.new("RGB", (20, 12)).save(path, exif=exif)
+    rows = [dict(source_relative_path="synthetic/example.jpg", output_relative_path=relative,
+                 severity="L0", generated_height=12, generated_width=20, generated_image_sha256=sha256_file(path))]
+    with pytest.raises(ValueError, match="unreviewed benchmark EXIF orientation"):
+        e.benchmark_reader(tmp_path, rows, e.STRATEGIES[0])
 
 
 def test_metric_schema_rejects_inconsistent_aggregate():

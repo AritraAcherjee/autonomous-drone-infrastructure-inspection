@@ -381,7 +381,7 @@ every severity at the adapter boundary, leaving benchmark bytes/constants intact
     for source, row in normals.items():
         with Image.open(_output_path(repo, row["output_relative_path"])) as image:
             orientation = image.getexif().get(274, 1)
-        if orientation not in (1, 6, 8):
+        if orientation not in (1, 3, 6, 8):
             raise ValueError("unreviewed benchmark EXIF orientation")
         orientations[source] = orientation
     lookup = {str(_output_path(repo, r["output_relative_path"])): r for r in records}
@@ -397,7 +397,9 @@ every severity at the adapter boundary, leaving benchmark bytes/constants intact
             raise ValueError("generated image failed decoding")
         image = enhance(image, strategy)
         orientation = orientations[row["source_relative_path"]]
-        if orientation in (6, 8):
+        if orientation == 3:
+            image = cv2.rotate(image, cv2.ROTATE_180)
+        elif orientation in (6, 8):
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE if orientation == 6 else cv2.ROTATE_90_COUNTERCLOCKWISE)
         return image
     def shape(filename):
