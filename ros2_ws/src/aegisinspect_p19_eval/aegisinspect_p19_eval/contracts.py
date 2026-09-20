@@ -442,6 +442,68 @@ def startup_alignment(*, timestamp_ns: int, world_base_frame: str,
     return result
 
 
+STARTUP_ALIGNMENT_EVIDENCE_SCHEMA = "aegisinspect.p19.startup_alignment.v2"
+
+
+def startup_alignment_evidence(*, timestamp_ns: int, selection_index: int,
+                               world_frame: str, world_base_frame: str,
+                               map_frame: str, map_base_frame: str,
+                               world_from_base: Sequence[Sequence[float]],
+                               map_from_base: Sequence[Sequence[float]]) -> Mapping[str, Any]:
+    """Serialize the actual candidate consumed by the frozen startup selector."""
+    for value, name in ((world_frame, "world_frame"),
+                        (world_base_frame, "world_base_frame"),
+                        (map_frame, "map_frame"),
+                        (map_base_frame, "map_base_frame")):
+        require_text(value, name)
+    if world_frame != "world" or map_frame != "odom":
+        raise ContractError("startup parent-frame contract mismatch")
+    transform = startup_alignment(
+        timestamp_ns=timestamp_ns, world_base_frame=world_base_frame,
+        map_base_frame=map_base_frame, world_from_base=world_from_base,
+        map_from_base=map_from_base, selection_index=selection_index,
+    )
+    return {
+        "schema": STARTUP_ALIGNMENT_EVIDENCE_SCHEMA,
+        "selection_rule": "first exact positive startup pair after collector readiness",
+        "selection_index": selection_index,
+        "timestamp_ns": timestamp_ns,
+        "world_frame": world_frame,
+        "world_base_frame": world_base_frame,
+        "map_frame": map_frame,
+        "map_base_frame": map_base_frame,
+        "world_from_base": world_from_base,
+        "map_from_base": map_from_base,
+        "map_from_world": transform,
+        "operational_publication": False,
+    }
+
+
+def validate_startup_alignment_evidence(value: Mapping[str, Any]) -> None:
+    required = {
+        "schema", "selection_rule", "selection_index", "timestamp_ns",
+        "world_frame", "world_base_frame", "map_frame", "map_base_frame",
+        "world_from_base", "map_from_base", "map_from_world",
+        "operational_publication",
+    }
+    if not isinstance(value, Mapping) or not required.issubset(value):
+        raise ContractError("startup alignment evidence fields missing")
+    if value["schema"] != STARTUP_ALIGNMENT_EVIDENCE_SCHEMA:
+        raise ContractError("startup alignment evidence schema mismatch")
+    expected = startup_alignment_evidence(
+        timestamp_ns=value["timestamp_ns"], selection_index=value["selection_index"],
+        world_frame=value["world_frame"], world_base_frame=value["world_base_frame"],
+        map_frame=value["map_frame"], map_base_frame=value["map_base_frame"],
+        world_from_base=value["world_from_base"], map_from_base=value["map_from_base"],
+    )
+    if canonical_json_bytes(value["map_from_world"]) != canonical_json_bytes(expected["map_from_world"]):
+        raise ContractError("serialized transform did not come from selected candidate")
+    if value["selection_rule"] != expected["selection_rule"]:
+        raise ContractError("startup selection rule mismatch")
+    if value["operational_publication"] is not False:
+        raise ContractError("startup alignment must remain evaluation-only")
+
+
 def receipt_as_dict(receipt: ExposureReceipt) -> Mapping[str, Any]:
     value = asdict(receipt)
     value["schema"] = RECEIPT_SCHEMA

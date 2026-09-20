@@ -31,7 +31,7 @@ from aegisinspect_p19_eval.contracts import (
     pose_matrix,
     receipt_as_dict,
     sha256_bytes,
-    startup_alignment,
+    startup_alignment_evidence,
     summarize_truth_labels,
     validate_manifest,
     validate_receipt,
@@ -40,6 +40,9 @@ from aegisinspect_p19_eval.contracts import (
 from aegisinspect_p19_eval.batch_certificate import (
     camera_info_hash, certificate_hash, operational_image_hash,
     parse_sensor_batch_certificate,
+)
+from aegisinspect_p19_eval.batch_telemetry import (
+    parse_batch_telemetry, telemetry_bytes, validate_telemetry_progression,
 )
 from aegisinspect_p19_eval.telemetry import PassiveJoinTelemetry
 
@@ -103,6 +106,7 @@ class ReadinessCollector(Node):
         self.certificates: dict[str, Any] = {}
         self.updates: dict[int, Any] = {}
         self.gt_pose: dict[int, PoseStamped] = {}
+        self.gt_frame_identity: dict[int, dict[str, Any]] = {}
         self.map_pose: dict[int, Odometry] = {}
         self.scene_identity: dict[str, Any] | None = None
         self.receipts: list[ExposureReceipt] = []
@@ -110,6 +114,8 @@ class ReadinessCollector(Node):
         self.last_batch_sequence = 0
         self.last_valid_index = 0
         self.alignment: dict[str, Any] | None = None
+        self.alignment_candidate_count = 0
+        self.batch_telemetry = None
         self.failed = False
         self.telemetry = PassiveJoinTelemetry()
         self.create_subscription(Image, "/aegis/sensors/camera/image_raw", self.on_rgb, qos_profile_sensor_data)
@@ -119,6 +125,8 @@ class ReadinessCollector(Node):
         self.create_subscription(String, "/aegis/p19_eval/update_attestation", self.on_update, qos_profile_sensor_data)
         self.create_subscription(String, "/aegis/p19_eval/scene_identity", self.on_scene, qos_profile_sensor_data)
         self.create_subscription(String, "/aegis/p19_eval/sensor_batch_certificate", self.on_certificate, qos_profile_sensor_data)
+        self.create_subscription(String, "/aegis/p19_eval/sensor_batch_telemetry", self.on_batch_telemetry, qos_profile_sensor_data)
+        self.create_subscription(String, "/aegis/p19_eval/ground_truth_frame_identity", self.on_gt_frame_identity, qos_profile_sensor_data)
         self.create_subscription(PoseStamped, "/aegis/sim/ground_truth/pose", self.on_gt_pose, qos_profile_sensor_data)
         self.create_subscription(Odometry, "/aegis/localization/vio/odom", self.on_map_pose, qos_profile_sensor_data)
         self.get_logger().info("P19 readiness collector armed; no START or inference API exists in this node")
@@ -160,6 +168,32 @@ class ReadinessCollector(Node):
             self.try_certificates()
         except Exception as exc:
             self.fail(f"sensor-batch certificate rejected: {exc}")
+
+    def on_batch_telemetry(self, message: String) -> None:
+        try:
+            item = parse_batch_telemetry(message.data)
+            progression = [item] if self.batch_telemetry is None else [self.batch_telemetry, item]
+            validate_telemetry_progression(progression, self.run_id)
+            self.batch_telemetry = item
+            self.finish_if_ready()
+        except Exception as exc:
+            self.fail(f"sensor-batch telemetry rejected: {exc}")
+
+    def on_gt_frame_identity(self, message: String) -> None:
+        try:
+            value = json.loads(message.data)
+            if set(value) != {"schema", "timestamp_ns", "pose_name", "source_topic"}:
+                raise ValueError("ground-truth frame identity fields mismatch")
+            if value["schema"] != "aegisinspect.p19.ground_truth_frame_identity.v1":
+                raise ValueError("ground-truth frame identity schema mismatch")
+            if (type(value["timestamp_ns"]) is not int or value["timestamp_ns"] <= 0
+                    or not isinstance(value["pose_name"], str) or not value["pose_name"]
+                    or value["source_topic"] != "/aegis/sim/ground_truth/pose_gz"):
+                raise ValueError("invalid ground-truth frame identity")
+            self.gt_frame_identity[value["timestamp_ns"]] = value
+            self.try_alignment(value["timestamp_ns"])
+        except Exception as exc:
+            self.fail(f"ground-truth frame identity rejected: {exc}")
 
     def on_update(self, message: String) -> None:
         try:
@@ -203,10 +237,14 @@ class ReadinessCollector(Node):
             self.try_alignment(key)
 
     def try_alignment(self, key: int) -> None:
-        if self.alignment is not None or key not in self.gt_pose or key not in self.map_pose:
+        if (self.alignment is not None or key not in self.gt_pose
+                or key not in self.map_pose or key not in self.gt_frame_identity):
             return
         gt = self.gt_pose[key]
         mapped = self.map_pose[key]
+        gt_identity = self.gt_frame_identity[key]
+        selection_index = self.alignment_candidate_count
+        self.alignment_candidate_count += 1
         try:
             if gt.header.frame_id != "world" or mapped.header.frame_id != "odom" or mapped.child_frame_id != "base_link":
                 raise ValueError("world/map base-frame contract mismatch")
@@ -215,25 +253,22 @@ class ReadinessCollector(Node):
             world_base = pose_matrix(world_position, world_quaternion)
             # Accepted map->odom is the identity session origin; preserve the source odom message.
             map_base = pose_matrix(map_position, map_quaternion)
-            transform = startup_alignment(
+            self.alignment = dict(startup_alignment_evidence(
                 timestamp_ns=key,
-                world_base_frame="base_link",
-                map_base_frame="base_link",
+                selection_index=selection_index,
+                world_frame=gt.header.frame_id,
+                world_base_frame=gt_identity["pose_name"],
+                map_frame=mapped.header.frame_id,
+                map_base_frame=mapped.child_frame_id,
                 world_from_base=world_base,
                 map_from_base=map_base,
-                selection_index=0,
-            )
-            self.alignment = {
-                "selection_rule": "first exact positive startup pair after collector readiness",
-                "timestamp_ns": key,
-                "world_from_base": world_base,
-                "map_from_base": map_base,
-                "map_from_world": transform,
+            ))
+            self.alignment.update({
+                "ground_truth_frame_identity": gt_identity,
                 "world_pose_message_sha256": msg_hash(gt),
                 "map_odometry_message_sha256": msg_hash(mapped),
                 "map_from_odom_source": "accepted identity session_map_origin",
-                "operational_publication": False,
-            }
+            })
             (self.output / "startup_alignment.json").write_bytes(canonical_json_bytes(self.alignment) + b"\n")
             self.finish_if_ready()
         except Exception as exc:
@@ -320,6 +355,15 @@ class ReadinessCollector(Node):
 
     def finish_if_ready(self) -> None:
         if len(self.receipts) == 20 and self.alignment is not None and not self.failed:
+            if not self.batch_telemetry:
+                return
+            telemetry = self.batch_telemetry
+            if (telemetry.last_batch_sequence < self.last_batch_sequence
+                    or telemetry.certificate_count < len(self.receipts)
+                    or telemetry.max_consecutive_valid_streak < 20):
+                return
+            (self.output / "authoritative_batch_telemetry.json").write_bytes(
+                telemetry_bytes(telemetry) + b"\n")
             self.write_telemetry("PASS")
             result = {
                 "status": "PASS",

@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include <gz/msgs/stringmsg.pb.h>
+#include <gz/msgs/pose.pb.h>
 #include <gz/plugin/Register.hh>
 #include <gz/sim/EventManager.hh>
 #include <gz/sim/Model.hh>
@@ -28,6 +29,10 @@ public:
       "/aegis/p19_eval/update_attestation");
     scenePublisher_ = node_.Advertise<gz::msgs::StringMsg>(
       "/aegis/p19_eval/scene_identity");
+    groundTruthFramePublisher_ = node_.Advertise<gz::msgs::StringMsg>(
+      "/aegis/p19_eval/ground_truth_frame_identity");
+    node_.Subscribe("/aegis/sim/ground_truth/pose_gz",
+      &UpdateAttestor::OnGroundTruthPose, this);
     postRenderConnection_ = _eventManager.Connect<gz::sim::events::PostRender>(
       [this]() { this->OnPostRender(); });
   }
@@ -79,6 +84,25 @@ public:
   }
 
 private:
+  void OnGroundTruthPose(const gz::msgs::Pose &_message)
+  {
+    if (!groundTruthFramePublisher_.Valid() || !_message.has_header() ||
+        !_message.header().has_stamp() || _message.name().empty())
+      return;
+    const auto &stamp = _message.header().stamp();
+    const auto timestampNs = stamp.sec() * 1000000000LL + stamp.nsec();
+    if (timestampNs <= 0)
+      return;
+    gz::msgs::StringMsg identity;
+    std::ostringstream value;
+    value << "{\"schema\":\"aegisinspect.p19.ground_truth_frame_identity.v1\""
+          << ",\"timestamp_ns\":" << timestampNs
+          << ",\"pose_name\":\"" << _message.name() << "\""
+          << ",\"source_topic\":\"/aegis/sim/ground_truth/pose_gz\"}";
+    identity.set_data(value.str());
+    groundTruthFramePublisher_.Publish(identity);
+  }
+
   void OnPostRender()
   {
     if (!publisher_.Valid())
@@ -103,6 +127,7 @@ private:
   gz::transport::Node node_;
   gz::transport::Node::Publisher publisher_;
   gz::transport::Node::Publisher scenePublisher_;
+  gz::transport::Node::Publisher groundTruthFramePublisher_;
   gz::common::ConnectionPtr postRenderConnection_;
   std::atomic<std::uint64_t> latestIteration_{0};
   std::atomic<std::int64_t> latestSimTimeNs_{0};

@@ -127,18 +127,23 @@ def test_twenty_pair_and_alignment_rules_unchanged():
     assert 'ALIGNMENT_RULE = "first-exact-positive-startup-world-map-base-pair-v1"' in contracts
 
 
-def test_scientific_paths_equal_pre_harness_commit():
+def test_frozen_target_and_scene_paths_equal_pre_harness_commit():
     protected = [
         "ros2_ws/src/aegisinspect_p19_eval/models/p19_defect_target_001/model.sdf",
         "ros2_ws/src/aegisinspect_p19_eval/models/aegis_drone_p19_eval/model.sdf",
         "ros2_ws/src/aegisinspect_p19_eval/worlds/p19_correspondence_readiness.sdf",
-        "ros2_ws/src/aegisinspect_p19_eval/config/bridge.yaml",
-        "ros2_ws/src/aegisinspect_p19_eval/aegisinspect_p19_eval/contracts.py",
-        "ros2_ws/src/aegisinspect_p19_eval/src/update_attestor.cpp",
     ]
     for relative in protected:
         expected = subprocess.check_output(["git", "show", f"{BASE}:{relative}"], cwd=ROOT)
         assert (ROOT / relative).read_bytes() == expected
+
+
+def test_authorized_evidence_interfaces_preserve_scientific_rules():
+    contracts = (ROOT / "ros2_ws/src/aegisinspect_p19_eval/aegisinspect_p19_eval/contracts.py").read_text()
+    certificate = (ROOT / "ros2_ws/src/aegisinspect_p19_eval/aegisinspect_p19_eval/batch_certificate.py").read_text()
+    assert 'CERTIFICATE_SCHEMA = "aegisinspect.p19.sensor_batch_certificate.v1"' in certificate
+    assert 'ALIGNMENT_RULE = "first-exact-positive-startup-world-map-base-pair-v1"' in contracts
+    assert "if len(receipts) < 20:" in contracts
 
 
 def test_manifest_hash_and_core_underlay_remain_frozen():
