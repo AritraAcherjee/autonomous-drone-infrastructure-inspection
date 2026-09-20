@@ -25,6 +25,8 @@ if(BUILD_TESTING)
     APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR} TIMEOUT 60)
   ament_add_pytest_test(p19_eval_static test/test_static_contracts.py
     APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR} TIMEOUT 60)
+  ament_add_pytest_test(p19_harness_lifecycle test/test_harness_lifecycle.py
+    APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR} TIMEOUT 60)
 endif()
 
 ament_package()

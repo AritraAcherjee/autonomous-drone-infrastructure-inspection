@@ -37,6 +37,7 @@ from aegisinspect_p19_eval.contracts import (
     validate_receipt,
     verify_detached_seal,
 )
+from aegisinspect_p19_eval.telemetry import PassiveJoinTelemetry
 
 
 def stamp_ns(message: Any) -> int:
@@ -101,6 +102,7 @@ class ReadinessCollector(Node):
         self.seen_stamps: set[int] = set()
         self.alignment: dict[str, Any] | None = None
         self.failed = False
+        self.telemetry = PassiveJoinTelemetry()
         self.create_subscription(Image, "/aegis/sensors/camera/image_raw", self.on_rgb, qos_profile_sensor_data)
         self.create_subscription(Image, "/aegis/perception/depth/image", self.on_depth, qos_profile_sensor_data)
         self.create_subscription(CameraInfo, "/aegis/sensors/camera/camera_info", self.on_info, qos_profile_sensor_data)
@@ -115,21 +117,23 @@ class ReadinessCollector(Node):
         for key in sorted(values)[:-500]:
             values.pop(key, None)
 
-    def store(self, values: dict[int, Any], message: Any) -> None:
+    def store(self, stream: str, values: dict[int, Any], message: Any) -> None:
         key = stamp_ns(message)
         if key > 0:
+            self.telemetry.record_seen(stream)
             values[key] = message
             self.trim(values)
             self.try_receipt(key)
 
-    def on_rgb(self, message): self.store(self.rgb, message)
-    def on_depth(self, message): self.store(self.depth, message)
-    def on_info(self, message): self.store(self.info, message)
-    def on_truth(self, message): self.store(self.truth, message)
+    def on_rgb(self, message): self.store("rgb", self.rgb, message)
+    def on_depth(self, message): self.store("depth", self.depth, message)
+    def on_info(self, message): self.store("camera_info", self.info, message)
+    def on_truth(self, message): self.store("truth", self.truth, message)
 
     def on_update(self, message: String) -> None:
         try:
             update = parse_update_attestation(message.data)
+            self.telemetry.record_seen("attestation")
             self.updates[update.sim_time_ns] = update
             self.trim(self.updates)
             self.try_receipt(update.sim_time_ns)
@@ -148,6 +152,7 @@ class ReadinessCollector(Node):
                 if type(value.get(key)) is not int or value[key] <= 0:
                     raise ValueError(f"invalid {key}")
             self.scene_identity = value
+            self.telemetry.record_scene_identity()
         except Exception as exc:
             self.fail(f"scene identity rejected: {exc}")
 
@@ -206,8 +211,19 @@ class ReadinessCollector(Node):
         if self.failed or key in self.seen_stamps or len(self.receipts) >= 20:
             return
         if self.scene_identity is None:
+            self.telemetry.record_join(key, {
+                "rgb": key in self.rgb, "depth": key in self.depth,
+                "camera_info": key in self.info, "truth": key in self.truth,
+                "attestation": key in self.updates,
+            }, False)
             return
         required = (self.rgb, self.depth, self.info, self.truth, self.updates)
+        presence = {
+            "rgb": key in self.rgb, "depth": key in self.depth,
+            "camera_info": key in self.info, "truth": key in self.truth,
+            "attestation": key in self.updates,
+        }
+        self.telemetry.record_join(key, presence, True)
         if any(key not in values for values in required):
             return
         try:
@@ -262,16 +278,23 @@ class ReadinessCollector(Node):
                                   update.iteration <= self.receipts[-1].simulation_iteration):
                 raise ValueError("duplicate/restarted timestamp or iteration")
             self.receipts.append(receipt)
+            self.telemetry.record_receipt(key, token)
             self.seen_stamps.add(key)
             destination = self.output / "receipts" / f"{len(self.receipts):04d}.json"
             destination.write_bytes(canonical_json_bytes(receipt_as_dict(receipt)) + b"\n")
             self.get_logger().info(f"eligible paired receipt {len(self.receipts)}/20 at {key}")
             self.finish_if_ready()
         except Exception as exc:
+            self.telemetry.record_rejection(key, str(exc))
             self.fail(f"paired exposure rejected at {key}: {exc}")
+
+    def write_telemetry(self, outcome: str) -> None:
+        path = self.output / "passive_telemetry.json"
+        path.write_bytes(canonical_json_bytes(self.telemetry.snapshot(outcome)) + b"\n")
 
     def finish_if_ready(self) -> None:
         if len(self.receipts) == 20 and self.alignment is not None and not self.failed:
+            self.write_telemetry("PASS")
             result = {
                 "status": "PASS",
                 "eligible_pair_count": 20,
@@ -292,6 +315,7 @@ class ReadinessCollector(Node):
         if self.failed:
             return
         self.failed = True
+        self.write_telemetry("BLOCKED")
         result = {
             "status": "BLOCKED", "reason": reason,
             "eligible_pair_count": len(self.receipts),
@@ -310,6 +334,9 @@ def main() -> None:
     node = ReadinessCollector()
     try:
         rclpy.spin(node)
+    except KeyboardInterrupt:
+        node.write_telemetry("INTERRUPTED")
+        raise
     finally:
         node.destroy_node()
 
