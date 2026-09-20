@@ -15,6 +15,7 @@ const ASSEMBLY = path.join(ROOT, 'docs', 'presentation', 'assembly', 'slide_cont
 const READY = path.join(ROOT, 'docs', 'presentation', 'assembly', 'section_readiness.json');
 const PLACEHOLDERS = path.join(ROOT, 'docs', 'presentation', 'assembly', 'runtime_placeholders.json');
 const EVIDENCE = path.join(ROOT, 'outputs', 'presentation', 'p16_p17_evidence');
+const P18_EVIDENCE = path.join(ROOT, 'outputs', 'presentation', 'p18_evidence');
 const OUTPUT = path.resolve(ROOT, process.argv.includes('--output')
   ? process.argv[process.argv.indexOf('--output') + 1]
   : 'outputs/presentation/AegisInspect_P20_working_draft.pptx');
@@ -42,8 +43,25 @@ function requireFile(file) {
 }
 
 function sourceMustContain(source, literals) {
-  const missing = literals.filter((literal) => !source.includes(literal));
+  const normalizedSource = source.replace(/\s+/g, ' ');
+  const missing = literals.filter((literal) => !normalizedSource.includes(literal.replace(/\s+/g, ' ')));
   if (missing.length) throw new Error(`Assembly source lacks required facts: ${missing.join(', ')}`);
+}
+
+function verifyHashInventory(directory) {
+  const inventory = path.join(directory, 'hashes.sha256');
+  requireFile(inventory);
+  const entries = fs.readFileSync(inventory, 'utf8').split(/\r?\n/).filter(Boolean).filter((line) => /^[0-9a-f]{64}\s+/i.test(line)).map((line) => {
+    const match = /^([0-9a-f]{64})\s+\*?(.+)$/i.exec(line);
+    if (!match) throw new Error(`Invalid hash inventory entry: ${line}`);
+    return { hash: match[1].toLowerCase(), relative: match[2] };
+  });
+  for (const entry of entries) {
+    const asset = path.join(directory, entry.relative);
+    requireFile(asset);
+    if (sha256(asset) !== entry.hash) throw new Error(`Evidence hash mismatch: ${asset}`);
+  }
+  return entries.length;
 }
 
 function addFooter(slide, number) {
@@ -76,7 +94,7 @@ function addBullets(slide, items, opts = {}) {
   const h = opts.h ?? 4.9;
   const size = opts.size ?? 15.5;
   const color = opts.color ?? INK;
-  const text = items.map((item) => `• ${item}`).join('\n');
+  const text = items.map((item) => `- ${item}`).join('\n');
   slide.addText(text, { x, y, w, h, fontFace: FONT, fontSize: size, color, breakLine: false, margin: 0.04, paraSpaceAfterPt: 11, breakLine: false, fit: 'shrink', valign: 'top' });
 }
 
@@ -111,13 +129,17 @@ async function main() {
   [ASSEMBLY, READY, PLACEHOLDERS,
     path.join(EVIDENCE, 'dashboard', 'dashboard_overview.png'),
     path.join(EVIDENCE, 'dashboard', 'dashboard_detail.png'),
-    path.join(EVIDENCE, 'report', 'inspection_2026091901.md')].forEach(requireFile);
+    path.join(EVIDENCE, 'report', 'inspection_2026091901.md'),
+    path.join(P18_EVIDENCE, 'dashboard', 'dashboard_completion_overview_final.png'),
+    path.join(P18_EVIDENCE, 'dashboard', 'clean_repeatability_overview.png')].forEach(requireFile);
   const source = fs.readFileSync(ASSEMBLY, 'utf8');
   const readiness = JSON.parse(fs.readFileSync(READY, 'utf8'));
   const placeholders = JSON.parse(fs.readFileSync(PLACEHOLDERS, 'utf8'));
-  sourceMustContain(source, [TITLE, 'DET-FINAL-v1 / YOLO26s', '0.29669431228680787', '0.17480040543737643', '0.18618618618618618', '0.004553093574941158', 'UNREVIEWED', '0.595396782192 m', '0.340604743330 m', '1.707265244063 deg', 'P18 P20 evidence ingestion is PENDING', 'Workstream 04 final low-light robustness evidence']);
+  sourceMustContain(source, [TITLE, 'DET-FINAL-v1 / YOLO26s', '0.29669431228680787', '0.17480040543737643', '0.18618618618618618', '0.004553093574941158', 'UNREVIEWED', '0.595396782192 m', '0.340604743330 m', '1.707265244063 deg', 'dashboard-evidence completion package is PASS', 'clean repeatability run is PASS', 'Workstream 04 final low-light robustness evidence']);
   if (readiness.final_title !== TITLE) throw new Error('Readiness title does not match assembly source');
   if (!placeholders.localization.ate_translation_rmse_m.includes('0.595396782192')) throw new Error('Runtime placeholder does not preserve accepted ATE');
+  const p16p17InventoryEntries = verifyHashInventory(EVIDENCE);
+  const p18InventoryEntries = verifyHashInventory(P18_EVIDENCE);
 
   const sourceHash = sha256(ASSEMBLY);
   const notes = { sourceHash, detail: 'Evidence-derived factual content only; see on-slide status boundary.' };
@@ -145,7 +167,7 @@ async function main() {
   addFooter(titleSlide, ++n);
   addNotes(titleSlide, sourceHash, 'Title and capability boundary derived from assembly source.');
 
-  slide('Inspection Problem and Objective', 'IMPLEMENTED / EVIDENCE-DRIVEN', BLUE, 'Assembly sections 1–2.', (s) => {
+  slide('Inspection Problem and Objective', 'IMPLEMENTED / EVIDENCE-DRIVEN', BLUE, 'Assembly sections 1-2.', (s) => {
     addBody(s, 'Infrastructure inspection requires repeatable visual review and traceable defect documentation. AegisInspect keeps each subsystem claim tied to its evidence.', { x: 0.72, y: 1.85, w: 5.6, h: 1.35, size: 19 });
     addBullets(s, ['Acquire RGB, depth, IMU and LiDAR observations', 'Detect structural defects and project observations into 3D', 'Persist records for human review and deterministic reporting', 'Evaluate detector, localization and spatial outputs reproducibly'], { x: 6.8, y: 1.9, w: 5.8, h: 3.6, size: 16 });
     addBody(s, 'Boundary: this deck does not claim a validated full autonomous mission.', { x: 0.74, y: 5.55, w: 11.6, h: 0.42, size: 14, color: RED, bold: true });
@@ -157,7 +179,7 @@ async function main() {
       const x = 0.55 + i * 1.8;
       s.addShape(PptxGenJS.ShapeType.roundRect, { x, y: 2.25, w: 1.45, h: 0.86, rectRadius: 0.05, fill: { color: i < 5 ? 'E8F2FA' : 'E7F6F2' }, line: { color: i < 5 ? BLUE : TEAL, width: 0.8 } });
       s.addText(step, { x: x + 0.1, y: 2.51, w: 1.25, h: 0.28, fontFace: FONT, fontSize: 9.5, bold: true, color: NAVY, align: 'center', margin: 0, fit: 'shrink' });
-      if (i < steps.length - 1) s.addText('›', { x: x + 1.5, y: 2.48, w: 0.22, h: 0.3, fontFace: FONT, fontSize: 24, color: CYAN, align: 'center', margin: 0 });
+      if (i < steps.length - 1) s.addText('>', { x: x + 1.5, y: 2.48, w: 0.22, h: 0.3, fontFace: FONT, fontSize: 18, color: CYAN, align: 'center', margin: 0 });
     });
     addCard(s, 'Demonstrated', 'P16/P17 real handoff', 0.8, 4.15, 3.45, 1.2, TEAL, 'verified persistence, dashboard and report');
     addCard(s, 'Measured', 'P19 localization', 4.95, 4.15, 3.45, 1.2, BLUE, 'no frozen accuracy PASS/FAIL threshold');
@@ -173,13 +195,13 @@ async function main() {
     addBody(s, 'Dataset counts are data-foundation facts, not detector-performance metrics.', { x: 6.15, y: 4.0, w: 5.2, h: 0.7, size: 18, color: NAVY, bold: true, align: 'center' });
   });
 
-  slide('DET-FINAL-v1 Held-Out Detection Evidence', 'SUPPORTED / REAL HELD-OUT', CYAN, 'Assembly sections 5–6.', (s) => {
+  slide('DET-FINAL-v1 Held-Out Detection Evidence', 'SUPPORTED / REAL HELD-OUT', CYAN, 'Assembly sections 5-6.', (s) => {
     addBody(s, 'DET-FINAL-v1 / YOLO26s', { x: 0.72, y: 1.85, w: 4.5, h: 0.42, size: 22, color: NAVY, bold: true });
     addCard(s, 'mAP50', '0.29669431228680787', 0.72, 2.55, 3.7, 1.35, BLUE, 'held-out GYU test', { preserveTitleCase: true, valueSize: 13 });
     addCard(s, 'mAP50-95', '0.17480040543737643', 4.75, 2.55, 3.7, 1.35, CYAN, 'held-out GYU test', { preserveTitleCase: true, valueSize: 13 });
     addCard(s, 'Mean class F1', '0.3556245448108634', 8.78, 2.55, 3.7, 1.35, TEAL, 'validation-selected threshold');
     addBullets(s, ['1,053 test images; 5,886 instances', 'Validation-selected operating threshold: 0.18618618618618618', 'Macro precision: 0.37674095487474335', 'Macro recall: 0.37432339044543'], { x: 0.9, y: 4.35, w: 6.1, h: 1.65, size: 14.5 });
-    addBody(s, 'mAP is a detection metric, not generic or “drone” accuracy. The operating threshold was selected using validation data, not the test set.', { x: 7.45, y: 4.48, w: 4.75, h: 1.1, size: 14.5, color: RED, bold: true, align: 'center' });
+    addBody(s, 'mAP is a detection metric, not generic or drone accuracy. The operating threshold was selected using validation data, not the test set.', { x: 7.45, y: 4.48, w: 4.75, h: 1.1, size: 14.5, color: RED, bold: true, align: 'center' });
   });
 
   slide('Localization and Simulation Architecture', 'SUPPORTED / SIMULATION RUNTIME', BLUE, 'Assembly sections 8 and insertable P19 status.', (s) => {
@@ -189,7 +211,7 @@ async function main() {
     addBody(s, 'No frozen localization-accuracy pass/fail threshold exists.', { x: 7.1, y: 4.1, w: 5.2, h: 0.75, size: 18, color: RED, bold: true, align: 'center' });
   });
 
-  slide('Simulated Depth and Camera-Frame XYZ', 'SUPPORTED / SIMULATION RUNTIME', CYAN, 'Assembly sections 9–10.', (s) => {
+  slide('Simulated Depth and Camera-Frame XYZ', 'SUPPORTED / SIMULATION RUNTIME', CYAN, 'Assembly sections 9-10.', (s) => {
     addCard(s, 'Depth contract', '32FC1', 0.8, 1.95, 2.65, 1.15, BLUE, 'metres / camera_optical_frame');
     addCard(s, 'Depth validation', '103 tests', 3.75, 1.95, 2.65, 1.15, CYAN, '0 errors, failures or skips');
     addCard(s, 'Projection validation', '196 tests', 6.7, 1.95, 2.65, 1.15, TEAL, '0 errors, failures or skips');
@@ -222,49 +244,53 @@ async function main() {
     addBody(s, 'The report preserves persisted and mapped evidence without inferring severity, dimensions, repair action or structural safety.', { x: 8.35, y: 3.7, w: 3.7, h: 1.45, size: 15, color: NAVY, bold: true, align: 'center' });
   });
 
-  slide('P18 Integrated-System Demonstration', 'PENDING / PRESENTATION ASSETS', AMBER, 'Assembly P18 statement only.', (s) => {
-    addBody(s, 'P18 integrated-system evidence has been accepted by Control Center for the first integrated run and dashboard evidence.', { x: 1.05, y: 2.1, w: 11.1, h: 0.7, size: 23, color: NAVY, bold: true, align: 'center' });
-    addBody(s, 'Presentation artifacts are pending Laptop 1 evidence ingestion. This working draft intentionally contains no fabricated P18 screenshots, runtime plots, logs or measured values.', { x: 1.25, y: 3.35, w: 10.7, h: 1.15, size: 19, color: RED, align: 'center' });
+  slide('P18 Integrated-System Demonstration', 'DEMONSTRATED / VERIFIED PACKAGE', TEAL, 'Verified P18 dashboard-completion package; first retry limitation retained.', (s) => {
+    const image = path.join(P18_EVIDENCE, 'dashboard', 'dashboard_completion_overview_final.png');
+    s.addImage({ path: image, x: 0.65, y: 1.72, w: 7.3, h: 4.75, sizing: { type: 'contain', x: 0.65, y: 1.72, w: 7.3, h: 4.75 } });
+    addCard(s, 'Dashboard completion', 'PASS', 8.35, 1.92, 3.6, 1.12, TEAL, 'real browser screenshot');
+    addBody(s, 'The first integrated retry validated the same-observation data chain, but its browser capture was absent. The separate dashboard-evidence completion package supplies the accepted real dashboard capture.', { x: 8.3, y: 3.48, w: 3.75, h: 1.65, size: 14.5, color: INK, align: 'center' });
+    addBody(s, 'This demonstrates integrated runtime and dashboard evidence; it does not establish full autonomy or production readiness.', { x: 8.32, y: 5.62, w: 3.7, h: 0.48, size: 11.5, color: RED, bold: true, align: 'center' });
   });
 
-  slide('P18 Repeatability Status', 'PENDING / PRESENTATION ASSETS', AMBER, 'Assembly P18 statement only.', (s) => {
-    addCard(s, 'Control Center state', 'ACCEPTED', 1.0, 2.1, 3.25, 1.25, TEAL, 'clean repeatability accepted');
-    addCard(s, 'P20 evidence ingestion', 'PENDING', 5.05, 2.1, 3.25, 1.25, AMBER, 'no transferred assets yet');
-    addCard(s, 'Audience assets', 'NOT SHOWN', 9.1, 2.1, 3.25, 1.25, RED, 'avoid fabricated visual evidence');
-    addBody(s, 'This slide preserves the accepted program state while waiting for the corresponding presentation-safe evidence package.', { x: 1.25, y: 4.25, w: 10.7, h: 0.6, size: 19, color: NAVY, align: 'center' });
+  slide('P18 Clean Repeatability', 'DEMONSTRATED / VERIFIED PACKAGE', TEAL, 'Verified clean-repeatability package.', (s) => {
+    const image = path.join(P18_EVIDENCE, 'dashboard', 'clean_repeatability_overview.png');
+    s.addImage({ path: image, x: 0.65, y: 1.72, w: 7.3, h: 4.75, sizing: { type: 'contain', x: 0.65, y: 1.72, w: 7.3, h: 4.75 } });
+    addCard(s, 'Clean repeatability', 'PASS', 8.35, 1.92, 3.6, 1.12, TEAL, 'accepted execution identity');
+    addBody(s, 'The clean repeatability package records a new detection and mapped-defect identity, P16 PASS, browser screenshots PASS and P17 PASS under unchanged source and configuration.', { x: 8.3, y: 3.48, w: 3.75, h: 1.65, size: 14.5, color: INK, align: 'center' });
+    addBody(s, 'P19 3D correspondence and Workstream 04 evidence remain pending.', { x: 8.32, y: 5.62, w: 3.7, h: 0.48, size: 11.5, color: RED, bold: true, align: 'center' });
   });
 
   slide('P19 Localization Evaluation', 'MEASURED / FROZEN METHODOLOGY', BLUE, 'Accepted P19 metrics represented in assembly source.', (s) => {
-    addCard(s, 'ATE translation RMSE', '0.595396782192 m', 0.72, 2.0, 3.7, 1.35, BLUE, '76 matched samples; interval 3–18 s');
-    addCard(s, 'RPE translation RMSE', '0.340604743330 m', 4.82, 2.0, 3.7, 1.35, CYAN, 'delta 1 s ± 50 ms');
+    addCard(s, 'ATE translation RMSE', '0.595396782192 m', 0.72, 2.0, 3.7, 1.35, BLUE, '76 matched samples; interval 3-18 s');
+    addCard(s, 'RPE translation RMSE', '0.340604743330 m', 4.82, 2.0, 3.7, 1.35, CYAN, 'delta 1 s +/- 50 ms');
     addCard(s, 'RPE rotation RMSE', '1.707265244063 deg', 8.92, 2.0, 3.7, 1.35, TEAL, '44 pairs');
     addBody(s, 'Ground-truth bracket maximum 50 ms; linear translation interpolation; quaternion SLERP; SE(3) no-scale alignment; scale = 1.', { x: 1.1, y: 4.05, w: 11.0, h: 0.52, size: 17, color: INK, align: 'center' });
     addBody(s, 'Runtime acceptance: PASS. Localization accuracy: MEASURED. No frozen localization-accuracy pass/fail threshold exists.', { x: 1.0, y: 5.15, w: 11.2, h: 0.55, size: 17, color: RED, bold: true, align: 'center' });
   });
 
   slide('P19 3D Evaluation Status', 'PENDING / CONTROLLED CORRESPONDENCE', AMBER, 'Assembly P19 3D pending boundary.', (s) => {
-    addBody(s, 'P19 3D evaluation — pending controlled correspondence experiment', { x: 1.0, y: 2.25, w: 11.2, h: 0.55, size: 25, color: NAVY, bold: true, align: 'center' });
+    addBody(s, 'P19 3D evaluation - pending controlled correspondence experiment', { x: 1.0, y: 2.25, w: 11.2, h: 0.55, size: 25, color: NAVY, bold: true, align: 'center' });
     addBody(s, 'Accepted explicit GT-to-mapped-defect correspondence is required before reporting XYZ error, mean, median, RMSE, P95 or correspondence counts.', { x: 1.25, y: 3.55, w: 10.7, h: 0.95, size: 19, color: RED, align: 'center' });
   });
 
   slide('Workstream 04: Low-Light Robustness', 'PENDING / ARMOURY RESULTS', AMBER, 'Assembly Workstream 04 pending statement.', (s) => {
-    addBody(s, 'Low-light robustness — results pending Workstream 04 completion', { x: 1.0, y: 2.35, w: 11.2, h: 0.55, size: 25, color: NAVY, bold: true, align: 'center' });
+    addBody(s, 'Low-light robustness - results pending Workstream 04 completion', { x: 1.0, y: 2.35, w: 11.2, h: 0.55, size: 25, color: NAVY, bold: true, align: 'center' });
     addBody(s, 'No performance figures are presented until the final accepted Workstream 04 evidence is available.', { x: 1.45, y: 3.7, w: 10.4, h: 0.5, size: 19, color: RED, align: 'center' });
   });
 
   slide('Evidence, Provenance and Reproducibility', 'DEMONSTRATED / HASH-BOUND', TEAL, 'Assembly section 18 and verified P16/P17 package.', (s) => {
     addBullets(s, ['Git preservation provenance: canonical P17 preservation state', 'Runtime evidence provenance: recovered P16/P17 ZIP, DB and report', 'P19 localization evidence preservation commit', 'Full hashes retained in the verified P20 evidence package'], { x: 0.85, y: 1.85, w: 5.5, h: 3.5, size: 16 });
     addCard(s, 'P16/P17 package', '29 / 29 PASS', 7.1, 1.9, 4.8, 1.25, TEAL, 'verified package hash inventory');
-    addBody(s, 'Concise identifiers\nP17 Git: eb4013fa…bbfe488f\nP16/P17 ZIP: df3f87f0…9f313ec2\nP19 evidence: 4c7bd79a…9a4d78a', { x: 7.25, y: 3.75, w: 4.5, h: 1.45, size: 15, color: INK });
+    addBody(s, 'Concise identifiers\nP17 Git: eb4013fa...bbfe488f\nP16/P17 ZIP: df3f87f0...9f313ec2\nP19 evidence: 4c7bd79a...9a4d78a', { x: 7.25, y: 3.75, w: 4.5, h: 1.45, size: 15, color: INK });
   });
 
   slide('Limitations and Evidence Boundaries', 'REQUIRED LIMITATIONS', RED, 'Assembly section 15.', (s) => {
-    addBullets(s, ['Held-out detector mAP remains modest; metrics are not generic accuracy', 'Accepted P16/P17 example is extremely-low-confidence, unreviewed machine output', 'P19 localization is measured, not threshold-classified as accurate', 'P19 3D requires explicit correspondence', 'P18 presentation-evidence ingestion and Workstream 04 results are pending', 'Stop C / full autonomy is not demonstrated'], { x: 0.85, y: 1.85, w: 11.4, h: 4.7, size: 17 });
+    addBullets(s, ['Held-out detector mAP remains modest; metrics are not generic accuracy', 'Accepted P16/P17 example is extremely-low-confidence, unreviewed machine output', 'P19 localization is measured, not threshold-classified as accurate', 'P19 3D requires explicit correspondence', 'P18 demonstrates runtime, dashboard-completion and repeatability evidence; Workstream 04 results are pending', 'Stop C / full autonomy is not demonstrated'], { x: 0.85, y: 1.85, w: 11.4, h: 4.7, size: 17 });
   });
 
   slide('Current Demonstrated Capability', 'WORKING DRAFT / EVIDENCE-BOUND', TEAL, 'Assembly section 17.', (s) => {
     addBody(s, 'AegisInspect demonstrates a robotics/computer-vision inspection pipeline combining deep-learning structural-defect detection, depth and 3D projection, localization/map-frame processing, mapped-defect persistence, dashboard review, deterministic reporting and measured localization evaluation.', { x: 1.0, y: 2.0, w: 11.1, h: 1.35, size: 22, color: NAVY, bold: true, align: 'center' });
-    addBody(s, 'Next accepted inputs: P18 presentation artifacts; explicit P19 3D correspondence; Workstream 04 low-light results.', { x: 1.2, y: 4.55, w: 10.8, h: 0.55, size: 18, color: MUTED, align: 'center' });
+    addBody(s, 'Next accepted inputs: explicit P19 3D correspondence; Workstream 04 low-light results.', { x: 1.2, y: 4.55, w: 10.8, h: 0.55, size: 18, color: MUTED, align: 'center' });
     addBody(s, 'Implemented is not the same as measured. Pending results remain visible.', { x: 1.0, y: 5.65, w: 11.1, h: 0.35, size: 16, color: RED, bold: true, align: 'center' });
   });
 
@@ -281,6 +307,9 @@ async function main() {
     assembly_source: path.relative(ROOT, ASSEMBLY).replaceAll('\\', '/'),
     assembly_source_sha256: sourceHash,
     p16_p17_evidence_package: path.relative(ROOT, EVIDENCE).replaceAll('\\', '/'),
+    p16_p17_evidence_inventory_entries: p16p17InventoryEntries,
+    p18_evidence_package: path.relative(ROOT, P18_EVIDENCE).replaceAll('\\', '/'),
+    p18_evidence_inventory_entries: p18InventoryEntries,
     output_sha256: sha256(OUTPUT),
   };
   fs.writeFileSync(METADATA, `${JSON.stringify(metadata, null, 2)}\n`, 'utf8');

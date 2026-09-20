@@ -39,9 +39,9 @@ Required screenshot categories:
 - P19 accepted trajectory/error plots where preserved by the P19 package;
 - provenance and hash summary.
 
-The verified P16/P17 dashboard assets and deterministic report are suitable
-for an offline backup demo. P18 visual evidence remains pending ingestion;
-P19 3D metrics and Workstream 04 results remain pending.
+The verified P16/P17 assets and the verified P18 dashboard-completion and
+repeatability screenshots are suitable for an offline backup demo. P19 3D
+metrics and Workstream 04 results remain pending.
 
 ## 3. Backup recorded clips
 
@@ -111,7 +111,6 @@ Application layer:
 
 ## 6. Evidence still pending
 
-- P18 accepted presentation evidence package;
 - explicit GT↔mapped-defect correspondence and P19 3D metrics;
 - Workstream 04 final low-light robustness evidence.
 

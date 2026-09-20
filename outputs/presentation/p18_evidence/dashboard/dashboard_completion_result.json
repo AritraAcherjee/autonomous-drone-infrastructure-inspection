@@ -1,0 +1,31 @@
+{
+  "classification": "P18 DASHBOARD EVIDENCE COMPLETION \u2014 PASS",
+  "frozen_database_used": true,
+  "database_unchanged": true,
+  "real_browser_screenshots": true,
+  "record_match": true,
+  "unsupported_claims": false,
+  "production_source_modified": false,
+  "sealed_retry_unchanged": true,
+  "model_usage": {
+    "requested_model": "GPT-6 Astra Medium",
+    "requested_reasoning": "Medium",
+    "actual_model": "Current Codex session; exact model identity not exposed by callable tools",
+    "actual_reasoning": "Not exposed",
+    "model_changed": false,
+    "limitation": "No in-session model switching tool is available; no model transition is claimed."
+  },
+  "preferred_screenshots": [
+    "dashboard/dashboard_overview_final.png",
+    "dashboard/dashboard_detail.png"
+  ],
+  "safety": {
+    "NEW_P18_RUNTIME_ATTEMPTS": 0,
+    "NEW_P13_START_CALLS": 0,
+    "RESET_CALL_COUNT": 0,
+    "NEW_DETECTOR_INFERENCE": 0,
+    "NEW_P15_OBSERVATIONS": 0,
+    "NEW_P16_INGESTION": 0
+  },
+  "residual_processes": 0
+}

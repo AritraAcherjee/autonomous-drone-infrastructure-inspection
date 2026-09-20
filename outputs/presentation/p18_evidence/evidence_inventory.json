@@ -1,0 +1,162 @@
+{
+  "package": "P18 accepted presentation evidence",
+  "verification": "all three ZIP SHA-256 values and internal manifests verified",
+  "artifacts": [
+    {
+      "artifact_type": "source_archive",
+      "source_package": "stop_b_p18_first_integrated_run_retry1.zip",
+      "source_package_sha256": "afdf4aa12d589c5984d637fcb122f6ef2a810cfa1111434e9135fee63f3d2f2d",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_first_integrated_run_retry1.zip",
+      "source_sha256": "afdf4aa12d589c5984d637fcb122f6ef2a810cfa1111434e9135fee63f3d2f2d",
+      "copied_destination": "source_archives/stop_b_p18_first_integrated_run_retry1.zip",
+      "copied_sha256": "afdf4aa12d589c5984d637fcb122f6ef2a810cfa1111434e9135fee63f3d2f2d",
+      "byte_identical": true,
+      "evidence_classification": "first integrated retry archive; runtime chain evidence and dashboard-capture limitation",
+      "intended_slide_or_use": "provenance"
+    },
+    {
+      "artifact_type": "source_archive",
+      "source_package": "aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "source_package_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "source_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "copied_destination": "source_archives/aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "copied_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "byte_identical": true,
+      "evidence_classification": "dashboard-completion evidence archive",
+      "intended_slide_or_use": "provenance"
+    },
+    {
+      "artifact_type": "source_archive",
+      "source_package": "stop_b_p18_clean_repeatability_run.zip",
+      "source_package_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_clean_repeatability_run.zip",
+      "source_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "copied_destination": "source_archives/stop_b_p18_clean_repeatability_run.zip",
+      "copied_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "byte_identical": true,
+      "evidence_classification": "clean repeatability archive",
+      "intended_slide_or_use": "provenance"
+    },
+    {
+      "artifact_type": "dashboard_screenshot",
+      "source_package": "aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "source_package_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip::stop_b_p18_retry1_dashboard_completion/dashboard/dashboard_overview_final.png",
+      "source_sha256": "da9bbf465ebf11760a03ee0bf52846c8feef5108dc582e677f5938ff538d5a55",
+      "copied_destination": "dashboard/dashboard_completion_overview_final.png",
+      "copied_sha256": "da9bbf465ebf11760a03ee0bf52846c8feef5108dc582e677f5938ff538d5a55",
+      "byte_identical": true,
+      "evidence_classification": "real browser dashboard completion evidence",
+      "intended_slide_or_use": "P18 integrated-system status"
+    },
+    {
+      "artifact_type": "dashboard_screenshot",
+      "source_package": "aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "source_package_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip::stop_b_p18_retry1_dashboard_completion/dashboard/dashboard_detail.png",
+      "source_sha256": "2cf9958366c3a8e54618aac33f50f44550a3b215e31da710f78e72aec5d533f6",
+      "copied_destination": "dashboard/dashboard_completion_detail.png",
+      "copied_sha256": "2cf9958366c3a8e54618aac33f50f44550a3b215e31da710f78e72aec5d533f6",
+      "byte_identical": true,
+      "evidence_classification": "real browser dashboard detail evidence",
+      "intended_slide_or_use": "P18 integrated-system status"
+    },
+    {
+      "artifact_type": "dashboard_screenshot",
+      "source_package": "stop_b_p18_clean_repeatability_run.zip",
+      "source_package_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_clean_repeatability_run.zip::stop_b_p18_clean_repeatability_run/p16/dashboard/real_dashboard_ready.png",
+      "source_sha256": "6338820ad43d629c39fa7c3761a5ac3809359dfd87f306c980baea6dd50e6fa6",
+      "copied_destination": "dashboard/clean_repeatability_overview.png",
+      "copied_sha256": "6338820ad43d629c39fa7c3761a5ac3809359dfd87f306c980baea6dd50e6fa6",
+      "byte_identical": true,
+      "evidence_classification": "clean repeatability dashboard screenshot",
+      "intended_slide_or_use": "P18 repeatability status"
+    },
+    {
+      "artifact_type": "runtime_result",
+      "source_package": "stop_b_p18_first_integrated_run_retry1.zip",
+      "source_package_sha256": "afdf4aa12d589c5984d637fcb122f6ef2a810cfa1111434e9135fee63f3d2f2d",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_first_integrated_run_retry1.zip::stop_b_p18_first_integrated_run_retry1/result.json",
+      "source_sha256": "3b4ace54743451835eae95a52c32fb15addc870c539bf4fbc555a2e8b4e888b0",
+      "copied_destination": "runtime/first_integrated_result.json",
+      "copied_sha256": "3b4ace54743451835eae95a52c32fb15addc870c539bf4fbc555a2e8b4e888b0",
+      "byte_identical": true,
+      "evidence_classification": "first retry: integrated chain validated; dashboard capture absent",
+      "intended_slide_or_use": "P18 integrated-system status"
+    },
+    {
+      "artifact_type": "dashboard_result",
+      "source_package": "aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "source_package_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip::stop_b_p18_retry1_dashboard_completion/result.json",
+      "source_sha256": "9bdae4fa3b5be33f351b4ef6512881aa46d7a3c3e0966d551a52b7b58f164e30",
+      "copied_destination": "dashboard/dashboard_completion_result.json",
+      "copied_sha256": "9bdae4fa3b5be33f351b4ef6512881aa46d7a3c3e0966d551a52b7b58f164e30",
+      "byte_identical": true,
+      "evidence_classification": "dashboard evidence completion PASS",
+      "intended_slide_or_use": "P18 integrated-system status"
+    },
+    {
+      "artifact_type": "repeatability_result",
+      "source_package": "stop_b_p18_clean_repeatability_run.zip",
+      "source_package_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_clean_repeatability_run.zip::stop_b_p18_clean_repeatability_run/result.json",
+      "source_sha256": "9a1636daa5d6fac503568801d3614a559820034a68f8d403f9533c1eb87e1b69",
+      "copied_destination": "repeatability/clean_repeatability_result.json",
+      "copied_sha256": "9a1636daa5d6fac503568801d3614a559820034a68f8d403f9533c1eb87e1b69",
+      "byte_identical": true,
+      "evidence_classification": "clean repeatability PASS",
+      "intended_slide_or_use": "P18 repeatability status"
+    },
+    {
+      "artifact_type": "lineage",
+      "source_package": "stop_b_p18_first_integrated_run_retry1.zip",
+      "source_package_sha256": "afdf4aa12d589c5984d637fcb122f6ef2a810cfa1111434e9135fee63f3d2f2d",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_first_integrated_run_retry1.zip::stop_b_p18_first_integrated_run_retry1/provenance/lineage.json",
+      "source_sha256": "7ea410dd6bedd410da8c5d829b624918729e1e2d22f8dae2b01874b991ff8815",
+      "copied_destination": "provenance/first_integrated_lineage.json",
+      "copied_sha256": "7ea410dd6bedd410da8c5d829b624918729e1e2d22f8dae2b01874b991ff8815",
+      "byte_identical": true,
+      "evidence_classification": "P15 to P16 to P17 lineage for first retry",
+      "intended_slide_or_use": "provenance"
+    },
+    {
+      "artifact_type": "dashboard_provenance",
+      "source_package": "aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip",
+      "source_package_sha256": "b52cf8db39c0a0fb936dc25eaf9f3a1af83b26a4310a3ee1e8fc5a671d28ae61",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\aegisinspect_stop_b_p18_retry1_dashboard_completion_evidence.zip::stop_b_p18_retry1_dashboard_completion/dashboard/final_view_state.json",
+      "source_sha256": "86f547f4cee107956b9f108bf9e1dced8f8979148b4cf13a30772bdbbab2476d",
+      "copied_destination": "provenance/dashboard_final_view_state.json",
+      "copied_sha256": "86f547f4cee107956b9f108bf9e1dced8f8979148b4cf13a30772bdbbab2476d",
+      "byte_identical": true,
+      "evidence_classification": "browser-visible persisted record state",
+      "intended_slide_or_use": "provenance"
+    },
+    {
+      "artifact_type": "repeatability_provenance",
+      "source_package": "stop_b_p18_clean_repeatability_run.zip",
+      "source_package_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_clean_repeatability_run.zip::stop_b_p18_clean_repeatability_run/provenance/execution_identity.json",
+      "source_sha256": "3366da49f86eb15b84c659c3a1084da260b8fafa7f5f63945957db892b66d210",
+      "copied_destination": "provenance/clean_repeatability_execution_identity.json",
+      "copied_sha256": "3366da49f86eb15b84c659c3a1084da260b8fafa7f5f63945957db892b66d210",
+      "byte_identical": true,
+      "evidence_classification": "authoritative clean-repeatability execution identity",
+      "intended_slide_or_use": "provenance"
+    },
+    {
+      "artifact_type": "repeatability_provenance",
+      "source_package": "stop_b_p18_clean_repeatability_run.zip",
+      "source_package_sha256": "0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82",
+      "source_path": "C:\\Users\\Aritra\\Documents\\aegisinspect-transfer\\P18_20260919\\stop_b_p18_clean_repeatability_run.zip::stop_b_p18_clean_repeatability_run/runtime/accounting.json",
+      "source_sha256": "74d5d73b5cbf3b139e6e357ce5156b4876d1e0dc03fd4ed19b1b1c507ba29162",
+      "copied_destination": "provenance/clean_repeatability_accounting.json",
+      "copied_sha256": "74d5d73b5cbf3b139e6e357ce5156b4876d1e0dc03fd4ed19b1b1c507ba29162",
+      "byte_identical": true,
+      "evidence_classification": "repeatability accounting",
+      "intended_slide_or_use": "provenance"
+    }
+  ]
+}

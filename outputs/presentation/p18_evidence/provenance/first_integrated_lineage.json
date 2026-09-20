@@ -1,0 +1,136 @@
+{
+  "runtime_id": "stop_b_p18_first_integrated_run_retry1",
+  "p18_head": "7b9ff556956c9c8995262515f53ff5382ffacf1b",
+  "source": "This first P18 runtime only; no prior accepted observation was consumed.",
+  "detector": {
+    "model_version": "DET-FINAL-v1",
+    "checkpoint_sha256": "4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3"
+  },
+  "detection": {
+    "detection_id": "28.678000000-0",
+    "class_id": 2,
+    "class_name": "Honeycombing",
+    "confidence": 0.026687312871217728,
+    "bbox_xyxy": [
+      1.27386474609375,
+      3.7222900390625,
+      638.5529174804688,
+      480.0
+    ],
+    "image_width": 640,
+    "image_height": 480,
+    "frame_id": "camera_optical_frame",
+    "stamp_sec": 28,
+    "stamp_nanosec": 678000000,
+    "model_version": "DET-FINAL-v1"
+  },
+  "source_image": {
+    "path": "/mnt/c/Dev/aegisinspect-p18-integration/outputs/evidence/stop_b_p18_first_integrated_run_retry1/runtime/capture/rgb_28678000000.png",
+    "sha256": "32a2a9c6db41a7d047258efc7ec58fbbe20e47c1a096d95afeed810d50fadf76"
+  },
+  "depth": {
+    "utc": "2026-09-19T20:32:28.070258+00:00",
+    "observation_stamp_ns": 28678000000,
+    "frame": "camera_optical_frame",
+    "rgb_depth_camera_info_exact_stamps": true,
+    "bbox_original": [
+      1.27386474609375,
+      3.7222900390625,
+      638.5529174804688,
+      480.0
+    ],
+    "roi": [
+      1,
+      3,
+      639,
+      480
+    ],
+    "sample_pixel": [
+      319.5,
+      241.0
+    ],
+    "central_fraction": 0.5,
+    "min_valid_fraction": 0.5,
+    "statistic": "median positive finite optical-axis Z",
+    "sample_region": [
+      160,
+      122,
+      479,
+      361
+    ],
+    "valid_depth_count": 76241,
+    "invalid_depth_count": 0,
+    "sample_count": 76241,
+    "depth_m": 3.1262271404266357,
+    "camera_xyz": [
+      -0.0028202001772945308,
+      0.0056404003545890615,
+      3.1262271404266357
+    ],
+    "intrinsics": {
+      "fx": 554.2562484741211,
+      "fy": 554.2562484741211,
+      "cx": 320.0,
+      "cy": 240.0
+    },
+    "width": 640,
+    "height": 480,
+    "encoding": "32FC1",
+    "units": "meters",
+    "provenance": "Unchanged Gazebo RGB-D depth via accepted ros_gz bridge; no manual depth substitution",
+    "independent_08_reprojection_exact_match": true
+  },
+  "camera_to_map": {
+    "stamp_ns": 28678000000,
+    "source_frame": "camera_optical_frame",
+    "frame_id": "map",
+    "camera_xyz": [
+      -0.0028202001772945308,
+      0.0056404003545890615,
+      3.1262271404266357
+    ],
+    "map_xyz": [
+      3.888778309118922,
+      0.08248358558866703,
+      -0.041401481379500414
+    ],
+    "translation": [
+      0.8121572588682002,
+      -0.4666978226265334,
+      0.03694770630114672
+    ],
+    "quaternion_xyzw": [
+      0.542949685996242,
+      -0.4656664191457024,
+      0.4427645716313761,
+      -0.5406662174250257
+    ],
+    "transform_stamp_ns": 28678000000
+  },
+  "p15": {
+    "defect_id": "P15D-07c3b5e0-f167-5f8f-9833-a90bea88dcdd",
+    "observation_id": "28.678000000-0",
+    "artifact": "/mnt/c/Dev/aegisinspect-p18-integration/outputs/evidence/stop_b_p18_first_integrated_run_retry1/runtime/capture/mapped_defect.json",
+    "sha256": "3df22bf017b6975a382333dab2e5c024bb2f254bb1022c72c0f195ba6bcab1f9",
+    "replay": {
+      "first_decision": "CREATED",
+      "same_observation_replay": "REPLAY",
+      "count_after_replay": 1,
+      "state_roundtrip_equal": true
+    }
+  },
+  "p16": {
+    "defect_id": "P15D-07c3b5e0-f167-5f8f-9833-a90bea88dcdd",
+    "database": "/mnt/c/Dev/aegisinspect-p18-integration/outputs/evidence/stop_b_p18_first_integrated_run_retry1/p16/p18.sqlite3",
+    "database_sha256": "9bf9b16dda29d8435e27982e60a64b936aae7799f86095d812565a5c8354bbdf",
+    "persisted_record": "/mnt/c/Dev/aegisinspect-p18-integration/outputs/evidence/stop_b_p18_first_integrated_run_retry1/p16/persisted_record.json"
+  },
+  "p17": {
+    "report": "/mnt/c/Dev/aegisinspect-p18-integration/outputs/evidence/stop_b_p18_first_integrated_run_retry1/p17/inspection_report.md",
+    "sha256": "e2d35168e078f39992cdab5bec918481c5642ec43918285e500113805c8a6ed8"
+  },
+  "same_observation": true,
+  "timestamp_ns": 28678000000,
+  "timestamp_domain": "ROS simulation",
+  "GT_OPERATIONAL_USE": "NO"
+}

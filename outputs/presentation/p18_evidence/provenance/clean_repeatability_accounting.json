@@ -1,0 +1,9 @@
+{
+  "run_type": "CLEAN REPEATABILITY",
+  "runtime_invocations": 1,
+  "P13_START_CALL_COUNT": 1,
+  "RESET_CALL_COUNT": 0,
+  "execution_consumed": true,
+  "automatic_retry": false,
+  "legacy_label_correction": "The unchanged supervisor labels REPEATABILITY_RUN=false; this authorized execution is repeatability. Raw file is retained unchanged; this changes no runtime behavior."
+}

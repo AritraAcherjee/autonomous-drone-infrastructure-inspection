@@ -1,0 +1,28 @@
+{
+  "classification": "P18 CLEAN REPEATABILITY RUN \u2014 PASS",
+  "head": "7b9ff556956c9c8995262515f53ff5382ffacf1b",
+  "branch": "P18/full-integration",
+  "SAME_OBSERVATION_LINEAGE": "PASS",
+  "new_detection_id": "28.249000000-0",
+  "new_p15_id": "P15D-9b8ae056-1255-5cf4-ba40-e57a11f35e13",
+  "P16": "PASS",
+  "dashboard_apptest": "PASS",
+  "browser_screenshots": "PASS",
+  "P17": "PASS",
+  "report_sha256": "810f1e9dfa9c3e0b4a78e6d4e2448bb2bd2057e595028a32e3e69c49affa3f93",
+  "PARAMETER_BRIDGE_VENDOR_TEARDOWN_DEFECT_REPRODUCED": "YES",
+  "RELEVANT_RESIDUAL_PROCESS_COUNT": 0,
+  "safety": {
+    "SCIENTIFIC_CONFIGURATION_CHANGED": "NO",
+    "GT_OPERATIONAL_USE": "NO",
+    "ADDITIONAL_AUTOMATIC_RETRY": "NO",
+    "STOP_B_FREEZE_STARTED": "NO",
+    "MAIN_MERGE_STARTED": "NO",
+    "SOURCE_CHANGES": "NONE",
+    "P13_START_CALL_COUNT": 1,
+    "RESET_CALL_COUNT": 0,
+    "REPEATABILITY_EXECUTIONS": 1
+  },
+  "source_and_configuration_unchanged": true,
+  "raw_legacy_metadata_note": "Unchanged first-run harness contains first-run wording and REPEATABILITY_RUN=false; execution_identity.json and runtime/accounting.json state this authorized run is repeatability. Raw evidence was not rewritten."
+}

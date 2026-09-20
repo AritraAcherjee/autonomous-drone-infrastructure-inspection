@@ -20,7 +20,7 @@
   "replacement_rule": "Replace PENDING only from accepted hash-bound upstream evidence.",
   "schema_version": 1,
   "system": {
-    "p18_integrated_run_status": "PASS_00_ACCEPTANCE_P20_EVIDENCE_INGESTION_PENDING",
+    "p18_integrated_run_status": "VERIFIED_P20_INGESTION: integrated runtime chain; dashboard evidence completion PASS; clean repeatability PASS",
     "stop_b_runtime_status": "PASS_RUNTIME_ACCEPTANCE"
   }
 }

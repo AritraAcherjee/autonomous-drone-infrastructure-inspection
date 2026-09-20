@@ -1,0 +1,38 @@
+{
+  "classification": "P18 FIRST INTEGRATED RUN \u2014 BLOCKED",
+  "blocker": "DASHBOARD_BROWSER_CAPTURE_FAILED",
+  "harness_correction": "PASS",
+  "PRE_FIX_SHA": "e5fbfeef65a2851333bb2de0a222dc1df82163a6",
+  "POST_FIX_SHA": "7b9ff556956c9c8995262515f53ff5382ffacf1b",
+  "retry_launched": true,
+  "retry_consumed": true,
+  "P13_START_CALL_COUNT": 1,
+  "RESET_CALL_COUNT": 0,
+  "data_chain_same_observation_validated": true,
+  "dashboard_apptest": "PASS",
+  "required_dashboard_screenshot": "ABSENT",
+  "full_runtime_evidence_complete": false,
+  "tests": {
+    "passed": 707,
+    "subtests_passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "deselected": 0
+  },
+  "PARAMETER_BRIDGE_VENDOR_TEARDOWN_DEFECT_REPRODUCED": "YES",
+  "RELEVANT_RESIDUAL_PROCESS_COUNT": 0,
+  "LIVE_REMOTE_VERIFICATION": "PASS",
+  "cached_ahead_behind": [
+    0,
+    0
+  ],
+  "worktree": "CLEAN",
+  "frozen_scientific_contracts_changed": false,
+  "GT_OPERATIONAL_USE": "NO",
+  "prior_observation_reused": false,
+  "another_retry": false,
+  "repeatability_run": false,
+  "final_stop_b_freeze": false,
+  "canonical_main_merge": false,
+  "stop_c_started": false
+}

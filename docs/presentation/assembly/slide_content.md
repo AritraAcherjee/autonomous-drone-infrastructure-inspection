@@ -351,9 +351,13 @@ P19 3D status: **PENDING — accepted explicit GT↔mapped-defect
 correspondence required.** No XYZ-error summary or correspondence count is
 shown.
 
-P18 first integrated run, dashboard evidence and clean repeatability have
-00 acceptance, but **P18 P20 evidence ingestion is PENDING**. No P18
-screenshots, plots, logs or metrics are represented here.
+P18 presentation evidence is verified and ingested. The first integrated
+retry validated the same-observation data chain but recorded a missing
+dashboard browser capture; it is not presented as a complete first-run PASS.
+The separate dashboard-evidence completion package is PASS and the clean
+repeatability run is PASS. These facts demonstrate accepted integrated
+runtime, dashboard-completion and repeatability evidence, not full autonomy
+or system-wide scientific validation.
 
 ---
 
@@ -370,7 +374,7 @@ Required visible limitations:
 7. the accepted P16/P17 record is extremely-low-confidence, unreviewed machine output.
 8. P19 localization is measured, not threshold-classified as accurate.
 9. P19 3D evaluation awaits explicit correspondence.
-10. P18 evidence ingestion into P20 is pending.
+10. P18 demonstrates accepted runtime, dashboard-completion and repeatability evidence, not full autonomy or production readiness.
 11. Workstream 04 final robustness evidence is pending.
 12. Stop C/full autonomy is not demonstrated.
 
@@ -412,7 +416,6 @@ evaluation.
 
 Pending inputs:
 
-- P18 accepted presentation evidence ingestion;
 - P19 explicit GT↔mapped-defect correspondence for 3D evaluation;
 - Workstream 04 final low-light robustness evidence.
 

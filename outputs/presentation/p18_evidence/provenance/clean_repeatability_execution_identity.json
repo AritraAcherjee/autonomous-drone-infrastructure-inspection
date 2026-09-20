@@ -1,0 +1,10 @@
+{
+  "run_type": "CLEAN REPEATABILITY",
+  "authorized_attempts": 1,
+  "production_supervisor": "/mnt/c/Dev/aegisinspect-p18-integration/scripts/p18/supervisor.py",
+  "supervisor_sha256": "94e75bc757dfab87b071574e0035c181f43e99d0401a7d1e47736ce7aa415b6a",
+  "supervisor_unchanged": true,
+  "raw_legacy_labels_note": "Unchanged first-run supervisor/worker/downstream code retains first-run prose and a hard-coded REPEATABILITY_RUN=false safety label. This file and runtime_id are authoritative for current execution type; no launch/gate/scientific logic is modified to relabel it. START/RESET counters remain the actual counters.",
+  "previous_p15_id_must_not_be_reused": "P15D-07c3b5e0-f167-5f8f-9833-a90bea88dcdd",
+  "clean_database_target": "/mnt/c/Dev/aegisinspect-p18-integration/outputs/evidence/stop_b_p18_clean_repeatability_run/p16/p18.sqlite3"
+}
