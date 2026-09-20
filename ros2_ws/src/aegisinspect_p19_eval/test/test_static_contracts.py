@@ -1,6 +1,8 @@
 from pathlib import Path
 import hashlib
+import importlib.util
 import math
+import os
 import re
 import subprocess
 import xml.etree.ElementTree as ET
@@ -14,6 +16,46 @@ BASE = "7b9ff556956c9c8995262515f53ff5382ffacf1b"
 
 
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_readiness_launch():
+    path = PKG / "launch/no_start_readiness.launch.py"
+    spec = importlib.util.spec_from_file_location("p19_no_start_readiness_launch", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+class EnvironmentContext:
+    def __init__(self, environment=None):
+        self.environment = dict(environment or {})
+
+
+def test_lyrical_launch_import_and_description_construction():
+    module = load_readiness_launch()
+    assert module.generate_launch_description() is not None
+    assert "PrependEnvironmentVariable" not in Path(module.__file__).read_text()
+
+
+def test_lyrical_prepend_path_environment_semantics():
+    module = load_readiness_launch()
+    absent = EnvironmentContext()
+    module.prepend_path_environment(absent, "PATHS", "/instrumented")
+    assert absent.environment["PATHS"] == "/instrumented"
+
+    empty = EnvironmentContext({"PATHS": ""})
+    module.prepend_path_environment(empty, "PATHS", "/instrumented")
+    assert empty.environment["PATHS"] == "/instrumented"
+
+    populated = EnvironmentContext({"PATHS": os.pathsep.join(["/system", "/vendor"])})
+    module.prepend_path_environment(populated, "PATHS", "/certificate")
+    module.prepend_path_environment(populated, "PATHS", "/instrumented")
+    assert populated.environment["PATHS"].split(os.pathsep) == [
+        "/instrumented", "/certificate", "/system", "/vendor"]
+
+    duplicate = EnvironmentContext({"PATHS": os.pathsep.join(["/instrumented", "/system"])})
+    module.prepend_path_environment(duplicate, "PATHS", "/instrumented")
+    assert duplicate.environment["PATHS"].split(os.pathsep) == ["/instrumented", "/system"]
 
 
 def test_anchor_geometry_no_interpenetration_and_full_frame_coverage():

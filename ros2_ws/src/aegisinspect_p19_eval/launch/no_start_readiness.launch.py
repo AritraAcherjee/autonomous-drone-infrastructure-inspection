@@ -1,11 +1,12 @@
 """P19 no-START readiness stack. Contains no detector or P15 nodes."""
 
 from pathlib import Path
+import os
 import shlex
 
 from ament_index_python.packages import get_package_prefix, get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import AppendEnvironmentVariable, DeclareLaunchArgument, EmitEvent, IncludeLaunchDescription, OpaqueFunction, PrependEnvironmentVariable, RegisterEventHandler
+from launch.actions import AppendEnvironmentVariable, DeclareLaunchArgument, EmitEvent, IncludeLaunchDescription, OpaqueFunction, RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 from launch.events import Shutdown
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -19,6 +20,14 @@ def include(package, filename, arguments=None):
         PythonLaunchDescriptionSource(str(path)),
         launch_arguments=(arguments or {}).items(),
     )
+
+
+def prepend_path_environment(context, name, value):
+    """Prepend one path without losing the inherited Lyrical environment."""
+    existing = context.environment.get(name, "")
+    entries = [entry for entry in existing.split(os.pathsep) if entry and entry != value]
+    context.environment[name] = os.pathsep.join([value, *entries])
+    return []
 
 
 def start(context):
@@ -42,9 +51,13 @@ def start(context):
                                   "manifest_seal_path": LaunchConfiguration("manifest_seal_path")}])
     return [
         AppendEnvironmentVariable("GZ_SIM_RESOURCE_PATH", str(share / "models")),
-        PrependEnvironmentVariable("LD_LIBRARY_PATH", str(prefix / "lib")),
-        PrependEnvironmentVariable("LD_LIBRARY_PATH", str(instrumented_prefix / "lib")),
-        PrependEnvironmentVariable("GZ_SIM_SYSTEM_PLUGIN_PATH", str(instrumented_prefix / "lib" / "gz-sim-10" / "plugins")),
+        OpaqueFunction(function=prepend_path_environment,
+                       args=["LD_LIBRARY_PATH", str(prefix / "lib")]),
+        OpaqueFunction(function=prepend_path_environment,
+                       args=["LD_LIBRARY_PATH", str(instrumented_prefix / "lib")]),
+        OpaqueFunction(function=prepend_path_environment,
+                       args=["GZ_SIM_SYSTEM_PLUGIN_PATH",
+                             str(instrumented_prefix / "lib" / "gz-sim-10" / "plugins")]),
         AppendEnvironmentVariable("GZ_SIM_SYSTEM_PLUGIN_PATH", str(prefix / "lib")),
         AppendEnvironmentVariable("GZ_SIM_SYSTEM_PLUGIN_PATH", str(sim_prefix / "lib")),
         AppendEnvironmentVariable("P19_CERTIFICATE_RUN_ID", "P19-NO-START-READINESS-002"),
