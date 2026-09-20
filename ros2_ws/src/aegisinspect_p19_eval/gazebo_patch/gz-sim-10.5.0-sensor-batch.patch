@@ -1,0 +1,26 @@
+diff --git a/src/systems/sensors/Sensors.cc b/src/systems/sensors/Sensors.cc
+index 8760e51..59bc417 100644
+--- a/src/systems/sensors/Sensors.cc
++++ b/src/systems/sensors/Sensors.cc
+@@ -45,0 +46 @@
++#include <aegisinspect_p19_eval/sensor_batch_certificate.h>
+@@ -229,0 +231,4 @@ class gz::sim::systems::SensorsPrivate
++  /// P19 evaluation-only identity of the ECM update applied to this batch.
++  public: std::uint64_t updateIteration{0};
++  public: std::uint64_t updateIterationApplied{0};
++
+@@ -419,0 +425 @@ void SensorsPrivate::RunOnce()
++    this->updateIterationApplied = this->updateIteration;
+@@ -494,0 +501,10 @@ void SensorsPrivate::RunOnce()
++      p19_batch_open(this->updateIterationApplied,
++        std::chrono::duration_cast<std::chrono::nanoseconds>(
++          this->updateTimeApplied).count());
++      struct P19BatchCloseGuard
++      {
++        ~P19BatchCloseGuard()
++        {
++          p19_batch_close();
++        }
++      } p19BatchCloseGuard;
+@@ -976,0 +993 @@ void Sensors::PostUpdate(const UpdateInfo &_info,
++      this->dataPtr->updateIteration = _info.iterations;

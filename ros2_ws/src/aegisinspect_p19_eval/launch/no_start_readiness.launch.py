@@ -5,7 +5,7 @@ import shlex
 
 from ament_index_python.packages import get_package_prefix, get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import AppendEnvironmentVariable, DeclareLaunchArgument, EmitEvent, IncludeLaunchDescription, OpaqueFunction, RegisterEventHandler
+from launch.actions import AppendEnvironmentVariable, DeclareLaunchArgument, EmitEvent, IncludeLaunchDescription, OpaqueFunction, PrependEnvironmentVariable, RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 from launch.events import Shutdown
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -25,11 +25,15 @@ def start(context):
     share = Path(get_package_share_directory("aegisinspect_p19_eval"))
     prefix = Path(get_package_prefix("aegisinspect_p19_eval"))
     sim_prefix = Path(get_package_prefix("aegisinspect_sim"))
+    instrumented_prefix = Path(LaunchConfiguration("instrumented_gazebo_prefix").perform(context))
+    instrumented_plugin = instrumented_prefix / "lib" / "gz-sim-10" / "plugins" / "libgz-sim-sensors-system.so.10.5.0"
+    if not instrumented_plugin.is_file():
+        raise RuntimeError(f"version-matched instrumented Sensors system absent: {instrumented_plugin}")
     headless = LaunchConfiguration("headless").perform(context).lower() == "true"
     args = ["-r", "-v", "3"]
     if headless:
         args += ["-s", "--headless-rendering"]
-    args.append(str(share / "worlds" / "p19_correspondence_readiness.sdf"))
+    args.append(str(share / "worlds" / "p19_correspondence_readiness_batch_v1.sdf"))
     collector = Node(package="aegisinspect_p19_eval", executable="readiness_node.py",
                      name="readiness_collector", namespace="/aegis/p19_eval", output="screen",
                      parameters=[{"use_sim_time": True,
@@ -38,8 +42,12 @@ def start(context):
                                   "manifest_seal_path": LaunchConfiguration("manifest_seal_path")}])
     return [
         AppendEnvironmentVariable("GZ_SIM_RESOURCE_PATH", str(share / "models")),
+        PrependEnvironmentVariable("LD_LIBRARY_PATH", str(prefix / "lib")),
+        PrependEnvironmentVariable("LD_LIBRARY_PATH", str(instrumented_prefix / "lib")),
+        PrependEnvironmentVariable("GZ_SIM_SYSTEM_PLUGIN_PATH", str(instrumented_prefix / "lib" / "gz-sim-10" / "plugins")),
         AppendEnvironmentVariable("GZ_SIM_SYSTEM_PLUGIN_PATH", str(prefix / "lib")),
         AppendEnvironmentVariable("GZ_SIM_SYSTEM_PLUGIN_PATH", str(sim_prefix / "lib")),
+        AppendEnvironmentVariable("P19_CERTIFICATE_RUN_ID", "P19-NO-START-READINESS-002"),
         include("ros_gz_sim", "gz_sim.launch.py", {
             "gz_args": shlex.join(args), "on_exit_shutdown": "true"}),
         Node(package="aegisinspect_sim", executable="motion_control_node",
@@ -48,6 +56,11 @@ def start(context):
         Node(package="ros_gz_bridge", executable="parameter_bridge",
              name="p19_sensor_bridge", namespace="/aegis/p19_eval", output="screen",
              parameters=[{"config_file": str(share / "config" / "bridge.yaml"),
+                          "use_sim_time": True,
+                          "override_timestamps_with_wall_time": False}]),
+        Node(package="ros_gz_bridge", executable="parameter_bridge",
+             name="p19_batch_certificate_bridge", namespace="/aegis/p19_eval", output="screen",
+             parameters=[{"config_file": str(share / "config" / "sensor_batch_bridge.yaml"),
                           "use_sim_time": True,
                           "override_timestamps_with_wall_time": False}]),
         include("aegisinspect_description", "description.launch.py", {"use_sim_time": "true"}),
@@ -67,5 +80,6 @@ def generate_launch_description():
         DeclareLaunchArgument("output_directory"),
         DeclareLaunchArgument("manifest_path"),
         DeclareLaunchArgument("manifest_seal_path"),
+        DeclareLaunchArgument("instrumented_gazebo_prefix"),
         OpaqueFunction(function=start),
     ])

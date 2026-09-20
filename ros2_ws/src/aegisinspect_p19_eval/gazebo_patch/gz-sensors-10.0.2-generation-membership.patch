@@ -1,0 +1,46 @@
+diff --git a/src/CameraSensor.cc b/src/CameraSensor.cc
+index bc0c88e..fa2e374 100644
+--- a/src/CameraSensor.cc
++++ b/src/CameraSensor.cc
+@@ -34,0 +35 @@
++#include <aegisinspect_p19_eval/sensor_batch_certificate.h>
+@@ -641,0 +643,6 @@ void CameraSensor::PublishInfo(
++  auto calibration = this->dataPtr->infoMsg;
++  calibration.mutable_header()->clear_stamp();
++  const auto serializedCalibration = calibration.SerializeAsString();
++  const auto p19SensorIdentity = this->Name() + ":" + std::to_string(this->Id());
++  p19_record_calibration(p19SensorIdentity.c_str(),
++    serializedCalibration.data(), serializedCalibration.size());
+diff --git a/src/RgbdCameraSensor.cc b/src/RgbdCameraSensor.cc
+index b6633b0..63bf9c7 100644
+--- a/src/RgbdCameraSensor.cc
++++ b/src/RgbdCameraSensor.cc
+@@ -31,0 +32 @@
++#include <aegisinspect_p19_eval/sensor_batch_certificate.h>
+@@ -540,0 +542,5 @@ bool RgbdCameraSensor::Update(const std::chrono::steady_clock::duration &_now)
++      const auto p19SensorIdentity = this->Name() + ":" + std::to_string(this->Id());
++      p19_record_depth(p19SensorIdentity.c_str(),
++        std::chrono::duration_cast<std::chrono::nanoseconds>(_now).count(),
++        msg.data().data(), msg.data().size(), msg.width(), msg.height(),
++        msg.step(), this->FrameId().c_str());
+@@ -627,0 +634,5 @@ bool RgbdCameraSensor::Update(const std::chrono::steady_clock::duration &_now)
++        const auto p19SensorIdentity = this->Name() + ":" + std::to_string(this->Id());
++        p19_record_rgb(p19SensorIdentity.c_str(),
++          std::chrono::duration_cast<std::chrono::nanoseconds>(_now).count(),
++          msg.data().data(), msg.data().size(), msg.width(), msg.height(),
++          msg.step(), this->FrameId().c_str());
+diff --git a/src/SegmentationCameraSensor.cc b/src/SegmentationCameraSensor.cc
+index c17d9c6..df2e44b 100644
+--- a/src/SegmentationCameraSensor.cc
++++ b/src/SegmentationCameraSensor.cc
+@@ -30,0 +31 @@
++#include <aegisinspect_p19_eval/sensor_batch_certificate.h>
+@@ -541,0 +543,8 @@ bool SegmentationCameraSensor::Update(
++  const auto p19SensorIdentity = this->Name() + ":" + std::to_string(this->Id());
++  p19_record_truth(p19SensorIdentity.c_str(),
++    std::chrono::duration_cast<std::chrono::nanoseconds>(_now).count(),
++    this->dataPtr->labelsMapMsg.data().data(),
++    this->dataPtr->labelsMapMsg.data().size(),
++    this->dataPtr->labelsMapMsg.width(), this->dataPtr->labelsMapMsg.height(),
++    this->dataPtr->labelsMapMsg.step(), this->FrameId().c_str());
++

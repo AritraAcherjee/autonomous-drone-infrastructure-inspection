@@ -37,6 +37,10 @@ from aegisinspect_p19_eval.contracts import (
     validate_receipt,
     verify_detached_seal,
 )
+from aegisinspect_p19_eval.batch_certificate import (
+    camera_info_hash, certificate_hash, operational_image_hash,
+    parse_sensor_batch_certificate,
+)
 from aegisinspect_p19_eval.telemetry import PassiveJoinTelemetry
 
 
@@ -89,17 +93,22 @@ class ReadinessCollector(Node):
         shutil.copyfile(manifest_path, self.output / "PRE_START_MANIFEST.json")
         shutil.copyfile(seal_path, self.output / "PRE_START_MANIFEST.sha256")
         self.experiment_id = manifest["experiment_id"]
-        self.run_id = "P19-NO-START-READINESS-001"
-        self.rgb: dict[int, Image] = {}
-        self.depth: dict[int, Image] = {}
-        self.info: dict[int, CameraInfo] = {}
-        self.truth: dict[int, Image] = {}
+        self.run_id = "P19-NO-START-READINESS-002"
+        self.rgb: dict[str, Image] = {}
+        self.depth: dict[str, Image] = {}
+        self.info: dict[str, CameraInfo] = {}
+        self.calibration_hash: str | None = None
+        self.calibration_message: CameraInfo | None = None
+        self.truth: dict[str, Image] = {}
+        self.certificates: dict[str, Any] = {}
         self.updates: dict[int, Any] = {}
         self.gt_pose: dict[int, PoseStamped] = {}
         self.map_pose: dict[int, Odometry] = {}
         self.scene_identity: dict[str, Any] | None = None
         self.receipts: list[ExposureReceipt] = []
-        self.seen_stamps: set[int] = set()
+        self.seen_batches: set[str] = set()
+        self.last_batch_sequence = 0
+        self.last_valid_index = 0
         self.alignment: dict[str, Any] | None = None
         self.failed = False
         self.telemetry = PassiveJoinTelemetry()
@@ -109,6 +118,7 @@ class ReadinessCollector(Node):
         self.create_subscription(Image, "/aegis/p19_eval/truth/labels", self.on_truth, qos_profile_sensor_data)
         self.create_subscription(String, "/aegis/p19_eval/update_attestation", self.on_update, qos_profile_sensor_data)
         self.create_subscription(String, "/aegis/p19_eval/scene_identity", self.on_scene, qos_profile_sensor_data)
+        self.create_subscription(String, "/aegis/p19_eval/sensor_batch_certificate", self.on_certificate, qos_profile_sensor_data)
         self.create_subscription(PoseStamped, "/aegis/sim/ground_truth/pose", self.on_gt_pose, qos_profile_sensor_data)
         self.create_subscription(Odometry, "/aegis/localization/vio/odom", self.on_map_pose, qos_profile_sensor_data)
         self.get_logger().info("P19 readiness collector armed; no START or inference API exists in this node")
@@ -117,18 +127,39 @@ class ReadinessCollector(Node):
         for key in sorted(values)[:-500]:
             values.pop(key, None)
 
-    def store(self, stream: str, values: dict[int, Any], message: Any) -> None:
-        key = stamp_ns(message)
-        if key > 0:
-            self.telemetry.record_seen(stream)
-            values[key] = message
-            self.trim(values)
-            self.try_receipt(key)
+    def store_image(self, stream: str, values: dict[str, Image], message: Image) -> None:
+        self.telemetry.record_seen(stream)
+        values[operational_image_hash(message)] = message
+        self.trim(values)
+        self.try_certificates()
 
-    def on_rgb(self, message): self.store("rgb", self.rgb, message)
-    def on_depth(self, message): self.store("depth", self.depth, message)
-    def on_info(self, message): self.store("camera_info", self.info, message)
-    def on_truth(self, message): self.store("truth", self.truth, message)
+    def on_rgb(self, message): self.store_image("rgb", self.rgb, message)
+    def on_depth(self, message): self.store_image("depth", self.depth, message)
+    def on_truth(self, message): self.store_image("truth", self.truth, message)
+
+    def on_info(self, message: CameraInfo) -> None:
+        self.telemetry.record_seen("camera_info")
+        digest = camera_info_hash(message)
+        if self.calibration_hash is not None and digest != self.calibration_hash:
+            self.fail("camera calibration mutated or sensor was recreated")
+            return
+        self.calibration_hash = digest
+        self.calibration_message = message
+        self.info[digest] = message
+        self.trim(self.info)
+        self.try_certificates()
+
+    def on_certificate(self, message: String) -> None:
+        try:
+            certificate = parse_sensor_batch_certificate(message.data)
+            digest = certificate_hash(certificate)
+            if digest in self.certificates:
+                self.fail("duplicate authoritative sensor-batch certificate")
+                return
+            self.certificates[digest] = certificate
+            self.try_certificates()
+        except Exception as exc:
+            self.fail(f"sensor-batch certificate rejected: {exc}")
 
     def on_update(self, message: String) -> None:
         try:
@@ -153,6 +184,7 @@ class ReadinessCollector(Node):
                     raise ValueError(f"invalid {key}")
             self.scene_identity = value
             self.telemetry.record_scene_identity()
+            self.try_certificates()
         except Exception as exc:
             self.fail(f"scene identity rejected: {exc}")
 
@@ -208,85 +240,79 @@ class ReadinessCollector(Node):
             self.fail(f"startup alignment rejected: {exc}")
 
     def try_receipt(self, key: int) -> None:
-        if self.failed or key in self.seen_stamps or len(self.receipts) >= 20:
+        """Retained only for startup-alignment callers; never qualifies exposure."""
+        del key
+
+    def try_certificates(self) -> None:
+        """Qualify only explicit native batch certificates and bound outputs."""
+        if self.failed or len(self.receipts) >= 20 or self.scene_identity is None:
             return
-        if self.scene_identity is None:
-            self.telemetry.record_join(key, {
-                "rgb": key in self.rgb, "depth": key in self.depth,
-                "camera_info": key in self.info, "truth": key in self.truth,
-                "attestation": key in self.updates,
-            }, False)
-            return
-        required = (self.rgb, self.depth, self.info, self.truth, self.updates)
-        presence = {
-            "rgb": key in self.rgb, "depth": key in self.depth,
-            "camera_info": key in self.info, "truth": key in self.truth,
-            "attestation": key in self.updates,
-        }
-        self.telemetry.record_join(key, presence, True)
-        if any(key not in values for values in required):
-            return
-        try:
-            rgb, depth, info, truth, update = (
-                self.rgb[key], self.depth[key], self.info[key], self.truth[key], self.updates[key])
-            if not (rgb.header.frame_id == depth.header.frame_id == info.header.frame_id == truth.header.frame_id == "camera_optical_frame"):
-                raise ValueError("camera frame identity mismatch")
-            if (rgb.width, rgb.height) != (640, 480) or (truth.width, truth.height) != (640, 480):
-                raise ValueError("camera dimensions mismatch")
-            labels = labels_from_image(truth)
-            summary = summarize_truth_labels(labels, target_label=TARGET_LABEL)
-            rgb_serialized = bytes(serialize_message(rgb))
-            token_payload = {
-                "experiment_id": self.experiment_id,
-                "run_id": self.run_id,
-                "timestamp_ns": key,
-                "simulation_iteration": update.iteration,
-                "rgb_message_sha256": sha256_bytes(rgb_serialized),
-                "rgb_sensor_identity": "/aegis/sim/sensors/camera/image",
-            }
-            token = "P19OBS-" + sha256_bytes(canonical_json_bytes(token_payload))
-            scene_hash = sha256_bytes(canonical_json_bytes(self.scene_identity))
-            receipt = ExposureReceipt(
-                experiment_id=self.experiment_id,
-                run_id=self.run_id,
-                observation_token=token,
-                rgb_sensor_identity="/aegis/sim/sensors/camera/image",
-                truth_sensor_identity="/aegis/p19_eval/truth/labels_map",
-                simulation_iteration=update.iteration,
-                render_identity=f"gz-post-render-{update.render_event}-update-{update.iteration}",
-                timestamp_ns=key,
-                frame_id=rgb.header.frame_id,
-                width=rgb.width,
-                height=rgb.height,
-                encoding=rgb.encoding,
-                step=rgb.step,
-                rgb_message_sha256=sha256_bytes(rgb_serialized),
-                rgb_pixel_sha256=sha256_bytes(bytes(rgb.data)),
-                depth_message_sha256=msg_hash(depth),
-                camera_info_sha256=msg_hash(info),
-                truth_label_buffer_sha256=sha256_bytes(bytes(truth.data)),
-                scene_state_sha256=scene_hash,
-                gt_defect_id=GT_ID,
-                scene_model=TARGET_MODEL,
-                scene_link=TARGET_LINK,
-                scene_visual=TARGET_VISUAL,
-                binding_rule_version=BINDING_RULE,
-                truth_summary=summary,
-            )
-            validate_receipt(receipt, update)
-            if self.receipts and (key <= self.receipts[-1].timestamp_ns or
-                                  update.iteration <= self.receipts[-1].simulation_iteration):
-                raise ValueError("duplicate/restarted timestamp or iteration")
-            self.receipts.append(receipt)
-            self.telemetry.record_receipt(key, token)
-            self.seen_stamps.add(key)
-            destination = self.output / "receipts" / f"{len(self.receipts):04d}.json"
-            destination.write_bytes(canonical_json_bytes(receipt_as_dict(receipt)) + b"\n")
-            self.get_logger().info(f"eligible paired receipt {len(self.receipts)}/20 at {key}")
-            self.finish_if_ready()
-        except Exception as exc:
-            self.telemetry.record_rejection(key, str(exc))
-            self.fail(f"paired exposure rejected at {key}: {exc}")
+        for digest, certificate in list(self.certificates.items()):
+            if certificate.acquisition_batch_id in self.seen_batches:
+                continue
+            rgb = self.rgb.get(certificate.operational_rgb_sha256)
+            depth = self.depth.get(certificate.operational_depth_sha256)
+            truth = self.truth.get(certificate.operational_truth_sha256)
+            info = self.calibration_message
+            if any(value is None for value in (rgb, depth, truth, info)):
+                continue
+            try:
+                if sha256_bytes(canonical_json_bytes(self.scene_identity)) != certificate.scene_identity_sha256:
+                    raise ValueError("certificate scene identity mismatch")
+                labels = labels_from_image(truth)
+                summary = summarize_truth_labels(labels, target_label=TARGET_LABEL)
+                token = "P19OBS-" + digest
+                receipt = ExposureReceipt(
+                    experiment_id=self.experiment_id,
+                    run_id=certificate.run_id,
+                    observation_token=token,
+                    rgb_sensor_identity=certificate.rgbd_sensor_id,
+                    truth_sensor_identity=certificate.truth_sensor_id,
+                    simulation_iteration=certificate.applied_update_identity,
+                    render_identity=certificate.acquisition_batch_id,
+                    timestamp_ns=certificate.native_rgb_timestamp_ns,
+                    frame_id=rgb.header.frame_id,
+                    width=rgb.width,
+                    height=rgb.height,
+                    encoding=rgb.encoding,
+                    step=rgb.step,
+                    rgb_message_sha256=certificate.operational_rgb_sha256,
+                    rgb_pixel_sha256=sha256_bytes(bytes(rgb.data)),
+                    depth_message_sha256=certificate.operational_depth_sha256,
+                    camera_info_sha256=self.calibration_hash,
+                    truth_label_buffer_sha256=sha256_bytes(bytes(truth.data)),
+                    scene_state_sha256=certificate.scene_identity_sha256,
+                    gt_defect_id=certificate.gt_defect_id,
+                    scene_model=certificate.scene_model,
+                    scene_link=certificate.scene_link,
+                    scene_visual=certificate.scene_visual,
+                    binding_rule_version=certificate.binding_rule_version,
+                    truth_summary=summary,
+                )
+                if certificate.batch_sequence <= self.last_batch_sequence:
+                    raise ValueError("authoritative batch sequence restarted")
+                if certificate.consecutive_valid_index != self.last_valid_index + 1:
+                    raise ValueError("authoritative certificates are not consecutive")
+                self.receipts.append(receipt)
+                self.telemetry.record_receipt(certificate.batch_sequence, token)
+                self.seen_batches.add(certificate.acquisition_batch_id)
+                self.last_batch_sequence = certificate.batch_sequence
+                self.last_valid_index = certificate.consecutive_valid_index
+                destination = self.output / "receipts" / f"{len(self.receipts):04d}.json"
+                destination.write_bytes(canonical_json_bytes({
+                    "certificate_sha256": digest,
+                    "certificate": certificate.__dict__,
+                    "receipt": receipt_as_dict(receipt),
+                    "truth_summary": summary.__dict__,
+                }) + b"\n")
+                self.get_logger().info(
+                    f"eligible authoritative batch {len(self.receipts)}/20: "
+                    f"{certificate.acquisition_batch_id}")
+                self.finish_if_ready()
+            except Exception as exc:
+                self.telemetry.record_rejection(certificate.batch_sequence, str(exc))
+                self.fail(f"authoritative batch rejected: {exc}")
+                return
 
     def write_telemetry(self, outcome: str) -> None:
         path = self.output / "passive_telemetry.json"
