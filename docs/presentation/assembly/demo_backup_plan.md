@@ -119,9 +119,9 @@ Application layer:
 Recommended fallback order:
 
 1. live demo when verified and stable;
-2. recorded clip from the same canonical evidence run;
-3. screenshot/evidence sequence;
-4. static architecture + quantitative result slide.
+2. verified P18 browser/dashboard evidence;
+3. verified integrated-run screenshots/assets;
+4. working-deck evidence slides.
 
 A fallback must represent the same evidence scope as the claim being made.
 

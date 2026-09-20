@@ -183,7 +183,7 @@ async function main() {
     });
     addCard(s, 'Demonstrated', 'P16/P17 real handoff', 0.8, 4.15, 3.45, 1.2, TEAL, 'verified persistence, dashboard and report');
     addCard(s, 'Measured', 'P19 localization', 4.95, 4.15, 3.45, 1.2, BLUE, 'no frozen accuracy PASS/FAIL threshold');
-    addCard(s, 'Pending', 'P19 3D + P18 assets', 9.1, 4.15, 3.45, 1.2, AMBER, 'controlled correspondence / ingestion');
+    addCard(s, 'Pending', 'P19 3D + Workstream 04', 9.1, 4.15, 3.45, 1.2, AMBER, 'controlled correspondence / low-light evaluation', { valueSize: 16 });
   });
 
   slide('GYU-DET Dataset and Defect Classes', 'SUPPORTED / DATA FOUNDATION', CYAN, 'Assembly section 4.', (s) => {
@@ -229,10 +229,10 @@ async function main() {
 
   slide('P16 Persistence and Dashboard Review', 'DEMONSTRATED / VERIFIED REAL HANDOFF', TEAL, 'Verified dashboard_overview.png; P16/P17 package hash inventory 29/29.', (s) => {
     const image = path.join(EVIDENCE, 'dashboard', 'dashboard_overview.png');
-    s.addImage({ path: image, x: 0.68, y: 1.78, w: 7.25, h: 4.68, sizing: { type: 'contain', x: 0.68, y: 1.78, w: 7.25, h: 4.68 } });
-    addCard(s, 'Review', 'UNREVIEWED', 8.35, 1.95, 3.6, 1.1, AMBER, 'accepted review state');
-    addBody(s, 'Detector classification: Honeycombing\nConfidence: 0.004553093574941158\nObservation count: 1\nModel: DET-FINAL-v1', { x: 8.4, y: 3.45, w: 3.6, h: 1.7, size: 14, color: INK });
-    addBody(s, 'Extremely-low-confidence, unreviewed machine output used to demonstrate system lineage.', { x: 8.35, y: 5.55, w: 3.75, h: 0.55, size: 12.5, color: RED, bold: true, align: 'center' });
+    s.addImage({ path: image, x: 0.48, y: 1.6, w: 8.45, h: 5.45, sizing: { type: 'crop', x: 0.48, y: 1.6, w: 8.45, h: 5.45 } });
+    addCard(s, 'Review', 'UNREVIEWED', 9.25, 1.85, 3.2, 1.1, AMBER, 'accepted review state');
+    addBody(s, 'Detector classification: Honeycombing\nConfidence: 0.004553093574941158\nObservation count: 1\nModel: DET-FINAL-v1', { x: 9.3, y: 3.3, w: 3.05, h: 1.85, size: 12.5, color: INK });
+    addBody(s, 'Extremely-low-confidence, unreviewed machine output used to demonstrate system lineage.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 11.25, color: RED, bold: true, align: 'center' });
   });
 
   slide('P17 Deterministic Reporting', 'DEMONSTRATED / VERIFIED REAL HANDOFF', TEAL, 'Verified inspection_2026091901.md and P17 report SHA-256.', (s) => {
@@ -246,18 +246,18 @@ async function main() {
 
   slide('P18 Integrated-System Demonstration', 'DEMONSTRATED / VERIFIED PACKAGE', TEAL, 'Verified P18 dashboard-completion package; first retry limitation retained.', (s) => {
     const image = path.join(P18_EVIDENCE, 'dashboard', 'dashboard_completion_overview_final.png');
-    s.addImage({ path: image, x: 0.65, y: 1.72, w: 7.3, h: 4.75, sizing: { type: 'contain', x: 0.65, y: 1.72, w: 7.3, h: 4.75 } });
-    addCard(s, 'Dashboard completion', 'PASS', 8.35, 1.92, 3.6, 1.12, TEAL, 'real browser screenshot');
-    addBody(s, 'The first integrated retry validated the same-observation data chain, but its browser capture was absent. The separate dashboard-evidence completion package supplies the accepted real dashboard capture.', { x: 8.3, y: 3.48, w: 3.75, h: 1.65, size: 14.5, color: INK, align: 'center' });
-    addBody(s, 'This demonstrates integrated runtime and dashboard evidence; it does not establish full autonomy or production readiness.', { x: 8.32, y: 5.62, w: 3.7, h: 0.48, size: 11.5, color: RED, bold: true, align: 'center' });
+    s.addImage({ path: image, x: 0.48, y: 1.6, w: 8.45, h: 5.45, sizing: { type: 'crop', x: 0.48, y: 1.6, w: 8.45, h: 5.45 } });
+    addCard(s, 'Dashboard completion', 'PASS', 9.25, 1.85, 3.2, 1.1, TEAL, 'real browser screenshot');
+    addBody(s, 'The first integrated retry validated the same-observation data chain, but its browser capture was absent. The separate dashboard-evidence completion package supplies the accepted real dashboard capture.', { x: 9.22, y: 3.28, w: 3.18, h: 1.95, size: 12.3, color: INK, align: 'center' });
+    addBody(s, 'This demonstrates integrated runtime and dashboard evidence; it does not establish full autonomy or production readiness.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 10.7, color: RED, bold: true, align: 'center' });
   });
 
   slide('P18 Clean Repeatability', 'DEMONSTRATED / VERIFIED PACKAGE', TEAL, 'Verified clean-repeatability package.', (s) => {
     const image = path.join(P18_EVIDENCE, 'dashboard', 'clean_repeatability_overview.png');
-    s.addImage({ path: image, x: 0.65, y: 1.72, w: 7.3, h: 4.75, sizing: { type: 'contain', x: 0.65, y: 1.72, w: 7.3, h: 4.75 } });
-    addCard(s, 'Clean repeatability', 'PASS', 8.35, 1.92, 3.6, 1.12, TEAL, 'accepted execution identity');
-    addBody(s, 'The clean repeatability package records a new detection and mapped-defect identity, P16 PASS, browser screenshots PASS and P17 PASS under unchanged source and configuration.', { x: 8.3, y: 3.48, w: 3.75, h: 1.65, size: 14.5, color: INK, align: 'center' });
-    addBody(s, 'P19 3D correspondence and Workstream 04 evidence remain pending.', { x: 8.32, y: 5.62, w: 3.7, h: 0.48, size: 11.5, color: RED, bold: true, align: 'center' });
+    s.addImage({ path: image, x: 0.48, y: 1.6, w: 8.45, h: 5.45, sizing: { type: 'crop', x: 0.48, y: 1.6, w: 8.45, h: 5.45 } });
+    addCard(s, 'Clean repeatability', 'PASS', 9.25, 1.85, 3.2, 1.1, TEAL, 'accepted execution identity');
+    addBody(s, 'The clean repeatability package records a new detection and mapped-defect identity, P16 PASS, browser screenshots PASS and P17 PASS under unchanged source and configuration.', { x: 9.22, y: 3.28, w: 3.18, h: 1.95, size: 12.3, color: INK, align: 'center' });
+    addBody(s, 'P19 3D correspondence and Workstream 04 evidence remain pending.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 10.7, color: RED, bold: true, align: 'center' });
   });
 
   slide('P19 Localization Evaluation', 'MEASURED / FROZEN METHODOLOGY', BLUE, 'Accepted P19 metrics represented in assembly source.', (s) => {
@@ -268,14 +268,39 @@ async function main() {
     addBody(s, 'Runtime acceptance: PASS. Localization accuracy: MEASURED. No frozen localization-accuracy pass/fail threshold exists.', { x: 1.0, y: 5.15, w: 11.2, h: 0.55, size: 17, color: RED, bold: true, align: 'center' });
   });
 
-  slide('P19 3D Evaluation Status', 'PENDING / CONTROLLED CORRESPONDENCE', AMBER, 'Assembly P19 3D pending boundary.', (s) => {
-    addBody(s, 'P19 3D evaluation - pending controlled correspondence experiment', { x: 1.0, y: 2.25, w: 11.2, h: 0.55, size: 25, color: NAVY, bold: true, align: 'center' });
-    addBody(s, 'Accepted explicit GT-to-mapped-defect correspondence is required before reporting XYZ error, mean, median, RMSE, P95 or correspondence counts.', { x: 1.25, y: 3.55, w: 10.7, h: 0.95, size: 19, color: RED, align: 'center' });
+  slide('P19 3D Evaluation Status', 'PENDING / CONTROLLED CORRESPONDENCE', AMBER, 'Assembly P19 3D pending boundary and late-evidence slot.', (s) => {
+    addBody(s, 'P19 3D correspondence - pending controlled experiment', { x: 0.8, y: 1.65, w: 11.7, h: 0.4, size: 22, color: NAVY, bold: true, align: 'center' });
+    const fields = ['GT defect ID', 'Mapped defect ID', 'Estimated XYZ', 'Ground-truth XYZ', 'Euclidean 3D error', 'Correspondence provenance'];
+    fields.forEach((field, index) => {
+      const col = index % 2;
+      const row = Math.floor(index / 2);
+      const x = 0.8 + col * 3.8;
+      const y = 2.45 + row * 0.86;
+      s.addShape(PptxGenJS.ShapeType.roundRect, { x, y, w: 3.45, h: 0.58, rectRadius: 0.04, fill: { color: 'FFF9EC' }, line: { color: 'E8C878', width: 0.6 } });
+      s.addText(`${field}: pending`, { x: x + 0.18, y: y + 0.2, w: 3.05, h: 0.14, fontFace: FONT, fontSize: 10, color: MUTED, margin: 0, fit: 'shrink' });
+    });
+    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 8.65, y: 2.45, w: 3.85, h: 2.3, rectRadius: 0.04, fill: { color: 'FFFDF7', transparency: 0 }, line: { color: 'E8C878', width: 0.8, dash: 'dash' } });
+    addBody(s, 'Reserved evidence visual\nInsert only after accepted correspondence evidence arrives.', { x: 9.0, y: 3.15, w: 3.15, h: 0.6, size: 13, color: MUTED, align: 'center' });
+    addBody(s, 'No 3D metric or result classification is populated before accepted explicit correspondence.', { x: 1.25, y: 5.55, w: 10.7, h: 0.4, size: 14.5, color: RED, bold: true, align: 'center' });
   });
 
-  slide('Workstream 04: Low-Light Robustness', 'PENDING / ARMOURY RESULTS', AMBER, 'Assembly Workstream 04 pending statement.', (s) => {
-    addBody(s, 'Low-light robustness - results pending Workstream 04 completion', { x: 1.0, y: 2.35, w: 11.2, h: 0.55, size: 25, color: NAVY, bold: true, align: 'center' });
-    addBody(s, 'No performance figures are presented until the final accepted Workstream 04 evidence is available.', { x: 1.45, y: 3.7, w: 10.4, h: 0.5, size: 19, color: RED, align: 'center' });
+  slide('Workstream 04: Low-Light Robustness', 'PENDING / ARMOURY RESULTS', AMBER, 'Assembly Workstream 04 pending statement and late-evidence slot.', (s) => {
+    addBody(s, 'AWAITING ACCEPTED WORKSTREAM 04 RESULTS', { x: 0.85, y: 1.65, w: 11.6, h: 0.4, size: 22, color: NAVY, bold: true, align: 'center' });
+    const chart = { x: 1.35, y: 2.45, w: 7.15, h: 3.25 };
+    s.addShape(PptxGenJS.ShapeType.line, { x: chart.x, y: chart.y, w: 0, h: chart.h, line: { color: NAVY, width: 1.2 } });
+    s.addShape(PptxGenJS.ShapeType.line, { x: chart.x, y: chart.y + chart.h, w: chart.w, h: 0, line: { color: NAVY, width: 1.2 } });
+    ['L0', 'L1', 'L2', 'L3', 'L4'].forEach((label, index) => {
+      const x = chart.x + 0.55 + index * 1.5;
+      s.addShape(PptxGenJS.ShapeType.line, { x, y: chart.y + chart.h, w: 0, h: 0.11, line: { color: NAVY, width: 0.8 } });
+      s.addText(label, { x: x - 0.16, y: chart.y + chart.h + 0.2, w: 0.34, h: 0.15, fontFace: FONT, fontSize: 10.5, color: INK, align: 'center', margin: 0 });
+    });
+    addBody(s, 'Accepted detector metric\n(mAP50-95 if accepted)', { x: 0.2, y: 3.5, w: 0.95, h: 0.55, size: 10.5, color: MUTED, align: 'center' });
+    addBody(s, 'Illumination level', { x: 3.85, y: 6.05, w: 2.2, h: 0.18, size: 10.5, color: MUTED, align: 'center' });
+    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 9.25, y: 2.65, w: 2.9, h: 0.7, rectRadius: 0.04, fill: { color: 'FFF9EC' }, line: { color: 'E8C878', width: 0.6 } });
+    s.addText('RAW series reserved', { x: 9.48, y: 2.93, w: 2.45, h: 0.15, fontFace: FONT, fontSize: 12, color: MUTED, align: 'center', margin: 0 });
+    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 9.25, y: 3.7, w: 2.9, h: 0.7, rectRadius: 0.04, fill: { color: 'FFFDF7' }, line: { color: 'E8C878', width: 0.6 } });
+    s.addText('Additional series\nonly if accepted', { x: 9.48, y: 3.9, w: 2.45, h: 0.3, fontFace: FONT, fontSize: 11, color: MUTED, align: 'center', margin: 0 });
+    addBody(s, 'No points, bars, curves, or performance values are shown before accepted results.', { x: 8.9, y: 5.15, w: 3.55, h: 0.55, size: 12.5, color: RED, bold: true, align: 'center' });
   });
 
   slide('Evidence, Provenance and Reproducibility', 'DEMONSTRATED / HASH-BOUND', TEAL, 'Assembly section 18 and verified P16/P17 package.', (s) => {
