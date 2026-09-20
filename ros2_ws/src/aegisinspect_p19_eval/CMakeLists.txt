@@ -54,6 +54,9 @@ if(BUILD_TESTING)
   ament_add_pytest_test(p19_evidence_interfaces
     test/test_evidence_interfaces.py
     APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR} TIMEOUT 60)
+  ament_add_pytest_test(p19_diagnostic_observability
+    test/test_diagnostic_observability.py
+    APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR} TIMEOUT 60)
 endif()
 
 ament_package()

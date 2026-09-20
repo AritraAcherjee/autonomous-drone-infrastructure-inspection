@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aegisinspect.p19.runtime_diagnostic_observability.v1",
+  "title": "P19 passive runtime diagnostic observability",
+  "type": "object",
+  "required": ["schema", "boundary_family"],
+  "properties": {
+    "schema": {
+      "const": "aegisinspect.p19.runtime_diagnostic_observability.v1"
+    },
+    "boundary_family": {
+      "enum": [
+        "host_process_mapping",
+        "native_authoritative_progress",
+        "collector_snapshot"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {"boundary_family": {"const": "host_process_mapping"}},
+      "required": [
+        "root_process_group", "sample_count", "process_record_limit",
+        "processes", "discovery_status"
+      ]
+    },
+    {
+      "properties": {"boundary_family": {"const": "native_authoritative_progress"}},
+      "required": [
+        "batch_counters", "generation_counters", "eligibility",
+        "certificate_lifecycle", "telemetry_lifecycle", "identity",
+        "native_calibration", "incomplete_open_batch_at_final_snapshot"
+      ]
+    },
+    {
+      "properties": {"boundary_family": {"const": "collector_snapshot"}},
+      "required": [
+        "run_id", "snapshot_reason", "terminal_classification_unchanged",
+        "callback_counts", "prerequisite_availability",
+        "persisted_receipt_count", "current_valid_streak",
+        "max_valid_streak", "current_pending_predicate",
+        "pending_predicates", "readiness_decision_modified"
+      ]
+    }
+  ]
+}

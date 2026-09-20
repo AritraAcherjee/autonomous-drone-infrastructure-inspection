@@ -45,6 +45,9 @@ from aegisinspect_p19_eval.batch_telemetry import (
     parse_batch_telemetry, telemetry_bytes, validate_telemetry_progression,
 )
 from aegisinspect_p19_eval.telemetry import PassiveJoinTelemetry
+from aegisinspect_p19_eval.diagnostic_observability import (
+    CollectorDiagnosticState, diagnostic_bytes,
+)
 
 
 def stamp_ns(message: Any) -> int:
@@ -97,6 +100,8 @@ class ReadinessCollector(Node):
         shutil.copyfile(seal_path, self.output / "PRE_START_MANIFEST.sha256")
         self.experiment_id = manifest["experiment_id"]
         self.run_id = "P19-NO-START-READINESS-002"
+        self.diagnostic = CollectorDiagnosticState(self.run_id)
+        self.terminal_classification = "MISSING"
         self.rgb: dict[str, Image] = {}
         self.depth: dict[str, Image] = {}
         self.info: dict[str, CameraInfo] = {}
@@ -136,6 +141,7 @@ class ReadinessCollector(Node):
             values.pop(key, None)
 
     def store_image(self, stream: str, values: dict[str, Image], message: Image) -> None:
+        self.diagnostic.callback(stream)
         self.telemetry.record_seen(stream)
         values[operational_image_hash(message)] = message
         self.trim(values)
@@ -146,6 +152,7 @@ class ReadinessCollector(Node):
     def on_truth(self, message): self.store_image("truth", self.truth, message)
 
     def on_info(self, message: CameraInfo) -> None:
+        self.diagnostic.callback("camera_info")
         self.telemetry.record_seen("camera_info")
         digest = camera_info_hash(message)
         if self.calibration_hash is not None and digest != self.calibration_hash:
@@ -158,25 +165,37 @@ class ReadinessCollector(Node):
         self.try_certificates()
 
     def on_certificate(self, message: String) -> None:
+        self.diagnostic.callback("certificate")
         try:
             certificate = parse_sensor_batch_certificate(message.data)
+            self.diagnostic.latest_certificate_run_id = certificate.run_id
+            self.diagnostic.latest_certificate_batch_id = certificate.acquisition_batch_id
             digest = certificate_hash(certificate)
             if digest in self.certificates:
+                self.diagnostic.certificate_rejected_count += 1
                 self.fail("duplicate authoritative sensor-batch certificate")
                 return
             self.certificates[digest] = certificate
+            self.diagnostic.certificate_accepted_count += 1
             self.try_certificates()
         except Exception as exc:
+            self.diagnostic.certificate_rejected_count += 1
+            self.diagnostic.latest_rejection_or_blocking_predicate = str(exc)
             self.fail(f"sensor-batch certificate rejected: {exc}")
 
     def on_batch_telemetry(self, message: String) -> None:
+        self.diagnostic.callback("telemetry")
         try:
             item = parse_batch_telemetry(message.data)
+            self.diagnostic.latest_telemetry_run_id = item.run_id
+            self.diagnostic.latest_telemetry_batch_id = (
+                f"{item.run_id}:batch:{item.last_batch_sequence}")
             progression = [item] if self.batch_telemetry is None else [self.batch_telemetry, item]
             validate_telemetry_progression(progression, self.run_id)
             self.batch_telemetry = item
             self.finish_if_ready()
         except Exception as exc:
+            self.diagnostic.latest_rejection_or_blocking_predicate = str(exc)
             self.fail(f"sensor-batch telemetry rejected: {exc}")
 
     def on_gt_frame_identity(self, message: String) -> None:
@@ -206,6 +225,7 @@ class ReadinessCollector(Node):
             self.fail(f"update attestation rejected: {exc}")
 
     def on_scene(self, message: String) -> None:
+        self.diagnostic.callback("scene_identity")
         try:
             value = json.loads(message.data)
             if value.get("gt_defect_id") != GT_ID:
@@ -240,6 +260,7 @@ class ReadinessCollector(Node):
         if (self.alignment is not None or key not in self.gt_pose
                 or key not in self.map_pose or key not in self.gt_frame_identity):
             return
+        self.diagnostic.callback("startup_alignment")
         gt = self.gt_pose[key]
         mapped = self.map_pose[key]
         gt_identity = self.gt_frame_identity[key]
@@ -345,6 +366,7 @@ class ReadinessCollector(Node):
                     f"{certificate.acquisition_batch_id}")
                 self.finish_if_ready()
             except Exception as exc:
+                self.diagnostic.latest_rejection_or_blocking_predicate = str(exc)
                 self.telemetry.record_rejection(certificate.batch_sequence, str(exc))
                 self.fail(f"authoritative batch rejected: {exc}")
                 return
@@ -352,6 +374,38 @@ class ReadinessCollector(Node):
     def write_telemetry(self, outcome: str) -> None:
         path = self.output / "passive_telemetry.json"
         path.write_bytes(canonical_json_bytes(self.telemetry.snapshot(outcome)) + b"\n")
+
+    def write_diagnostic_snapshot(self, reason: str) -> None:
+        """Persist bounded evidence only; never participate in readiness decisions."""
+        try:
+            certificates = list(self.certificates.values())
+            rgb_match = any(item.operational_rgb_sha256 in self.rgb for item in certificates)
+            depth_match = any(item.operational_depth_sha256 in self.depth for item in certificates)
+            telemetry = self.batch_telemetry
+            snapshot = self.diagnostic.snapshot(
+                reason=reason,
+                terminal_classification=self.terminal_classification,
+                alignment_available=self.alignment is not None,
+                scene_available=self.scene_identity is not None,
+                camera_info_available=self.calibration_message is not None,
+                calibration_available=self.calibration_hash is not None,
+                rgb_hash_match_available=rgb_match,
+                depth_hash_match_available=depth_match,
+                truth_available=bool(self.truth),
+                certificate_available=bool(certificates),
+                telemetry_available=telemetry is not None,
+                persisted_receipt_count=len(self.receipts),
+                current_valid_streak=(telemetry.current_consecutive_valid_streak
+                                      if telemetry else 0),
+                max_valid_streak=(telemetry.max_consecutive_valid_streak
+                                  if telemetry else 0),
+            )
+            destination = self.output / "collector_runtime_diagnostic.json"
+            temporary = self.output / "collector_runtime_diagnostic.json.tmp"
+            temporary.write_bytes(diagnostic_bytes(snapshot) + b"\n")
+            temporary.replace(destination)
+        except Exception as exc:
+            self.get_logger().warning(f"passive diagnostic snapshot unavailable: {exc}")
 
     def finish_if_ready(self) -> None:
         if len(self.receipts) == 20 and self.alignment is not None and not self.failed:
@@ -378,6 +432,7 @@ class ReadinessCollector(Node):
                 "scene_identity": self.scene_identity,
             }
             (self.output / "runtime_result.json").write_bytes(canonical_json_bytes(result) + b"\n")
+            self.terminal_classification = "PASS"
             self.get_logger().info("P19 no-START readiness collection complete")
             rclpy.shutdown()
 
@@ -385,6 +440,8 @@ class ReadinessCollector(Node):
         if self.failed:
             return
         self.failed = True
+        self.terminal_classification = "BLOCKED"
+        self.diagnostic.latest_rejection_or_blocking_predicate = reason
         self.write_telemetry("BLOCKED")
         result = {
             "status": "BLOCKED", "reason": reason,
@@ -405,9 +462,11 @@ def main() -> None:
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
+        node.terminal_classification = "INTERRUPTED"
         node.write_telemetry("INTERRUPTED")
         raise
     finally:
+        node.write_diagnostic_snapshot("COLLECTOR_FINALIZATION")
         node.destroy_node()
 
 

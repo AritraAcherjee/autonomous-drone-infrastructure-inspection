@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import ctypes
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -14,6 +15,18 @@ import subprocess
 import sys
 import time
 from typing import Any, Sequence
+
+try:
+    from process_observability import ProcessMappingObserver
+except ModuleNotFoundError:
+    _observer_path = Path(__file__).with_name("process_observability.py")
+    _observer_spec = importlib.util.spec_from_file_location(
+        "p19_process_observability", _observer_path)
+    if _observer_spec is None or _observer_spec.loader is None:
+        raise
+    _observer_module = importlib.util.module_from_spec(_observer_spec)
+    _observer_spec.loader.exec_module(_observer_module)
+    ProcessMappingObserver = _observer_module.ProcessMappingObserver
 
 
 READINESS_DEADLINE_SECONDS = 120.0
@@ -164,6 +177,8 @@ def run_supervised(
     shutdown_grace_seconds: float = SHUTDOWN_GRACE_SECONDS,
     caller_pid_namespace: str = "UNKNOWN", residual_markers: Sequence[str] = (),
     environment: dict[str, str] | None = None,
+    process_diagnostic_path: Path | None = None,
+    required_libraries: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     if deadline_seconds <= 0:
         raise ValueError("readiness deadline must be positive")
@@ -182,6 +197,10 @@ def run_supervised(
     cleanup: dict[str, Any] = {}
     process: subprocess.Popen[bytes] | None = None
     interrupted = False
+    process_observer: ProcessMappingObserver | None = None
+    next_process_sample = started_monotonic
+    if process_diagnostic_path is None:
+        process_diagnostic_path = output_directory / "host_process_mapping_diagnostic.json"
 
     with log_path.open("xb", buffering=0) as log_file:
         process = subprocess.Popen(
@@ -189,8 +208,14 @@ def run_supervised(
             stderr=subprocess.STDOUT, start_new_session=True,
         )
         launch_pgid = os.getpgid(process.pid)
+        process_observer = ProcessMappingObserver(
+            launch_pgid, required_libraries or {})
         try:
             while True:
+                now = time.monotonic()
+                if process_observer is not None and now >= next_process_sample:
+                    process_observer.sample()
+                    next_process_sample = now + 0.5
                 terminal_result = read_terminal_result(output_directory / "runtime_result.json")
                 if terminal_result is not None:
                     trigger = "COLLECTOR_TERMINAL_RESULT"
@@ -262,6 +287,10 @@ def run_supervised(
         "started_wall_ns": started_wall_ns,
         "finished_wall_ns": time.time_ns(),
     }
+    if process_observer is not None:
+        canonical_write(process_diagnostic_path, process_observer.snapshot())
+        lifecycle["process_diagnostic_path"] = str(process_diagnostic_path)
+        lifecycle["process_diagnostic_written_after_active_sampling"] = True
     canonical_write(lifecycle_path, lifecycle)
     return lifecycle
 
@@ -275,17 +304,29 @@ def main() -> int:
     parser.add_argument("--caller-pid-namespace", default="UNKNOWN")
     parser.add_argument("--residual-marker", action="append", default=[])
     parser.add_argument("--deadline-seconds", type=float, default=READINESS_DEADLINE_SECONDS)
+    parser.add_argument("--process-diagnostic-path", type=Path)
+    parser.add_argument("--required-library", action="append", default=[])
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     command = args.command[1:] if args.command[:1] == ["--"] else args.command
     if not command:
         parser.error("a launch command is required after --")
+    required_libraries = {}
+    for value in args.required_library:
+        path, separator, digest = value.rpartition("=")
+        if (not separator or not path.startswith("/") or len(digest) != 64 or
+                any(character not in "0123456789abcdef" for character in digest)):
+            parser.error("--required-library must be ABSOLUTE_PATH=LOWERCASE_SHA256")
+        required_libraries[path] = digest
     lifecycle = run_supervised(
         command, cwd=args.cwd.resolve(), output_directory=args.output_directory.resolve(),
         log_path=args.log_path.resolve(), lifecycle_path=args.lifecycle_path.resolve(),
         deadline_seconds=args.deadline_seconds,
         caller_pid_namespace=args.caller_pid_namespace,
         residual_markers=args.residual_marker, environment=dict(os.environ),
+        process_diagnostic_path=(args.process_diagnostic_path.resolve()
+                                 if args.process_diagnostic_path else None),
+        required_libraries=required_libraries,
     )
     print(json.dumps(lifecycle, sort_keys=True))
     if lifecycle["host_group_residual_count"] or lifecycle["host_marker_residual_count"]:

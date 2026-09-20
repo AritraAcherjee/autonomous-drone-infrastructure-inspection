@@ -23,12 +23,15 @@ def command(script):
     return [sys.executable, "-c", script]
 
 
-def run(tmp_path, script, deadline=2.0, caller="sandbox-ns", markers=()):
+def run(tmp_path, script, deadline=2.0, caller="sandbox-ns", markers=(),
+        process_diagnostic=False):
     return supervisor.run_supervised(
         command(script), cwd=tmp_path, output_directory=tmp_path / "evidence",
         log_path=tmp_path / "stdout.log", lifecycle_path=tmp_path / "lifecycle.json",
         deadline_seconds=deadline, shutdown_grace_seconds=0.5,
         caller_pid_namespace=caller, residual_markers=markers,
+        process_diagnostic_path=(tmp_path / "process_diagnostic.json"
+                                 if process_diagnostic else None),
     )
 
 
@@ -103,6 +106,15 @@ def test_log_is_closed_and_hashed_before_lifecycle_record(tmp_path):
     assert result["log_closed_before_lifecycle_record"] is True
     assert (tmp_path / "stdout.log").read_text().strip() == "terminal-log-line"
     assert json.loads((tmp_path / "lifecycle.json").read_text())["log_sha256_after_close"]
+
+
+def test_supervisor_writes_bounded_process_diagnostic_after_active_sampling(tmp_path):
+    result = run(tmp_path, writer(delay=0.2), process_diagnostic=True)
+    item = json.loads((tmp_path / "process_diagnostic.json").read_text())
+    assert item["schema"] == "aegisinspect.p19.runtime_diagnostic_observability.v1"
+    assert item["boundary_family"] == "host_process_mapping"
+    assert item["sample_count"] >= 1 and len(item["processes"]) <= 64
+    assert result["process_diagnostic_written_after_active_sampling"] is True
 
 
 def test_exactly_one_readiness_deadline_owner():

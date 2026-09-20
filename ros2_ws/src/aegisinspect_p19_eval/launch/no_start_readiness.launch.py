@@ -35,6 +35,8 @@ def start(context):
     prefix = Path(get_package_prefix("aegisinspect_p19_eval"))
     sim_prefix = Path(get_package_prefix("aegisinspect_sim"))
     instrumented_prefix = Path(LaunchConfiguration("instrumented_gazebo_prefix").perform(context))
+    output_directory = Path(LaunchConfiguration("output_directory").perform(context)).resolve()
+    context.environment["P19_DIAGNOSTIC_OUTPUT_DIRECTORY"] = str(output_directory)
     instrumented_plugin = instrumented_prefix / "lib" / "gz-sim-10" / "plugins" / "libgz-sim-sensors-system.so.10.5.0"
     if not instrumented_plugin.is_file():
         raise RuntimeError(f"version-matched instrumented Sensors system absent: {instrumented_plugin}")
