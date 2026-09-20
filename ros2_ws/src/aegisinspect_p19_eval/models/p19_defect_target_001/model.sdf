@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<sdf version="1.12">
+  <model name="p19_defect_target_001">
+    <static>true</static>
+    <!-- Model origin x=3.01 places the near/front surface anchor at world x=3.0. -->
+    <link name="target_surface">
+      <collision name="target_collision">
+        <geometry><box><size>0.02 4.0 3.0</size></box></geometry>
+      </collision>
+      <visual name="defect_face">
+        <geometry><box><size>0.02 4.0 3.0</size></box></geometry>
+        <material>
+          <ambient>0.65 0.62 0.57 1</ambient>
+          <diffuse>0.75 0.72 0.67 1</diffuse>
+          <pbr><metal>
+            <albedo_map>materials/textures/honeycombing_v1.png</albedo_map>
+            <roughness>0.92</roughness><metalness>0.0</metalness>
+          </metal></pbr>
+        </material>
+      </visual>
+    </link>
+    <plugin filename="gz-sim-label-system" name="gz::sim::systems::Label">
+      <label>19</label>
+    </plugin>
+  </model>
+</sdf>
