@@ -2,11 +2,11 @@
 
 Final presentation title:
 
-**PENDING 00 CONTROL CENTER DECISION**
+**AegisInspect: Autonomous Multimodal Drone Infrastructure Inspection with 3D Defect Localization and Reporting**
 
 Highest Stop-level statement:
 
-**PENDING 00 CONTROL CENTER DECISION**
+**No Stop C or full-autonomy claim.**
 
 This file is presentation-ready source material. It is not a frozen final
 slide deck.
@@ -15,9 +15,9 @@ slide deck.
 
 ## 1. Problem / Motivation
 
-AegisInspect investigates how an inspection-drone software stack can combine
-structural-defect perception, multimodal simulation, spatial reasoning,
-persistent review records and quantitative evaluation.
+AegisInspect is a robotics/computer-vision infrastructure-inspection system
+combining deep-learning defect detection with classical localization, 3D
+geometry, mapping, persistence and deterministic reporting.
 
 The project is intentionally modular so each technical claim can be tied to
 its own evidence rather than treating implementation existence as proof of
@@ -47,32 +47,17 @@ Build an evidence-driven inspection architecture that can:
 
 Recommended visual flow:
 
-**DATA**
-->
-**DETECTION**
-->
-**GENERALIZATION TEST**
-->
-**DRONE SIMULATION**
-->
-**LOCALIZATION**
-->
-**3D PROJECTION**
-->
-**DEFECT MAPPING**
-->
-**DATABASE / REVIEW**
-->
-**REPORT**
-->
-**QUANTITATIVE EVALUATION**
+**CAMERA / DETECTOR** -> **DEPTH** -> **CAMERA XYZ** ->
+**LOCALIZATION / MAP RELATION** -> **MAP XYZ / P15** ->
+**P16 PERSISTENCE + DASHBOARD** -> **P17 DETERMINISTIC REPORT**
 
 Status language must distinguish:
 
-- supported measured result;
-- implemented software;
-- simulation/runtime evidence;
-- pending runtime result.
+- `DEMONSTRATED` for accepted runtime or real-handoff evidence;
+- `SUPPORTED` for accepted measured evidence;
+- `IMPLEMENTED` for software functionality;
+- `MEASURED` for metrics without an accepted pass/fail threshold;
+- `PENDING` for evidence not yet ingested or accepted.
 
 Architecture arrows describe intended integration and do not by themselves
 prove that the complete chain has run end-to-end.
@@ -255,55 +240,39 @@ real global localization accuracy.
 
 ---
 
-## Insertable Localization / Stop-B Backend Status Slide
+## Insertable P19 Localization / 3D Status Slide
 
-This section is deliberately insertable because localization runtime
-evidence may change before the final presentation.
+**Runtime acceptance:** `PASS` for the accepted LiDAR ICP runtime.
 
-Primary localization approach:
+**Localization accuracy:** `MEASURED` against simulation ground truth, not
+classified as PASS or FAIL.
 
-**OpenVINS Mono + IMU**
+Frozen evaluation:
 
-OpenVINS engineering state:
+- interval: 3–18 s;
+- GT bracket maximum: 50 ms;
+- linear translation interpolation and quaternion SLERP;
+- SE(3) no-scale alignment; scale = 1;
+- RPE delta: 1 s ± 50 ms.
 
-- compatibility/build integration succeeded;
-- sensor delivery was validated;
-- live runtime initialization remained blocked after controlled diagnosis;
-- one evidence-derived correction was tested;
-- initialization remained blocked;
-- further blind tuning was rejected;
-- OpenVINS was removed from the Stop-B critical path.
+Measured results:
 
-Active Stop-B fallback:
+- ATE translation RMSE: **0.595396782192 m** (76 matched samples);
+- RPE translation RMSE: **0.340604743330 m**;
+- RPE rotation RMSE: **1.707265244063 deg** (44 pairs).
 
-**RTAB-Map RGB-D + IMU**
-
-Current RTAB-Map runtime result:
-
-**PENDING**
-
-Current quantitative fields:
-
-- backend runtime result: **PENDING**
-- ATE RMSE: **PENDING**
-- RPE translation RMSE: **PENDING**
-- RPE rotation RMSE: **PENDING**
-- timestamp-alignment coverage: **PENDING**
-
-Do not state that OpenVINS successfully provided drone odometry.
-
-Do not state that RTAB-Map is successful until accepted MSI evidence exists.
+No frozen localization-accuracy pass/fail threshold exists.
 
 ---
 
 ## 11. Defect-to-Map Architecture
 
-**Status:** `IMPLEMENTED_NOT_REAL_EVIDENCE / IMPLEMENTATION_TEST`
+**Status:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
 
 Presentation-safe wording:
 
-**AegisInspect includes implemented deterministic defect-to-map fusion
-software.**
+**AegisInspect preserves a verified P15 mapped-defect record through the
+P16 persistence/dashboard and P17 reporting handoff.**
 
 Conceptual flow:
 
@@ -323,71 +292,68 @@ duplicate handling
 ->
 persistent defect record
 
-Real map-frame defect-localization accuracy remains **PENDING**.
+The accepted record is a map-frame workflow example; P19 3D defect-location
+accuracy remains **PENDING — accepted explicit GT↔mapped-defect
+correspondence required**.
 
 ---
 
 ## 12. Database / Dashboard
 
-**Status:** `IMPLEMENTED_NOT_REAL_EVIDENCE / SYNTHETIC_DEMO`
+**Status:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
 
 Presentation-safe wording:
 
-**AegisInspect includes a persistent inspection database and review
-dashboard, demonstrated using synthetic mapped-defect records.**
+**AegisInspect demonstrated persistence, dashboard review and an accepted
+persisted mapped-defect record.**
 
-Current documented demonstration contains:
+Verified original dashboard assets show one accepted record:
 
-- one synthetic structure;
-- one synthetic inspection;
-- three synthetic mapped defects;
-- four synthetic evidence rows.
+- Detector classification: **Honeycombing**;
+- Confidence: **0.004553093574941158**;
+- Map XYZ: **(3.9000027127470087, -0.09877989958311785, 0.0032930137079122536)**;
+- Observation count: **1**;
+- Review: **UNREVIEWED**;
+- Model: **DET-FINAL-v1**.
 
-Machine-created defects begin as:
-
-`UNREVIEWED`
-
-Do not describe these synthetic records as field inspection data.
+This is extremely-low-confidence, unreviewed machine output. It is not a
+confirmed physical defect, engineering diagnosis, severity determination,
+repair recommendation or structural-safety conclusion.
 
 ---
 
 ## 13. Deterministic Reporting
 
-**Status:** `IMPLEMENTED_NOT_REAL_EVIDENCE / IMPLEMENTATION_TEST`
+**Status:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
 
 Presentation-safe wording:
 
-**AegisInspect includes deterministic report-generation software with
-fail-closed validation and explicit human-review separation.**
+**AegisInspect demonstrated deterministic reporting from the accepted
+persisted/mapped evidence, with explicit human-review separation.**
 
 Boundary:
 
-a completed autonomous-inspection report from a validated integrated
-mission has not yet been claimed.
+The verified report preserves the accepted record's confidence, map
+coordinates, provenance and `UNREVIEWED` state. It does not add severity,
+dimensions, repair recommendations or structural-safety conclusions.
 
 ---
 
-## 14. P19 Evaluation Methodology
+## 14. P19 Evaluation and 3D Status
 
-**Status:** `IMPLEMENTED_NOT_REAL_EVIDENCE / IMPLEMENTATION_TEST`
+**Status:** `MEASURED / ACCEPTED LOCALIZATION EVALUATION`
 
-Canonical P19 tooling is prepared for:
+The accepted LiDAR ICP trajectory evaluation uses the frozen 3–18 s
+methodology. Runtime acceptance is `PASS`; localization accuracy is
+`MEASURED`, with no frozen accuracy pass/fail threshold.
 
-- VIO ATE translation RMSE;
-- VIO RPE translation RMSE;
-- VIO RPE rotation RMSE;
-- timestamp-alignment coverage;
-- mean defect-location error;
-- median defect-location error;
-- defect-location RMSE;
-- P95 defect-location error;
-- matched and unmatched counts.
+P19 3D status: **PENDING — accepted explicit GT↔mapped-defect
+correspondence required.** No XYZ-error summary or correspondence count is
+shown.
 
-Current real project values remain:
-
-**PENDING**
-
-Synthetic fixture values are not real project results.
+P18 first integrated run, dashboard evidence and clean repeatability have
+00 acceptance, but **P18 P20 evidence ingestion is PENDING**. No P18
+screenshots, plots, logs or metrics are represented here.
 
 ---
 
@@ -400,13 +366,13 @@ Required visible limitations:
 3. DamSegment scores only shared Crack and Breakage/Spalling classes.
 4. simulated depth is not real-world depth validation.
 5. camera XYZ alone does not establish map-frame localization.
-6. OpenVINS did not successfully initialize for Stop-B runtime.
-7. RTAB-Map runtime result remains pending.
-8. P16 demo records are synthetic.
-9. real VIO ATE/RPE remains pending.
-10. real 3D defect-localization accuracy remains pending.
-11. P15/P17 implementation does not prove a complete integrated mission.
-12. full autonomous end-to-end completion requires P18 evidence.
+6. DET-FINAL-v1 held-out mAP remains modest.
+7. the accepted P16/P17 record is extremely-low-confidence, unreviewed machine output.
+8. P19 localization is measured, not threshold-classified as accurate.
+9. P19 3D evaluation awaits explicit correspondence.
+10. P18 evidence ingestion into P20 is pending.
+11. Workstream 04 final robustness evidence is pending.
+12. Stop C/full autonomy is not demonstrated.
 
 ---
 
@@ -420,7 +386,9 @@ Evidence-backed contributions include:
 - multimodal ROS/Gazebo simulation foundation;
 - simulated metric depth;
 - runtime-validated camera-frame projection;
-- deterministic mapping, persistence, reporting and evaluation layers.
+- deterministic mapping, persistence, reporting and evaluation layers;
+- verified P16/P17 real handoff with dashboard review and deterministic report;
+- measured LiDAR ICP localization evaluation.
 
 Localization engineering decision:
 
@@ -433,17 +401,20 @@ the pre-designed RTAB-Map fallback.
 
 ---
 
-## 17. Next Steps
+## 17. Current Demonstrated Capability and Next Steps
 
 Current evidence priorities:
 
-- obtain accepted RTAB-Map RGB-D + IMU runtime evidence;
-- evaluate trajectory with canonical P19 methodology;
-- populate ATE / RPE / alignment coverage;
-- obtain explicit estimated-vs-GT defect correspondences;
-- populate real 3D defect-location metrics;
-- run and validate P18 integrated mission path;
-- update the final title only after 00 accepts the achieved Stop level.
+Demonstrated capability combines deep-learning defect detection, depth and
+3D projection, localization/map-frame processing, mapped-defect persistence,
+dashboard review, deterministic reporting and measured localization
+evaluation.
+
+Pending inputs:
+
+- P18 accepted presentation evidence ingestion;
+- P19 explicit GT↔mapped-defect correspondence for 3D evaluation;
+- Workstream 04 final low-light robustness evidence.
 
 ---
 
@@ -455,7 +426,9 @@ Keep available during Q&A:
 - canonical results table;
 - evidence inventory;
 - limitations/Q&A source;
-- canonical commit and PR references;
+- P16/P17 runtime ZIP, database and deterministic-report hashes;
+- canonical P17 Git preservation SHA;
+- P19 localization evidence preservation commit;
 - detector checkpoint hash;
 - DamSegment result hashes;
 - runtime validation reports.
@@ -466,4 +439,12 @@ Core message:
 
 **Simulation/runtime evidence is not the same as real-world accuracy.**
 
-**PENDING means the result has not yet been accepted.**
+**PENDING means the result has not yet been ingested or accepted.**
+
+Concise provenance identifiers:
+
+- P16/P17 runtime ZIP: `df3f87f0edcea09f50394ca4ef7ca8d44e8718d93c3ca648b5a38a689f313ec2`;
+- P17 deterministic report: `b5d506de2136349bafbec15aa225eb255ecb7c0ede348e2b29f98bc439c2551e`;
+- P16 database: `5297ed89c50ea362ed229bc74155e1582882dd8284ebf07b2d951f27fe96bbd5`;
+- P17 Git preservation: `eb4013fa236ab758c6b84e1a3ae02579bbfe488f`;
+- P19 localization evidence preservation: `4c7bd79ad3b6356dff08b0adf30ece3e09a4d78a`.

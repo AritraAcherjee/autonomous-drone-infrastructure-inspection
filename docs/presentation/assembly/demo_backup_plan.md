@@ -26,7 +26,7 @@ Use the owner-approved MSI command sequence when that sequence is frozen.
 
 Current state:
 
-**PENDING_CAPTURE**
+**PARTIALLY PREPARED FROM VERIFIED ORIGINALS**
 
 Required screenshot categories:
 
@@ -34,12 +34,14 @@ Required screenshot categories:
 - live ROS topic evidence;
 - depth image / depth validation evidence;
 - camera projection result;
-- dashboard;
-- report;
-- localization status/result if accepted later;
-- P19 metric output if accepted later.
+- verified P16 dashboard overview and detail;
+- deterministic P17 report excerpt;
+- P19 accepted trajectory/error plots where preserved by the P19 package;
+- provenance and hash summary.
 
-No screenshot is considered available merely because source code exists.
+The verified P16/P17 dashboard assets and deterministic report are suitable
+for an offline backup demo. P18 visual evidence remains pending ingestion;
+P19 3D metrics and Workstream 04 results remain pending.
 
 ## 3. Backup recorded clips
 
@@ -101,21 +103,17 @@ Simulation / geometry:
 
 Application layer:
 
-- P15 implementation evidence;
-- P16 synthetic dashboard evidence;
-- P17 deterministic reporting evidence;
-- P19 evaluation methodology.
+- verified P15→P16 DTO and mapped-defect lineage;
+- verified P16 dashboard overview/detail and persisted database record;
+- verified deterministic P17 report excerpt;
+- P19 localization provenance and accepted plots when included from its
+  preservation package.
 
 ## 6. Evidence still pending
 
-- accepted RTAB-Map runtime result;
-- accepted VIO/odometry trajectory artifact;
-- ATE;
-- RPE translation;
-- RPE rotation;
-- timestamp-alignment coverage;
-- real 3D defect-location metrics;
-- accepted P18 integrated mission evidence.
+- P18 accepted presentation evidence package;
+- explicit GT↔mapped-defect correspondence and P19 3D metrics;
+- Workstream 04 final low-light robustness evidence.
 
 ## 7. Day-of-presentation fallback order
 
@@ -135,8 +133,8 @@ Before presenting:
 - verify canonical commit SHAs;
 - verify detector numbers;
 - verify DamSegment numbers;
-- verify synthetic dashboard content remains labelled synthetic;
-- verify current localization backend/status;
+- verify the P16/P17 example remains labelled extremely-low-confidence and UNREVIEWED;
+- verify P19 localization remains labelled MEASURED, without an accuracy PASS claim;
 - verify every formerly PENDING value has objective accepted evidence;
 - keep unresolved values as PENDING;
 - confirm final title and Stop level with 00.

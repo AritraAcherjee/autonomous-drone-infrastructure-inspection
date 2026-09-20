@@ -9,18 +9,18 @@
   },
   "localization": {
     "active_stop_b_fallback": "RTAB-Map RGB-D + IMU",
-    "ate_translation_rmse_m": "PENDING",
-    "backend_runtime_result": "PENDING",
+    "ate_translation_rmse_m": "0.595396782192 m (76 matched samples; MEASURED)",
+    "backend_runtime_result": "PASS runtime acceptance; localization accuracy MEASURED",
     "openvins_status": "built/integrated; sensor delivery validated; runtime initialization blocked; removed from Stop-B critical path",
     "primary_attempted_backend": "OpenVINS Mono + IMU",
-    "rpe_rotation_rmse_deg_1s": "PENDING",
-    "rpe_translation_rmse_m_1s": "PENDING",
-    "timestamp_alignment_coverage": "PENDING"
+    "rpe_rotation_rmse_deg_1s": "1.707265244063 deg (44 pairs; MEASURED)",
+    "rpe_translation_rmse_m_1s": "0.340604743330 m (MEASURED)",
+    "timestamp_alignment_coverage": "PENDING_NOT_REPORTED_BY_ACCEPTED_EVALUATOR"
   },
   "replacement_rule": "Replace PENDING only from accepted hash-bound upstream evidence.",
   "schema_version": 1,
   "system": {
-    "p18_integrated_run_status": "PENDING",
-    "stop_b_runtime_status": "PENDING"
+    "p18_integrated_run_status": "PASS_00_ACCEPTANCE_P20_EVIDENCE_INGESTION_PENDING",
+    "stop_b_runtime_status": "PASS_RUNTIME_ACCEPTANCE"
   }
 }

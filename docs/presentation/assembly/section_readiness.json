@@ -92,15 +92,15 @@
       "title": "Q&A / Evidence References"
     }
   ],
-  "final_title": "PENDING",
-  "highest_stop_level": "PENDING",
+  "final_title": "AegisInspect: Autonomous Multimodal Drone Infrastructure Inspection with 3D Defect Localization and Reporting",
+  "highest_stop_level": "NOT_ASSERTED_NO_STOP_C",
   "insertable_sections": [
     {
-      "content_status": "READY_WITH_PENDING_RUNTIME",
-      "current_backend": "RTAB-Map RGB-D + IMU",
-      "reason": "00 requires a localization slide placeholder while runtime results remain replaceable.",
-      "runtime_result": "PENDING",
-      "title": "Localization / Stop-B Backend Status"
+      "content_status": "READY_WITH_MEASURED_LOCALIZATION",
+      "current_backend": "LiDAR ICP runtime acceptance",
+      "reason": "Accepted P19 metrics are measured under frozen methodology; no localization-accuracy PASS/FAIL threshold exists.",
+      "runtime_result": "PASS_RUNTIME_ACCEPTANCE_MEASURED_LOCALIZATION_ACCURACY",
+      "title": "Localization / P19 Measured Evaluation"
     }
   ],
   "schema_version": 1
