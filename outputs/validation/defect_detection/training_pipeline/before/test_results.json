@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "run_id": "72737cf7bf22401fbc3159e7ed434d0a",
-  "started_at": "2026-09-19T00:55:13.334233+00:00",
+  "run_id": "c57b75606e8d460aa22d3b63dab6d12a",
+  "started_at": "2026-09-20T03:16:02.231086+00:00",
   "commands": [
     {
       "suite": "m1",
@@ -15,9 +15,9 @@
         "-v"
       ],
       "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
-      "started_at": "2026-09-19T00:55:13.431989+00:00",
+      "started_at": "2026-09-20T03:16:02.332749+00:00",
       "returncode": 0,
-      "finished_at": "2026-09-19T00:55:25.901118+00:00"
+      "finished_at": "2026-09-20T03:16:15.021163+00:00"
     },
     {
       "suite": "full_python_suite",
@@ -31,15 +31,15 @@
         "-q",
         "-p",
         "no:cacheprovider",
-        "--junitxml=C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-qx_o20c9\\pytest_results.xml"
+        "--junitxml=C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-rcm2it6l\\pytest_results.xml"
       ],
       "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
-      "started_at": "2026-09-19T00:55:25.916160+00:00",
+      "started_at": "2026-09-20T03:16:15.034190+00:00",
       "returncode": 0,
-      "finished_at": "2026-09-19T00:57:25.673151+00:00"
+      "finished_at": "2026-09-20T03:17:59.642911+00:00"
     }
   ],
-  "git_sha": "013067277d331246959af1f6176584b5305828f4",
+  "git_sha": "6c0f84d618358230c1b3807bc476971c80e7673a",
   "PYTHONPATH": [
     "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\src",
     "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\ros2_ws\\src\\aegisinspect_mapping"
@@ -50,7 +50,7 @@
     "skipped": 0
   },
   "full_python_suite": {
-    "passed": 1950,
+    "passed": 1995,
     "failed": 0,
     "skipped": 0,
     "subtests_passed": 157
@@ -61,9 +61,9 @@
     "skipped": 0
   },
   "artifacts": {
-    "m1_tests.txt": "2d0966e0f66d03630619b730c1d4e056764330d08b71a4ca56569ae86d17a357",
-    "full_tests.txt": "bae61d70fcebce3a168e8a5297712c8c30d459be7f9449c5f05b1d53a491c5f4",
-    "pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75"
+    "m1_tests.txt": "1046c915da9d4d2c1474fe6db4db760c2a9d2e457c51d19f0b6c98533e7948b0",
+    "full_tests.txt": "40424c0a17cc41b53f91f11cf7efcf50e6eced83f732b2aa59849cfc47fec5c6",
+    "pytest_results.xml": "c86c06fa01ef76944168a80521c775b2ac1e8beaaa53113772640c8241016ed4"
   },
-  "finished_at": "2026-09-19T00:57:25.714214+00:00"
+  "finished_at": "2026-09-20T03:17:59.678727+00:00"
 }

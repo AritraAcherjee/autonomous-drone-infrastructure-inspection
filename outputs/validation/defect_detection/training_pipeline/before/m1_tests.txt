@@ -116,6 +116,6 @@ test_similar_names_are_never_paired (test_gyu_pairing.PairingTests.test_similar_
 test_top_ten_scopes_determinism_and_input_unchanged (test_gyu_pairing.PairingTests.test_top_ten_scopes_determinism_and_input_unchanged) ... ok
 
 ----------------------------------------------------------------------
-Ran 112 tests in 11.995s
+Ran 112 tests in 12.233s
 
 OK

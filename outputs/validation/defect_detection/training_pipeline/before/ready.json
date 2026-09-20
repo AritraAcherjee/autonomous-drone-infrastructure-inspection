@@ -17,7 +17,7 @@
     "src/detection/training/trainer.py": "377430f098474bd779ed4ac03e7fde4b8ef93580831a20282a4e3baae7b52dc5",
     "src/low_light/__init__.py": "b3b7f5fa85df3ea27d0308337425fcbf6aab046c09987d87cf7e7de2a10fabb1",
     "src/low_light/clahe.py": "a78e8dcf1a55f03d962c350608d5732e0456bd190dd334601efa30adceb021e7",
-    "src/low_light/evaluation.py": "5d45de289e7048294692af23e3ba3997ce9886b699ffac781b87931d752b59cb",
+    "src/low_light/evaluation.py": "e35d3c73921d8c7bdc0761d2a4f4c2058c8077872184a9e4b55571fe28b85601",
     "src/low_light/latency.py": "efb5d3bce136d62bfce303a47a4076210057ee4672554b4910e04fd0f3824b87",
     "src/low_light/manifest.py": "70fa40953c36e4110edd2eea28ce0767898d5d885a6dde54384150a186f935f7",
     "src/low_light/severity.py": "c110797af01fa72244e16c0a2f6a77ef350ab3d3497d313599a1ab8bb2621ff3",
@@ -32,7 +32,7 @@
     "tests/detection/test_training.py": "47efd638251adea5d1f37ff603fe1cddd2fe24a392f4d0882b1fce6bbaa50d34",
     "tests/low_light/__init__.py": "3be0916999eae3f6f8d64abf8d69eabb45df46e07d52746262c79d2848321b2b",
     "tests/low_light/test_clahe.py": "68a6e56e14634979cea2aace60ea9c176d4287e356f9a356cc06458adb3b900a",
-    "tests/low_light/test_evaluation.py": "0ee209d033a342db25b08a6ab5110eb37b7429a459ec23607c9d0c5e04825ca5",
+    "tests/low_light/test_evaluation.py": "f8ff4445122394d1f5a9ab195e7ac3e8bac0654dcee0f06a7f06b286ac3cef3e",
     "tests/low_light/test_handoff.py": "84a14979b643a24a885aff49ec4fa0f63d3fd5da007b2770555978c0c8e6ac12",
     "tests/low_light/test_latency.py": "811131468287f58f109ec5d63042a6580378401876bfd055ea87eace9f3c8906",
     "tests/low_light/test_manifest.py": "1579505d88dcb4668b5ae8de8198e74231fc7cb7714a1bb3ac63b56e94e3c006",
@@ -53,8 +53,8 @@
   ],
   "required_tests": {
     "status": "PASS",
-    "run_id": "72737cf7bf22401fbc3159e7ed434d0a",
-    "started_at": "2026-09-19T00:55:13.334233+00:00",
+    "run_id": "c57b75606e8d460aa22d3b63dab6d12a",
+    "started_at": "2026-09-20T03:16:02.231086+00:00",
     "commands": [
       {
         "suite": "m1",
@@ -68,9 +68,9 @@
           "-v"
         ],
         "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
-        "started_at": "2026-09-19T00:55:13.431989+00:00",
+        "started_at": "2026-09-20T03:16:02.332749+00:00",
         "returncode": 0,
-        "finished_at": "2026-09-19T00:55:25.901118+00:00"
+        "finished_at": "2026-09-20T03:16:15.021163+00:00"
       },
       {
         "suite": "full_python_suite",
@@ -84,15 +84,15 @@
           "-q",
           "-p",
           "no:cacheprovider",
-          "--junitxml=C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-qx_o20c9\\pytest_results.xml"
+          "--junitxml=C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\outputs\\validation\\defect_detection\\training_pipeline\\before\\test-run-rcm2it6l\\pytest_results.xml"
         ],
         "cwd": "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light",
-        "started_at": "2026-09-19T00:55:25.916160+00:00",
+        "started_at": "2026-09-20T03:16:15.034190+00:00",
         "returncode": 0,
-        "finished_at": "2026-09-19T00:57:25.673151+00:00"
+        "finished_at": "2026-09-20T03:17:59.642911+00:00"
       }
     ],
-    "git_sha": "013067277d331246959af1f6176584b5305828f4",
+    "git_sha": "6c0f84d618358230c1b3807bc476971c80e7673a",
     "PYTHONPATH": [
       "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\src",
       "C:\\Users\\Aritra\\Documents\\aegisinspect-04-low-light\\ros2_ws\\src\\aegisinspect_mapping"
@@ -103,7 +103,7 @@
       "skipped": 0
     },
     "full_python_suite": {
-      "passed": 1950,
+      "passed": 1995,
       "failed": 0,
       "skipped": 0,
       "subtests_passed": 157
@@ -114,26 +114,21 @@
       "skipped": 0
     },
     "artifacts": {
-      "m1_tests.txt": "0adc99f42116a318eec1c733bc93c4af86e868a5215ca150c715250658648c48",
-      "full_tests.txt": "0ebc7db38e7fb519ed40b77e7c407b5997c60b01aaa5a9ee3e1a823ae56b978d",
-      "pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75"
+      "m1_tests.txt": "1046c915da9d4d2c1474fe6db4db760c2a9d2e457c51d19f0b6c98533e7948b0",
+      "full_tests.txt": "40424c0a17cc41b53f91f11cf7efcf50e6eced83f732b2aa59849cfc47fec5c6",
+      "pytest_results.xml": "c86c06fa01ef76944168a80521c775b2ac1e8beaaa53113772640c8241016ed4"
     },
-    "finished_at": "2026-09-19T00:57:25.714214+00:00"
+    "finished_at": "2026-09-20T03:17:59.678727+00:00"
   },
   "evidence_sha256": {
-    "outputs/validation/defect_detection/training_pipeline/before/detector.xml": "82ce1b89e0202ea01d2237b60330781530a82bea2c548fe084ad94cba7a1f3f7",
-    "outputs/validation/defect_detection/training_pipeline/before/detector_tests.txt": "4a0bdf49e1b02bcb1ef74bf530b04ab537aac6a2284b9d9949dfce649bffa64b",
-    "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "0ebc7db38e7fb519ed40b77e7c407b5997c60b01aaa5a9ee3e1a823ae56b978d",
-    "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "0adc99f42116a318eec1c733bc93c4af86e868a5215ca150c715250658648c48",
-    "outputs/validation/defect_detection/training_pipeline/before/pytest_results.xml": "e29c5d6f46752e78536bef287f11329b7e217234926a08852279a39530285b75",
-    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "b6d639ba3db2852c8c4018065116901c18c128891de5509eadf16f89192a3816",
+    "outputs/validation/defect_detection/training_pipeline/before/detector.xml": "3ca20a95efb0868f2987beafc7611d1f1afd5c3205b55977157b84437880a9c2",
+    "outputs/validation/defect_detection/training_pipeline/before/detector_tests.txt": "58e8aecb8c29be58f800b23ab940dabf520a79400d2b2cb8e6e7ab2a42ec2fc3",
+    "outputs/validation/defect_detection/training_pipeline/before/full_tests.txt": "40424c0a17cc41b53f91f11cf7efcf50e6eced83f732b2aa59849cfc47fec5c6",
+    "outputs/validation/defect_detection/training_pipeline/before/m1_tests.txt": "1046c915da9d4d2c1474fe6db4db760c2a9d2e457c51d19f0b6c98533e7948b0",
     "outputs/validation/defect_detection/training_pipeline/before/machine_contract_detector.xml": "e98f59bcf6cfd5c924591f2f0e7c5e710ca33e2e0e6e9f89f1bb9ecde37758bf",
     "outputs/validation/defect_detection/training_pipeline/before/machine_contract_full_python.xml": "fcb9006f549ce88f97dfbec779d6ab1b349583bddb4abf7b032b042c047efe2e",
-    "outputs/validation/defect_detection/training_pipeline/before/machine_contract_regression.json": "69dfb4de773d150eabafd7a7b3a99714c01f861d068bbed690329b7d6999d251"
-  },
-  "validation_amendment": {
-    "evidence": "outputs/validation/defect_detection/training_pipeline/before/machine_contract_regression.json",
-    "basis": "Preserved canonical M1 Windows PASS plus fresh applicable ARMOURY detector/full-Python PASS.",
-    "historical_required_tests_preserved": true
+    "outputs/validation/defect_detection/training_pipeline/before/machine_contract_regression.json": "69dfb4de773d150eabafd7a7b3a99714c01f861d068bbed690329b7d6999d251",
+    "outputs/validation/defect_detection/training_pipeline/before/pytest_results.xml": "c86c06fa01ef76944168a80521c775b2ac1e8beaaa53113772640c8241016ed4",
+    "outputs/validation/defect_detection/training_pipeline/before/test_results.json": "fa4175c2c1cdee68acbe94896f43080e03a9370c1ad2e5d4143759c0e82f562d"
   }
 }
