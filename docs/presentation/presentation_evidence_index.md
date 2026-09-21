@@ -23,18 +23,20 @@ Use it for presentation preparation and Q&A.
 
 ## Optional P19 technical-Q&A references
 
-The accepted MSI handoff verifies these advanced R&D validation-infrastructure
-facts. They are retained for technical Q&A and are not production runtime
-requirements or a completed 3D correspondence result.
+The independently supplied and verified MSI artifacts substantiate these
+advanced R&D validation-infrastructure facts. They are retained for technical
+Q&A and are not production runtime requirements or a completed 3D
+correspondence result.
 
 | MSI evidence file | Verified point |
 | --- | --- |
-| `P19 qualifying receipt 0001.json` | `consecutive_valid_index = 710` |
-| `P19 RGB/depth binding result.json` | RGB native → operational PASS; depth native → operational PASS |
-| `P19 startup alignment result.json` | PASS |
-| `P19 truth result.json` | PASS; target pixels `307,200 / 307,200`; operational GT publication `NO` |
+| `P19 qualifying receipt 0001.json` | `CONSECUTIVE_VALID_INDEX = 710` |
+| `P19 RGB/depth binding result.json` | `RGB_NATIVE_TO_OPERATIONAL = PASS`; `DEPTH_NATIVE_TO_OPERATIONAL = PASS`; `TIMESTAMP_MATCHING_USED = FALSE` |
+| `P19 startup alignment result.json` | `RESULT = PASS`; `CONTRACT_VALIDATOR = PASS`; `FRAME_IDENTITY = PASS`; `PRE_MOTION_SOURCE = PASS`; `FINITE_HOMOGENEOUS_ORTHONORMAL_DETERMINANT_SCALE = PASS`; `SELECTED_CANDIDATE_RECOMPUTED_TRANSFORM = PASS`; `OPERATIONAL_GT_PUBLICATION = NO` |
+| `P19 truth result.json` | `RESULT = PASS`; `TARGET_PIXELS = 307200`; `TOTAL_PIXELS = 307200`; `BACKGROUND_PIXELS = 0`; `OTHER_TARGET_PIXELS = 0`; `UNRESOLVED_PIXELS = 0` |
 
-Final label: `FINAL 3D CORRESPONDENCE VALIDATION = PENDING`.
+These are component/sub-gate PASS results only. Final label:
+`FINAL 3D CORRESPONDENCE VALIDATION = PENDING`.
 
 ## Presentation artifacts
 
