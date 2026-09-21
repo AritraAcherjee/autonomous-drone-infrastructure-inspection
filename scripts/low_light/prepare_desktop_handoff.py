@@ -337,9 +337,10 @@ def run_smoke(repo, accepted_commit):
     """Explicit Desktop-only engineering wrapper; never called by preflight."""
     from unittest.mock import patch
     from detection.training.config import load_development_data, select_records
-    from detection.training.provenance import configure_runtime, development_access, write_json
+    from detection.training.provenance import configure_runtime, development_access, stage_offline_arial_font, write_json
     from detection.training.trainer import trainer_class, training_arguments
     configure_runtime(repo)
+    font_staging = stage_offline_arial_font(repo)
     import torch
     from ultralytics.utils import callbacks, LOGGER
     if not torch.cuda.is_available() or not torch.cuda.is_bf16_supported():
@@ -351,7 +352,8 @@ def run_smoke(repo, accepted_commit):
     evidence = dict(status="FAIL", git_sha=accepted_commit, smoke_config=smoke_config(), parent_checkpoint=parent,
                     label=e.NON_OFFICIAL, locked_test_accessed=False, requested_batch=4,
                     optimizer_steps=0, parameter_updates=0, validation_calls=0, epochs=0,
-                    finite_losses=True, loss_history=[], no_oom=False, raw_immutability="NOT_CHECKED")
+                    finite_losses=True, loss_history=[], no_oom=False, raw_immutability="NOT_CHECKED",
+                    offline_font_staging=font_staging)
     handler = logging.FileHandler(out / "trainer.log", encoding="utf-8")
     LOGGER.addHandler(handler)
     with development_access(repo):
