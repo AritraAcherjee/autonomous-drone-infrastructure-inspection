@@ -117,27 +117,27 @@
     {
       "results": [
         {
-          "metric": "VIO ATE translation RMSE m",
-          "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
-          "value": "PENDING"
+          "metric": "LiDAR ICP ATE translation RMSE m",
+          "scope": "SIMULATION_GROUND_TRUTH",
+          "status": "MEASURED",
+          "value": 0.595396782192
         },
         {
-          "metric": "VIO RPE translation RMSE m @ 1 s",
-          "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
-          "value": "PENDING"
+          "metric": "LiDAR ICP RPE translation RMSE m @ 1 s",
+          "scope": "SIMULATION_GROUND_TRUTH",
+          "status": "MEASURED",
+          "value": 0.34060474333
         },
         {
-          "metric": "VIO RPE rotation RMSE deg @ 1 s",
-          "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
-          "value": "PENDING"
+          "metric": "LiDAR ICP RPE rotation RMSE deg @ 1 s",
+          "scope": "SIMULATION_GROUND_TRUTH",
+          "status": "MEASURED",
+          "value": 1.707265244063
         },
         {
           "metric": "VIO timestamp alignment coverage",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         }
       ],
@@ -145,34 +145,50 @@
     },
     {
       "results": [
+        { "metric": "RAW mAP50 L0", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.3886917344 },
+        { "metric": "RAW mAP50 L1", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.3796280361 },
+        { "metric": "RAW mAP50 L2", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.3342489847 },
+        { "metric": "RAW mAP50 L3", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.1263098877 },
+        { "metric": "RAW mAP50 L4", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.0031301687 },
+        { "metric": "CLAHE mAP50 L0", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.2657391403 },
+        { "metric": "CLAHE mAP50 L1", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.2656420531 },
+        { "metric": "CLAHE mAP50 L2", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.2240838264 },
+        { "metric": "CLAHE mAP50 L3", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.0746161035 },
+        { "metric": "CLAHE mAP50 L4", "scope": "FROZEN_VALIDATION_BENCHMARK", "status": "SUPPORTED", "value": 0.0033883546 },
+        { "metric": "LL-DETECTOR mAP50 L0-L4", "scope": "PENDING", "status": "PENDING", "value": "PENDING" }
+      ],
+      "section": "LOW_LIGHT_ROBUSTNESS"
+    },
+    {
+      "results": [
         {
           "metric": "mean error m",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         },
         {
           "metric": "median error m",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         },
         {
           "metric": "RMSE m",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         },
         {
           "metric": "P95 error m",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         },
         {
           "metric": "matched real defects",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         }
       ],
@@ -195,7 +211,7 @@
         {
           "metric": "validated end-to-end autonomous mission",
           "scope": "PENDING",
-          "status": "PENDING_NOT_YET_VERIFIED",
+          "status": "PENDING",
           "value": "PENDING"
         }
       ],

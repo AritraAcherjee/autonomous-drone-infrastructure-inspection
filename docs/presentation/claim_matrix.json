@@ -2,9 +2,10 @@
   "canonical_base": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
   "claim_status_taxonomy": [
     "SUPPORTED",
-    "IMPLEMENTED_NOT_REAL_EVIDENCE",
-    "PENDING_NOT_YET_VERIFIED",
-    "OUT_OF_SCOPE"
+    "IMPLEMENTED",
+    "DEMONSTRATED",
+    "MEASURED",
+    "PENDING"
   ],
   "claims": [
     {
@@ -153,7 +154,7 @@
     {
       "artifact_hash_or_test_result": "canonical implementation/tests",
       "claim_id": "P20-C012",
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "claim_status": "IMPLEMENTED",
       "claim_text": "AegisInspect includes implemented deterministic defect-to-map fusion software.",
       "commit_sha": "7293c89afd2310a124d3076b3202a9d178e6c47c",
       "evidence_reference": "src/defect_mapping/",
@@ -166,7 +167,7 @@
     {
       "artifact_hash_or_test_result": "synthetic demo: 1 structure, 1 inspection, 3 mapped defects, 4 evidence rows",
       "claim_id": "P20-C013",
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "claim_status": "DEMONSTRATED",
       "claim_text": "AegisInspect includes a persistent inspection database and review dashboard demonstrated using synthetic mapped-defect records.",
       "commit_sha": "ffd5f23dd2086fc095728a2d445f51a4cb013e07",
       "evidence_reference": "database/README.md",
@@ -179,7 +180,7 @@
     {
       "artifact_hash_or_test_result": "canonical reporting implementation/tests",
       "claim_id": "P20-C014",
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "claim_status": "DEMONSTRATED",
       "claim_text": "AegisInspect includes deterministic report-generation software with fail-closed validation and explicit human-review separation.",
       "commit_sha": "66d33acd00704d2f79b157471702e3709ce9d716",
       "evidence_reference": "src/reporting/",
@@ -192,7 +193,7 @@
     {
       "artifact_hash_or_test_result": "P19 canonical tests/evaluation=132 passed",
       "claim_id": "P20-C015",
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "claim_status": "IMPLEMENTED",
       "claim_text": "AegisInspect includes canonical spatial-evaluation tooling for VIO ATE, VIO RPE, alignment coverage, and 3D defect-location error.",
       "commit_sha": "1a947321e1efe667802e2b93c7c29e1cc28dbc98",
       "evidence_reference": "configs/evaluation/p19_spatial_protocol.yaml",
@@ -205,7 +206,7 @@
     {
       "artifact_hash_or_test_result": "PENDING",
       "claim_id": "P20-C016",
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "claim_status": "PENDING",
       "claim_text": "Real OpenVINS/VIO trajectory performance.",
       "commit_sha": "",
       "evidence_reference": "",
@@ -218,7 +219,7 @@
     {
       "artifact_hash_or_test_result": "PENDING",
       "claim_id": "P20-C017",
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "claim_status": "PENDING",
       "claim_text": "Real AegisInspect VIO ATE.",
       "commit_sha": "",
       "evidence_reference": "",
@@ -231,7 +232,7 @@
     {
       "artifact_hash_or_test_result": "PENDING",
       "claim_id": "P20-C018",
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "claim_status": "PENDING",
       "claim_text": "Real AegisInspect VIO RPE.",
       "commit_sha": "",
       "evidence_reference": "",
@@ -244,7 +245,7 @@
     {
       "artifact_hash_or_test_result": "PENDING",
       "claim_id": "P20-C019",
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "claim_status": "PENDING",
       "claim_text": "Real timestamp-alignment coverage for VIO evaluation.",
       "commit_sha": "",
       "evidence_reference": "",
@@ -257,7 +258,7 @@
     {
       "artifact_hash_or_test_result": "PENDING",
       "claim_id": "P20-C020",
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "claim_status": "PENDING",
       "claim_text": "Real 3D defect-localization error metrics.",
       "commit_sha": "",
       "evidence_reference": "",
@@ -270,7 +271,7 @@
     {
       "artifact_hash_or_test_result": "PENDING",
       "claim_id": "P20-C021",
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
+      "claim_status": "PENDING",
       "claim_text": "Validated end-to-end autonomous inspection mission completion.",
       "commit_sha": "",
       "evidence_reference": "",
@@ -283,7 +284,7 @@
     {
       "artifact_hash_or_test_result": "descriptive per-class metrics only",
       "claim_id": "P20-C022",
-      "claim_status": "OUT_OF_SCOPE",
+      "claim_status": "PENDING",
       "claim_text": "Deployment-quality ranking of defect classes from the descriptive held-out per-class AP table.",
       "commit_sha": "d9cd2f5b58559d45e5d4a42ce702c595345e292b",
       "evidence_reference": "outputs/evaluation/defect_detection/DET-FINAL-v1/GYU-DET-TEST/per_class_metrics.csv",

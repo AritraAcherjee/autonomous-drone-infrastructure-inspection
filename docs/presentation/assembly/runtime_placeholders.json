@@ -1,11 +1,31 @@
 {
   "assembly_base": "a0d9271813c78c6a773379468045c5be507f9097",
   "defect_localization_3d": {
+    "fallback_wording": "final quantitative simulator-ground-truth correspondence validation for 3D defect-position accuracy remains pending",
     "matched_count": "PENDING",
     "mean_error_m": "PENDING",
     "median_error_m": "PENDING",
     "p95_error_m": "PENDING",
     "rmse_m": "PENDING"
+  },
+  "low_light": {
+    "clahe_map50_l0_l4": [
+      0.2657391403,
+      0.2656420531,
+      0.2240838264,
+      0.0746161035,
+      0.0033883546
+    ],
+    "ll_detector_map50_l0_l4": "PENDING",
+    "ll_detector_state_b_wording": "Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.",
+    "raw_map50_l0_l4": [
+      0.3886917344,
+      0.3796280361,
+      0.3342489847,
+      0.1263098877,
+      0.0031301687
+    ],
+    "status": "SUPPORTED_RAW_CLAHE_PENDING_LL_DETECTOR"
   },
   "localization": {
     "active_stop_b_fallback": "RTAB-Map RGB-D + IMU",

@@ -1,15 +1,15 @@
 {
-  "classification": "WORKING DRAFT",
-  "title": "AegisInspect: Autonomous Multimodal Drone Infrastructure Inspection with 3D Defect Localization and Reporting",
-  "generated_at_utc": "2026-09-20T04:45:59.773Z",
+  "classification": "P20 FINALIZATION_READY_FOR_LAST-EVIDENCE_INGESTION",
+  "title": "AegisInspect: Multimodal Drone Infrastructure Inspection",
+  "generated_at_utc": "2026-09-21T21:46:06.295Z",
   "generation_command": "node docs/presentation/deck/generate_deck.js",
   "pptxgenjs_version": "4.0.1",
-  "slide_count": 18,
+  "slide_count": 19,
   "assembly_source": "docs/presentation/assembly/slide_content.md",
-  "assembly_source_sha256": "76829ec39dff392479c4db9b50683b24143c96080f5eeef56148a6cf06412415",
+  "assembly_source_sha256": "a9756b6937c47f1129abc87917e7df5fd7b23d087d03117ea2de3666c84bc012",
   "p16_p17_evidence_package": "outputs/presentation/p16_p17_evidence",
   "p16_p17_evidence_inventory_entries": 29,
   "p18_evidence_package": "outputs/presentation/p18_evidence",
   "p18_evidence_inventory_entries": 15,
-  "output_sha256": "75c613dfda8f99db81a40111e9d1817d10bdb47d72ffd59dd638c275e596b314"
+  "output_sha256": "4c39de830dd1afa98cd0fd88761da20d2cf79587a8e65e12fa042d9f7d10911c"
 }

@@ -2,7 +2,7 @@
 
 Final presentation title:
 
-**AegisInspect: Autonomous Multimodal Drone Infrastructure Inspection with 3D Defect Localization and Reporting**
+**AegisInspect: Multimodal Drone Infrastructure Inspection**
 
 Highest Stop-level statement:
 
@@ -351,6 +351,21 @@ P19 3D status: **PENDING — accepted explicit GT↔mapped-defect
 correspondence required.** No XYZ-error summary or correspondence count is
 shown.
 
+If a final accepted correspondence result arrives from MSI, replace only the
+prepared P19 result slot with that result and its provenance. Otherwise use:
+
+**Implemented / demonstrated:** depth projection, camera-frame XYZ,
+map-frame XYZ, defect-to-map aggregation, persistence/reporting and full P18
+core-system integration.
+
+**Measured:** localization ATE/RPE.
+
+**Pending:** final quantitative simulator-ground-truth correspondence
+validation for 3D defect-position accuracy.
+
+The pending research measurement is not a failure of the demonstrated P18
+integrated system.
+
 P18 presentation evidence is verified and ingested. The first integrated
 retry validated the same-observation data chain but recorded a missing
 dashboard browser capture; it is not presented as a complete first-run PASS.
@@ -361,7 +376,41 @@ or system-wide scientific validation.
 
 ---
 
-## 15. Limitations
+## 15. Workstream 04 Low-Light Robustness
+
+**Status:** `SUPPORTED / FROZEN VALIDATION BENCHMARK`
+
+Accepted mAP50 results:
+
+| Level | RAW | CLAHE |
+| --- | ---: | ---: |
+| L0 | 0.3886917344 | 0.2657391403 |
+| L1 | 0.3796280361 | 0.2656420531 |
+| L2 | 0.3342489847 | 0.2240838264 |
+| L3 | 0.1263098877 | 0.0746161035 |
+| L4 | 0.0031301687 | 0.0033883546 |
+
+Accepted interpretation:
+
+- low-light degradation substantially reduces detector performance;
+- CLAHE does not provide general recovery;
+- CLAHE is worse than RAW at L0-L3;
+- L4 performance is effectively collapsed for both;
+- conclusions apply only to this frozen validation benchmark.
+
+LL-DETECTOR State A: when accepted L0-L4 evaluation arrives, add the learned
+series and its provenance to the prepared chart/table.
+
+LL-DETECTOR State B:
+
+**Learned low-light adaptation was implemented, but final presentation-time
+model training/evaluation was not completed.**
+
+The deck remains valid in State B.
+
+---
+
+## 16. Limitations
 
 Required visible limitations:
 
@@ -375,12 +424,13 @@ Required visible limitations:
 8. P19 localization is measured, not threshold-classified as accurate.
 9. P19 3D evaluation awaits explicit correspondence.
 10. P18 demonstrates accepted runtime, dashboard-completion and repeatability evidence, not full autonomy or production readiness.
-11. Workstream 04 final robustness evidence is pending.
+11. RAW and CLAHE performance is effectively collapsed at L4; the learned
+    LL-DETECTOR result remains pending.
 12. Stop C/full autonomy is not demonstrated.
 
 ---
 
-## 16. Contributions / Engineering Decisions
+## 17. Contributions / Engineering Decisions
 
 Evidence-backed contributions include:
 
@@ -405,7 +455,7 @@ the pre-designed RTAB-Map fallback.
 
 ---
 
-## 17. Current Demonstrated Capability and Next Steps
+## 18. Application Value, Current Capability and Next Steps
 
 Current evidence priorities:
 
@@ -417,11 +467,21 @@ evaluation.
 Pending inputs:
 
 - P19 explicit GT↔mapped-defect correspondence for 3D evaluation;
-- Workstream 04 final low-light robustness evidence.
+- LL-DETECTOR L0-L4 training/evaluation results.
+
+Application value:
+
+- repeatable multimodal inspection evidence;
+- traceable human review and deterministic reports;
+- persistent records suitable for comparison over time;
+- modular sensing, detector and localization interfaces.
+
+These are application benefits, not proof of production readiness or market
+validation.
 
 ---
 
-## 18. Q&A / Evidence References
+## 19. Q&A / Evidence References
 
 Keep available during Q&A:
 

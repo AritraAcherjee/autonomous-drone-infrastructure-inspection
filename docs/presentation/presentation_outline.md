@@ -57,9 +57,9 @@ Suggested badges:
 - Detector: `SUPPORTED / REAL_HELD_OUT`
 - External generalization: `SUPPORTED / EXTERNAL_BENCHMARK`
 - ROS/Gazebo/depth/projection: `SUPPORTED / SIMULATION_RUNTIME`
-- P15/P16/P17/P19: `IMPLEMENTED_NOT_REAL_EVIDENCE`
-- VIO real metrics: `PENDING_NOT_YET_VERIFIED`
-- End-to-end mission: `PENDING_NOT_YET_VERIFIED`
+- P15 software: `IMPLEMENTED`; accepted P15-P18 handoff: `DEMONSTRATED`
+- LiDAR ICP localization metrics: `MEASURED`
+- Full-autonomy claim and final P19 3D correspondence: `PENDING`
 
 Architecture does not imply every segment has completed real validation.
 
@@ -223,18 +223,18 @@ localization accuracy.
 
 ## Slide 10 - Localization / VIO
 
-**Badge:** `PENDING_NOT_YET_VERIFIED / PENDING`
+**Badge:** `MEASURED / SIMULATION_GROUND_TRUTH`
 
 Architecture/status may be shown.
 
-Real quantitative fields must display:
+Accepted LiDAR ICP quantitative fields:
 
-- ATE: **PENDING**
-- RPE translation: **PENDING**
-- RPE rotation: **PENDING**
-- timestamp-alignment coverage: **PENDING**
+- ATE translation RMSE: **0.595396782192 m**
+- RPE translation RMSE: **0.340604743330 m**
+- RPE rotation RMSE: **1.707265244063 deg**
 
-Do not show synthetic P19 fixtures as real VIO results.
+These are measured against simulation ground truth and have no frozen
+accuracy PASS/FAIL threshold.
 
 ---
 
@@ -242,7 +242,7 @@ Do not show synthetic P19 fixtures as real VIO results.
 
 P15:
 
-**Badge:** `IMPLEMENTED_NOT_REAL_EVIDENCE / IMPLEMENTATION_TEST`
+**Badge:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
 
 Presentation-safe wording:
 
@@ -257,7 +257,7 @@ Real map-localization accuracy remains pending.
 
 ## Slide 12 - Dashboard / Human Review
 
-**Badge:** `IMPLEMENTED_NOT_REAL_EVIDENCE / SYNTHETIC_DEMO`
+**Badge:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
 
 Presentation-safe wording:
 
@@ -279,7 +279,7 @@ Do not label these records as field inspection evidence.
 
 ## Slide 13 - Deterministic Reporting
 
-**Badge:** `IMPLEMENTED_NOT_REAL_EVIDENCE / IMPLEMENTATION_TEST`
+**Badge:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
 
 Presentation-safe wording:
 
@@ -293,7 +293,7 @@ end-to-end mission.
 
 ## Slide 14 - Evaluation Framework / P19
 
-**Badge:** `IMPLEMENTED_NOT_REAL_EVIDENCE / IMPLEMENTATION_TEST`
+**Badge:** `MEASURED / ACCEPTED LOCALIZATION EVALUATION`
 
 Canonical spatial-evaluation tooling supports future calculation of:
 

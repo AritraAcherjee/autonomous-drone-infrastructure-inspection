@@ -79,7 +79,7 @@ Before presenting:
 ## H. P15 mapping
 
 - [x] software implementation may be demonstrated/described;
-- [x] use `IMPLEMENTED_NOT_REAL_EVIDENCE`;
+- [x] use `IMPLEMENTED` or `DEMONSTRATED` as supported by the evidence;
 - [ ] real localization accuracy remains pending.
 
 ## I. P16 dashboard
@@ -92,7 +92,7 @@ Before presenting:
 ## J. P17 reporting
 
 - [x] deterministic report-generation implementation may be shown;
-- [x] use `IMPLEMENTED_NOT_REAL_EVIDENCE`;
+- [x] use `IMPLEMENTED` or `DEMONSTRATED` as supported by the evidence;
 - [ ] do not claim the report came from a completed autonomous mission
       unless new accepted evidence exists.
 
@@ -100,18 +100,14 @@ Before presenting:
 
 Current presentation values:
 
-- ATE: `PENDING`
-- RPE translation: `PENDING`
-- RPE rotation: `PENDING`
-- alignment coverage: `PENDING`
+- ATE translation RMSE: `0.595396782192 m` (`MEASURED`);
+- RPE translation RMSE: `0.340604743330 m` (`MEASURED`);
+- RPE rotation RMSE: `1.707265244063 deg` (`MEASURED`);
+- accuracy classification: no frozen PASS/FAIL threshold.
 
-Before replacing `PENDING`:
-
-- [ ] obtain accepted hash-bound MSI VIO trajectory;
-- [ ] obtain accepted P13 GT trajectory;
-- [ ] calculate using canonical P19 tooling;
-- [ ] record artifact hashes/provenance;
-- [ ] receive claim update authorization if required.
+- [x] accepted P19 trajectory evaluation is represented;
+- [x] frozen methodology and evidence identity are retained;
+- [x] values are labelled `MEASURED`, not accuracy `PASS`.
 
 ## L. 3D defect localization
 
@@ -134,7 +130,7 @@ Before replacing `PENDING`:
 
 ## M. Integrated-demo claim
 
-- [ ] accepted P18 end-to-end mission evidence exists.
+- [x] accepted P18 core-system integration and repeatability evidence exists.
 - [ ] full autonomous inspection language authorized by 00.
 
 Until both are checked:
@@ -145,12 +141,12 @@ Until both are checked:
 
 Immediately before presentation:
 
-- [ ] verify final canonical main SHA;
-- [ ] verify no P20 claim was silently upgraded;
-- [ ] verify quantitative slides still match `results_table.json`;
-- [ ] verify DamSegment limitation is visible;
-- [ ] verify synthetic dashboard badge is visible;
-- [ ] verify VIO and 3D localization still show `PENDING` unless new
-      accepted evidence exists;
-- [ ] verify final title / Stop-level with 00;
-- [ ] keep evidence inventory available for Q&A.
+- [ ] verify final canonical presentation SHA after late-evidence ingestion;
+- [x] verify no P20 claim was silently upgraded;
+- [x] verify quantitative slides match `results_table.json`;
+- [x] verify detector and low-light limitations are visible;
+- [x] verify the accepted dashboard record remains `UNREVIEWED`;
+- [x] verify localization is `MEASURED` and P19 3D correspondence is `PENDING`;
+- [x] verify LL-DETECTOR is `PENDING` unless accepted results arrive;
+- [ ] final-freeze only after ARMOURY/MSI disposition from 00;
+- [x] keep the compact evidence index available for Q&A.

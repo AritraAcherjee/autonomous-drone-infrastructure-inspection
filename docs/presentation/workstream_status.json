@@ -27,10 +27,10 @@
       "workstream": "03"
     },
     {
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
-      "evidence_scope": "PENDING",
-      "limitations": "No accepted real ATE/RPE yet.",
-      "presentation_summary": "Architecture/status may be shown; real trajectory metrics remain pending.",
+      "claim_status": "MEASURED",
+      "evidence_scope": "SIMULATION_GROUND_TRUTH",
+      "limitations": "No frozen localization-accuracy PASS/FAIL threshold.",
+      "presentation_summary": "LiDAR ICP ATE/RPE are measured against simulation ground truth.",
       "title": "Visual-Inertial SLAM / Odometry",
       "workstream": "07"
     },
@@ -51,52 +51,60 @@
       "workstream": "P12/P13"
     },
     {
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
-      "evidence_scope": "IMPLEMENTATION_TEST",
-      "limitations": "Real spatial-localization accuracy remains unverified.",
-      "presentation_summary": "Deterministic defect-to-map fusion software is implemented.",
+      "claim_status": "DEMONSTRATED",
+      "evidence_scope": "VERIFIED_REAL_HANDOFF",
+      "limitations": "Final simulator-ground-truth 3D correspondence remains pending.",
+      "presentation_summary": "A mapped-defect record is preserved through the accepted P15-P18 chain.",
       "title": "Defect-to-Map Fusion",
       "workstream": "P15"
     },
     {
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
-      "evidence_scope": "SYNTHETIC_DEMO",
-      "limitations": "Current demo records are synthetic/test-only.",
-      "presentation_summary": "Persistent inspection database and human-review dashboard are implemented.",
+      "claim_status": "DEMONSTRATED",
+      "evidence_scope": "VERIFIED_REAL_HANDOFF",
+      "limitations": "The accepted record is extremely-low-confidence and UNREVIEWED.",
+      "presentation_summary": "Persistence and human-review dashboard are demonstrated with accepted handoff evidence.",
       "title": "Database + Dashboard",
       "workstream": "P16"
     },
     {
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
-      "evidence_scope": "IMPLEMENTATION_TEST",
+      "claim_status": "DEMONSTRATED",
+      "evidence_scope": "VERIFIED_REAL_HANDOFF",
       "limitations": "No completed integrated autonomous-mission report is claimed.",
       "presentation_summary": "Deterministic report-generation software is implemented.",
       "title": "Report Generation",
       "workstream": "P17"
     },
     {
-      "claim_status": "PENDING_NOT_YET_VERIFIED",
-      "evidence_scope": "PENDING",
-      "limitations": "Do not claim full autonomous inspection validation.",
-      "presentation_summary": "End-to-end mission status remains pending.",
+      "claim_status": "DEMONSTRATED",
+      "evidence_scope": "SIMULATION_RUNTIME",
+      "limitations": "Core integration and repeatability do not establish full autonomy or production readiness.",
+      "presentation_summary": "P18 core-system integration, dashboard completion and clean repeatability are demonstrated.",
       "title": "Full Integration",
       "workstream": "P18"
     },
     {
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
-      "evidence_scope": "IMPLEMENTATION_TEST",
-      "limitations": "Real spatial metrics remain pending.",
-      "presentation_summary": "Canonical tooling exists for ATE/RPE/alignment coverage/3D location error.",
+      "claim_status": "MEASURED",
+      "evidence_scope": "SIMULATION_GROUND_TRUTH",
+      "limitations": "Final quantitative 3D correspondence remains pending.",
+      "presentation_summary": "ATE/RPE are measured; canonical 3D evaluation tooling is implemented.",
       "title": "Evaluation + Experiments",
       "workstream": "P19"
     },
     {
-      "claim_status": "IMPLEMENTED_NOT_REAL_EVIDENCE",
+      "claim_status": "IMPLEMENTED",
       "evidence_scope": "IMPLEMENTATION_TEST",
       "limitations": "Final title and highest Stop-level claim remain under 00 control.",
       "presentation_summary": "Evidence-backed presentation material is under active implementation.",
       "title": "Documentation + Presentation",
       "workstream": "P20"
+    },
+    {
+      "claim_status": "SUPPORTED",
+      "evidence_scope": "FROZEN_VALIDATION_BENCHMARK",
+      "limitations": "Do not generalize beyond the frozen benchmark; LL-DETECTOR remains pending.",
+      "presentation_summary": "RAW and CLAHE mAP50 L0-L4 are accepted; CLAHE gives no general recovery.",
+      "title": "Low-Light Robustness",
+      "workstream": "04"
     }
   ]
 }

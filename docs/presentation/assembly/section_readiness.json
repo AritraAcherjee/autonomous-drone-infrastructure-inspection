@@ -52,7 +52,7 @@
       "title": "Camera-Frame 3D Projection"
     },
     {
-      "content_status": "READY_WITH_PENDING_RUNTIME",
+      "content_status": "READY",
       "section": 11,
       "title": "Defect-to-Map Architecture"
     },
@@ -67,32 +67,37 @@
       "title": "Deterministic Reporting"
     },
     {
-      "content_status": "READY_WITH_PENDING_RUNTIME",
+      "content_status": "READY_WITH_PENDING_FINAL_CORRESPONDENCE",
       "section": 14,
       "title": "P19 Evaluation Methodology"
     },
     {
       "content_status": "READY",
       "section": 15,
-      "title": "Limitations"
+      "title": "Workstream 04 Low-Light Robustness"
     },
     {
       "content_status": "READY",
       "section": 16,
-      "title": "Contributions / Engineering Decisions"
+      "title": "Limitations"
     },
     {
       "content_status": "READY",
       "section": 17,
-      "title": "Next Steps"
+      "title": "Contributions / Engineering Decisions"
     },
     {
       "content_status": "READY",
       "section": 18,
+      "title": "Application Value, Current Capability and Next Steps"
+    },
+    {
+      "content_status": "READY",
+      "section": 19,
       "title": "Q&A / Evidence References"
     }
   ],
-  "final_title": "AegisInspect: Autonomous Multimodal Drone Infrastructure Inspection with 3D Defect Localization and Reporting",
+  "final_title": "AegisInspect: Multimodal Drone Infrastructure Inspection",
   "highest_stop_level": "NOT_ASSERTED_NO_STOP_C",
   "insertable_sections": [
     {

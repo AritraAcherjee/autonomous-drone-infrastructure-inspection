@@ -3,13 +3,18 @@
 The purpose of this plan is to prevent presentation success from depending
 on a single live runtime path.
 
-## 1. Live demo
+## 1. Presentation default
 
 Current state:
 
-**NOT YET FROZEN**
+**OFFLINE-FIRST / PREPARED**
 
-Candidate live components may include:
+Use the generated PPTX and PDF with accepted screenshots and records. The
+presentation does not depend on ROS, Gazebo, a network connection, or a live
+dashboard process.
+
+Optional live components, only if separately owner-approved and verified,
+may include:
 
 - ROS/Gazebo simulation foundation;
 - simulated metric depth;
@@ -18,7 +23,8 @@ Candidate live components may include:
 - deterministic report output;
 - localization only if accepted runtime evidence is available.
 
-Do not improvise unapproved localization runtime commands in P20.
+Do not improvise unapproved localization runtime commands in P20 and do not
+delay the presentation to recover a live path.
 
 Use the owner-approved MSI command sequence when that sequence is frozen.
 
@@ -26,28 +32,26 @@ Use the owner-approved MSI command sequence when that sequence is frozen.
 
 Current state:
 
-**PARTIALLY PREPARED FROM VERIFIED ORIGINALS**
+**PREPARED FROM VERIFIED ORIGINALS**
 
 Required screenshot categories:
 
-- simulation/world and drone;
-- live ROS topic evidence;
-- depth image / depth validation evidence;
-- camera projection result;
 - verified P16 dashboard overview and detail;
 - deterministic P17 report excerpt;
-- P19 accepted trajectory/error plots where preserved by the P19 package;
+- verified P18 dashboard-completion and repeatability screenshots;
+- RAW versus CLAHE L0-L4 chart embedded in the deck;
 - provenance and hash summary.
 
-The verified P16/P17 assets and the verified P18 dashboard-completion and
-repeatability screenshots are suitable for an offline backup demo. P19 3D
-metrics and Workstream 04 results remain pending.
+The deck itself supplies the architecture diagram, detector metrics,
+depth/projection contract, representative P15 map record, accepted P16/P17
+screenshots/report content, P18 screenshots, localization metrics and
+low-light chart. P19 3D correspondence and LL-DETECTOR results remain pending.
 
 ## 3. Backup recorded clips
 
 Current state:
 
-**PENDING_CAPTURE**
+**NONE AVAILABLE / NOT REQUIRED**
 
 Candidate clips:
 
@@ -58,7 +62,8 @@ Candidate clips:
 - future RTAB-Map localization;
 - future integrated P18 run.
 
-Do not fabricate or stage a clip as evidence for a result that has not run.
+No short video was present in the current checkout during finalization. Do
+not fabricate or stage a clip as evidence for a result that has not run.
 
 ## 4. Command-sequence package
 
@@ -112,16 +117,19 @@ Application layer:
 ## 6. Evidence still pending
 
 - explicit GT↔mapped-defect correspondence and P19 3D metrics;
-- Workstream 04 final low-light robustness evidence.
+- LL-DETECTOR final L0-L4 training/evaluation result; accepted RAW and CLAHE
+  evidence is already integrated.
 
 ## 7. Day-of-presentation fallback order
 
 Recommended fallback order:
 
-1. live demo when verified and stable;
-2. verified P18 browser/dashboard evidence;
-3. verified integrated-run screenshots/assets;
-4. working-deck evidence slides.
+1. generated PPTX;
+2. generated PDF fallback;
+3. verified P18 browser/dashboard and repeatability screenshots;
+4. verified P16/P17 dashboard screenshots and deterministic report;
+5. compact evidence index and hash inventories for Q&A;
+6. optional live demo only when separately verified and stable.
 
 A fallback must represent the same evidence scope as the claim being made.
 

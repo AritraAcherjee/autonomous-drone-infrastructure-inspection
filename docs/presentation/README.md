@@ -7,14 +7,17 @@ It is intentionally separate from operational implementation code.
 
 ## Frozen claim states
 
-Only these claim states are valid:
+Only these presentation claim states are valid:
 
 - `SUPPORTED`
-- `IMPLEMENTED_NOT_REAL_EVIDENCE`
-- `PENDING_NOT_YET_VERIFIED`
-- `OUT_OF_SCOPE`
+- `IMPLEMENTED`
+- `DEMONSTRATED`
+- `MEASURED`
+- `PENDING`
 
-A `SUPPORTED` claim requires objective evidence.
+A `SUPPORTED`, `DEMONSTRATED`, or `MEASURED` claim requires objective
+evidence. `IMPLEMENTED` identifies functionality without converting it into
+an accuracy result.
 
 No claim may be silently promoted because software exists, a synthetic
 fixture passes, or an architecture is planned.
@@ -83,10 +86,11 @@ P16 demo records are synthetic/test-only.
 
 They are not field-inspection records.
 
-### Pending real spatial results
+### Spatial results
 
-Real VIO ATE, RPE, alignment coverage and real 3D defect-localization
-metrics remain `PENDING`.
+Accepted LiDAR ICP localization ATE/RPE are `MEASURED` against simulation
+ground truth. Final quantitative simulator-ground-truth correspondence
+validation for 3D defect-position accuracy remains `PENDING`.
 
 Never replace an unmeasured result with `0`, `N/A`, a synthetic fixture
 value, or an inferred number.
