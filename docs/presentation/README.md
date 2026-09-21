@@ -90,7 +90,9 @@ They are not field-inspection records.
 
 Accepted LiDAR ICP localization ATE/RPE are `MEASURED` against simulation
 ground truth. Final quantitative simulator-ground-truth correspondence
-validation for 3D defect-position accuracy remains `PENDING`.
+validation for absolute 3D defect-position accuracy is `FROZEN PENDING` at
+the capstone close. P19 development is closed; this result must not be
+inferred from ATE/RPE.
 
 Never replace an unmeasured result with `0`, `N/A`, a synthetic fixture
 value, or an inferred number.

@@ -16,12 +16,15 @@ RESULTS = ROOT / "docs/presentation/results_table.json"
 INDEX = ROOT / "docs/presentation/presentation_evidence_index.md"
 
 ALLOWED_STATES = ("SUPPORTED", "IMPLEMENTED", "DEMONSTRATED", "MEASURED", "PENDING")
-EXPECTED_LITERALS = (
+SOURCE_LITERALS = (
     "0.29669431228680787",
     "0.17480040543737643",
-    "0.595396782192 m",
-    "0.340604743330 m",
-    "1.707265244063 deg",
+    "0.595 m",
+    "0.341 m",
+    "1.707 degrees",
+    "0.011138029396533966",
+    "These metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.",
+    "remained pending at the capstone freeze",
     "0.3886917344",
     "0.3796280361",
     "0.3342489847",
@@ -34,6 +37,7 @@ EXPECTED_LITERALS = (
     "0.0033883546",
     "Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.",
 )
+SLIDE_LITERALS = SOURCE_LITERALS
 PROHIBITED_AFFIRMATIVE = (
     "fully autonomous",
     "production-ready",
@@ -41,6 +45,10 @@ PROHIBITED_AFFIRMATIVE = (
     "proven real-world accuracy",
     "complete end-to-end validation",
     "final low-light model",
+    "P19 3D PASS",
+    "0.595 m defect-position error",
+    "globally surveyed map coordinates",
+    "completed simulator-ground-truth correspondence validation",
 )
 
 
@@ -59,7 +67,7 @@ def main() -> int:
             raise AssertionError(f"missing or empty artifact: {path.relative_to(ROOT)}")
 
     provenance = json.loads(PROVENANCE.read_text(encoding="utf-8"))
-    if provenance["classification"] != "P20 FINALIZATION_READY_FOR_LAST-EVIDENCE_INGESTION":
+    if provenance["classification"] != "P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE":
         raise AssertionError("deck classification drift")
     if provenance["slide_count"] != 19:
         raise AssertionError("expected 19 slides")
@@ -69,9 +77,9 @@ def main() -> int:
     source = SOURCE.read_text(encoding="utf-8")
     result_text = RESULTS.read_text(encoding="utf-8")
     index_text = INDEX.read_text(encoding="utf-8")
-    combined_sources = "\n".join((source, result_text, index_text))
-    for literal in EXPECTED_LITERALS:
-        if literal not in combined_sources:
+    combined_sources = " ".join("\n".join((source, result_text, index_text)).split())
+    for literal in SOURCE_LITERALS:
+        if " ".join(literal.split()) not in combined_sources:
             raise AssertionError(f"accepted literal absent from sources: {literal}")
 
     with ZipFile(PPTX) as archive:
@@ -86,7 +94,7 @@ def main() -> int:
         note_texts = [xml_text(archive.read(name)) for name in notes]
 
     all_slide_text = "\n".join(slide_texts)
-    for literal in EXPECTED_LITERALS:
+    for literal in SLIDE_LITERALS:
         if literal not in all_slide_text:
             raise AssertionError(f"accepted literal absent from PPTX: {literal}")
 
@@ -98,6 +106,16 @@ def main() -> int:
         if phrase.lower() in all_slide_text.lower():
             raise AssertionError(f"prohibited affirmative wording in PPTX: {phrase}")
 
+    for number in (8, 12, 14):
+        if "0.595 m" in slide_texts[number - 1]:
+            raise AssertionError(f"slide {number} misuses localization ATE as a spatial/defect metric")
+
+    if "FROZEN PENDING" not in slide_texts[13] or "P19 development: CLOSED" not in slide_texts[13]:
+        raise AssertionError("slide 14 does not preserve the final P19 capstone disposition")
+
+    if "0.011138029396533966" not in slide_texts[11] or "UNREVIEWED" not in slide_texts[11]:
+        raise AssertionError("slide 12 does not preserve the accepted P18 record boundary")
+
     for number, text in enumerate(note_texts, start=1):
         if "Speaker note:" not in text or len(text.split("Speaker note:", 1)[1].strip()) < 25:
             raise AssertionError(f"slide {number} lacks a substantive speaker note")
@@ -106,7 +124,7 @@ def main() -> int:
     print("Slides / speaker-note pages: 19 / 19")
     print("RAW / CLAHE exact metrics: PASS")
     print("LL-DETECTOR dual-state slot: PASS")
-    print("P19 dual-state slot: PASS")
+    print("P19 frozen-pending capstone disposition: PASS")
     print("Allowed claim-state audit: PASS")
     print("Prohibited affirmative wording audit: PASS")
     print(f"PPTX SHA-256: {sha256(PPTX)}")

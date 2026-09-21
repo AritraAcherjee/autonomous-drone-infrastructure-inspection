@@ -85,8 +85,8 @@
     {
       "claim_status": "MEASURED",
       "evidence_scope": "SIMULATION_GROUND_TRUTH",
-      "limitations": "Final quantitative 3D correspondence remains pending.",
-      "presentation_summary": "ATE/RPE are measured; canonical 3D evaluation tooling is implemented.",
+      "limitations": "Final quantitative simulator-ground-truth correspondence validation of absolute defect-position accuracy is frozen pending.",
+      "presentation_summary": "ATE/RPE are measured; P19 3D is FROZEN PENDING and P19 development is CLOSED FOR CAPSTONE.",
       "title": "Evaluation + Experiments",
       "workstream": "P19"
     },

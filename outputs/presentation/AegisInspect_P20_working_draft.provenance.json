@@ -1,15 +1,15 @@
 {
-  "classification": "P20 FINALIZATION_READY_FOR_LAST-EVIDENCE_INGESTION",
+  "classification": "P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE",
   "title": "AegisInspect: Multimodal Drone Infrastructure Inspection",
-  "generated_at_utc": "2026-09-21T21:46:06.295Z",
+  "generated_at_utc": "2026-09-21T22:54:26.131Z",
   "generation_command": "node docs/presentation/deck/generate_deck.js",
   "pptxgenjs_version": "4.0.1",
   "slide_count": 19,
   "assembly_source": "docs/presentation/assembly/slide_content.md",
-  "assembly_source_sha256": "a9756b6937c47f1129abc87917e7df5fd7b23d087d03117ea2de3666c84bc012",
+  "assembly_source_sha256": "069ed214d6ba35a7db18680172c06e99621b8b5b90bc394c256ecbe25f7a92fe",
   "p16_p17_evidence_package": "outputs/presentation/p16_p17_evidence",
   "p16_p17_evidence_inventory_entries": 29,
   "p18_evidence_package": "outputs/presentation/p18_evidence",
   "p18_evidence_inventory_entries": 15,
-  "output_sha256": "4c39de830dd1afa98cd0fd88761da20d2cf79587a8e65e12fa042d9f7d10911c"
+  "output_sha256": "04e5b7cc7f026ae5bfc03ff65d97e73ac807cf601e9020e9ea9ae8090cd283c4"
 }

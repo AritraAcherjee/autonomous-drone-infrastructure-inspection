@@ -120,19 +120,31 @@
           "metric": "LiDAR ICP ATE translation RMSE m",
           "scope": "SIMULATION_GROUND_TRUTH",
           "status": "MEASURED",
-          "value": 0.595396782192
+          "value": 0.595
+        },
+        {
+          "metric": "LiDAR ICP ATE samples",
+          "scope": "SIMULATION_GROUND_TRUTH",
+          "status": "MEASURED",
+          "value": 76
         },
         {
           "metric": "LiDAR ICP RPE translation RMSE m @ 1 s",
           "scope": "SIMULATION_GROUND_TRUTH",
           "status": "MEASURED",
-          "value": 0.34060474333
+          "value": 0.341
         },
         {
           "metric": "LiDAR ICP RPE rotation RMSE deg @ 1 s",
           "scope": "SIMULATION_GROUND_TRUTH",
           "status": "MEASURED",
-          "value": 1.707265244063
+          "value": 1.707
+        },
+        {
+          "metric": "LiDAR ICP RPE pairs",
+          "scope": "SIMULATION_GROUND_TRUTH",
+          "status": "MEASURED",
+          "value": 44
         },
         {
           "metric": "VIO timestamp alignment coverage",

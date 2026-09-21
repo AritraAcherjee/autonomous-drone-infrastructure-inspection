@@ -66,7 +66,7 @@ function verifyHashInventory(directory) {
 
 function addFooter(slide, number) {
   slide.addShape(PptxGenJS.ShapeType.line, { x: 0.45, y: 7.12, w: 12.42, h: 0, line: { color: 'D5DEE5', width: 0.6 } });
-  slide.addText('AEGISINSPECT  |  FINALIZATION READY  |  LAST-EVIDENCE INGESTION OPEN', {
+  slide.addText('AEGISINSPECT  |  FINALIZATION READY  |  LAST ARMOURY EVIDENCE OPEN', {
     x: 0.48, y: 7.18, w: 9.5, h: 0.18, fontFace: FONT, fontSize: 7.5, color: MUTED, margin: 0,
   });
   slide.addText(String(number).padStart(2, '0'), {
@@ -112,7 +112,7 @@ function addCard(slide, title, value, x, y, w, h, color = BLUE, note = '', optio
 }
 
 function addNotes(slide, sourceHash, detail) {
-  slide.addNotes(`P20 FINALIZATION_READY_FOR_LAST-EVIDENCE_INGESTION\nAssembly source: docs/presentation/assembly/slide_content.md\nAssembly SHA-256: ${sourceHash}\nSpeaker note: ${detail}`);
+  slide.addNotes(`P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE\nAssembly source: docs/presentation/assembly/slide_content.md\nAssembly SHA-256: ${sourceHash}\nSpeaker note: ${detail}`);
 }
 
 function standardSlide(pptx, number, title, status, color, notes, builder) {
@@ -135,9 +135,9 @@ async function main() {
   const source = fs.readFileSync(ASSEMBLY, 'utf8');
   const readiness = JSON.parse(fs.readFileSync(READY, 'utf8'));
   const placeholders = JSON.parse(fs.readFileSync(PLACEHOLDERS, 'utf8'));
-  sourceMustContain(source, [TITLE, 'DET-FINAL-v1 / YOLO26s', '0.29669431228680787', '0.17480040543737643', '0.18618618618618618', '0.004553093574941158', 'UNREVIEWED', '0.595396782192 m', '0.340604743330 m', '1.707265244063 deg', 'dashboard-evidence completion package is PASS', 'clean repeatability run is PASS', '0.3886917344', '0.2657391403', 'Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.']);
+  sourceMustContain(source, [TITLE, 'DET-FINAL-v1 / YOLO26s', '0.29669431228680787', '0.17480040543737643', '0.18618618618618618', '0.011138029396533966', 'UNREVIEWED', '0.595 m', '0.341 m', '1.707 degrees', 'These metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.', 'dashboard-evidence completion package is PASS', 'clean repeatability run is PASS', '0.3886917344', '0.2657391403', 'Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.', 'remained pending at the capstone freeze']);
   if (readiness.final_title !== TITLE) throw new Error('Readiness title does not match assembly source');
-  if (!placeholders.localization.ate_translation_rmse_m.includes('0.595396782192')) throw new Error('Runtime placeholder does not preserve accepted ATE');
+  if (!placeholders.localization.ate_translation_rmse_m.includes('0.595 m')) throw new Error('Runtime placeholder does not preserve accepted presentation-rounded ATE');
   const p16p17InventoryEntries = verifyHashInventory(EVIDENCE);
   const p18InventoryEntries = verifyHashInventory(P18_EVIDENCE);
 
@@ -147,7 +147,7 @@ async function main() {
   pptx.layout = 'LAYOUT_WIDE';
   pptx.author = 'AegisInspect P20';
   pptx.company = 'AegisInspect';
-  pptx.subject = 'Evidence-bound presentation; ready for bounded final evidence ingestion';
+  pptx.subject = 'Evidence-bound presentation; ready only for final ARMOURY evidence ingestion';
   pptx.title = TITLE;
   pptx.lang = 'en-CA';
   pptx.theme = { headFontFace: FONT, bodyFontFace: FONT, lang: 'en-CA' };
@@ -173,7 +173,7 @@ async function main() {
     addBody(s, 'Boundary: this deck does not claim a validated full autonomous mission.', { x: 0.74, y: 5.55, w: 11.6, h: 0.42, size: 14, color: RED, bold: true });
   });
 
-  slide('Evidence-Bound System Architecture', 'IMPLEMENTED / SYSTEM CHAIN', BLUE, 'Walk left to right from sensing to report. Call out demonstrated P16-P18 handoff, measured localization, and the bounded P19/LL pending items.', (s) => {
+  slide('Evidence-Bound System Architecture', 'IMPLEMENTED / SYSTEM CHAIN', BLUE, 'Walk left to right from sensing to report. Call out accepted P18 core integration, measured localization, the frozen-pending P19 3D disposition, and the still-open LL-DETECTOR slot.', (s) => {
     const steps = ['CAMERA\n/ DETECTOR', 'DEPTH', 'CAMERA\nXYZ', 'LOCALIZATION\n/ MAP RELATION', 'MAP XYZ\n/ P15', 'P16\nPERSISTENCE', 'P17\nREPORT'];
     steps.forEach((step, i) => {
       const x = 0.55 + i * 1.8;
@@ -183,7 +183,7 @@ async function main() {
     });
     addCard(s, 'Demonstrated', 'P16/P17 real handoff', 0.8, 4.15, 3.45, 1.2, TEAL, 'verified persistence, dashboard and report');
     addCard(s, 'Measured', 'P19 localization', 4.95, 4.15, 3.45, 1.2, BLUE, 'no frozen accuracy PASS/FAIL threshold');
-    addCard(s, 'Pending', 'P19 3D + LL detector', 9.1, 4.15, 3.45, 1.2, AMBER, 'final correspondence / learned model', { valueSize: 16 });
+    addCard(s, 'Pending', 'P19 frozen / LL open', 9.1, 4.15, 3.45, 1.2, AMBER, 'capstone disposition / learned model', { valueSize: 16 });
   });
 
   slide('GYU-DET Dataset and Defect Classes', 'SUPPORTED / DATA FOUNDATION', CYAN, 'State the frozen dataset counts and six classes. These counts establish the data foundation; they are not performance metrics.', (s) => {
@@ -219,12 +219,12 @@ async function main() {
     addBody(s, 'Depth and projection are supported in simulation. Camera-frame XYZ alone does not establish real-world depth accuracy, map-frame defect localization, or global localization accuracy.', { x: 1.05, y: 4.05, w: 11.1, h: 1.2, size: 20, color: NAVY, bold: true, align: 'center' });
   });
 
-  slide('Map-Frame Defect Localization / P15', 'DEMONSTRATED / VERIFIED REAL HANDOFF', TEAL, 'Trace one accepted record from camera geometry through pose transform, aggregation and map XYZ. Final quantitative 3D correspondence remains pending.', (s) => {
+  slide('Map-Frame Defect Localization / P15', 'DEMONSTRATED / ACCEPTED P18 HANDOFF', TEAL, 'Trace the accepted P18 observation from depth-based camera XYZ into session-local map XYZ and the persisted record. These are not globally surveyed coordinates.', (s) => {
     addBullets(s, ['Detection / track', 'Robust depth', 'Camera XYZ', 'Pose transform', 'Map XYZ', 'Temporal aggregation', 'Persistent defect record'], { x: 0.82, y: 1.85, w: 3.2, h: 4.4, size: 16 });
     s.addShape(PptxGenJS.ShapeType.line, { x: 4.15, y: 1.9, w: 0, h: 3.9, line: { color: 'D5DEE5', width: 1 } });
-    addBody(s, 'Accepted mapped-defect lineage', { x: 4.65, y: 1.9, w: 5.9, h: 0.3, size: 20, color: NAVY, bold: true });
-    addBody(s, 'P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee\nmap XYZ: (3.9000027127470087, -0.09877989958311785, 0.0032930137079122536)\nTimestamp: 1970-01-01T00:00:21.813000Z', { x: 4.65, y: 2.55, w: 7.25, h: 1.6, size: 15.5, color: INK });
-    addBody(s, 'P19 3D evaluation remains pending a controlled experiment with accepted explicit GT-to-mapped-defect correspondence.', { x: 4.65, y: 4.7, w: 7.25, h: 0.75, size: 15, color: RED, bold: true });
+    addBody(s, 'Accepted P18 mapped-defect lineage', { x: 4.65, y: 1.9, w: 5.9, h: 0.3, size: 20, color: NAVY, bold: true });
+    addBody(s, 'Machine class: Honeycombing\nCamera XYZ: approximately (0.0056, -0.0028, 3.1251) m\nSession-local map XYZ: approximately (3.8882, 0.0712, -0.0035) m\nModel: DET-FINAL-v1', { x: 4.65, y: 2.48, w: 7.25, h: 1.75, size: 15, color: INK });
+    addBody(s, 'Low-confidence, machine-generated and UNREVIEWED. Final quantitative absolute defect-position correspondence was not completed.', { x: 4.65, y: 4.78, w: 7.25, h: 0.75, size: 14.5, color: RED, bold: true });
   });
 
   slide('P16 Persistence and Dashboard Review', 'DEMONSTRATED / VERIFIED REAL HANDOFF', TEAL, 'Show that the record persists and is reviewable. Stress that it is extremely-low-confidence and UNREVIEWED, not a confirmed physical defect.', (s) => {
@@ -235,12 +235,12 @@ async function main() {
     addBody(s, 'Extremely-low-confidence, unreviewed machine output used to demonstrate system lineage.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 11.25, color: RED, bold: true, align: 'center' });
   });
 
-  slide('P17 Deterministic Reporting', 'DEMONSTRATED / VERIFIED REAL HANDOFF', TEAL, 'Point out that the report preserves coordinates, confidence, provenance and review state without inventing severity, repairs or safety conclusions.', (s) => {
-    const excerpt = ['Inspection ID: 2026091901', 'Defect ID: P15D-10627c5f-3f84-5c64-ab2d-3e574b6e97ee', 'Class: Honeycombing', 'Confidence: 0.004553093574941158', 'Coordinate frame: map', 'Review Status: UNREVIEWED', 'Model Version: DET-FINAL-v1'].join('\n');
+  slide('P17 Deterministic Reporting', 'DEMONSTRATED / ACCEPTED P18 REPORT', TEAL, 'Use this short excerpt from the accepted P18 inspection report. It preserves session-local coordinates, confidence, provenance and UNREVIEWED state without inventing severity, repairs or safety conclusions.', (s) => {
+    const excerpt = ['Inspection ID: 2026091904', 'Defect ID: P15D-9b8ae056-1255-5cf4-ba40-e57a11f35e13', 'Class: Honeycombing', 'Confidence: 0.011138029396533966', 'Coordinate frame: map (session-local)', 'Review Status: UNREVIEWED', 'Model Version: DET-FINAL-v1'].join('\n');
     s.addShape(PptxGenJS.ShapeType.roundRect, { x: 0.75, y: 1.8, w: 7.1, h: 4.8, rectRadius: 0.05, fill: { color: 'F8FAFC' }, line: { color: 'DCE6ED', width: 0.8 } });
     s.addText('DETERMINISTIC REPORT EXCERPT', { x: 1.0, y: 2.08, w: 4.5, h: 0.2, fontFace: FONT, fontSize: 9, bold: true, color: BLUE, charSpace: 1, margin: 0 });
     s.addText(excerpt, { x: 1.0, y: 2.55, w: 6.55, h: 2.8, fontFace: 'Courier New', fontSize: 13.5, color: INK, margin: 0.02, fit: 'shrink' });
-    addCard(s, 'Report verification', 'HASH-VERIFIED', 8.35, 1.95, 3.65, 1.2, TEAL, 'deterministic P17 report');
+    addCard(s, 'Report verification', 'HASH-VERIFIED', 8.35, 1.95, 3.65, 1.2, TEAL, 'accepted P18 / P17 report');
     addBody(s, 'The report preserves persisted and mapped evidence without inferring severity, dimensions, repair action or structural safety.', { x: 8.35, y: 3.7, w: 3.7, h: 1.45, size: 15, color: NAVY, bold: true, align: 'center' });
   });
 
@@ -252,31 +252,31 @@ async function main() {
     addBody(s, 'This demonstrates integrated runtime and dashboard evidence; it does not establish full autonomy or production readiness.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 10.7, color: RED, bold: true, align: 'center' });
   });
 
-  slide('P18 Clean Repeatability', 'DEMONSTRATED / VERIFIED PACKAGE', TEAL, 'Explain that a new execution identity repeated detection-to-report behavior under unchanged source and configuration, including browser evidence.', (s) => {
+  slide('P18 Integrated Inspection Evidence', 'DEMONSTRATED / CORE INTEGRATION ACCEPTED', TEAL, 'Use the primary accepted P18 overview. Explain that one low-confidence machine observation moved through depth projection, session-local mapping, persistence, dashboard and deterministic reporting. Human review remained UNREVIEWED.', (s) => {
     const image = path.join(P18_EVIDENCE, 'dashboard', 'clean_repeatability_overview.png');
     s.addImage({ path: image, x: 0.48, y: 1.6, w: 8.45, h: 5.45, sizing: { type: 'crop', x: 0.48, y: 1.6, w: 8.45, h: 5.45 } });
-    addCard(s, 'Clean repeatability', 'PASS', 9.25, 1.85, 3.2, 1.1, TEAL, 'accepted execution identity');
-    addBody(s, 'The clean repeatability package records a new detection and mapped-defect identity, P16 PASS, browser screenshots PASS and P17 PASS under unchanged source and configuration.', { x: 9.22, y: 3.28, w: 3.18, h: 1.95, size: 12.3, color: INK, align: 'center' });
-    addBody(s, 'P19 3D correspondence and LL-DETECTOR evaluation remain pending.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 10.7, color: RED, bold: true, align: 'center' });
+    addCard(s, 'P18 core integration', 'ACCEPTED', 9.25, 1.85, 3.2, 1.1, TEAL, 'repeatability PASS');
+    addBody(s, 'Honeycombing machine class\nConfidence: 0.011138029396533966\nCamera XYZ: approx. [0.0056, -0.0028, 3.1251] m\nSession-local map XYZ: approx. [3.8882, 0.0712, -0.0035] m\nReview: UNREVIEWED', { x: 9.22, y: 3.18, w: 3.18, h: 2.15, size: 10.8, color: INK, align: 'center' });
+    addBody(s, 'Not a confirmed physical defect, diagnosis or structural-safety finding.', { x: 9.22, y: 5.72, w: 3.18, h: 0.55, size: 10.7, color: RED, bold: true, align: 'center' });
   });
 
-  slide('P19 Localization Evaluation', 'MEASURED / FROZEN METHODOLOGY', BLUE, 'Report all three values with the frozen interval and alignment method. They are measured against simulation ground truth and are not classified PASS or FAIL.', (s) => {
-    addCard(s, 'ATE translation RMSE', '0.595396782192 m', 0.72, 2.0, 3.7, 1.35, BLUE, '76 matched samples; interval 3-18 s');
-    addCard(s, 'RPE translation RMSE', '0.340604743330 m', 4.82, 2.0, 3.7, 1.35, CYAN, 'delta 1 s +/- 50 ms');
-    addCard(s, 'RPE rotation RMSE', '1.707265244063 deg', 8.92, 2.0, 3.7, 1.35, TEAL, '44 pairs');
+  slide('P19 Localization Evaluation', 'MEASURED / FROZEN METHODOLOGY', BLUE, 'Report the presentation-rounded values and sample counts. Mandatory qualification: these metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.', (s) => {
+    addCard(s, 'ATE translation RMSE', '0.595 m', 0.72, 2.0, 3.7, 1.35, BLUE, '76 samples; interval 3-18 s');
+    addCard(s, 'RPE translation RMSE', '0.341 m', 4.82, 2.0, 3.7, 1.35, CYAN, 'delta 1 s +/- 50 ms');
+    addCard(s, 'RPE rotation RMSE', '1.707 degrees', 8.92, 2.0, 3.7, 1.35, TEAL, '44 pairs');
     addBody(s, 'Ground-truth bracket maximum 50 ms; linear translation interpolation; quaternion SLERP; SE(3) no-scale alignment; scale = 1.', { x: 1.1, y: 4.05, w: 11.0, h: 0.52, size: 17, color: INK, align: 'center' });
-    addBody(s, 'Runtime acceptance: PASS. Localization accuracy: MEASURED. No frozen localization-accuracy pass/fail threshold exists.', { x: 1.0, y: 5.15, w: 11.2, h: 0.55, size: 17, color: RED, bold: true, align: 'center' });
+    addBody(s, 'These metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.', { x: 1.0, y: 5.15, w: 11.2, h: 0.55, size: 17, color: RED, bold: true, align: 'center' });
   });
 
-  slide('P19 Spatial Validation Status', 'PENDING / FINAL 3D CORRESPONDENCE', AMBER, 'State the implemented and demonstrated spatial chain, the measured localization result, and the one bounded pending item. Do not frame the pending correspondence as integrated-system failure.', (s) => {
+  slide('P19 Capstone Disposition', 'PENDING / FROZEN CAPSTONE DISPOSITION', AMBER, 'P19 development is closed for the capstone. For technical Q&A only: qualifying receipt index 710; RGB and depth binding PASS; startup alignment PASS; truth PASS; 307,200 of 307,200 target pixels; operational GT publication NO. This is advanced R&D validation infrastructure, not a production runtime requirement.', (s) => {
     addCard(s, 'Implemented', 'Depth -> camera XYZ', 0.7, 1.8, 2.85, 1.05, BLUE, 'projection and map transform');
     addCard(s, 'Demonstrated', 'Map XYZ -> report', 3.8, 1.8, 2.85, 1.05, TEAL, 'P15 / P16 / P17 / P18');
     addCard(s, 'Measured', 'ATE / RPE', 6.9, 1.8, 2.55, 1.05, CYAN, 'simulation-ground-truth trajectory');
     addCard(s, 'Pending', '3D correspondence', 9.7, 1.8, 2.9, 1.05, AMBER, 'final quantitative validation');
     addBullets(s, ['Depth projection and camera-frame XYZ are implemented', 'Map-frame XYZ, defect aggregation and persistence/reporting are demonstrated', 'Full P18 core-system integration and repeatability are demonstrated', 'Localization ATE/RPE are measured'], { x: 0.82, y: 3.25, w: 6.2, h: 2.35, size: 15 });
-    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 7.4, y: 3.25, w: 5.0, h: 2.2, rectRadius: 0.04, fill: { color: 'FFF9EC' }, line: { color: 'E8C878', width: 0.8, dash: 'dash' } });
-    addBody(s, 'FINAL RESULT SLOT\nIf accepted: insert actual GT↔mapped-defect correspondence and metric.\n\nFallback: final quantitative simulator-ground-truth correspondence validation for 3D defect-position accuracy remains pending.', { x: 7.7, y: 3.62, w: 4.4, h: 1.45, size: 12.5, color: INK, align: 'center' });
-    addBody(s, 'The pending P19 research measurement does not invalidate the demonstrated P18 integrated chain.', { x: 1.15, y: 5.85, w: 11.0, h: 0.35, size: 14, color: RED, bold: true, align: 'center' });
+    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 7.4, y: 3.25, w: 5.0, h: 2.2, rectRadius: 0.04, fill: { color: 'FFF9EC' }, line: { color: 'E8C878', width: 0.8 } });
+    addBody(s, 'FROZEN PENDING\nFinal quantitative simulator-ground-truth correspondence validation of absolute defect-position accuracy remained pending at the capstone freeze.\n\nP19 development: CLOSED', { x: 7.7, y: 3.57, w: 4.4, h: 1.55, size: 12, color: INK, align: 'center' });
+    addBody(s, '3D defect-to-map integration was demonstrated through P18; localization accuracy was quantitatively measured.', { x: 1.15, y: 5.78, w: 11.0, h: 0.48, size: 14, color: RED, bold: true, align: 'center' });
   });
 
   slide('Workstream 04: Low-Light Robustness', 'SUPPORTED / FROZEN VALIDATION BENCHMARK', BLUE, 'Explain the monotonic RAW degradation, that CLAHE is worse at L0-L3 and offers no general recovery, and that both are effectively collapsed at L4. The LL-DETECTOR slot remains optional.', (s) => {
@@ -322,8 +322,8 @@ async function main() {
     addBody(s, 'Concise identifiers\nP17 Git: eb4013fa...bbfe488f\nP16/P17 ZIP: df3f87f0...9f313ec2\nP19 evidence: 4c7bd79a...9a4d78a', { x: 7.25, y: 3.75, w: 4.5, h: 1.45, size: 15, color: INK });
   });
 
-  slide('Limitations and Evidence Boundaries', 'SUPPORTED / CLAIM BOUNDARIES', RED, 'Be direct: detector performance is modest, external transfer is weak, simulation is not field accuracy, and two bounded final inputs remain open.', (s) => {
-    addBullets(s, ['Held-out detector mAP remains modest; metrics are not generic accuracy', 'DamSegment zero-shot transfer is weak, especially Crack recall', 'Accepted P16/P17 example is extremely-low-confidence, unreviewed machine output', 'P19 localization is measured, not threshold-classified as accurate', 'P19 3D requires final explicit simulator-ground-truth correspondence', 'RAW and CLAHE collapse at L4; LL-DETECTOR training/evaluation remains pending', 'P18 demonstrates integration and repeatability, not full autonomy or production readiness'], { x: 0.85, y: 1.85, w: 11.4, h: 4.7, size: 16 });
+  slide('Limitations and Evidence Boundaries', 'SUPPORTED / CLAIM BOUNDARIES', RED, 'Be direct: detector performance is modest, external transfer is weak, simulation is not field accuracy, P19 3D is frozen pending, and only the ARMOURY result remains open.', (s) => {
+    addBullets(s, ['Held-out detector mAP remains modest; metrics are not generic accuracy', 'DamSegment zero-shot transfer is weak, especially Crack recall', 'Accepted dashboard examples are low-confidence, unreviewed machine output', 'P19 localization is measured trajectory accuracy, not defect-position accuracy', 'P19 3D correspondence validation is frozen pending at capstone close', 'RAW and CLAHE collapse at L4; LL-DETECTOR training/evaluation remains pending', 'P18 demonstrates integration and repeatability, not full autonomy or production readiness'], { x: 0.85, y: 1.85, w: 11.4, h: 4.7, size: 16 });
   });
 
   slide('Application and Commercial Value', 'IMPLEMENTED / APPLICATION VALUE', BLUE, 'Translate the engineering into user value: repeatable evidence capture, traceable review, and modular deployment. These are application benefits, not market validation or production-readiness claims.', (s) => {
@@ -334,17 +334,17 @@ async function main() {
     addBody(s, 'Application value is demonstrated by the system workflow; commercial deployment readiness is not claimed.', { x: 1.15, y: 6.05, w: 11.0, h: 0.32, size: 13.5, color: RED, bold: true, align: 'center' });
   });
 
-  slide('Current Demonstrated Capability', 'DEMONSTRATED / EVIDENCE-BOUND', TEAL, 'Close on what works today, then name only the two bounded inputs still expected from ARMOURY and MSI.', (s) => {
+  slide('Current Demonstrated Capability', 'DEMONSTRATED / EVIDENCE-BOUND', TEAL, 'Close on what works today, state that the MSI disposition is resolved, and name ARMOURY LL-DETECTOR as the only remaining late-evidence input.', (s) => {
     addBody(s, 'AegisInspect demonstrates a robotics/computer-vision inspection pipeline combining deep-learning structural-defect detection, depth and 3D projection, localization/map-frame processing, mapped-defect persistence, dashboard review, deterministic reporting and measured localization evaluation.', { x: 1.0, y: 2.0, w: 11.1, h: 1.35, size: 22, color: NAVY, bold: true, align: 'center' });
-    addBody(s, 'Next accepted inputs: final P19 3D correspondence; LL-DETECTOR L0-L4 evaluation.', { x: 1.2, y: 4.55, w: 10.8, h: 0.55, size: 18, color: MUTED, align: 'center' });
-    addBody(s, 'Implemented is not the same as measured. Pending results remain visible.', { x: 1.0, y: 5.65, w: 11.1, h: 0.35, size: 16, color: RED, bold: true, align: 'center' });
+    addBody(s, 'Only remaining late-evidence input: accepted LL-DETECTOR L0-L4 evaluation, if completed.', { x: 1.2, y: 4.55, w: 10.8, h: 0.55, size: 18, color: MUTED, align: 'center' });
+    addBody(s, 'Implemented is not the same as measured. The frozen-pending status remains visible.', { x: 1.0, y: 5.65, w: 11.1, h: 0.35, size: 16, color: RED, bold: true, align: 'center' });
   });
 
   if (n !== 19) throw new Error(`Expected 19 slides; generated ${n}`);
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   await pptx.writeFile({ fileName: OUTPUT });
   const metadata = {
-    classification: 'P20 FINALIZATION_READY_FOR_LAST-EVIDENCE_INGESTION',
+    classification: 'P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE',
     title: TITLE,
     generated_at_utc: new Date().toISOString(),
     generation_command: 'node docs/presentation/deck/generate_deck.js',

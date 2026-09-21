@@ -80,7 +80,7 @@ Before presenting:
 
 - [x] software implementation may be demonstrated/described;
 - [x] use `IMPLEMENTED` or `DEMONSTRATED` as supported by the evidence;
-- [ ] real localization accuracy remains pending.
+- [x] accepted P18 map-frame workflow is demonstrated; absolute defect-position accuracy remains frozen pending.
 
 ## I. P16 dashboard
 
@@ -100,9 +100,10 @@ Before presenting:
 
 Current presentation values:
 
-- ATE translation RMSE: `0.595396782192 m` (`MEASURED`);
-- RPE translation RMSE: `0.340604743330 m` (`MEASURED`);
-- RPE rotation RMSE: `1.707265244063 deg` (`MEASURED`);
+- ATE translational RMSE: `0.595 m` over 76 samples (`MEASURED`);
+- RPE translational RMSE: `0.341 m` (`MEASURED`);
+- RPE rotational RMSE: `1.707 degrees` over 44 pairs (`MEASURED`);
+- qualification: trajectory accuracy, not absolute defect-position accuracy;
 - accuracy classification: no frozen PASS/FAIL threshold.
 
 - [x] accepted P19 trajectory evaluation is represented;
@@ -146,7 +147,7 @@ Immediately before presentation:
 - [x] verify quantitative slides match `results_table.json`;
 - [x] verify detector and low-light limitations are visible;
 - [x] verify the accepted dashboard record remains `UNREVIEWED`;
-- [x] verify localization is `MEASURED` and P19 3D correspondence is `PENDING`;
+- [x] verify localization is `MEASURED` and P19 3D correspondence is `FROZEN PENDING`;
 - [x] verify LL-DETECTOR is `PENDING` unless accepted results arrive;
-- [ ] final-freeze only after ARMOURY/MSI disposition from 00;
+- [ ] final-freeze only after ARMOURY disposition from 00; MSI is resolved;
 - [x] keep the compact evidence index available for Q&A.

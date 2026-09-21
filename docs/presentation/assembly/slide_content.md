@@ -255,11 +255,16 @@ Frozen evaluation:
 - SE(3) no-scale alignment; scale = 1;
 - RPE delta: 1 s ± 50 ms.
 
-Measured results:
+Presentation-rounded measured results:
 
-- ATE translation RMSE: **0.595396782192 m** (76 matched samples);
-- RPE translation RMSE: **0.340604743330 m**;
-- RPE rotation RMSE: **1.707265244063 deg** (44 pairs).
+- ATE translational RMSE: **0.595 m** (76 samples);
+- RPE translational RMSE: **0.341 m**;
+- RPE rotational RMSE: **1.707 degrees** (44 pairs).
+
+Mandatory qualification:
+
+**These metrics evaluate localization trajectory accuracy, not absolute
+defect-position accuracy.**
 
 No frozen localization-accuracy pass/fail threshold exists.
 
@@ -267,7 +272,7 @@ No frozen localization-accuracy pass/fail threshold exists.
 
 ## 11. Defect-to-Map Architecture
 
-**Status:** `DEMONSTRATED / VERIFIED REAL HANDOFF`
+**Status:** `DEMONSTRATED / ACCEPTED P18 HANDOFF`
 
 Presentation-safe wording:
 
@@ -292,9 +297,23 @@ duplicate handling
 ->
 persistent defect record
 
-The accepted record is a map-frame workflow example; P19 3D defect-location
-accuracy remains **PENDING — accepted explicit GT↔mapped-defect
-correspondence required**.
+The primary accepted P18 record has:
+
+- machine class: **Honeycombing**;
+- model: **DET-FINAL-v1**;
+- confidence: **0.011138029396533966**;
+- camera XYZ: approximately **[0.0056, -0.0028, 3.1251] m**;
+- session-local map XYZ: approximately **[3.8882, 0.0712, -0.0035] m**;
+- review state: **UNREVIEWED**.
+
+Accepted caption:
+
+**Accepted P18 evidence carried a machine-generated detector observation
+through depth-based 3D projection into the session-local map frame and onward
+to the inspection dashboard.**
+
+The classification is low-confidence, machine-generated and `UNREVIEWED`.
+The map coordinates are session-local, not globally surveyed coordinates.
 
 ---
 
@@ -331,6 +350,16 @@ Presentation-safe wording:
 **AegisInspect demonstrated deterministic reporting from the accepted
 persisted/mapped evidence, with explicit human-review separation.**
 
+Short accepted P18 report excerpt fields:
+
+- Inspection ID: `2026091904`;
+- Defect ID: `P15D-9b8ae056-1255-5cf4-ba40-e57a11f35e13`;
+- machine class: `Honeycombing`;
+- confidence: `0.011138029396533966`;
+- coordinate frame: session-local `map`;
+- review status: `UNREVIEWED`;
+- model: `DET-FINAL-v1`.
+
 Boundary:
 
 The verified report preserves the accepted record's confidence, map
@@ -347,12 +376,12 @@ The accepted LiDAR ICP trajectory evaluation uses the frozen 3–18 s
 methodology. Runtime acceptance is `PASS`; localization accuracy is
 `MEASURED`, with no frozen accuracy pass/fail threshold.
 
-P19 3D status: **PENDING — accepted explicit GT↔mapped-defect
-correspondence required.** No XYZ-error summary or correspondence count is
-shown.
+P19 capstone disposition:
 
-If a final accepted correspondence result arrives from MSI, replace only the
-prepared P19 result slot with that result and its provenance. Otherwise use:
+**FROZEN PENDING / FINAL QUANTITATIVE CORRESPONDENCE NOT COMPLETED.**
+
+**P19 development is closed for the capstone.** No further MSI scientific
+result is expected.
 
 **Implemented / demonstrated:** depth projection, camera-frame XYZ,
 map-frame XYZ, defect-to-map aggregation, persistence/reporting and full P18
@@ -361,10 +390,28 @@ core-system integration.
 **Measured:** localization ATE/RPE.
 
 **Pending:** final quantitative simulator-ground-truth correspondence
-validation for 3D defect-position accuracy.
+validation for absolute 3D defect-position accuracy.
 
-The pending research measurement is not a failure of the demonstrated P18
+Accepted wording:
+
+**3D defect-to-map integration was demonstrated through P18; localization
+accuracy was quantitatively measured. Final quantitative simulator-ground-truth
+correspondence validation of absolute defect-position accuracy remained pending
+at the capstone freeze.**
+
+The frozen-pending research measurement is not a failure of the accepted P18
 integrated system.
+
+Optional technical-Q&A evidence, not a main-story slide:
+
+- P19 qualifying receipt `0001.json`: `consecutive_valid_index = 710`;
+- P19 RGB/depth binding `result.json`: RGB PASS; depth PASS;
+- P19 startup alignment `result.json`: PASS;
+- P19 truth `result.json`: PASS; target pixels `307,200 / 307,200`;
+- operational GT publication: **NO**.
+
+Frame these as advanced R&D validation infrastructure, not a production
+runtime requirement.
 
 P18 presentation evidence is verified and ingested. The first integrated
 retry validated the same-observation data chain but recorded a missing
@@ -422,7 +469,7 @@ Required visible limitations:
 6. DET-FINAL-v1 held-out mAP remains modest.
 7. the accepted P16/P17 record is extremely-low-confidence, unreviewed machine output.
 8. P19 localization is measured, not threshold-classified as accurate.
-9. P19 3D evaluation awaits explicit correspondence.
+9. P19 3D correspondence validation is frozen pending at capstone close.
 10. P18 demonstrates accepted runtime, dashboard-completion and repeatability evidence, not full autonomy or production readiness.
 11. RAW and CLAHE performance is effectively collapsed at L4; the learned
     LL-DETECTOR result remains pending.
@@ -464,10 +511,9 @@ Demonstrated capability combines deep-learning defect detection, depth and
 dashboard review, deterministic reporting and measured localization
 evaluation.
 
-Pending inputs:
+Only remaining external late-evidence input:
 
-- P19 explicit GT↔mapped-defect correspondence for 3D evaluation;
-- LL-DETECTOR L0-L4 training/evaluation results.
+- LL-DETECTOR L0-L4 training/evaluation results, if completed.
 
 Application value:
 

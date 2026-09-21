@@ -66,9 +66,11 @@ Do not say:
 
 - OpenVINS successfully tracked the moving drone;
 - OpenVINS provided verified odometry;
-- RTAB-Map localization is successful;
-- real ATE or RPE has been measured.
+- the accepted trajectory metrics came from OpenVINS;
+- trajectory ATE/RPE and defect-position accuracy are interchangeable.
 
-Until accepted MSI/P19 evidence exists, those fields remain:
+The accepted LiDAR ICP localization values are `MEASURED` against simulation
+ground truth. They evaluate trajectory accuracy and must remain separate from
+absolute defect-position accuracy. Final 3D correspondence validation is:
 
-**PENDING**
+**FROZEN PENDING**

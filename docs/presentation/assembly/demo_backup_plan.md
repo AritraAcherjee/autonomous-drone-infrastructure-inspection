@@ -23,10 +23,8 @@ may include:
 - deterministic report output;
 - localization only if accepted runtime evidence is available.
 
-Do not improvise unapproved localization runtime commands in P20 and do not
-delay the presentation to recover a live path.
-
-Use the owner-approved MSI command sequence when that sequence is frozen.
+Do not run MSI localization or P19 commands from P20 and do not delay the
+presentation to recover a live path. P19 development is closed for capstone.
 
 ## 2. Backup screenshots
 
@@ -45,7 +43,8 @@ Required screenshot categories:
 The deck itself supplies the architecture diagram, detector metrics,
 depth/projection contract, representative P15 map record, accepted P16/P17
 screenshots/report content, P18 screenshots, localization metrics and
-low-light chart. P19 3D correspondence and LL-DETECTOR results remain pending.
+low-light chart. P19 3D correspondence is frozen pending; only LL-DETECTOR
+results remain an open late-evidence input.
 
 ## 3. Backup recorded clips
 
@@ -116,7 +115,6 @@ Application layer:
 
 ## 6. Evidence still pending
 
-- explicit GT↔mapped-defect correspondence and P19 3D metrics;
 - LL-DETECTOR final L0-L4 training/evaluation result; accepted RAW and CLAHE
   evidence is already integrated.
 

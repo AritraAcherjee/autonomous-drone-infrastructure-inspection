@@ -1,7 +1,9 @@
 {
   "assembly_base": "a0d9271813c78c6a773379468045c5be507f9097",
   "defect_localization_3d": {
-    "fallback_wording": "final quantitative simulator-ground-truth correspondence validation for 3D defect-position accuracy remains pending",
+    "capstone_disposition": "FROZEN_PENDING_FINAL_QUANTITATIVE_CORRESPONDENCE_NOT_COMPLETED",
+    "development_status": "CLOSED_FOR_CAPSTONE",
+    "fallback_wording": "Final quantitative simulator-ground-truth correspondence validation of absolute defect-position accuracy remained pending at the capstone freeze.",
     "matched_count": "PENDING",
     "mean_error_m": "PENDING",
     "median_error_m": "PENDING",
@@ -29,18 +31,19 @@
   },
   "localization": {
     "active_stop_b_fallback": "RTAB-Map RGB-D + IMU",
-    "ate_translation_rmse_m": "0.595396782192 m (76 matched samples; MEASURED)",
+    "ate_translation_rmse_m": "0.595 m (76 samples; MEASURED; presentation rounded)",
     "backend_runtime_result": "PASS runtime acceptance; localization accuracy MEASURED",
     "openvins_status": "built/integrated; sensor delivery validated; runtime initialization blocked; removed from Stop-B critical path",
     "primary_attempted_backend": "OpenVINS Mono + IMU",
-    "rpe_rotation_rmse_deg_1s": "1.707265244063 deg (44 pairs; MEASURED)",
-    "rpe_translation_rmse_m_1s": "0.340604743330 m (MEASURED)",
+    "qualification": "These metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.",
+    "rpe_rotation_rmse_deg_1s": "1.707 degrees (44 pairs; MEASURED; presentation rounded)",
+    "rpe_translation_rmse_m_1s": "0.341 m (MEASURED; presentation rounded)",
     "timestamp_alignment_coverage": "PENDING_NOT_REPORTED_BY_ACCEPTED_EVALUATOR"
   },
-  "replacement_rule": "Replace PENDING only from accepted hash-bound upstream evidence.",
+  "replacement_rule": "P19 is frozen pending and closed for capstone; only the LL-DETECTOR slot may change from accepted ARMOURY evidence.",
   "schema_version": 1,
   "system": {
-    "p18_integrated_run_status": "VERIFIED_P20_INGESTION: integrated runtime chain; dashboard evidence completion PASS; clean repeatability PASS",
+    "p18_integrated_run_status": "ACCEPTED: integrated runtime chain; dashboard evidence completion PASS; clean repeatability PASS",
     "stop_b_runtime_status": "PASS_RUNTIME_ACCEPTANCE"
   }
 }

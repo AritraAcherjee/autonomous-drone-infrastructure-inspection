@@ -67,7 +67,7 @@
       "title": "Deterministic Reporting"
     },
     {
-      "content_status": "READY_WITH_PENDING_FINAL_CORRESPONDENCE",
+      "content_status": "READY_WITH_FROZEN_PENDING_CAPSTONE_DISPOSITION",
       "section": 14,
       "title": "P19 Evaluation Methodology"
     },
@@ -103,7 +103,9 @@
     {
       "content_status": "READY_WITH_MEASURED_LOCALIZATION",
       "current_backend": "LiDAR ICP runtime acceptance",
-      "reason": "Accepted P19 metrics are measured under frozen methodology; no localization-accuracy PASS/FAIL threshold exists.",
+      "p19_3d_disposition": "FROZEN_PENDING_FINAL_QUANTITATIVE_CORRESPONDENCE_NOT_COMPLETED",
+      "p19_development": "CLOSED_FOR_CAPSTONE",
+      "reason": "Accepted P19 metrics are measured under frozen methodology; no localization-accuracy PASS/FAIL threshold exists. Final 3D correspondence validation is frozen pending.",
       "runtime_result": "PASS_RUNTIME_ACCEPTANCE_MEASURED_LOCALIZATION_ACCURACY",
       "title": "Localization / P19 Measured Evaluation"
     }

@@ -4,20 +4,22 @@
 
 P20 may ingest a late scientific result only after 00 explicitly marks the result **ACCEPTED**, or supplies an equivalent final evidence classification. Reject partial Codex output, unreviewed logs, preliminary metrics, debug output, speculative calculations, and evidence still awaiting 00 review.
 
-## P19 3D correspondence
+## P19 3D correspondence — resolved capstone disposition
 
 | Item | Prepared destination |
 | --- | --- |
 | Slide | 14 |
-| Title | `P19 Spatial Validation Status` |
-| Generator section | `slide('P19 Spatial Validation Status', ...)` in `docs/presentation/deck/generate_deck.js` |
-| Current visible status | `PENDING / FINAL 3D CORRESPONDENCE` |
-| Status/caption transition | Replace only after 00 supplies an accepted correspondence result. Otherwise retain the explicit fallback wording. |
-| Prepared field objects | One outlined `FINAL RESULT SLOT` on the right; the left-side implementation, demonstration and localization statements remain unchanged. |
-| Visual slot | The outlined final-result region on the right of slide 14. |
+| Title | `P19 Capstone Disposition` |
+| Generator section | `slide('P19 Capstone Disposition', ...)` in `docs/presentation/deck/generate_deck.js` |
+| Current visible status | `PENDING / FROZEN CAPSTONE DISPOSITION` |
+| Final disposition | `FROZEN PENDING / FINAL QUANTITATIVE CORRESPONDENCE NOT COMPLETED` |
+| Development status | `CLOSED FOR CAPSTONE` |
+| Slide treatment | Preserve implemented/demonstrated/measured distinctions and the accepted final wording; do not leave a waiting-for-MSI slot. |
 | Expected evidence package | Accepted P19 3D evidence copied into a P20 evidence package with original path, hash, correspondence provenance, and image/visual identity |
 
-Required accepted inputs are GT defect ID, mapped or estimated defect ID, GT XYZ, estimated XYZ, Euclidean 3D error, correspondence classification, evidence/provenance identity, an evidence image or visual, and future status wording from 00. Do not create a correspondence or populate any field from proximity, class similarity, or visual matching.
+No further MSI scientific result is expected for the capstone. Do not create a
+correspondence or populate a 3D error from proximity, class similarity, visual
+matching, or localization ATE/RPE.
 
 ## Workstream 04 low-light robustness
 
@@ -53,4 +55,6 @@ This procedure does not authorize final deck freeze.
 
 ## Truthful fallback
 
-If P19 3D evidence does not arrive, retain the prepared implemented/demonstrated/measured/pending wording. If LL-DETECTOR evidence does not arrive, retain the State B sentence verbatim. Neither missing input should delay the presentation or lead to fabricated results.
+P19 is no longer a late-ingestion dependency: retain the accepted frozen-pending
+wording. If LL-DETECTOR evidence does not arrive, retain the State B sentence
+verbatim. The sole remaining external late-evidence dependency is ARMOURY.

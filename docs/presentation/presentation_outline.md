@@ -59,7 +59,7 @@ Suggested badges:
 - ROS/Gazebo/depth/projection: `SUPPORTED / SIMULATION_RUNTIME`
 - P15 software: `IMPLEMENTED`; accepted P15-P18 handoff: `DEMONSTRATED`
 - LiDAR ICP localization metrics: `MEASURED`
-- Full-autonomy claim and final P19 3D correspondence: `PENDING`
+- Full-autonomy claim: `PENDING`; final P19 3D correspondence: `FROZEN PENDING`
 
 Architecture does not imply every segment has completed real validation.
 
@@ -229,12 +229,15 @@ Architecture/status may be shown.
 
 Accepted LiDAR ICP quantitative fields:
 
-- ATE translation RMSE: **0.595396782192 m**
-- RPE translation RMSE: **0.340604743330 m**
-- RPE rotation RMSE: **1.707265244063 deg**
+- ATE translational RMSE: **0.595 m** (76 samples)
+- RPE translational RMSE: **0.341 m**
+- RPE rotational RMSE: **1.707 degrees** (44 pairs)
 
 These are measured against simulation ground truth and have no frozen
 accuracy PASS/FAIL threshold.
+
+These metrics evaluate localization trajectory accuracy, not absolute
+defect-position accuracy.
 
 ---
 
@@ -251,7 +254,8 @@ software."
 
 P16 persistence may be shown alongside it.
 
-Real map-localization accuracy remains pending.
+The accepted P18 map relation is session-local. Final absolute
+defect-position correspondence validation is frozen pending.
 
 ---
 
@@ -295,7 +299,7 @@ end-to-end mission.
 
 **Badge:** `MEASURED / ACCEPTED LOCALIZATION EVALUATION`
 
-Canonical spatial-evaluation tooling supports future calculation of:
+Canonical spatial-evaluation tooling supports calculation of:
 
 - VIO ATE;
 - VIO RPE;
@@ -303,9 +307,14 @@ Canonical spatial-evaluation tooling supports future calculation of:
 - mean / median / RMSE / P95 defect-location error;
 - matched and unmatched defect counts.
 
-Current real project values:
+Capstone disposition:
 
-**PENDING**
+**P19 localization = MEASURED.**
+
+**P19 3D = FROZEN PENDING / FINAL QUANTITATIVE CORRESPONDENCE NOT
+COMPLETED.**
+
+**P19 development = CLOSED FOR CAPSTONE.**
 
 ---
 
@@ -322,18 +331,20 @@ Currently evidence-backed:
 - simulated depth;
 - camera-frame projection.
 
-Implemented but not yet real-performance evidence:
+Demonstrated:
 
-- P15 defect-to-map software;
-- P16 persistence/dashboard;
-- P17 deterministic reporting;
-- P19 spatial-evaluation tooling.
+- P18 core integration through defect-to-map, persistence/dashboard and
+  deterministic reporting.
+
+Measured:
+
+- P19 localization trajectory ATE/RPE.
 
 Pending:
 
-- accepted real VIO metrics;
-- real 3D defect-localization accuracy;
-- validated full P18 end-to-end mission.
+- P19 final absolute 3D defect-position correspondence validation, frozen at
+  capstone close;
+- validated full-autonomy mission claim.
 
 ---
 
@@ -346,11 +357,11 @@ Minimum visible limitations:
 3. DamSegment covers only shared Crack and Breakage/Spalling classes.
 4. Simulated depth is not real-world depth validation.
 5. Camera-frame XYZ is not map-frame localization.
-6. P16 demo records are synthetic.
-7. P15/P17 implementation does not prove an integrated mission.
-8. Real VIO ATE/RPE remains pending.
-9. Real 3D defect-localization accuracy remains pending.
-10. Full autonomous mission completion requires P18 evidence.
+6. Machine classifications remain low-confidence and `UNREVIEWED`.
+7. P18 core integration does not prove full autonomy.
+8. Localization ATE/RPE measures trajectory accuracy, not defect-position accuracy.
+9. P19 final 3D correspondence validation is frozen pending.
+10. Session-local map XYZ is not globally surveyed coordinates.
 
 ---
 
@@ -366,12 +377,10 @@ Evidence-backed contributions:
 - camera-frame 3D projection;
 - deterministic mapping/persistence/reporting/evaluation software layers.
 
-Next evidence priorities:
+Only remaining late-evidence priority:
 
-- accepted MSI VIO trajectory evidence;
-- real ATE/RPE;
-- explicit GT-linked defect localization evaluation;
-- P18 integrated mission evidence.
+- accepted ARMOURY LL-DETECTOR presentation-training/evaluation result, if
+  completed.
 
 ---
 
