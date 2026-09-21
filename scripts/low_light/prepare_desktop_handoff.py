@@ -14,6 +14,7 @@ import math
 from pathlib import Path
 import re
 import sys
+from typing import NamedTuple
 
 REPOSITORY = Path(__file__).resolve().parents[2]
 for entry in (REPOSITORY, REPOSITORY / "src"):
@@ -30,6 +31,8 @@ HANDOFF_PATH = "docs/low_light/desktop_handoff.json"
 BENCHMARK_CONFIG = "configs/low_light/benchmark_v1.yaml"
 TRAINING_CONFIG = "configs/low_light/ll_detector_01.yaml"
 SMOKE_ROOT = "outputs/training/low_light/LL-DETECTOR-01-SMOKE"
+SMOKE_EXECUTION_V1 = "WS04_LL_DETECTOR_01_SMOKE_V1"
+SMOKE_EXECUTION_V2 = "WS04_LL_DETECTOR_01_SMOKE_V2"
 GEOMETRY_GATE = "outputs/validation/defect_detection/exif_alignment/geometry.json"
 TEST_GATE = "outputs/validation/defect_detection/training_pipeline/before/ready.json"
 GATE_PATHS = (GEOMETRY_GATE, TEST_GATE)
@@ -51,13 +54,88 @@ RETURN_EVIDENCE = {
 }
 
 
-def smoke_config() -> dict:
-    return dict(id="LL-DETECTOR-01-SMOKE", evidence=e.NON_OFFICIAL, parent_config=TRAINING_CONFIG,
+class SmokeNamespace(NamedTuple):
+    execution_id: str
+    run_name: str
+    training_root: str
+
+
+SMOKE_NAMESPACES = {
+    SMOKE_EXECUTION_V1: SmokeNamespace(SMOKE_EXECUTION_V1, "LL-DETECTOR-01-SMOKE", SMOKE_ROOT),
+    SMOKE_EXECUTION_V2: SmokeNamespace(SMOKE_EXECUTION_V2, "LL-DETECTOR-01-SMOKE-V2",
+                                       "outputs/training/low_light/LL-DETECTOR-01-SMOKE-V2"),
+}
+
+
+def resolve_smoke_namespace(execution_id=None) -> SmokeNamespace:
+    """Resolve only the two reviewed smoke identities; never derive a path from input."""
+    selected = SMOKE_EXECUTION_V1 if execution_id is None else execution_id
+    if type(selected) is not str or selected not in SMOKE_NAMESPACES:
+        raise ValueError("unsupported smoke execution identity")
+    return SMOKE_NAMESPACES[selected]
+
+
+def output_roots(smoke_execution_id=None) -> dict:
+    roots = OUTPUT_ROOTS.copy()
+    roots["smoke"] = resolve_smoke_namespace(smoke_execution_id).training_root
+    return roots
+
+
+def smoke_config(execution_id=None) -> dict:
+    namespace = resolve_smoke_namespace(execution_id)
+    return dict(id=namespace.run_name, evidence=e.NON_OFFICIAL, parent_config=TRAINING_CONFIG,
                 parent_checkpoint_sha256=ll.CHECKPOINT_SHA256, epochs=1, train_images=16, valid_images=8,
                 selection="sha256('42:{split}:{source_relative_path}') sorted prefix", seed=42,
                 device="0", cuda_required=True, batch=4, imgsz=640, close_mosaic=0,
-                output_root=SMOKE_ROOT, low_light_hook="accepted Task D canonical config, train only",
+                output_root=namespace.training_root, low_light_hook="accepted Task D canonical config, train only",
                 test_policy="prohibited", raw_policy="read-only; hash selected files before/after, never enumerate test")
+
+
+def smoke_execution_manifest(accepted_commit, execution_id=None) -> dict:
+    namespace = resolve_smoke_namespace(execution_id)
+    root = namespace.training_root
+    return dict(execution_id=namespace.execution_id, run_name=namespace.run_name, training_root=root,
+                git_sha=accepted_commit, smoke_config=smoke_config(namespace.execution_id),
+                trainer_log=f"{root}/trainer.log", results_csv=f"{root}/results.csv",
+                checkpoint_directory=f"{root}/weights", manifest=f"{root}/execution_manifest.json")
+
+
+def smoke_bundle_paths(execution_id=None) -> list[str]:
+    namespace = resolve_smoke_namespace(execution_id)
+    names = ["smoke_config.json", "smoke_runtime_arguments.json", "smoke_evidence.json",
+             "selected_records.json", "parent_config.json", "raw_before.json", "raw_after.json",
+             "trainer.log", "weights/best.pt", "weights/last.pt"]
+    if namespace.execution_id != SMOKE_EXECUTION_V1:
+        names.append("execution_manifest.json")
+    return [f"{namespace.training_root}/{name}" for name in names]
+
+
+def smoke_bundle_report_path(execution_id=None) -> str:
+    namespace = resolve_smoke_namespace(execution_id)
+    if namespace.execution_id == SMOKE_EXECUTION_V1:
+        return f"{e.EVALUATION_ROOT}/desktop_return_evidence.json"
+    return f"{namespace.training_root}/desktop_return_evidence.json"
+
+
+def require_smoke_destination_absent(repo: Path, execution_id=None) -> Path:
+    namespace = resolve_smoke_namespace(execution_id)
+    destination = e.checked_path(repo, namespace.training_root)
+    if destination.exists():
+        raise ValueError(f"selected smoke destination already exists: {namespace.training_root}")
+    return destination
+
+
+def smoke_namespaces_non_overlapping(repo: Path) -> bool:
+    first = e.checked_path(repo, resolve_smoke_namespace(SMOKE_EXECUTION_V1).training_root).resolve()
+    second = e.checked_path(repo, resolve_smoke_namespace(SMOKE_EXECUTION_V2).training_root).resolve()
+    return first != second and not first.is_relative_to(second) and not second.is_relative_to(first)
+
+
+def smoke_runtime_arguments(arguments: dict, execution_id=None) -> dict:
+    namespace = resolve_smoke_namespace(execution_id)
+    resolved = dict(arguments)
+    resolved.update(epochs=1, name=namespace.run_name, close_mosaic=0)
+    return resolved
 
 
 def require_accepted_commit(accepted_commit):
@@ -214,7 +292,7 @@ def training_gate_diagnostics(repo):
                 policy="preserve accepted receipts and enforce both existing detector safety gates")
 
 
-def preflight(repo: Path, accepted_commit: str) -> dict:
+def preflight(repo: Path, accepted_commit: str, smoke_execution_id=None) -> dict:
     """Read configs, checkpoint and train/valid metadata only; never GPU/model APIs."""
     require_accepted_commit(accepted_commit)
     with e.no_raw_access(repo):
@@ -226,11 +304,12 @@ def preflight(repo: Path, accepted_commit: str) -> dict:
                        cwd=repo, capture_output=True, check=True, timeout=30)
         # Later stages create untracked outputs, but tracked files (including
         # receipts) and all sources must still match the accepted commit.
-        roots = OUTPUT_ROOTS
+        roots = output_roots(smoke_execution_id)
+        allowed_output_roots = set(OUTPUT_ROOTS.values()) | set(roots.values())
         status = subprocess.run(["git", "-c", "core.quotePath=false", "status", "--porcelain", "--untracked-files=all"],
                                 cwd=repo, capture_output=True, text=True, check=True, timeout=30).stdout
         for line in status.splitlines():
-            if not (line.startswith("?? ") and any(line[3:].startswith(root + "/") for root in roots.values())):
+            if not (line.startswith("?? ") and any(line[3:].startswith(root + "/") for root in allowed_output_roots)):
                 raise ValueError("clean accepted checkout required, including gate receipts: " + line)
         gates = training_gate_diagnostics(repo)
         if gates["status"] != "PASS":
@@ -290,29 +369,37 @@ def snapshot_selected(records):
     return {str(p): dict(sha256=sha256_file(p), size=p.stat().st_size, mtime_ns=p.stat().st_mtime_ns) for p in paths}
 
 
-def smoke_passed(repo, accepted_commit):
-    report = strict_json_loads(e.checked_path(repo, SMOKE_ROOT + "/smoke_evidence.json").read_bytes())
+def smoke_passed(repo, accepted_commit, execution_id=None):
+    namespace = resolve_smoke_namespace(execution_id)
+    report = strict_json_loads(e.checked_path(repo, namespace.training_root + "/smoke_evidence.json").read_bytes())
+    reported_execution_id = report.get("execution_id", SMOKE_EXECUTION_V1)
     if (report.get("status") != "PASS" or report.get("git_sha") != accepted_commit
-            or report.get("smoke_config") != smoke_config() or report.get("locked_test_accessed") is not False
+            or reported_execution_id != namespace.execution_id
+            or report.get("smoke_config") != smoke_config(namespace.execution_id)
+            or report.get("locked_test_accessed") is not False
             or report.get("raw_immutability") != "PASS" or report.get("finite_losses") is not True
             or report.get("no_oom") is not True or report.get("epochs") != 1
             or min(report.get("optimizer_steps", 0), report.get("parameter_updates", 0), report.get("validation_calls", 0)) < 1):
         raise ValueError("passing smoke evidence for this exact commit is required")
     if report.get("parent_checkpoint") != e.checkpoint_identity(repo, e.STRATEGIES[0]):
         raise ValueError("smoke parent identity differs")
+    if namespace.execution_id != SMOKE_EXECUTION_V1:
+        manifest = strict_json_loads(e.checked_path(repo, namespace.training_root + "/execution_manifest.json").read_bytes())
+        if manifest != smoke_execution_manifest(accepted_commit, namespace.execution_id):
+            raise ValueError("smoke execution identity/output mismatch")
     for name in ("best.pt", "last.pt"):
-        if sha256_file(e.checked_path(repo, SMOKE_ROOT + "/weights/" + name)) != report["checkpoints"][name]:
+        if sha256_file(e.checked_path(repo, namespace.training_root + "/weights/" + name)) != report["checkpoints"][name]:
             raise ValueError("smoke checkpoint missing/changed")
     return report
 
 
-def run_full(repo, accepted_commit):
+def run_full(repo, accepted_commit, smoke_execution_id=None):
     """Keep every accepted gate; capture selected epoch before optimizer stripping.
 
 Ultralytics replaces best.pt's train_results with the full training history
 at finalization. Inferring best epoch from the last history row would be wrong.
 """
-    smoke_passed(repo, accepted_commit)
+    smoke_passed(repo, accepted_commit, smoke_execution_id)
     from unittest.mock import patch
     from detection.training import trainer as existing
     original_factory = existing.trainer_class
@@ -333,8 +420,10 @@ at finalization. Inferring best epoch from the last history row would be wrong.
     return result
 
 
-def run_smoke(repo, accepted_commit):
+def run_smoke(repo, accepted_commit, execution_id=None):
     """Explicit Desktop-only engineering wrapper; never called by preflight."""
+    namespace = resolve_smoke_namespace(execution_id)
+    out = require_smoke_destination_absent(repo, namespace.execution_id)
     from unittest.mock import patch
     from detection.training.config import load_development_data, select_records
     from detection.training.provenance import configure_runtime, development_access, stage_offline_arial_font, write_json
@@ -347,13 +436,15 @@ def run_smoke(repo, accepted_commit):
         raise ValueError("smoke requires CUDA/BF16")
     config = ll.load_config(e.checked_path(repo, TRAINING_CONFIG))
     parent = e.checkpoint_identity(repo, e.STRATEGIES[0])
-    out = e.checked_path(repo, SMOKE_ROOT)
     out.mkdir(parents=True, exist_ok=False)
-    evidence = dict(status="FAIL", git_sha=accepted_commit, smoke_config=smoke_config(), parent_checkpoint=parent,
+    evidence = dict(status="FAIL", git_sha=accepted_commit,
+                    smoke_config=smoke_config(namespace.execution_id), parent_checkpoint=parent,
                     label=e.NON_OFFICIAL, locked_test_accessed=False, requested_batch=4,
                     optimizer_steps=0, parameter_updates=0, validation_calls=0, epochs=0,
                     finite_losses=True, loss_history=[], no_oom=False, raw_immutability="NOT_CHECKED",
                     offline_font_staging=font_staging)
+    if namespace.execution_id != SMOKE_EXECUTION_V1:
+        evidence["execution_id"] = namespace.execution_id
     handler = logging.FileHandler(out / "trainer.log", encoding="utf-8")
     LOGGER.addHandler(handler)
     with development_access(repo):
@@ -365,7 +456,10 @@ def run_smoke(repo, accepted_commit):
                 for row in rows:
                     if before[str(row["image"])]["sha256"] != row["image_sha256"]:
                         raise ValueError("approved smoke source hash differs")
-            write_json(out / "smoke_config.json", smoke_config(), repo)
+            if namespace.execution_id != SMOKE_EXECUTION_V1:
+                write_json(out / "execution_manifest.json",
+                           smoke_execution_manifest(accepted_commit, namespace.execution_id), repo)
+            write_json(out / "smoke_config.json", smoke_config(namespace.execution_id), repo)
             write_json(out / "parent_config.json", config, repo)
             write_json(out / "selected_records.json", {k: [r["image_relative_path"] for r in v] for k, v in records.items()}, repo)
             for split, rows in records.items():
@@ -374,7 +468,7 @@ def run_smoke(repo, accepted_commit):
                         names=dict(enumerate(e.CLASSES)), nc=6, channels=3)
             write_json(out / "development_data.yaml", data, repo)
             args = training_arguments(config, repo, e.checked_path(repo, parent["checkpoint"]), out / "development_data.yaml")
-            args.update(epochs=1, name="LL-DETECTOR-01-SMOKE", close_mosaic=0)
+            args = smoke_runtime_arguments(args, namespace.execution_id)
             write_json(out / "smoke_runtime_arguments.json", args, repo)
             callback_map = callbacks.get_default_callbacks()
             def loss_check(trainer):
@@ -483,17 +577,17 @@ def verify_result_bundle(repo, accepted_commit):
         raise ValueError("comparison report differs from returned metrics")
 
 
-def bundle(repo, accepted_commit):
+def bundle(repo, accepted_commit, smoke_execution_id=None):
     """Hash an explicit evidence inventory; no discovery/reading of any test file."""
-    smoke_passed(repo, accepted_commit)
+    namespace = resolve_smoke_namespace(smoke_execution_id)
+    smoke_passed(repo, accepted_commit, namespace.execution_id)
     verify_result_bundle(repo, accepted_commit)
     paths = [BENCHMARK_CONFIG, TRAINING_CONFIG, HANDOFF_PATH,
              f"{BENCHMARK_ROOT}/manifests/validation_manifest.csv",
              f"{BENCHMARK_ROOT}/manifests/validation_manifest.json", f"{BENCHMARK_ROOT}/manifests/benchmark_summary.json",
              f"{e.EVALUATION_ROOT}/handoff/sanity_luminance_report.json", f"{e.EVALUATION_ROOT}/comparisons.json",
              f"{e.EVALUATION_ROOT}/training_checkpoint_selection.json"]
-    paths += [f"{SMOKE_ROOT}/{n}" for n in ("smoke_config.json", "smoke_runtime_arguments.json", "smoke_evidence.json",
-        "selected_records.json", "parent_config.json", "raw_before.json", "raw_after.json", "trainer.log", "weights/best.pt", "weights/last.pt")]
+    paths += smoke_bundle_paths(namespace.execution_id)
     paths += [f"{e.TRAINING_ROOT}/{n}" for n in ("requested_config.json", "resolved_config.json", "trainer.log",
         "provenance.json", "dataset_identity.json", "run_evidence.json", "raw_immutability.json", "results.csv", "weights/best.pt", "weights/last.pt")]
     for strategy in e.STRATEGIES:
@@ -513,7 +607,9 @@ def bundle(repo, accepted_commit):
                   files_sha256=hashes, required_evidence=RETURN_EVIDENCE, best_epoch_zero_based=best_epoch,
                   actual_training_epochs=full.get("epochs"), scientific_locked_test_evidence=False,
                   transfer="Return this index and every listed file preserving relative paths, including both LL weights; no raw data.")
-    e.write_new(repo, f"{e.EVALUATION_ROOT}/desktop_return_evidence.json", report)
+    if namespace.execution_id != SMOKE_EXECUTION_V1:
+        report.update(smoke_execution_id=namespace.execution_id, smoke_training_root=namespace.training_root)
+    e.write_new(repo, smoke_bundle_report_path(namespace.execution_id), report)
     return report
 
 
@@ -523,6 +619,8 @@ def main(argv=None):
     parser.add_argument("--repo-root", type=Path, default=REPOSITORY)
     parser.add_argument("--accepted-commit", default="TBD")
     parser.add_argument("--host", choices=("ARMOURY",))
+    parser.add_argument("--smoke-execution-id", choices=tuple(SMOKE_NAMESPACES), default=None,
+                        help="bounded smoke execution identity; omitted retains historical V1")
     parser.add_argument("--write", action="store_true", help=f"static only: exclusively create {HANDOFF_PATH}")
     args = parser.parse_args(argv)
     try:
@@ -537,11 +635,11 @@ def main(argv=None):
                 with path.open("xb") as stream:
                     stream.write(deterministic_json_bytes(result))
         elif args.mode == "preflight":
-            result = preflight(repo, args.accepted_commit)
+            result = preflight(repo, args.accepted_commit, args.smoke_execution_id)
         else:
             require_accepted_commit(args.accepted_commit)
             e.require_desktop(repo, args.accepted_commit, args.host)
-            checked = preflight(repo, args.accepted_commit)
+            checked = preflight(repo, args.accepted_commit, args.smoke_execution_id)
             if args.mode == "desktop-check":
                 result = checked
                 import torch
@@ -551,13 +649,13 @@ def main(argv=None):
             elif args.mode == "validate-benchmark":
                 result = validate_benchmark(repo)
             elif args.mode == "smoke":
-                result = run_smoke(repo, args.accepted_commit)
+                result = run_smoke(repo, args.accepted_commit, args.smoke_execution_id)
             elif args.mode == "train-full":
-                result = run_full(repo, args.accepted_commit)
+                result = run_full(repo, args.accepted_commit, args.smoke_execution_id)
             elif args.mode == "compare":
                 result = compare_results(repo)
             else:
-                result = bundle(repo, args.accepted_commit)
+                result = bundle(repo, args.accepted_commit, args.smoke_execution_id)
         print(deterministic_json_bytes(result).decode("utf-8"))
     except (ValueError, OSError, RuntimeError) as exc:
         parser.exit(1, f"Task E handoff refused: {exc}\n")
