@@ -13,6 +13,9 @@ from .contracts import (
 
 CERTIFICATE_SCHEMA = "aegisinspect.p19.sensor_batch_certificate.v1"
 BATCH_RULE = "gz-sim-10.5.0-sensors-manager-runonce-membership-v1"
+WINDOW_ANCHOR = "ANCHOR"
+WINDOW_CONTINUE = "CONTINUE"
+WINDOW_REANCHOR = "REANCHOR"
 
 
 @dataclass(frozen=True)
@@ -157,15 +160,47 @@ def operational_image_hash(message: Any) -> str:
     return sha256_bytes(canonical_json_bytes(record))
 
 
+def classify_certificate_window_step(
+    certificate: SensorBatchCertificate, *, expected_run_id: str,
+    previous_batch_sequence: int | None,
+    previous_valid_index: int | None,
+) -> str:
+    """Classify one certificate against a local relevant-valid window.
+
+    Raw Manager sequence values need only increase.  A local window may begin
+    at any positive authoritative valid index.  Index 1 or a forward valid
+    index gap starts a new window; duplicates and unexplained decreases remain
+    fail-closed.
+    """
+    validate_sensor_batch_certificate(certificate)
+    if certificate.run_id != expected_run_id:
+        raise ContractError("certificate run identity mismatch")
+    if (previous_batch_sequence is not None
+            and certificate.batch_sequence <= previous_batch_sequence):
+        raise ContractError("authoritative batch sequence is not strictly increasing")
+    if previous_valid_index is None:
+        return WINDOW_ANCHOR
+    if certificate.consecutive_valid_index == previous_valid_index + 1:
+        return WINDOW_CONTINUE
+    if (certificate.consecutive_valid_index == 1
+            or certificate.consecutive_valid_index > previous_valid_index + 1):
+        return WINDOW_REANCHOR
+    raise ContractError("authoritative valid index duplicated or decreased")
+
+
 def validate_certificate_sequence(certificates: Sequence[SensorBatchCertificate]) -> None:
     if len(certificates) < 20:
         raise ContractError("fewer than 20 authoritative sensor-batch certificates")
-    previous_batch = previous_valid = 0
+    previous_batch: int | None = None
+    previous_valid: int | None = None
     run_id = certificates[0].run_id
     for certificate in certificates:
-        validate_sensor_batch_certificate(certificate)
-        if (certificate.run_id != run_id or certificate.batch_sequence <= previous_batch
-                or certificate.consecutive_valid_index != previous_valid + 1):
+        disposition = classify_certificate_window_step(
+            certificate, expected_run_id=run_id,
+            previous_batch_sequence=previous_batch,
+            previous_valid_index=previous_valid,
+        )
+        if previous_valid is not None and disposition != WINDOW_CONTINUE:
             raise ContractError("certified batches are not consecutive")
         previous_batch = certificate.batch_sequence
         previous_valid = certificate.consecutive_valid_index

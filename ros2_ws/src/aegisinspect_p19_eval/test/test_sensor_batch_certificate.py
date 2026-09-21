@@ -7,8 +7,10 @@ from aegisinspect_p19_eval.contracts import (
     ContractError, GT_ID, TARGET_CLASS, TARGET_LINK, TARGET_MODEL, TARGET_VISUAL,
 )
 from aegisinspect_p19_eval.batch_certificate import (
-    BATCH_RULE, CERTIFICATE_SCHEMA, SensorBatchCertificate, certificate_hash,
-    validate_certificate_sequence, validate_sensor_batch_certificate,
+    BATCH_RULE, CERTIFICATE_SCHEMA, WINDOW_ANCHOR, WINDOW_CONTINUE,
+    WINDOW_REANCHOR, SensorBatchCertificate, certificate_hash,
+    classify_certificate_window_step, validate_certificate_sequence,
+    validate_sensor_batch_certificate,
 )
 
 HASH_A = "a" * 64
@@ -94,6 +96,136 @@ def test_nonconsecutive_valid_index_rejected():
     values[10] = replace(values[10], consecutive_valid_index=99)
     with pytest.raises(ContractError):
         validate_certificate_sequence(values)
+
+
+def certificate_window(first_valid=103, batches=None):
+    if batches is None:
+        batches = [3348 + index * 31 for index in range(20)]
+    return [
+        certificate(
+            acquisition_batch_id=f"run:batch:{batch}",
+            batch_sequence=batch,
+            consecutive_valid_index=first_valid + index,
+        )
+        for index, batch in enumerate(batches)
+    ]
+
+
+def test_historical_first_local_valid_index_103_is_an_anchor():
+    item = certificate_window()[0]
+    assert classify_certificate_window_step(
+        item, expected_run_id="run", previous_batch_sequence=None,
+        previous_valid_index=None,
+    ) == WINDOW_ANCHOR
+
+
+@pytest.mark.parametrize("first_valid", [1, 103])
+def test_twenty_certificate_window_can_start_at_any_positive_index(first_valid):
+    validate_certificate_sequence(certificate_window(first_valid=first_valid))
+
+
+def test_raw_manager_batch_gaps_are_valid_for_relevant_window():
+    values = certificate_window(
+        batches=[3348, 3381, 3410] + [3500 + index * 17 for index in range(17)]
+    )
+    validate_certificate_sequence(values)
+
+
+def test_exact_valid_progression_continues_local_window():
+    first, second = certificate_window()[:2]
+    assert classify_certificate_window_step(
+        second, expected_run_id="run",
+        previous_batch_sequence=first.batch_sequence,
+        previous_valid_index=first.consecutive_valid_index,
+    ) == WINDOW_CONTINUE
+
+
+@pytest.mark.parametrize("next_index", [1, 105])
+def test_restart_or_forward_gap_reanchors_without_joining_windows(next_index):
+    first = certificate_window()[0]
+    later = certificate(
+        acquisition_batch_id="run:batch:4000", batch_sequence=4000,
+        consecutive_valid_index=next_index,
+    )
+    assert classify_certificate_window_step(
+        later, expected_run_id="run",
+        previous_batch_sequence=first.batch_sequence,
+        previous_valid_index=first.consecutive_valid_index,
+    ) == WINDOW_REANCHOR
+
+
+@pytest.mark.parametrize("next_index", [103, 102])
+def test_duplicate_or_decreasing_valid_index_is_rejected(next_index):
+    first = certificate_window()[0]
+    later = certificate(
+        acquisition_batch_id="run:batch:4000", batch_sequence=4000,
+        consecutive_valid_index=next_index,
+    )
+    with pytest.raises(ContractError):
+        classify_certificate_window_step(
+            later, expected_run_id="run",
+            previous_batch_sequence=first.batch_sequence,
+            previous_valid_index=first.consecutive_valid_index,
+        )
+
+
+@pytest.mark.parametrize("next_batch", [3348, 3300])
+def test_duplicate_or_decreasing_raw_batch_is_rejected(next_batch):
+    first = certificate_window()[0]
+    later = certificate(
+        acquisition_batch_id=f"run:batch:{next_batch}", batch_sequence=next_batch,
+        consecutive_valid_index=104,
+    )
+    with pytest.raises(ContractError):
+        classify_certificate_window_step(
+            later, expected_run_id="run",
+            previous_batch_sequence=first.batch_sequence,
+            previous_valid_index=first.consecutive_valid_index,
+        )
+
+
+def test_cross_run_certificate_is_rejected():
+    item = certificate(
+        run_id="other", acquisition_batch_id="other:batch:3348",
+        batch_sequence=3348, consecutive_valid_index=103,
+    )
+    with pytest.raises(ContractError):
+        classify_certificate_window_step(
+            item, expected_run_id="run", previous_batch_sequence=None,
+            previous_valid_index=None,
+        )
+
+
+@pytest.mark.parametrize("indices", [
+    [103, 105] + list(range(106, 124)),
+    [103, 103] + list(range(104, 122)),
+    [103, 102] + list(range(103, 121)),
+])
+def test_helper_rejects_broken_relevant_valid_window(indices):
+    batches = [3348 + index * 31 for index in range(20)]
+    values = [
+        certificate(
+            acquisition_batch_id=f"run:batch:{batch}", batch_sequence=batch,
+            consecutive_valid_index=valid_index,
+        )
+        for batch, valid_index in zip(batches, indices)
+    ]
+    with pytest.raises(ContractError):
+        validate_certificate_sequence(values)
+
+
+def test_collector_discards_incomplete_window_before_reanchor():
+    source = (PKG / "scripts/readiness_node.py").read_text()
+    discard = source[source.index("def discard_incomplete_qualifying_window"):
+                     source.index("def try_certificates")]
+    qualify = source[source.index("def try_certificates"):
+                     source.index("def write_telemetry")]
+    assert "self.receipts.clear()" in discard
+    assert 'glob("*.json")' in discard and "path.unlink()" in discard
+    assert "if disposition == WINDOW_REANCHOR" in qualify
+    assert (qualify.index("self.discard_incomplete_qualifying_window()")
+            < qualify.index("self.receipts.append(receipt)"))
+    assert "self.seen_batches.clear()" not in discard
 
 
 def test_postrender_has_no_certificate_api_role():

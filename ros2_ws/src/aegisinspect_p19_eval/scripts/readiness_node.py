@@ -38,7 +38,8 @@ from aegisinspect_p19_eval.contracts import (
     verify_detached_seal,
 )
 from aegisinspect_p19_eval.batch_certificate import (
-    camera_info_hash, certificate_hash, operational_image_hash,
+    WINDOW_REANCHOR, camera_info_hash, certificate_hash,
+    classify_certificate_window_step, operational_image_hash,
     parse_sensor_batch_certificate,
 )
 from aegisinspect_p19_eval.batch_telemetry import (
@@ -116,8 +117,8 @@ class ReadinessCollector(Node):
         self.scene_identity: dict[str, Any] | None = None
         self.receipts: list[ExposureReceipt] = []
         self.seen_batches: set[str] = set()
-        self.last_batch_sequence = 0
-        self.last_valid_index = 0
+        self.last_batch_sequence: int | None = None
+        self.last_valid_index: int | None = None
         self.alignment: dict[str, Any] | None = None
         self.alignment_candidate_count = 0
         self.batch_telemetry = None
@@ -299,6 +300,13 @@ class ReadinessCollector(Node):
         """Retained only for startup-alignment callers; never qualifies exposure."""
         del key
 
+    def discard_incomplete_qualifying_window(self) -> None:
+        """Discard local evidence on an authoritative relevant-streak break."""
+        self.receipts.clear()
+        self.telemetry.receipts_created = 0
+        for path in (self.output / "receipts").glob("*.json"):
+            path.unlink()
+
     def try_certificates(self) -> None:
         """Qualify only explicit native batch certificates and bound outputs."""
         if self.failed or len(self.receipts) >= 20 or self.scene_identity is None:
@@ -345,10 +353,13 @@ class ReadinessCollector(Node):
                     binding_rule_version=certificate.binding_rule_version,
                     truth_summary=summary,
                 )
-                if certificate.batch_sequence <= self.last_batch_sequence:
-                    raise ValueError("authoritative batch sequence restarted")
-                if certificate.consecutive_valid_index != self.last_valid_index + 1:
-                    raise ValueError("authoritative certificates are not consecutive")
+                disposition = classify_certificate_window_step(
+                    certificate, expected_run_id=self.run_id,
+                    previous_batch_sequence=self.last_batch_sequence,
+                    previous_valid_index=self.last_valid_index,
+                )
+                if disposition == WINDOW_REANCHOR:
+                    self.discard_incomplete_qualifying_window()
                 self.receipts.append(receipt)
                 self.telemetry.record_receipt(certificate.batch_sequence, token)
                 self.seen_batches.add(certificate.acquisition_batch_id)
@@ -412,7 +423,8 @@ class ReadinessCollector(Node):
             if not self.batch_telemetry:
                 return
             telemetry = self.batch_telemetry
-            if (telemetry.last_batch_sequence < self.last_batch_sequence
+            if (self.last_batch_sequence is None
+                    or telemetry.last_batch_sequence < self.last_batch_sequence
                     or telemetry.certificate_count < len(self.receipts)
                     or telemetry.max_consecutive_valid_streak < 20):
                 return

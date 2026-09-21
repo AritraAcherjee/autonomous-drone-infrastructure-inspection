@@ -64,7 +64,7 @@ DIAGNOSTIC_SOURCE_HASHES = {
     "ros2_ws/src/aegisinspect_p19_eval/launch/no_start_readiness.launch.py":
         "52cf7619c8c45689f1748ee15ed9bd09a474fe7033a0c4374d3c49300eea4cbd",
     "ros2_ws/src/aegisinspect_p19_eval/scripts/readiness_node.py":
-        "7befdaa29c83fd1eecfa56c686ce6e6371ccda141e63ffeb0e2e81982d46ea17",
+        "c15772721ca65d5071d603b873cfe9152f48106c1b91dd90c62355b664497ef0",
     "tools/p19/process_observability.py":
         "7179354f449cff72332671cb45dfe98b0fddc2b2f9497586e95a74ca0f5ca68b",
     "tools/p19/readiness_supervisor.py":
