@@ -41,10 +41,12 @@ Run this checklist before any final-evidence ingestion and again before a later 
 
 ## Workstream 04
 
-- [x] RAW and CLAHE mAP50 L0-L4 values match the accepted 00 directive.
-- [x] Interpretation is limited to the frozen validation benchmark.
-- [x] LL-DETECTOR remains `PENDING` with no fabricated series or metric.
-- [x] State B wording is present and the deck does not depend on State A.
+- [x] RAW, CLAHE and LL-DETECTOR mAP50 L0-L4 values match the accepted package-derived values.
+- [x] Package-derived LL-DETECTOR L4 is `0.12412879850381782` and is presented as `0.124129`.
+- [x] Interpretation is limited to controlled validation development evidence.
+- [x] LL-DETECTOR is labelled `PRESENTATION / DEMONSTRATION MODEL`.
+- [x] The deck states the L0-L1 RAW tradeoff and does not claim universal superiority.
+- [x] No canonical-scientific, production-qualified, or locked-test claim is made.
 
 ## Overall system boundary
 
@@ -72,9 +74,13 @@ Run this checklist before any final-evidence ingestion and again before a later 
 | `DEFECT_POSITION_ERROR_0_595M_CLAIM` | `NO` |
 | `GLOBAL_SURVEYED_MAP_COORDINATES_CLAIM` | `NO` |
 | `COMPLETED_GT_CORRESPONDENCE_CLAIM` | `NO` |
+| `CANONICAL_LL_DETECTOR_RESULT` | `NO` |
+| `PRODUCTION_QUALIFIED_LOW_LIGHT_ROBUSTNESS` | `NO` |
+| `LOCKED_TEST_VALIDATION` | `NO` |
+| `LL_DETECTOR_UNIVERSALLY_BETTER_THAN_RAW` | `NO` |
 
 **PASS.** The current deck keeps P19 localization as `MEASURED`, P19 3D as
-`FROZEN PENDING`, P18 core integration as accepted, RAW/CLAHE low-light
-results as `SUPPORTED`, LL-DETECTOR as `PENDING`, and all machine
-classifications as low-confidence and `UNREVIEWED`. Re-run the audit only if
-accepted ARMOURY evidence is ingested.
+`FROZEN PENDING`, P18 core integration as accepted, and the package-derived
+RAW/CLAHE/LL-DETECTOR controlled-validation comparison as `MEASURED` with its
+presentation/demo boundary. All defect classifications remain low-confidence
+and `UNREVIEWED`.

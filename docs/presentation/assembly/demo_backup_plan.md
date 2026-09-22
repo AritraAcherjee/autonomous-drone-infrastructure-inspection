@@ -37,14 +37,14 @@ Required screenshot categories:
 - verified P16 dashboard overview and detail;
 - deterministic P17 report excerpt;
 - verified P18 dashboard-completion and repeatability screenshots;
-- RAW versus CLAHE L0-L4 chart embedded in the deck;
+- RAW / CLAHE / LL-DETECTOR L0-L4 chart embedded in the deck and preserved as an offline asset;
 - provenance and hash summary.
 
 The deck itself supplies the architecture diagram, detector metrics,
 depth/projection contract, representative P15 map record, accepted P16/P17
 screenshots/report content, P18 screenshots, localization metrics and
-low-light chart. P19 3D correspondence is frozen pending; only LL-DETECTOR
-results remain an open late-evidence input.
+low-light chart. P19 3D correspondence is frozen pending; the ARMOURY
+presentation-model evidence slot is closed.
 
 ## 3. Backup recorded clips
 
@@ -113,10 +113,11 @@ Application layer:
 - P19 localization provenance and accepted plots when included from its
   preservation package.
 
-## 6. Evidence still pending
+## 6. Evidence dependency state
 
-- LL-DETECTOR final L0-L4 training/evaluation result; accepted RAW and CLAHE
-  evidence is already integrated.
+- `ARMOURY_EVIDENCE_WAIT = CLOSED`
+- `MSI_EVIDENCE_WAIT = CLOSED`
+- `REMAINING_SCIENTIFIC_EVIDENCE_DEPENDENCIES = 0`
 
 ## 7. Day-of-presentation fallback order
 

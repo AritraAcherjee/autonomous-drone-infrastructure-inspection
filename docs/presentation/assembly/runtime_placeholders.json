@@ -18,8 +18,17 @@
       0.0746161035,
       0.0033883546
     ],
-    "ll_detector_map50_l0_l4": "PENDING",
-    "ll_detector_state_b_wording": "Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.",
+    "ll_detector_classification": "PRESENTATION / DEMONSTRATION MODEL",
+    "ll_detector_map50_l0_l4": [
+      0.3659127801830558,
+      0.35998511822145635,
+      0.3438492823402624,
+      0.29042521214928224,
+      0.12412879850381782
+    ],
+    "ll_detector_model_sha256": "87941c7a57f9f501518dd50fcb06ac16fdab004d35f237c7b656a6d785e144d9",
+    "ll_detector_status": "COMPLETE_PRESENTATION_DEMONSTRATION_MODEL",
+    "locked_gyu_test_accessed": false,
     "raw_map50_l0_l4": [
       0.3886917344,
       0.3796280361,
@@ -27,7 +36,7 @@
       0.1263098877,
       0.0031301687
     ],
-    "status": "SUPPORTED_RAW_CLAHE_PENDING_LL_DETECTOR"
+    "status": "MEASURED_RAW_CLAHE_LL_DETECTOR_CONTROLLED_VALIDATION"
   },
   "localization": {
     "active_stop_b_fallback": "RTAB-Map RGB-D + IMU",
@@ -40,7 +49,7 @@
     "rpe_translation_rmse_m_1s": "0.341 m (MEASURED; presentation rounded)",
     "timestamp_alignment_coverage": "PENDING_NOT_REPORTED_BY_ACCEPTED_EVALUATOR"
   },
-  "replacement_rule": "P19 is frozen pending and closed for capstone; only the LL-DETECTOR slot may change from accepted ARMOURY evidence.",
+  "replacement_rule": "P19 remains frozen pending and closed for capstone; the accepted ARMOURY LL-DETECTOR slot is resolved and no scientific late-evidence slot remains open.",
   "schema_version": 1,
   "system": {
     "p18_integrated_run_status": "ACCEPTED: integrated runtime chain; dashboard evidence completion PASS; clean repeatability PASS",

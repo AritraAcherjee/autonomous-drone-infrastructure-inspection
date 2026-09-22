@@ -18,11 +18,11 @@ Target duration: approximately **14 minutes** plus Q&A. Explain the system chain
 | 12 | P18 Integrated Inspection Evidence | 0:40 | Trace the accepted low-confidence UNREVIEWED observation through projection, session-local mapping, dashboard and report. | Exact coordinates. |
 | 13 | P19 Localization Evaluation | 0:55 | Present rounded trajectory metrics and distinguish them from defect-position accuracy. | Method subclauses. |
 | 14 | P19 Capstone Disposition | 0:45 | State P18 demonstrated, localization measured, and final 3D correspondence frozen pending. | Technical-Q&A infrastructure. |
-| 15 | Workstream 04: Low-Light Robustness | 0:55 | Explain RAW degradation, CLAHE comparison and optional LL result. | Exact table values. |
+| 15 | Workstream 04: Low-Light Robustness | 0:55 | Explain the three-series comparison, severe-light improvement, and L0-L1 RAW tradeoff. | Exact high-precision values and orchestration detail. |
 | 16 | Evidence, Provenance and Reproducibility | 0:30 | Emphasize hash-bound evidence and reproducibility. | Concise identifiers. |
 | 17 | Limitations and Evidence Boundaries | 0:45 | State the most material limits. | Repeating prior caveats. |
 | 18 | Application and Commercial Value | 0:45 | Connect the implementation to reviewable inspection workflows. | Individual vertical examples. |
-| 19 | Current Demonstrated Capability | 0:35 | Close with demonstrated capability and ARMOURY as the only open late-evidence input. | Supporting sentence. |
+| 19 | Current Demonstrated Capability | 0:35 | Close with demonstrated capability and all scientific evidence dependencies closed for final-freeze review. | Supporting sentence. |
 
 ## Essential slides
 

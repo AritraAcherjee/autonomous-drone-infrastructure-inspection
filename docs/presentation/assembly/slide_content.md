@@ -425,35 +425,43 @@ or system-wide scientific validation.
 
 ## 15. Workstream 04 Low-Light Robustness
 
-**Status:** `SUPPORTED / FROZEN VALIDATION BENCHMARK`
+**Status:** `MEASURED / CONTROLLED VALIDATION`
 
 Accepted mAP50 results:
 
-| Level | RAW | CLAHE |
-| --- | ---: | ---: |
-| L0 | 0.3886917344 | 0.2657391403 |
-| L1 | 0.3796280361 | 0.2656420531 |
-| L2 | 0.3342489847 | 0.2240838264 |
-| L3 | 0.1263098877 | 0.0746161035 |
-| L4 | 0.0031301687 | 0.0033883546 |
+| Level | RAW | CLAHE | LL-DETECTOR |
+| --- | ---: | ---: | ---: |
+| L0 | 0.3886917344 | 0.2657391403 | 0.3659127801830558 |
+| L1 | 0.3796280361 | 0.2656420531 | 0.35998511822145635 |
+| L2 | 0.3342489847 | 0.2240838264 | 0.3438492823402624 |
+| L3 | 0.1263098877 | 0.0746161035 | 0.29042521214928224 |
+| L4 | 0.0031301687 | 0.0033883546 | 0.12412879850381782 |
 
 Accepted interpretation:
 
-- low-light degradation substantially reduces detector performance;
-- CLAHE does not provide general recovery;
-- CLAHE is worse than RAW at L0-L3;
-- L4 performance is effectively collapsed for both;
-- conclusions apply only to this frozen validation benchmark.
+- Preliminary learned low-light adaptation substantially improved robustness
+  under severe controlled low-light conditions, while producing a small
+  tradeoff under normal and mild illumination.
+- LL-DETECTOR is slightly below RAW at L0 and L1, slightly above RAW at L2,
+  and substantially above RAW at L3 and L4.
+- LL-DETECTOR is above CLAHE at every L0-L4 condition.
+- RAW and CLAHE performance is effectively collapsed at L4.
+- Conclusions apply only to this controlled validation benchmark.
 
-LL-DETECTOR State A: when accepted L0-L4 evaluation arrives, add the learned
-series and its provenance to the prepared chart/table.
+LL-DETECTOR-01 presentation L0-L4 validation: **COMPLETE**.
 
-LL-DETECTOR State B:
+Classification: **PRESENTATION / DEMONSTRATION MODEL**.
 
-**Learned low-light adaptation was implemented, but final presentation-time
-model training/evaluation was not completed.**
+This is not the canonical scientific LL-DETECTOR, production qualification,
+or locked-test validation. The locked GYU test was not accessed.
 
-The deck remains valid in State B.
+Model SHA-256:
+`87941c7a57f9f501518dd50fcb06ac16fdab004d35f237c7b656a6d785e144d9`.
+
+Results-only finalization note: evaluation inference executed exactly once.
+Post-inference orchestration initially stopped because the CSV writer omitted
+`false_negative_rate`; presentation artifact schema finalization did not rerun
+inference or training and did not change predictions.
 
 ---
 
@@ -471,8 +479,8 @@ Required visible limitations:
 8. P19 localization is measured, not threshold-classified as accurate.
 9. P19 3D correspondence validation is frozen pending at capstone close.
 10. P18 demonstrates accepted runtime, dashboard-completion and repeatability evidence, not full autonomy or production readiness.
-11. RAW and CLAHE performance is effectively collapsed at L4; the learned
-    LL-DETECTOR result remains pending.
+11. LL-DETECTOR is a presentation/demo result on controlled validation data;
+    it is not canonical, locked-test, or production-qualified evidence.
 12. Stop C/full autonomy is not demonstrated.
 
 ---
@@ -511,9 +519,8 @@ Demonstrated capability combines deep-learning defect detection, depth and
 dashboard review, deterministic reporting and measured localization
 evaluation.
 
-Only remaining external late-evidence input:
-
-- LL-DETECTOR L0-L4 training/evaluation results, if completed.
+External scientific late-evidence inputs are closed. P20 is ready for
+final-freeze review but is not yet final-frozen.
 
 Application value:
 

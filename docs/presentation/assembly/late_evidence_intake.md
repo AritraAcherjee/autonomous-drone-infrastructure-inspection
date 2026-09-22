@@ -28,13 +28,14 @@ matching, or localization ATE/RPE.
 | Slide | 15 |
 | Title | `Workstream 04: Low-Light Robustness` |
 | Generator section | `slide('Workstream 04: Low-Light Robustness', ...)` in `docs/presentation/deck/generate_deck.js` |
-| Current visible status | `SUPPORTED / FROZEN VALIDATION BENCHMARK` for RAW and CLAHE; LL-DETECTOR remains pending. |
-| Status/caption transition | Keep RAW/CLAHE fixed. Add LL-DETECTOR only after 00 supplies accepted L0-L4 evaluation results. |
-| Chart | Populated RAW and CLAHE mAP50 L0-L4 comparison. |
-| Series placeholder | Third LL-DETECTOR series reserved as State A. |
-| State B fallback | `Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.` |
+| Current visible status | `MEASURED / CONTROLLED VALIDATION`; LL-DETECTOR-01 presentation L0-L4 validation complete. |
+| Final disposition | `PRESENTATION / DEMONSTRATION MODEL`; locked GYU test accessed `FALSE`. |
+| Chart | Populated RAW / CLAHE / LL-DETECTOR mAP50 L0-L4 comparison. |
+| Evidence identities | Model SHA-256 `87941c7a57f9f501518dd50fcb06ac16fdab004d35f237c7b656a6d785e144d9`; ZIP SHA-256 `49ad62f55e3aba973d6d1ab03bfc3564db88d4c1719a540a1e1ecd47d3f44f44`. |
+| Intake state | `ARMOURY_EVIDENCE_WAIT = CLOSED` |
 
-Accepted RAW and CLAHE mAP50 values are already shown. Possible future LL-DETECTOR fields are L0-L4 mAP50 values plus the accepted evidence identity and provenance. Do not infer or interpolate a learned series.
+The accepted package-derived series is integrated. No LL-DETECTOR placeholder
+or State B fallback remains.
 
 ## Minimum-change insertion procedure
 
@@ -55,6 +56,6 @@ This procedure does not authorize final deck freeze.
 
 ## Truthful fallback
 
-P19 is no longer a late-ingestion dependency: retain the accepted frozen-pending
-wording. If LL-DETECTOR evidence does not arrive, retain the State B sentence
-verbatim. The sole remaining external late-evidence dependency is ARMOURY.
+P19 remains frozen pending and closed for capstone. ARMOURY is resolved. No
+external scientific late-evidence dependency remains. This does not authorize
+final freeze.

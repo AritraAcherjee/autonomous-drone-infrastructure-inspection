@@ -16,6 +16,7 @@ const READY = path.join(ROOT, 'docs', 'presentation', 'assembly', 'section_readi
 const PLACEHOLDERS = path.join(ROOT, 'docs', 'presentation', 'assembly', 'runtime_placeholders.json');
 const EVIDENCE = path.join(ROOT, 'outputs', 'presentation', 'p16_p17_evidence');
 const P18_EVIDENCE = path.join(ROOT, 'outputs', 'presentation', 'p18_evidence');
+const LOW_LIGHT_CHART = path.join(ROOT, 'outputs', 'presentation', 'low_light_evidence', 'raw_clahe_ll_detector_map50.png');
 const OUTPUT = path.resolve(ROOT, process.argv.includes('--output')
   ? process.argv[process.argv.indexOf('--output') + 1]
   : 'outputs/presentation/AegisInspect_P20_working_draft.pptx');
@@ -66,7 +67,7 @@ function verifyHashInventory(directory) {
 
 function addFooter(slide, number) {
   slide.addShape(PptxGenJS.ShapeType.line, { x: 0.45, y: 7.12, w: 12.42, h: 0, line: { color: 'D5DEE5', width: 0.6 } });
-  slide.addText('AEGISINSPECT  |  FINALIZATION READY  |  LAST ARMOURY EVIDENCE OPEN', {
+  slide.addText('AEGISINSPECT  |  READY FOR FINAL FREEZE  |  EVIDENCE SLOTS CLOSED', {
     x: 0.48, y: 7.18, w: 9.5, h: 0.18, fontFace: FONT, fontSize: 7.5, color: MUTED, margin: 0,
   });
   slide.addText(String(number).padStart(2, '0'), {
@@ -112,7 +113,7 @@ function addCard(slide, title, value, x, y, w, h, color = BLUE, note = '', optio
 }
 
 function addNotes(slide, sourceHash, detail) {
-  slide.addNotes(`P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE\nAssembly source: docs/presentation/assembly/slide_content.md\nAssembly SHA-256: ${sourceHash}\nSpeaker note: ${detail}`);
+  slide.addNotes(`P20_READY_FOR_FINAL_FREEZE\nAssembly source: docs/presentation/assembly/slide_content.md\nAssembly SHA-256: ${sourceHash}\nSpeaker note: ${detail}`);
 }
 
 function standardSlide(pptx, number, title, status, color, notes, builder) {
@@ -131,11 +132,12 @@ async function main() {
     path.join(EVIDENCE, 'dashboard', 'dashboard_detail.png'),
     path.join(EVIDENCE, 'report', 'inspection_2026091901.md'),
     path.join(P18_EVIDENCE, 'dashboard', 'dashboard_completion_overview_final.png'),
-    path.join(P18_EVIDENCE, 'dashboard', 'clean_repeatability_overview.png')].forEach(requireFile);
+    path.join(P18_EVIDENCE, 'dashboard', 'clean_repeatability_overview.png'),
+    LOW_LIGHT_CHART].forEach(requireFile);
   const source = fs.readFileSync(ASSEMBLY, 'utf8');
   const readiness = JSON.parse(fs.readFileSync(READY, 'utf8'));
   const placeholders = JSON.parse(fs.readFileSync(PLACEHOLDERS, 'utf8'));
-  sourceMustContain(source, [TITLE, 'DET-FINAL-v1 / YOLO26s', '0.29669431228680787', '0.17480040543737643', '0.18618618618618618', '0.011138029396533966', 'UNREVIEWED', '0.595 m', '0.341 m', '1.707 degrees', 'These metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.', 'dashboard-evidence completion package is PASS', 'clean repeatability run is PASS', '0.3886917344', '0.2657391403', 'Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.', 'remained pending at the capstone freeze']);
+  sourceMustContain(source, [TITLE, 'DET-FINAL-v1 / YOLO26s', '0.29669431228680787', '0.17480040543737643', '0.18618618618618618', '0.011138029396533966', 'UNREVIEWED', '0.595 m', '0.341 m', '1.707 degrees', 'These metrics evaluate localization trajectory accuracy, not absolute defect-position accuracy.', 'dashboard-evidence completion package is PASS', 'clean repeatability run is PASS', '0.3886917344', '0.2657391403', '0.3659127801830558', '0.12412879850381782', 'Preliminary learned low-light adaptation substantially improved robustness under severe controlled low-light conditions, while producing a small tradeoff under normal and mild illumination.', 'PRESENTATION / DEMONSTRATION MODEL', 'remained pending at the capstone freeze']);
   if (readiness.final_title !== TITLE) throw new Error('Readiness title does not match assembly source');
   if (!placeholders.localization.ate_translation_rmse_m.includes('0.595 m')) throw new Error('Runtime placeholder does not preserve accepted presentation-rounded ATE');
   const p16p17InventoryEntries = verifyHashInventory(EVIDENCE);
@@ -147,7 +149,7 @@ async function main() {
   pptx.layout = 'LAYOUT_WIDE';
   pptx.author = 'AegisInspect P20';
   pptx.company = 'AegisInspect';
-  pptx.subject = 'Evidence-bound presentation; ready only for final ARMOURY evidence ingestion';
+  pptx.subject = 'Evidence-bound presentation; ready for final-freeze review';
   pptx.title = TITLE;
   pptx.lang = 'en-CA';
   pptx.theme = { headFontFace: FONT, bodyFontFace: FONT, lang: 'en-CA' };
@@ -173,7 +175,7 @@ async function main() {
     addBody(s, 'Boundary: this deck does not claim a validated full autonomous mission.', { x: 0.74, y: 5.55, w: 11.6, h: 0.42, size: 14, color: RED, bold: true });
   });
 
-  slide('Evidence-Bound System Architecture', 'IMPLEMENTED / SYSTEM CHAIN', BLUE, 'Walk left to right from sensing to report. Call out accepted P18 core integration, measured localization, the frozen-pending P19 3D disposition, and the still-open LL-DETECTOR slot.', (s) => {
+  slide('Evidence-Bound System Architecture', 'IMPLEMENTED / SYSTEM CHAIN', BLUE, 'Walk left to right from sensing to report. Call out accepted P18 core integration, measured localization, the frozen-pending P19 3D disposition, and the completed presentation-model low-light evaluation.', (s) => {
     const steps = ['CAMERA\n/ DETECTOR', 'DEPTH', 'CAMERA\nXYZ', 'LOCALIZATION\n/ MAP RELATION', 'MAP XYZ\n/ P15', 'P16\nPERSISTENCE', 'P17\nREPORT'];
     steps.forEach((step, i) => {
       const x = 0.55 + i * 1.8;
@@ -183,7 +185,7 @@ async function main() {
     });
     addCard(s, 'Demonstrated', 'P16/P17 real handoff', 0.8, 4.15, 3.45, 1.2, TEAL, 'verified persistence, dashboard and report');
     addCard(s, 'Measured', 'P19 localization', 4.95, 4.15, 3.45, 1.2, BLUE, 'no frozen accuracy PASS/FAIL threshold');
-    addCard(s, 'Pending', 'P19 frozen / LL open', 9.1, 4.15, 3.45, 1.2, AMBER, 'capstone disposition / learned model', { valueSize: 16 });
+    addCard(s, 'Bounded', 'P19 frozen / LL complete', 9.1, 4.15, 3.45, 1.2, AMBER, 'capstone disposition / presentation model', { valueSize: 16 });
   });
 
   slide('GYU-DET Dataset and Defect Classes', 'SUPPORTED / DATA FOUNDATION', CYAN, 'State the frozen dataset counts and six classes. These counts establish the data foundation; they are not performance metrics.', (s) => {
@@ -279,51 +281,28 @@ async function main() {
     addBody(s, '3D defect-to-map integration was demonstrated through P18; localization accuracy was quantitatively measured.', { x: 1.15, y: 5.78, w: 11.0, h: 0.48, size: 14, color: RED, bold: true, align: 'center' });
   });
 
-  slide('Workstream 04: Low-Light Robustness', 'SUPPORTED / FROZEN VALIDATION BENCHMARK', BLUE, 'Explain the monotonic RAW degradation, that CLAHE is worse at L0-L3 and offers no general recovery, and that both are effectively collapsed at L4. The LL-DETECTOR slot remains optional.', (s) => {
+  slide('Workstream 04: Low-Light Robustness', 'MEASURED / CONTROLLED VALIDATION', BLUE, 'Preliminary learned low-light adaptation substantially improved robustness under severe controlled low-light conditions, while producing a small tradeoff under normal and mild illumination. It is slightly below RAW at L0-L1, slightly above RAW at L2, substantially above RAW at L3-L4, and above CLAHE throughout. This is a PRESENTATION / DEMONSTRATION MODEL evaluated on validation development data; it is not the canonical scientific LL-DETECTOR, production-qualified, or locked-test evidence. For Q&A: inference executed exactly once; results-only finalization repaired a CSV schema omission. Inference was not rerun; predictions were not changed; training was not rerun.', (s) => {
     const levels = ['L0', 'L1', 'L2', 'L3', 'L4'];
     const raw = [0.3886917344, 0.3796280361, 0.3342489847, 0.1263098877, 0.0031301687];
     const clahe = [0.2657391403, 0.2656420531, 0.2240838264, 0.0746161035, 0.0033883546];
-    const chart = { x: 0.95, y: 2.05, w: 6.65, h: 3.25, max: 0.42 };
-    [0, 0.1, 0.2, 0.3, 0.4].forEach((tick) => {
-      const y = chart.y + chart.h - (tick / chart.max) * chart.h;
-      s.addShape(PptxGenJS.ShapeType.line, { x: chart.x, y, w: chart.w, h: 0, line: { color: 'DCE6ED', width: 0.6 } });
-      s.addText(tick.toFixed(1), { x: 0.45, y: y - 0.08, w: 0.4, h: 0.16, fontFace: FONT, fontSize: 8, color: MUTED, align: 'right', margin: 0 });
-    });
-    const point = (index, value) => ({ x: chart.x + 0.55 + index * 1.4, y: chart.y + chart.h - (value / chart.max) * chart.h });
-    [[raw, BLUE], [clahe, AMBER]].forEach(([series, color]) => {
-      series.forEach((value, index) => {
-        const p = point(index, value);
-        if (index) {
-          const previous = point(index - 1, series[index - 1]);
-          s.addShape(PptxGenJS.ShapeType.line, { x: previous.x, y: previous.y, w: p.x - previous.x, h: p.y - previous.y, line: { color, width: 2.2 } });
-        }
-        s.addShape(PptxGenJS.ShapeType.ellipse, { x: p.x - 0.07, y: p.y - 0.07, w: 0.14, h: 0.14, fill: { color }, line: { color } });
-      });
-    });
-    levels.forEach((label, index) => {
-      const p = point(index, 0);
-      s.addText(label, { x: p.x - 0.2, y: chart.y + chart.h + 0.18, w: 0.4, h: 0.16, fontFace: FONT, fontSize: 9, color: INK, align: 'center', margin: 0 });
-    });
-    addBody(s, 'mAP50', { x: 0.28, y: 3.45, w: 0.5, h: 0.2, size: 9, color: MUTED, align: 'center' });
-    s.addShape(PptxGenJS.ShapeType.line, { x: 1.3, y: 5.85, w: 0.45, h: 0, line: { color: BLUE, width: 2.2 } });
-    addBody(s, 'RAW', { x: 1.82, y: 5.73, w: 0.55, h: 0.2, size: 9, color: INK });
-    s.addShape(PptxGenJS.ShapeType.line, { x: 2.55, y: 5.85, w: 0.45, h: 0, line: { color: AMBER, width: 2.2 } });
-    addBody(s, 'CLAHE', { x: 3.07, y: 5.73, w: 0.75, h: 0.2, size: 9, color: INK });
-    addBody(s, 'RAW vs CLAHE mAP50', { x: 8.05, y: 1.78, w: 4.25, h: 0.28, size: 17, color: NAVY, bold: true, align: 'center' });
-    const rows = levels.map((level, i) => `${level}  ${raw[i].toFixed(10)}  ${clahe[i].toFixed(10)}`).join('\n');
-    addBody(s, 'Level       RAW             CLAHE\n' + rows, { x: 8.12, y: 2.25, w: 4.15, h: 1.85, size: 10.5, color: INK, align: 'left' });
-    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 8.0, y: 4.35, w: 4.35, h: 1.75, rectRadius: 0.04, fill: { color: 'FFF9EC' }, line: { color: 'E8C878', width: 0.8, dash: 'dash' } });
-    addBody(s, 'LL-DETECTOR INSERTION SLOT\nState A: add accepted L0-L4 series.\nState B: Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.', { x: 8.3, y: 4.66, w: 3.75, h: 1.02, size: 10.5, color: INK, align: 'center' });
+    const learned = [0.3659127801830558, 0.35998511822145635, 0.3438492823402624, 0.29042521214928224, 0.12412879850381782];
+    s.addImage({ path: LOW_LIGHT_CHART, x: 0.65, y: 1.78, w: 7.1, h: 4.34 });
+    addBody(s, 'RAW / CLAHE / LL-DETECTOR mAP50', { x: 7.95, y: 1.78, w: 4.55, h: 0.28, size: 16, color: NAVY, bold: true, align: 'center' });
+    const rows = levels.map((level, i) => `${level}   ${raw[i].toFixed(6)}   ${clahe[i].toFixed(6)}   ${learned[i].toFixed(6)}`).join('\n');
+    addBody(s, 'Level      RAW       CLAHE      LL-DETECTOR\n' + rows, { x: 7.95, y: 2.2, w: 4.55, h: 1.75, size: 10.2, color: INK, align: 'left' });
+    s.addShape(PptxGenJS.ShapeType.roundRect, { x: 7.95, y: 4.15, w: 4.55, h: 1.95, rectRadius: 0.04, fill: { color: 'F0FAF7' }, line: { color: TEAL, width: 0.8 } });
+    addBody(s, 'PRESENTATION / DEMONSTRATION MODEL\nL0-L1: small tradeoff vs RAW\nL2: slightly above RAW\nL3-L4: substantial improvement vs RAW\nAbove CLAHE at every level\nLocked GYU test accessed: FALSE', { x: 8.18, y: 4.42, w: 4.08, h: 1.45, size: 10.2, color: INK, align: 'center' });
+    addBody(s, 'Controlled validation only; no universal superiority or production qualification claim.', { x: 1.1, y: 6.35, w: 11.1, h: 0.3, size: 12, color: RED, bold: true, align: 'center' });
   });
 
-  slide('Evidence, Provenance and Reproducibility', 'SUPPORTED / HASH-BOUND', TEAL, 'Use this only for Q&A: identify the compact evidence index and explain that accepted artifacts are preserved rather than rewritten.', (s) => {
+  slide('Evidence, Provenance and Reproducibility', 'SUPPORTED / HASH-BOUND', TEAL, 'Use this only for Q&A: identify the compact evidence index and explain that accepted artifacts are preserved rather than rewritten. The ARMOURY presentation model and its 21-file evaluation package are hash-bound in the index.', (s) => {
     addBullets(s, ['Git preservation provenance: canonical P17 preservation state', 'Runtime evidence provenance: recovered P16/P17 ZIP, DB and report', 'P19 localization evidence preservation commit', 'Full hashes retained in the verified P20 evidence package'], { x: 0.85, y: 1.85, w: 5.5, h: 3.5, size: 16 });
     addCard(s, 'P16/P17 package', '29 / 29 PASS', 7.1, 1.9, 4.8, 1.25, TEAL, 'verified package hash inventory');
-    addBody(s, 'Concise identifiers\nP17 Git: eb4013fa...bbfe488f\nP16/P17 ZIP: df3f87f0...9f313ec2\nP19 evidence: 4c7bd79a...9a4d78a', { x: 7.25, y: 3.75, w: 4.5, h: 1.45, size: 15, color: INK });
+    addBody(s, 'Concise identifiers\nP17 Git: eb4013fa...bbfe488f\nP16/P17 ZIP: df3f87f0...9f313ec2\nP19 evidence: 4c7bd79a...9a4d78a\nLL model: 87941c7a...e144d9', { x: 7.25, y: 3.62, w: 4.5, h: 1.8, size: 14, color: INK });
   });
 
-  slide('Limitations and Evidence Boundaries', 'SUPPORTED / CLAIM BOUNDARIES', RED, 'Be direct: detector performance is modest, external transfer is weak, simulation is not field accuracy, P19 3D is frozen pending, and only the ARMOURY result remains open.', (s) => {
-    addBullets(s, ['Held-out detector mAP remains modest; metrics are not generic accuracy', 'DamSegment zero-shot transfer is weak, especially Crack recall', 'Accepted dashboard examples are low-confidence, unreviewed machine output', 'P19 localization is measured trajectory accuracy, not defect-position accuracy', 'P19 3D correspondence validation is frozen pending at capstone close', 'RAW and CLAHE collapse at L4; LL-DETECTOR training/evaluation remains pending', 'P18 demonstrates integration and repeatability, not full autonomy or production readiness'], { x: 0.85, y: 1.85, w: 11.4, h: 4.7, size: 16 });
+  slide('Limitations and Evidence Boundaries', 'SUPPORTED / CLAIM BOUNDARIES', RED, 'Be direct: detector performance is modest, external transfer is weak, simulation is not field accuracy, P19 3D is frozen pending, and the LL-DETECTOR result is limited to a presentation/demo model on controlled validation data.', (s) => {
+    addBullets(s, ['Held-out detector mAP remains modest; metrics are not generic accuracy', 'DamSegment zero-shot transfer is weak, especially Crack recall', 'Accepted dashboard examples are low-confidence, unreviewed machine output', 'P19 localization is measured trajectory accuracy, not defect-position accuracy', 'P19 3D correspondence validation is frozen pending at capstone close', 'LL-DETECTOR is a presentation/demo validation result, not canonical, locked-test or production evidence', 'P18 demonstrates integration and repeatability, not full autonomy or production readiness'], { x: 0.85, y: 1.85, w: 11.4, h: 4.7, size: 16 });
   });
 
   slide('Application and Commercial Value', 'IMPLEMENTED / APPLICATION VALUE', BLUE, 'Translate the engineering into user value: repeatable evidence capture, traceable review, and modular deployment. These are application benefits, not market validation or production-readiness claims.', (s) => {
@@ -334,9 +313,9 @@ async function main() {
     addBody(s, 'Application value is demonstrated by the system workflow; commercial deployment readiness is not claimed.', { x: 1.15, y: 6.05, w: 11.0, h: 0.32, size: 13.5, color: RED, bold: true, align: 'center' });
   });
 
-  slide('Current Demonstrated Capability', 'DEMONSTRATED / EVIDENCE-BOUND', TEAL, 'Close on what works today, state that the MSI disposition is resolved, and name ARMOURY LL-DETECTOR as the only remaining late-evidence input.', (s) => {
+  slide('Current Demonstrated Capability', 'DEMONSTRATED / EVIDENCE-BOUND', TEAL, 'Close on what works today: P18 core integration is accepted, P19 remains frozen pending, and the ARMOURY presentation-model low-light evaluation is complete. All scientific evidence dependencies are closed for final-freeze review.', (s) => {
     addBody(s, 'AegisInspect demonstrates a robotics/computer-vision inspection pipeline combining deep-learning structural-defect detection, depth and 3D projection, localization/map-frame processing, mapped-defect persistence, dashboard review, deterministic reporting and measured localization evaluation.', { x: 1.0, y: 2.0, w: 11.1, h: 1.35, size: 22, color: NAVY, bold: true, align: 'center' });
-    addBody(s, 'Only remaining late-evidence input: accepted LL-DETECTOR L0-L4 evaluation, if completed.', { x: 1.2, y: 4.55, w: 10.8, h: 0.55, size: 18, color: MUTED, align: 'center' });
+    addBody(s, 'Scientific evidence dependencies: CLOSED. Ready for final-freeze review; not yet final-frozen.', { x: 1.2, y: 4.55, w: 10.8, h: 0.55, size: 18, color: MUTED, align: 'center' });
     addBody(s, 'Implemented is not the same as measured. The frozen-pending status remains visible.', { x: 1.0, y: 5.65, w: 11.1, h: 0.35, size: 16, color: RED, bold: true, align: 'center' });
   });
 
@@ -344,7 +323,7 @@ async function main() {
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   await pptx.writeFile({ fileName: OUTPUT });
   const metadata = {
-    classification: 'P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE',
+    classification: 'P20 READY_FOR_FINAL_FREEZE',
     title: TITLE,
     generated_at_utc: new Date().toISOString(),
     generation_command: 'node docs/presentation/deck/generate_deck.js',
@@ -356,6 +335,22 @@ async function main() {
     p16_p17_evidence_inventory_entries: p16p17InventoryEntries,
     p18_evidence_package: path.relative(ROOT, P18_EVIDENCE).replaceAll('\\', '/'),
     p18_evidence_inventory_entries: p18InventoryEntries,
+    low_light_chart: path.relative(ROOT, LOW_LIGHT_CHART).replaceAll('\\', '/'),
+    low_light_chart_sha256: sha256(LOW_LIGHT_CHART),
+    ll_detector_classification: 'PRESENTATION / DEMONSTRATION MODEL',
+    ll_detector_model_sha256: '87941c7a57f9f501518dd50fcb06ac16fdab004d35f237c7b656a6d785e144d9',
+    ll_detector_evidence_zip_sha256: '49ad62f55e3aba973d6d1ab03bfc3564db88d4c1719a540a1e1ecd47d3f44f44',
+    ll_detector_l4_map50: 0.12412879850381782,
+    armoury_evidence_wait: 'CLOSED',
+    msi_evidence_wait: 'CLOSED',
+    p19_capstone_disposition: 'FROZEN_PENDING',
+    p19_development: 'CLOSED',
+    p18_core_integration: 'ACCEPTED',
+    workstream_04_experiments: 'CLOSED',
+    remaining_scientific_evidence_dependencies: 0,
+    final_deck: false,
+    final_freeze: false,
+    main_merge: false,
     output_sha256: sha256(OUTPUT),
   };
   fs.writeFileSync(METADATA, `${JSON.stringify(metadata, null, 2)}\n`, 'utf8');

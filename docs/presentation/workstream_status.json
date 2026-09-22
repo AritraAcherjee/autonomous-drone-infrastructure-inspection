@@ -99,10 +99,10 @@
       "workstream": "P20"
     },
     {
-      "claim_status": "SUPPORTED",
-      "evidence_scope": "FROZEN_VALIDATION_BENCHMARK",
-      "limitations": "Do not generalize beyond the frozen benchmark; LL-DETECTOR remains pending.",
-      "presentation_summary": "RAW and CLAHE mAP50 L0-L4 are accepted; CLAHE gives no general recovery.",
+      "claim_status": "MEASURED",
+      "evidence_scope": "CONTROLLED_VALIDATION_PRESENTATION_DEMONSTRATION_MODEL",
+      "limitations": "Do not generalize beyond controlled validation; LL-DETECTOR is not canonical, locked-test, or production-qualified evidence.",
+      "presentation_summary": "RAW, CLAHE and LL-DETECTOR mAP50 L0-L4 are accepted. Preliminary learned adaptation improves severe low-light robustness with a small L0-L1 tradeoff versus RAW.",
       "title": "Low-Light Robustness",
       "workstream": "04"
     }

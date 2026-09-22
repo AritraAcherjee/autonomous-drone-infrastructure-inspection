@@ -1,6 +1,6 @@
 # P20 Compact Presentation Evidence Index
 
-Classification: `P20 FINALIZATION_READY_FOR_LAST_ARMOURY_EVIDENCE`
+Classification: `P20_READY_FOR_FINAL_FREEZE`
 
 This index points to accepted evidence; it does not rewrite sealed artifacts.
 Use it for presentation preparation and Q&A.
@@ -19,7 +19,41 @@ Use it for presentation preparation and Q&A.
 | P18 clean repeatability | `DEMONSTRATED` | PASS under unchanged source/configuration | Archive SHA-256 `0823e59a4267a3f6c844bbbf2f63bdb5f19091511dda36826f72f058cc911d82`; result SHA-256 `9a1636daa5d6fac503568801d3614a559820034a68f8d403f9533c1eb87e1b69` |
 | P19 localization | `MEASURED` | Presentation-rounded ATE translational RMSE `0.595 m` (76 samples); RPE translational RMSE `0.341 m`; RPE rotational RMSE `1.707 degrees` (44 pairs) | P19 preservation Git `4c7bd79ad3b6356dff08b0adf30ece3e09a4d78a`; frozen 3-18 s methodology; trajectory accuracy only, not absolute defect-position accuracy |
 | P19 3D correspondence | `PENDING` | `FROZEN PENDING / FINAL QUANTITATIVE CORRESPONDENCE NOT COMPLETED`; P19 development closed for capstone | Accepted 00/MSI capstone-freeze disposition, 2026-09-21; no further MSI scientific result expected |
-| LL-DETECTOR | `PENDING` | No model metric shown. Fallback: “Learned low-light adaptation was implemented, but final presentation-time model training/evaluation was not completed.” | Prepared State A/State B slot on slide 15; insert only accepted ARMOURY L0-L4 results |
+| LL-DETECTOR | `MEASURED` | Presentation mAP50 L0-L4: `0.365913`, `0.359985`, `0.343849`, `0.290425`, `0.124129`; exact L4 `0.12412879850381782`; classification `PRESENTATION / DEMONSTRATION MODEL` | Accepted ARMOURY 21-file development-validation package; model and package identities below; locked GYU test accessed `FALSE` |
+
+## Accepted ARMOURY LL-DETECTOR presentation evidence
+
+- Transfer model path: `/mnt/c/Users/Aritra/Documents/P20_LL_DETECTOR_ARMOURY_TRANSFER/best.pt`
+- Model SHA-256: `87941c7a57f9f501518dd50fcb06ac16fdab004d35f237c7b656a6d785e144d9`
+- Evidence ZIP: `/mnt/c/Users/Aritra/Documents/P20_LL_DETECTOR_ARMOURY_TRANSFER/presentation_ll_detector_direct_v1.zip`
+- Evidence ZIP SHA-256: `49ad62f55e3aba973d6d1ab03bfc3564db88d4c1719a540a1e1ecd47d3f44f44`
+- Package verification: `21` regular files; ZIP integrity `PASS`; first bad file `NONE`
+- Training provenance: train images `8305`; validation images `1040`;
+  epochs completed `82`; best epoch `52`; stop reason `NORMAL_EARLY_STOPPING`
+- Locked GYU test accessed: `FALSE`
+- Classification: `PRESENTATION / DEMONSTRATION MODEL`; not the canonical
+  scientific LL-DETECTOR and not production-qualified
+
+| Level | RAW mAP50 | CLAHE mAP50 | LL-DETECTOR mAP50 |
+| --- | ---: | ---: | ---: |
+| L0 | `0.3886917344` | `0.2657391403` | `0.3659127801830558` |
+| L1 | `0.3796280361` | `0.2656420531` | `0.35998511822145635` |
+| L2 | `0.3342489847` | `0.2240838264` | `0.3438492823402624` |
+| L3 | `0.1263098877` | `0.0746161035` | `0.29042521214928224` |
+| L4 | `0.0031301687` | `0.0033883546` | `0.12412879850381782` |
+
+At L4, the package-derived delta versus RAW is
+`+0.12099862980381781`, the delta versus CLAHE is
+`+0.12074044390381782`, and retention is `33.92305632006614%`.
+
+The earlier `0.124113` value is a **SUPERSEDED PRESENTATION BOOKKEEPING
+VALUE** and is not used in the deck, chart, notes, or result sources.
+
+Results-only finalization provenance: evaluation inference executed exactly
+once. Post-inference orchestration initially stopped because the CSV writer
+omitted `false_negative_rate`. Results-only finalization corrected the
+presentation artifact schema; inference and training were not rerun, and
+predictions were not changed.
 
 ## Optional P19 technical-Q&A references
 
@@ -44,7 +78,10 @@ These are component/sub-gate PASS results only. Final label:
 - PDF fallback: `docs/presentation/deck/rendered/AegisInspect_P20_working_draft.pdf`
 - P16/P17 screenshots and records: `outputs/presentation/p16_p17_evidence/`
 - P18 screenshots and accepted runtime/repeatability packages: `outputs/presentation/p18_evidence/`
+- Accepted three-series low-light chart: `outputs/presentation/low_light_evidence/raw_clahe_ll_detector_map50.png`; SHA-256 `71d13ee2e58edf0d49f7ca406decc3c82700e6b66abea08ddec391aad9861576`
 - Offline demo order: `docs/presentation/assembly/demo_backup_plan.md`
 
-The MSI slot is resolved. The deck remains open only for bounded LL-DETECTOR
-evidence ingestion from ARMOURY. It is not final-frozen.
+`ARMOURY_EVIDENCE_WAIT = CLOSED`; `MSI_EVIDENCE_WAIT = CLOSED`;
+`P19_DEVELOPMENT = CLOSED`; `WORKSTREAM_04_EXPERIMENTS = CLOSED`;
+`REMAINING_SCIENTIFIC_EVIDENCE_DEPENDENCIES = 0`. The deck is ready for
+final-freeze review but is not final-frozen.

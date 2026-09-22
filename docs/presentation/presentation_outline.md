@@ -377,10 +377,10 @@ Evidence-backed contributions:
 - camera-frame 3D projection;
 - deterministic mapping/persistence/reporting/evaluation software layers.
 
-Only remaining late-evidence priority:
+Final evidence-dependency state:
 
-- accepted ARMOURY LL-DETECTOR presentation-training/evaluation result, if
-  completed.
+- no remaining scientific evidence dependency; accepted ARMOURY LL-DETECTOR
+  presentation/demo results are incorporated and the MSI disposition is closed.
 
 ---
 

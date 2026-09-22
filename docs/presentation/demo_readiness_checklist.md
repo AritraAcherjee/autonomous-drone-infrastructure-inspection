@@ -148,6 +148,7 @@ Immediately before presentation:
 - [x] verify detector and low-light limitations are visible;
 - [x] verify the accepted dashboard record remains `UNREVIEWED`;
 - [x] verify localization is `MEASURED` and P19 3D correspondence is `FROZEN PENDING`;
-- [x] verify LL-DETECTOR is `PENDING` unless accepted results arrive;
-- [ ] final-freeze only after ARMOURY disposition from 00; MSI is resolved;
+- [x] verify accepted LL-DETECTOR presentation/demo results and model/package identities;
+- [x] verify LL-DETECTOR is not described as canonical, production-qualified, or locked-test validated;
+- [ ] final-freeze only after explicit 00 authorization; ARMOURY and MSI evidence slots are resolved;
 - [x] keep the compact evidence index available for Q&A.
