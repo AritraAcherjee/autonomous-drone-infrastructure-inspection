@@ -1,289 +1,380 @@
-# Autonomous Multimodal Drone Infrastructure Inspection System
+# AegisInspect — Autonomous Multimodal Drone Infrastructure Inspection System
 
-AegisInspect aims to support infrastructure inspection using vision and robotics.
-This repository contains the **Stop-B ROS 2 / Gazebo foundation skeleton**
-and a tested, ROS-independent camera depth geometry core.
-It does not complete Stop B or the ROS/Gazebo workstreams.
+AegisInspect is a capstone prototype for **drone-based infrastructure inspection**. It combines structural-defect detection, simulated multimodal sensing, metric depth, localization, 3D projection, defect-to-map aggregation, persistent inspection records, dashboard review, deterministic reporting, and quantitative evaluation.
 
-## Scope
+The project is intentionally evidence-driven: a feature is described as **implemented**, **demonstrated**, **measured**, or **pending** according to the evidence actually available.
 
-Reference platform: **Ubuntu 26.04, ROS 2 Lyrical Luth, Gazebo Jetty LTS, ros_gz**.
-The simulation is a stationary drone-shaped sensor rig, not a flying vehicle.
-It configures RGB, aligned simulated depth, CameraInfo, IMU, a 3D LiDAR cloud, simulation time, and static
-sensor transforms. There are no actuators, control loops, trajectories, detector
-outputs, custom ML messages, VIO, SLAM, fusion, mapping, safety, or navigation algorithms.
+## Capstone status
 
-The bay contains a floor, wall, column and two colored geometric panels. The panels
-have no defect taxonomy or annotations. All geometry is local; no Fuel assets are
-downloaded. The rig starts at Gazebo world pose **(0, 0, 1.5 m), RPY (0, 0, 0)**,
-looking toward the wall at X=4 m. It remains fixed in place.
+| Milestone | Status | Meaning |
+|---|---|---|
+| **Stop A** | **Reached** | Dataset foundation, frozen detector, held-out evaluation, and external generalization evidence are available. |
+| **Stop B** | **Partially reached** | The core inspection pipeline was integrated and demonstrated through P18, including localization, depth/XYZ, mapping, persistence, dashboard, and reporting. Final absolute 3D defect-position validation remained pending. |
+| **Stop C** | **Not reached** | Obstacle avoidance, autonomous navigation, coverage planning, and autonomous mission execution were not completed. |
+| **Final product** | **Not reached** | No claim is made of a production-ready autonomous inspection drone or real-world field deployment. |
 
-**08 — Depth + 3D Projection, Phase 2 — Simulated Metric Depth Integration:
-COMPLETE / MERGED.** PR #6. Merge commit: 57f2973. The shared RGB-D sensor and direct depth bridge passed
-runtime validation on ROS 2 Lyrical / Gazebo Sim 10.5.0: all 13 ROS packages built,
-and the final colcon result was 103 tests, 0 errors, 0 failures, 0 skipped. See the
-[runtime evidence and validation procedure](docs/implementation_reports/simulated_depth_integration.md).
+The accepted core integration is a **prototype inspection pipeline**, not a completed autonomous drone product.
 
-**08 — Depth + 3D Projection, Phase 3 — Camera-frame ROS Projection:
-READY FOR PR / MERGE.** MSI WSL validation passed: 13 packages built and
-196 colcon tests, 0 errors, 0 failures, 0 skipped. The camera-frame service passed
-principal-point, off-center, ROI and explicit-failure acceptance; Phase 2 depth
-and foundation regression probes also passed. See the
-[Phase 3 runtime evidence and corrective-fix record](docs/implementation_reports/camera_frame_ros_projection.md).
+## System flow
 
-camera_optical_frame -> base_link, odom projection, map projection, tf2 localization
-projection, VIO, sensor fusion and defect-to-map fusion remain out of scope /
-future work. This does not complete the full Depth + 3D Projection workstream.
+```text
+Gazebo simulation
+    ↓
+RGB + depth + IMU + LiDAR
+    ↓
+RGB → DET-FINAL-v1 / YOLO26s structural-defect detection
+    ↓
+depth + camera intrinsics → camera-frame 3D XYZ
+    ↓
+LiDAR ICP local odometry
+    ↓
+timestamp-correct camera XYZ → session-local map XYZ
+    ↓
+P15 defect-to-map aggregation / persistent mapped-defect record
+    ↓
+P16 SQLite persistence + Streamlit dashboard
+    ↓
+P17 deterministic report
+    ↓
+P19 quantitative evaluation
+```
 
-## Provenance naming
+The final operational localization backend was **LiDAR ICP**. OpenVINS Mono + IMU and RTAB-Map RGB-D + IMU were investigated earlier but did not become the accepted Stop-B runtime backend.
 
-Historical branch names, experiment IDs, status enums, and exact execution paths are retained when they are part of reproducibility evidence. These identifiers may contain earlier internal labels; descriptive workstream names are used in the professor-facing documentation instead of rewriting evidence history.
+## What was completed
+
+| Capability | Capstone state |
+|---|---|
+| GYU-DET dataset pipeline and leakage-safe splits | **Supported** |
+| Structural defect detection with YOLO26s | **Supported / held-out tested** |
+| External zero-shot generalization testing | **Supported** |
+| Controlled low-light robustness evaluation | **Measured** |
+| ROS 2 / Gazebo multimodal simulation foundation | **Supported** |
+| RGB, depth, IMU, and LiDAR sensor streams | **Supported** |
+| Metric depth | **Supported** |
+| Pixel/depth → camera-frame XYZ | **Supported** |
+| LiDAR ICP local odometry | **Measured** |
+| Camera XYZ → session-local map XYZ | **Demonstrated** |
+| P15 defect-to-map aggregation and persistent IDs | **Demonstrated** |
+| P16 SQLite persistence and Streamlit dashboard | **Demonstrated** |
+| P17 deterministic reporting | **Demonstrated** |
+| P18 core-system integration and clean repeatability | **Demonstrated** |
+| P19 localization ATE/RPE evaluation | **Measured** |
+| Final absolute defect-position correspondence evaluation | **Frozen pending** |
+| Full LiDAR SLAM / persistent 3D environmental map | **Not completed** |
+| Dedicated camera+IMU+LiDAR fused estimator | **Not completed** |
+| Autonomous obstacle avoidance / navigation / mission execution | **Not completed** |
+| Real-drone field deployment | **Not completed** |
+
+## Dataset
+
+The primary detector dataset is **GYU-DET V3 baseline-v1**.
+
+| Split | Images |
+|---|---:|
+| Train | 8,305 |
+| Validation | 1,040 |
+| Held-out test | 1,053 |
+| **Total** | **10,398** |
+
+The dataset contains **48,392 annotations** across six classes:
+
+1. Crack
+2. Breakage
+3. Honeycombing
+4. Hole
+5. Exposed Reinforcement
+6. Seepage
+
+The held-out test contains **5,886 ground-truth instances**.
+
+## Structural defect detector
+
+The canonical detector is:
+
+**DET-FINAL-v1 / YOLO26s**
+
+Checkpoint SHA-256:
+
+```text
+4c7a32c9b40c0795bbe59aca5952a0631e1524ec731ad2c7441cccb1b44f71c3
+```
+
+Held-out GYU-DET test results:
+
+| Metric | Result |
+|---|---:|
+| mAP50 | **0.296694** |
+| mAP50-95 | **0.174800** |
+| Macro precision | **0.376741** |
+| Macro recall | **0.374323** |
+| Mean per-class F1 | **0.355625** |
+
+The operating confidence threshold (~**0.186186**) was selected from validation data and frozen before held-out test evaluation.
+
+These values are **object-detection metrics**, not a generic system "accuracy" percentage.
+
+## External generalization
+
+The frozen detector was evaluated **zero-shot** on the external **DamSegment** benchmark without retraining or tuning on that benchmark.
+
+Shared-class result:
+
+| Metric | Result |
+|---|---:|
+| mAP50 | **0.053176** |
+| mAP50-95 | **0.031340** |
+| Precision | **0.253086** |
+| Recall | **0.006240** |
+| F1 | **0.012181** |
+
+This result shows **weak external-domain transfer**, especially for Crack recall. The scientific run completed successfully; the performance limitation is part of the result.
+
+## Low-light robustness
+
+Three controlled approaches were compared:
+
+- **RAW** — darkened input with the unchanged detector
+- **CLAHE** — local-contrast enhancement before the unchanged detector
+- **LL-DETECTOR** — a learned low-light-adapted presentation/demo detector
+
+At the most severe controlled darkness level, L4:
+
+| Approach | mAP50 |
+|---|---:|
+| RAW | 0.003130 |
+| CLAHE | 0.003388 |
+| LL-DETECTOR | **0.124129** |
+
+The learned model substantially improved severe low-light robustness in this controlled validation experiment, with a small tradeoff under normal/mild illumination.
+
+**Important:** LL-DETECTOR is a **presentation/demonstration validation model**. It is not the canonical DET-FINAL-v1 detector, was not evaluated on the locked GYU held-out test, and is not presented as production-qualified evidence.
+
+## ROS 2, Gazebo, sensors, and 3D projection
+
+The robotics stack uses:
+
+- **ROS 2 Lyrical Luth**
+- **Gazebo Sim / Jetty**
+- RGB camera
+- simulated metric depth
+- IMU
+- 3D LiDAR
+- simulation clock
+- TF / static TF
+
+Key interfaces include:
+
+| Topic / interface | Purpose |
+|---|---|
+| `/aegis/sensors/camera/image_raw` | RGB image stream |
+| `/aegis/sensors/camera/camera_info` | Camera calibration |
+| `/aegis/perception/depth/image` | Metric depth, `32FC1`, metres |
+| `/aegis/sensors/imu/data` | Inertial measurements |
+| `/aegis/sensors/lidar/points` | LiDAR point cloud |
+| `/aegis/localization/vio/odom` | Canonical localization output contract |
+| `/aegis/mapping/project_camera` | Camera-frame 3D projection service |
+
+The localization topic retained its historical `vio` name for interface compatibility even after **LiDAR ICP** became the accepted runtime backend.
+
+Depth and camera intrinsics are used to convert image observations into:
+
+```text
+pixel / ROI + metric depth → camera_optical_frame XYZ
+```
+
+The integrated P18 path then used the accepted localization/map relationship to transform observations into **session-local map XYZ**.
+
+## Localization evaluation
+
+P19 compared accepted LiDAR ICP odometry against simulation ground truth.
+
+| Metric | Result |
+|---|---:|
+| ATE translation RMSE | **0.595 m** |
+| ATE matched samples | 76 |
+| RPE translation RMSE @ 1 s | **0.341 m** |
+| RPE rotation RMSE @ 1 s | **1.707°** |
+| RPE pairs | 44 |
+
+These are **trajectory-localization metrics**. The 0.595 m ATE value is **not** a defect-position error.
+
+No frozen localization-accuracy PASS/FAIL threshold was defined for the capstone.
+
+## Defect-to-map, persistence, dashboard, and reporting
+
+### P15 — Defect-to-Map Fusion
+
+P15 consumes mapped observations and performs deterministic:
+
+- map-frame defect handling
+- spatial association
+- repeated-observation aggregation
+- confidence aggregation
+- persistent defect identity
+- replay/idempotence handling
+
+### P16 — Database + Dashboard
+
+P16 provides:
+
+- SQLite persistence
+- Streamlit dashboard
+- inspection and structure records
+- mapped-defect records
+- evidence references
+- explicit human review state
+
+The dashboard does **not** fabricate engineering severity, structural safety, repair urgency, or unmeasured dimensions.
+
+### P17 — Deterministic Reporting
+
+P17 generates deterministic reports from persisted inspection data.
+
+The reporting layer intentionally preserves stored facts and avoids inventing:
+
+- crack width
+- severity
+- repair action
+- structural-safety conclusions
+- engineering diagnoses
+
+An LLM is not required for the accepted reporting path.
+
+### P18 — Core Integration
+
+P18 demonstrated the implemented inspection chain through runtime evidence and clean repeatability.
+
+The accepted P18 evidence supports **core-system integration**, dashboard completion, and repeatability. It does **not** establish full autonomy, production readiness, field validation, or absolute 3D defect-position accuracy.
+
+## P19 3D evaluation boundary
+
+A final quantitative comparison between mapped defect XYZ and simulator ground-truth defect XYZ required an **explicit accepted correspondence** between each mapped defect and its ground-truth defect identity.
+
+That correspondence was not preserved in acceptable immutable evidence before the capstone freeze.
+
+Therefore:
+
+**P19 3D defect-position evaluation = FROZEN PENDING**
+
+Do not infer an absolute defect-position error from localization ATE/RPE.
+
+## Important limitations
+
+The following were **not completed or not validated as final-product capabilities**:
+
+- full LiDAR SLAM
+- persistent point-cloud / voxel / occupancy map
+- dedicated multimodal camera+IMU+LiDAR fused estimator
+- accepted video tracking / ByteTrack pipeline
+- segmentation workstream
+- obstacle avoidance
+- autonomous path planning
+- autonomous navigation
+- coverage planning
+- autonomous mission execution
+- real-drone hardware integration
+- real-world field trials
+- final absolute 3D defect-position accuracy validation
+- production safety, regulatory, and commercial hardening
+
+AegisInspect should therefore be described as an **integrated infrastructure-inspection prototype**, not a production-ready autonomous drone system.
 
 ## Repository layout
 
-Each package below contains `package.xml` and `CMakeLists.txt`.
+```text
+configs/                         frozen experiment and evaluation configuration
+data/                            manifests and dataset metadata
+dashboard/                       Streamlit review dashboard
+database/                        database schema and persistence documentation
+docs/
+  data/                          dataset provenance, licensing, and acquisition policy
+  detection/                     detector training/freeze documentation
+  experiments/                   experiment analysis
+  implementation_reports/       ROS/depth/runtime engineering evidence
+  presentation/                 presentation claim/evidence framework
+outputs/                         accepted evaluation and validation artifacts
+ros2_ws/                         ROS 2 / Gazebo packages
+scripts/                         training, evaluation, analysis, and validation entry points
+src/
+  defect_mapping/                P15 persistent defect aggregation
+  detection/                     detector training and generalization code
+  evaluation/                    P19 evaluation framework
+  integrations/                  workstream adapters
+  reporting/                     P17 deterministic reporting
+  storage/                       P16 persistence layer
+tests/                           dataset, detector, mapping, storage, reporting, integration, and evaluation tests
+```
+
+## Provenance and reproducibility
+
+AegisInspect records provenance so a result can be traced back through:
 
 ```text
-ros2_ws/src/
-├── aegisinspect_interfaces/       config/contracts.yaml
-├── aegisinspect_description/      urdf/drone.urdf.xacro, launch/description.launch.py
-├── aegisinspect_sensors/          reserved; metadata only
-├── aegisinspect_perception/       reserved; metadata only
-├── aegisinspect_localization/     reserved; metadata only
-├── aegisinspect_mapping/          pure Python depth geometry and synthetic tests
-├── aegisinspect_safety/           reserved; metadata only
-├── aegisinspect_navigation/       reserved; metadata only
-├── aegisinspect_inspection/       reserved; metadata only
-├── aegisinspect_diagnostics/      reserved; metadata only
-├── aegisinspect_bringup/          launch/foundation.launch.py
-├── aegisinspect_sim/
-│   ├── config/bridge.yaml
-│   ├── launch/sim.launch.py
-│   ├── models/aegis_drone/model.config
-│   ├── models/aegis_drone/model.sdf
-│   └── worlds/inspection_bay.sdf
-└── aegisinspect_system_tests/
-    ├── test/test_foundation.py
-    └── scripts/smoke_check.py
+dataset
+→ split/version
+→ model checkpoint
+→ code commit
+→ configuration
+→ environment
+→ evaluation protocol
+→ result artifact
 ```
 
-`contracts.yaml` records approved interfaces, including interfaces reserved for
-later work. It does not launch publishers. URDF and SDF sensor extrinsics are
-checked for consistency. Dimensions and rates are initial simulation settings,
-not a claim of calibrated hardware parameters. The repository had no license
-file; manifests use `Proprietary` to avoid selecting an open-source license on
-the owner's behalf. The maintainer can replace this when licensing is decided.
+Reproducibility controls include:
 
-## Install and build on Ubuntu 26.04
+- frozen dataset splits
+- Git commit SHAs
+- SHA-256 hashes for key checkpoints and evidence
+- fixed configurations
+- deterministic seeds where applicable
+- one-time held-out evaluation controls
+- experiment manifests
+- fail-closed validation
+- saved result artifacts and evidence packages
 
-First configure the official ROS apt repository using the
-[Lyrical Ubuntu installation instructions](https://docs.ros.org/en/lyrical/Installation/Ubuntu-Install-Debs.html).
-Use the ROS vendor package pairing for Jetty described in the
-[Gazebo ROS installation guide](https://gazebosim.org/docs/jetty/ros_installation/).
-Do not substitute Gazebo Classic or another ROS distribution.
+Historical branch names, experiment IDs, status enums, and exact execution paths are retained when they are part of provenance. Some therefore contain earlier internal identifiers even though professor-facing documentation uses descriptive workstream names.
 
-```bash
-sudo apt update
-sudo apt install ros-lyrical-ros-base ros-lyrical-ros-gz \
-  ros-lyrical-xacro ros-lyrical-robot-state-publisher ros-lyrical-tf2-ros \
-  python3-colcon-common-extensions python3-rosdep python3-pytest \
-  python3-yaml python3-catkin-pkg
+## Final capstone evidence
 
-# Run init only if rosdep has never been initialized on this machine.
-sudo rosdep init
-rosdep update
-source /opt/ros/lyrical/setup.bash
+The final capstone presentation/evidence freeze is preserved at:
 
-# Run from the existing autonomous-drone-infrastructure-inspection repository root.
-cd ros2_ws
-rosdep install --from-paths src --ignore-src --rosdistro lyrical -r -y
-colcon list
-colcon build --symlink-install
-source install/setup.bash
-colcon test --event-handlers console_direct+
-colcon test-result --verbose
-```
+**`P20/deck-draft` @ `9fc8d8e2fed3ba4a16d2f2e59ab94b776dcdfede`**
 
-`colcon list` should find 13 packages. `colcon test` runs offline contract tests;
-it does not start Gazebo. Keep `build/`, `install/`, and `log/` out of Git.
+Final presentation evidence:
+https://github.com/AritraAcherjee/autonomous-drone-infrastructure-inspection/tree/9fc8d8e2fed3ba4a16d2f2e59ab94b776dcdfede/docs/presentation
 
-## Launch
+P18 presentation evidence:
+https://github.com/AritraAcherjee/autonomous-drone-infrastructure-inspection/tree/9fc8d8e2fed3ba4a16d2f2e59ab94b776dcdfede/outputs/presentation/p18_evidence
 
-In a terminal at the built `ros2_ws` directory:
+The default `main` branch is the shared project branch. Some late capstone evidence was intentionally preserved on dedicated workstream/presentation branches rather than merged into `main`.
 
-```bash
-source /opt/ros/lyrical/setup.bash
-source install/setup.bash
-ros2 launch aegisinspect_bringup foundation.launch.py
-```
+## Suggested review path
 
-The world starts running immediately. To run without the GUI:
+For a quick technical review:
 
-```bash
-ros2 launch aegisinspect_bringup foundation.launch.py headless:=true
-```
+1. Read this README.
+2. Review `docs/presentation/` at the final capstone evidence commit.
+3. Review `src/detection/` and the held-out detector evidence.
+4. Review `ros2_ws/` for the ROS 2 / Gazebo platform.
+5. Review `src/defect_mapping/`, `src/storage/`, and `src/reporting/`.
+6. Review P18 presentation evidence for the integrated pipeline.
+7. Review `src/evaluation/` and the P19 evidence boundaries.
 
-Headless mode uses Ogre2/EGL rendering; RGB and GPU LiDAR still require working
-rendering drivers. Start one instance in an otherwise unused ROS domain. If
-needed, set the same `ROS_DOMAIN_ID` in all verification terminals. This launch
-adds its installed models directory to `GZ_SIM_RESOURCE_PATH`, preserving any
-existing paths. Closing Gazebo shuts down the included simulation launch.
+## Development scope
 
-To inspect only the static robot description, without Gazebo:
-
-```bash
-ros2 launch aegisinspect_description description.launch.py use_sim_time:=false
-```
-
-Do not run that alongside foundation bringup: bringup already starts the robot
-state publisher. All fixed joints are published without a joint-state node.
-
-## Expected topics and frames
-
-| ROS topic | ROS type | Header frame | Configured simulation rate |
-|---|---|---|---|
-| `/aegis/sensors/camera/image_raw` | `sensor_msgs/msg/Image` | `camera_optical_frame` | 30 Hz, 640x480 RGB8 |
-| `/aegis/sensors/camera/camera_info` | `sensor_msgs/msg/CameraInfo` | `camera_optical_frame` | 30 Hz |
-| `/aegis/perception/depth/image` | `sensor_msgs/msg/Image` | `camera_optical_frame` | 30 Hz, 640x480, runtime-verified 32FC1 metres |
-| `/aegis/sensors/imu/data` | `sensor_msgs/msg/Imu` | `imu_link` | 200 Hz |
-| `/aegis/sensors/lidar/points` | `sensor_msgs/msg/PointCloud2` | `lidar_link` | 10 Hz, 360x16 rays |
-| `/clock` | `rosgraph_msgs/msg/Clock` | n/a | advancing simulation time |
-| `/tf_static` | `tf2_msgs/msg/TFMessage` | parent/child frames below | transient local |
-| `/aegis/robot_description` | `std_msgs/msg/String` | n/a | robot description |
-
-ROS infrastructure topics such as `/rosout` and `/parameter_events` may also
-appear. `/tf` may be advertised by robot_state_publisher, but must carry no
-dynamic transforms in this foundation. Rates observed per wall-clock second
-depend on rendering speed and real-time factor; configured rates use simulation time.
+A logical post-capstone continuation would focus on:
 
 ```text
-map                         reserved; not published
-└── odom                    reserved; map->odom not published
-    └── base_link           odom->base_link not published
-        ├── camera_link
-        │   └── camera_optical_frame
-        ├── imu_link
-        └── lidar_link
+mature SLAM / global 3D mapping
+→ multimodal localization fusion
+→ obstacle avoidance
+→ autonomous navigation and coverage
+→ real-drone deployment
+→ field validation
+→ production hardening
 ```
 
-The live TF tree starts at `base_link`. Camera origin is (0.25, 0, 0) m, IMU
-origin (0, 0, 0) m, and LiDAR origin (0, 0, 0.15) m relative to `base_link`.
-Body axes are X forward, Y left, Z up. The optical rotation is
-RPY (-pi/2, 0, -pi/2): optical X right, Y down, Z forward. Gazebo renders along
-`camera_link` +X and labels image/CameraInfo headers `camera_optical_frame`.
+---
 
-The RGB-D sensor shares one pose, resolution, field of view and clipping setup.
-Depth is directly bridged to `/aegis/perception/depth/image`. Runtime validation
-confirmed consistent RGB/depth/CameraInfo geometry, metric optical-axis Z,
-exact Gazebo-to-ROS observation timestamps and invalid/no-return behavior.
-No projected points are published.
-
-Reserved interfaces have **no publishers**:
-
-* `/aegis/localization/vio/odom`: `nav_msgs/msg/Odometry`, header `odom`, child
-  `base_link`. VIO will be a measurement source and must not own dynamic TF.
-
-All bridge mappings are Gazebo-to-ROS. Sensor streams use `SENSOR_DATA` QoS;
-the one-way clock bridge uses `CLOCK`. Acquisition timestamps are preserved;
-wall-time overrides are disabled. `/world/inspection_bay/clock` is explicitly
-mapped to ROS `/clock` to avoid relying on Gazebo's global clock alias.
-
-`/aegis/sim/ground_truth/...` is reserved exclusively for future evaluation.
-No ground-truth stream is needed for this stationary fixture, so none is
-published or bridged. Known geometry is recorded in the world SDF. Gazebo
-world coordinates are never injected into `map`, `odom`, `/tf` or localization.
-There is no operational `world -> map` transform.
-
-## Verify a running simulation
-
-In another terminal, source ROS and this workspace as above, then run:
-
-```bash
-ros2 topic list -t
-ros2 topic info /aegis/sensors/camera/image_raw --verbose
-ros2 topic echo /clock --once
-ros2 topic echo /aegis/sensors/camera/camera_info --once --qos-reliability best_effort
-ros2 topic echo /aegis/sensors/imu/data --once --qos-reliability best_effort
-ros2 topic echo /aegis/sensors/lidar/points --once --field header --qos-reliability best_effort
-ros2 run tf2_ros tf2_echo base_link camera_optical_frame
-# Ctrl-C after confirming translation and rotation, then:
-ros2 run aegisinspect_system_tests smoke_check.py --timeout 30
-```
-
-The smoke check is read-only. It waits for real messages and verifies advancing
-timestamps/clock, sensor frame IDs, paired image/CameraInfo timestamps, RGB
-payload shape, finite IMU specific force, 3D XYZ LiDAR returns, one publisher per
-sensor/clock (including depth), the four exact static transforms and absence of dynamic TF/VIO
-data. Exit codes: **0 pass, 1 failure, 2 blocked/missing ROS Python runtime**.
-Use a longer timeout for slow graphics startup. It must not be run with other
-robot publishers in the same domain. A stationary rig should give near-zero
-angular velocity and approximately +9.81 m/s² IMU Z specific force.
-
-Run `ros2 run aegisinspect_system_tests depth_check.py --timeout 30` as well for
-depth payload/calibration checks, exact Gazebo/ROS timestamp comparison and the
-fronto-parallel optical-Z experiment. Follow the linked Phase 2 procedure for
-the empty-scene invalid-return check.
-
-Optional image viewing:
-
-```bash
-sudo apt install ros-lyrical-rqt-image-view
-ros2 run rqt_image_view rqt_image_view
-```
-
-Select `/aegis/sensors/camera/image_raw` and best-effort QoS if offered. The image
-should show the wall and colored panels. In RViz, use fixed frame `base_link`;
-`map` is intentionally unavailable.
-
-To inspect Gazebo transport or validate its SDF on the target installation:
-
-```bash
-gz sim --versions
-gz topic -l
-gz sdf -k src/aegisinspect_sim/models/aegis_drone/model.sdf
-export GZ_SIM_RESOURCE_PATH="$(ros2 pkg prefix --share aegisinspect_sim)/models${GZ_SIM_RESOURCE_PATH:+:$GZ_SIM_RESOURCE_PATH}"
-gz sdf -k src/aegisinspect_sim/worlds/inspection_bay.sdf
-```
-
-## Offline checks and compatibility limits
-
-From the repository root, with Python, pytest, PyYAML, catkin_pkg and xacro installed:
-
-```bash
-python3 -m pytest ros2_ws/src/aegisinspect_system_tests/test -v
-git diff --check
-```
-
-Offline tests expand the actual Xacro, parse package manifests/XML/Python, and
-check frame geometry, SDF/URDF parity, sensor/bridge contracts, self-contained
-world assets, package installation paths and reserved scope. They do not validate
-SDF through libsdformat, import ROS launch modules, build with ament, or simulate
-sensors. Those steps require the target ROS/Gazebo installation.
-
-The implementation uses SDF 1.12 and its native sensor `<frame_id>` field,
-supported by Jetty's dependencies. See the
-[SDF sensor schema](https://github.com/gazebosim/sdformat/blob/sdf16/sdf/1.12/sensor.sdf)
-and [Gazebo sensor implementation](https://github.com/gazebosim/gz-sensors/blob/gz-sensors10/src/Sensor.cc).
-Bridge direction, QoS and timestamp settings follow the
-[ros_gz bridge interface](https://github.com/gazebosim/ros_gz/tree/ros2/ros_gz_bridge).
-Older Gazebo versions may reject the SDF version or frame field. Keep the frozen
-Lyrical/Jetty pairing and flag incompatibilities rather than renaming frames.
-
-The initial development environment lacked ROS/Gazebo/WSL, and the offline suite passed
-22 tests. Subsequent **owner-verified manual WSL2/Ubuntu runtime validation passed
-for the Stop-B ROS/Gazebo foundation**: rosdep installation, all 13 package builds,
-WSLg GUI/world/model startup, live clock/sensor observations, CameraInfo and the
-reported static transforms. See the [runtime validation evidence](docs/implementation_reports/stop_b_runtime_validation.md)
-for exact measurements and scope.
-
-Observed GUI wall-clock rates were RGB 11–12 Hz, IMU 147–149 Hz and LiDAR
-7.4–7.5 Hz at approximately 74–77% real-time factor. These are observations,
-not final performance targets. RGB is below simple real-time-factor scaling
-of its configured 30 Hz; the cause has not been established. Subsequent Phase 2
-validation confirmed foundation launch and preservation of RGB, CameraInfo,
-IMU, LiDAR, /clock and TF/static TF. Both `smoke_check.py` and `depth_check.py`
-passed through `ros2 run`. Standalone SDF validation and headless validation
-have no successful run recorded here. Stop B and later algorithm/integration
-milestones are not complete.
-
-See the [depth geometry implementation note](docs/implementation_reports/depth_projection_core.md) for the pure back-projection API, calibration preconditions, ROI sampling and offline test commands.
+**AegisInspect demonstrates how defect perception can be connected to spatial localization, persistent inspection records, human review, and deterministic reporting while keeping measured results and unfinished capabilities explicitly separated.**
