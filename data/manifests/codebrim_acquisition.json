@@ -13,7 +13,7 @@
   "archive_filename_status": "NOT SPECIFIED IN APPROVED LOCAL METADATA",
   "intended_package": "Original full-resolution images and box annotations; no crop packages",
   "canonical_ignored_destination": "data/raw/codebrim",
-  "resolved_destination": "C:\\Users\\79aa3\\OneDrive\\Documents\\ChatGPT\\[MSI][CHAT-03] Generalization evaluation framework\\aegisinspect\\data\\raw\\codebrim",
+  "resolved_destination": "data/raw/codebrim",
   "destination_basis": "Existing /data/raw/ ignore rule and existing tests/detection/test_training.py CODEBRIM namespace",
   "git_check_ignore": ".gitignore:226:/data/raw/ data/raw/codebrim/NOT_ACQUIRED.zip",
   "expected_checksums": {
