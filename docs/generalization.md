@@ -2,7 +2,7 @@
 
 This is pre-freeze infrastructure. No detector inference, scientific evaluation,
 holdout acquisition, robustness experiment, or checkpoint selection was performed.
-The Chat 02 checkpoint and operating settings remain unknown. Draft configuration
+The Defect Detection checkpoint and operating settings remain unknown. Draft configuration
 values are intentionally null. Configuration files use JSON-form YAML, matching
 the approved data configuration convention; the scripts use the standard JSON reader.
 
@@ -172,4 +172,4 @@ pretraining reader command or full raw-data validation is run.
 
 Core code uses Python standard library. Plot tests additionally use matplotlib;
 existing regression tests require numpy, Pillow and PyYAML. The retained package
-lock records the isolated test environment, not Chat 02's detector environment.
+lock records the isolated test environment, not the Defect Detection training environment.

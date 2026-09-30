@@ -1,6 +1,6 @@
-# Chat 03 task report
+# Generalization Testing task report
 
-Task: [MSI][CHAT-03] Generalization evaluation framework
+Task: MSI — Generalization evaluation framework
 
 Branch: `chat03/generalization-framework`
 
@@ -123,7 +123,7 @@ Detector trained?: **NO**.
 
 M1 protected artifacts or baseline-v1 split membership changed?: **NO**.
 
-Chat 02 detector-training behavior changed?: **NO**.
+Defect Detection training behavior changed?: **NO**.
 
 External benchmark contamination: **NONE**.
 
@@ -136,7 +136,7 @@ or detector command was run. The test-process audit records zero raw payload
 opens, zero network connections, zero detector runtime imports and no denied
 attempts. Its declared scope is the test process, not a system-wide access audit.
 
-## Remaining dependencies from Chat 02
+## Remaining dependencies from Defect Detection
 
 - Frozen checkpoint and checkpoint SHA-256.
 - Architecture and version.
@@ -232,7 +232,7 @@ index targets exist. No raw file was opened and no placeholder was created.
 
 GYU final-test payload accessed: **NO**. CODEBRIM payload accessed: **NO**.
 CODEBRIM downloaded: **NO**. Training/scientific inference performed: **NO**.
-M1 or Chat 02 behavior changed: **NO**. Potential benchmark contamination:
+M1 or Defect Detection behavior changed: **NO**. Potential benchmark contamination:
 **NONE**. The guarded test audit has zero denied attempts, raw opens, network
 connections and detector imports. Metadata path strings and existence checks
 are not payload reads. Source inspection supplements the process-scoped audit.
@@ -263,7 +263,7 @@ change was performed merely because a file is untracked.
 
 Required fixes before commit: **NONE remaining**.
 
-Remaining scientific blockers: frozen Chat 02 checkpoint and hash;
+Remaining scientific blockers: frozen Defect Detection checkpoint and hash;
 architecture/version; frozen training/inference configuration; operating
 confidence and AP settings; class mapping; training seed; validation evidence;
 training Git SHA; approved ontology/protocol hashes; normalized prediction-export

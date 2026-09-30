@@ -131,7 +131,7 @@ BLOCKED: ROS 2 Python runtime unavailable: No module named 'rclpy'
 The PowerShell tool wrapper maps a failing native command to shell exit 1; the
 Python process exit code was separately captured as 2 (blocked), as designed.
 
-**Initial Codex build status: BLOCKED** because ROS 2, colcon, Gazebo and WSL
+**Initial development-environment build status: BLOCKED** because ROS 2, colcon, Gazebo and WSL
 were unavailable there. This historical limitation has been superseded for the
 manual foundation checks by the owner's Ubuntu 26.04/WSL2 results:
 **rosdep succeeded, 13 packages built with 0 failures, and the Stop-B ROS/Gazebo
@@ -141,7 +141,7 @@ were verified. See [runtime validation](stop_b_runtime_validation.md).
 
 No successful automated live smoke-check, headless-rendering or standalone
 libsdformat validation result was supplied. Those checks remain unrecorded.
-The earlier exit-2 smoke-check result above describes the initial Codex host,
+The earlier exit-2 smoke-check result above describes the initial development host,
 not a failure of the subsequently validated Ubuntu runtime.
 
 ## Expected ROS interfaces

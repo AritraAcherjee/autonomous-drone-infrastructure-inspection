@@ -1,6 +1,6 @@
 # Stop-B depth geometry core
 
-Only the reusable geometry core is implemented. This does not complete Chat 08,
+Only the reusable geometry core is implemented. This does not complete the Depth + 3D Projection workstream,
 Depth + 3D Projection, or Stop B. No ROS depth node or depth publisher is added.
 
 ## Data flow and calibration
@@ -81,6 +81,6 @@ central selection, rounding, single pixels, ROI bounds and option validation.
 No forward projection helper is introduced. No ML or Gazebo runtime is needed.
 ROS/ament build and ROS runtime validation remain for the target environment.
 
-Validation in Codex on Windows with Python 3.12.14 and pytest 9.1.1:
+Validation in the initial Windows development environment with Python 3.12.14 and pytest 9.1.1:
 combined synthetic and foundation command above: **78 passed in 0.71s**
 (56 geometry cases and 22 foundation cases). No ROS runtime validation was run.

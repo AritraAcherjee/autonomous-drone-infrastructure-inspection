@@ -1,14 +1,14 @@
 # Phase 3: camera-frame ROS projection
 
-TASK: [MSI][CHAT-08] Camera-frame ROS projection
+TASK: MSI — 08 Depth + 3D Projection, camera-frame ROS projection
 BRANCH: feat/camera-frame-ros-projection
 BASE MAIN SHA: 043ce54d40708c6bf278f8b07741c1e4afe9ccd6
-FINAL STATUS: Chat 08 Implementation Phase 3 — Camera-frame ROS Projection:
+FINAL STATUS: 08 — Depth + 3D Projection, Phase 3 — Camera-frame ROS Projection:
 READY FOR PR / MERGE
 RUNTIME VALIDATION: PASSED — MSI WSL, evidence supplied by the user.
 VALIDATED CORRECTIVE COMMIT: 021cbf2012e0d64330d208d1d13eb95b1ef8ba7f
 NEXT STEP: PR review of the validated camera-frame-only Phase 3 implementation.
-BLOCKERS: None outstanding for Phase 3 acceptance. This does not complete all Chat 08.
+BLOCKERS: None outstanding for Phase 3 acceptance. This does not complete the full Depth + 3D Projection workstream.
 
 ## 1–5. Baseline, inspection and interface decision
 
@@ -179,7 +179,7 @@ the later collision regression intentionally failed before its corrective fix. R
 approved access resolved the environment issue. No ROS/Gazebo installation or
 WSL repair was attempted.
 
-Sensor/bridge/TF/world files and Chat 02/data files are untouched. Existing
+Sensor/bridge/TF/world files and Defect Detection/data files are untouched. Existing
 duplicate SDFormat body-name debt is untouched.
 
 ## Verified MSI WSL runtime acceptance
@@ -235,8 +235,8 @@ rclpy in the Windows test environment. The regression failed before the fix;
 all 192 scoped Windows tests passed after it. The WSL results above confirm the
 corrected node and service passed runtime revalidation.
 
-**Chat 08 Implementation Phase 3 — Camera-frame ROS Projection:
-READY FOR PR / MERGE.** This status applies only to Phase 3, not all Chat 08.
+**08 — Depth + 3D Projection, Phase 3 — Camera-frame ROS Projection:
+READY FOR PR / MERGE.** This status applies only to Phase 3, not the full Depth + 3D Projection workstream.
 
 ## 23–25. Exact WSL build, test and launch procedure
 
@@ -353,7 +353,7 @@ The following remain out of scope / future work:
 - sensor fusion
 - defect-to-map fusion
 
-Phase 3 ends at camera_optical_frame XYZ. All Chat 08 is not complete.
+Phase 3 ends at camera_optical_frame XYZ. The full Depth + 3D Projection workstream is not complete.
 
 ## 32–37. Git and handoff
 
@@ -363,7 +363,7 @@ or dataset output is included. Commit subject:
 feat(depth): add camera-frame ROS projection.
 No automatic PR or merge.
 
-Suggested PR title: [Chat 08] Add camera-frame pixel/ROI projection service
+Suggested PR title: [08] Add camera-frame pixel/ROI projection service
 
 Suggested PR description:
 Add an exact-observation ProjectCamera service around the existing depth geometry
@@ -376,6 +376,6 @@ Windows: 192 tests pass. MSI WSL: 13 packages built and 196 colcon tests passed
 with 0 errors, 0 failures and 0 skipped. Live projection, failure paths,
 Phase 2 depth and foundation regression probes passed.
 
-Recommended next Chat 08 milestone: PR review of the validated camera-frame-only
+Recommended next Depth + 3D Projection milestone: PR review of the validated camera-frame-only
 Phase 3 implementation. Any later camera-to-body or world-frame milestone needs
-its own scope and authorization. Chat 08 is not complete and Phase 4 has not started.
+its own scope and authorization. The Depth + 3D Projection workstream is not complete and Phase 4 has not started.

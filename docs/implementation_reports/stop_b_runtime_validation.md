@@ -4,7 +4,7 @@
 
 Evidence source: verified manual Ubuntu/WSL runtime results supplied by the
 repository owner and recorded on 2026-09-10. These results were not independently
-rerun in the Codex execution environment. They supersede the original
+rerun in the initial development execution environment. They supersede the original
 environment-blocked build and GUI runtime status in the foundation reports.
 No source code, interfaces, TF definitions or simulation settings were changed.
 
@@ -126,7 +126,7 @@ The supplied evidence does not include a successful automated `smoke_check.py`
 run, headless rendering validation, standalone `gz sdf -k` validation, or every
 payload/timestamp/publisher-isolation assertion implemented by the live checker.
 Those checks remain unrecorded, not failed. The original blocked smoke-check
-attempt remains historical evidence from the Codex environment.
+attempt remains historical evidence from the initial development environment.
 
 **Stop B itself is not complete.** VIO, depth projection, detector integration,
 autonomous flight, LiDAR SLAM and sensor fusion remain future milestones. This

@@ -28,7 +28,7 @@ Paper terms (separate): UNKNOWN; paper accessibility does not establish dataset 
 
 DEFER_TO_WORKSTREAM; timing LATER; M1 acquisition required: no.
 
-Role: Construction SLAM and sensor-fusion evaluation. Owner: Chat 10 / LiDAR SLAM + Mapping; Chat 11 / Sensor Fusion.
+Role: Construction SLAM and sensor-fusion evaluation. Owner: LiDAR SLAM + Mapping workstream; Sensor Fusion workstream.
 
 Large calibrated streams; sparse ground truth is not dense pose truth. Choose sequences and sensor adapters later; no first-detector requirement.
 
