@@ -154,7 +154,7 @@
       "annotation_type": "Original images with boxes; extracted crops have multi-label classification targets; no masks established",
       "classes_or_content": "Crack; spallation; efflorescence; exposed bars; corrosion stain; background",
       "intended_role": "Protected external/domain-shift evaluation after detector baseline freeze",
-      "owning_workstream": "Generalization Testing: external evaluation",
+      "owning_workstream": "Generalization Testing — external evaluation",
       "approximate_size": "1,590 source images / 30 bridges; original-image ZIP 8.3 GB; four alternative packages total 36.4 GB",
       "availability": "Official page and download links listed; payload not tested or acquired",
       "limitations": "Partial taxonomy overlap; multi-label regions differ from YOLO single-class boxes. Define compatible metrics before predictions. Never train/tune baseline on this holdout.",
