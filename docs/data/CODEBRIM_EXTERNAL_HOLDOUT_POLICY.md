@@ -2,7 +2,7 @@
 
 Decision date: 2026-09-11. Selected source: [original Zenodo record, version 1.0](https://zenodo.org/records/2620293); [dataset terms](https://zenodo.org/records/2620293/files/license.md?download=1).
 
-CODEBRIM is the selected external structural-defect generalization benchmark, subject to its non-commercial research/education terms. Acquisition is deferred to Chat 03 external evaluation after the detector baseline is frozen. This selection is not a claim that external evaluation has already been run or its payload validated.
+CODEBRIM is the selected external structural-defect generalization benchmark, subject to its non-commercial research/education terms. Acquisition is deferred to the Generalization Testing workstream after the detector baseline is frozen. This selection is not a claim that external evaluation has already been run or its payload validated.
 
 - CODEBRIM must not be included in GYU-DET baseline training, preprocessing-statistic fitting, validation, early stopping or model selection.
 - Do not use CODEBRIM images, labels, predictions or scores to tune baseline hyperparameters before the baseline is frozen. Freeze the trained model, checkpoint hash, preprocessing, thresholds and evaluation protocol before external evaluation; freezing a dataset manifest alone is insufficient.

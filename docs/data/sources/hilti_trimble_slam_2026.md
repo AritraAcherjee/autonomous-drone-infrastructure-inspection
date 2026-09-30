@@ -28,7 +28,7 @@ Paper terms (separate): UNKNOWN; paper accessibility does not establish dataset 
 
 DEFER_TO_WORKSTREAM; timing LATER; M1 acquisition required: no.
 
-Role: Construction VIO and floor-plan localization; not LiDAR-input benchmarking. Owner: Visual-Inertial SLAM / Localization; Chat 11 / Sensor Fusion.
+Role: Construction VIO and floor-plan localization; not LiDAR-input benchmarking. Owner: Visual-Inertial SLAM / Localization; Sensor Fusion workstream.
 
 Hesai XT32 LiDAR generated ground truth but its data are NOT included in provided ROS2 bags. Rolling shutter, timestamp offset, unregistered design floor plans and excluded scoring runs require adapters.
 

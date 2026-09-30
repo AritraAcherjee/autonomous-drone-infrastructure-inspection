@@ -1,4 +1,4 @@
-"""Create only empty Chat 19 evidence containers; never execute experiments."""
+"""Create only empty P19 evidence containers; never execute experiments."""
 import argparse
 import json
 from pathlib import Path

@@ -1,6 +1,6 @@
-# CHAT-02 detector training pipeline and smoke report
+# 02 — Defect Detection training pipeline and smoke report
 
-Task: **[L1][CHAT-02] Build reproducible GYU-DET baseline training pipeline and perform smoke training only**
+Task: **Laptop 1 — build reproducible GYU-DET baseline training pipeline and perform smoke training only**
 
 Project: AegisInspect — Autonomous Multimodal Drone Inspection System. Machine: Laptop 1.
 

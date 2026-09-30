@@ -1,6 +1,6 @@
 # Class remap review and pipeline freeze
 
-Task: [L1][CHAT-02] Verify class remap semantics and freeze training pipeline.
+Task: Laptop 1 — verify class-remap semantics and freeze the detector training pipeline.
 
 CLS_REMAP REVIEW = PASS. Classification **A: identity-preserving dataset IDs**.
 The installed Ultralytics 8.4.145 flag enables matching pretrained classification

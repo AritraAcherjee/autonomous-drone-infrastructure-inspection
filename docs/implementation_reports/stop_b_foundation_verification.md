@@ -238,7 +238,7 @@ Bridge direction, QoS and timestamp settings follow the
 Older Gazebo versions may reject the SDF version or frame field. Keep the frozen
 Lyrical/Jetty pairing and flag incompatibilities rather than renaming frames.
 
-The initial Codex environment lacked ROS/Gazebo/WSL, and the offline suite passed
+The initial development environment lacked ROS/Gazebo/WSL, and the offline suite passed
 22 tests. Subsequent **owner-verified manual WSL2/Ubuntu runtime validation passed
 for the Stop-B ROS/Gazebo foundation**: rosdep installation, all 13 package builds,
 WSLg GUI/world/model startup, live clock/sensor observations, CameraInfo and the

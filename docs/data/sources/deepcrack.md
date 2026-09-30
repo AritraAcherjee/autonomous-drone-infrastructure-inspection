@@ -28,7 +28,7 @@ Paper terms (separate): Elsevier 2019 all rights reserved, shown in author-hoste
 
 DEFER_TO_WORKSTREAM; timing LATER; M1 acquisition required: no.
 
-Role: Crack segmentation benchmark. Owner: Chat 06 / Defect Segmentation.
+Role: Crack segmentation benchmark. Owner: Defect Segmentation workstream.
 
 This registry explicitly selects Liu et al., not Zou et al. TIP 2019 (CrackTree260, CRKWH100, CrackLS315, Stone331). Authors own only part of original images; upstream-image permissions/redistribution need review before broader reuse.
 

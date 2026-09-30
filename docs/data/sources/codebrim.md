@@ -28,7 +28,7 @@ Paper terms (separate): arXiv version: perpetual non-exclusive arXiv distributio
 
 DEFER_TO_WORKSTREAM; timing LATER; M1 acquisition required: no.
 
-Role: Protected external/domain-shift evaluation after detector baseline freeze. Owner: Chat 03 / Defect Detection: external evaluation.
+Role: Protected external/domain-shift evaluation after detector baseline freeze. Owner: Generalization Testing — external evaluation.
 
 Partial taxonomy overlap; multi-label regions differ from YOLO single-class boxes. Define compatible metrics before predictions. Never train/tune baseline on this holdout.
 

@@ -28,7 +28,7 @@ Paper terms (separate): UNKNOWN; paper accessibility does not establish dataset 
 
 OPTIONAL; timing NOT_REQUIRED; M1 acquisition required: no.
 
-Role: Optional low-light object-detection domain shift experiments. Owner: Chat 05 / Low-Light Vision (optional extension).
+Role: Optional low-light object-detection domain shift experiments. Owner: Low-Light Vision workstream (optional extension).
 
 No structural-defect labels. Dataset-specific README restricts use to non-commercial research; root BSD software license does not override dataset terms. Commercial usage needs author contact.
 

@@ -1,11 +1,11 @@
-# Chat 19 Stop-A evaluation framework
+# P19 Stop-A evaluation framework
 
 Current status: **STOP A = NOT COMPLETE**, `PREPARED_NOT_FROZEN`.
-Chat 19 owns consolidation, registry/index contracts, plotting interfaces,
+P19 owns consolidation, registry/index contracts, plotting interfaces,
 failure analysis, reproducibility packaging and Stop-A evidence packaging.
-Chat 02 owns training, checkpoint selection/freeze and detector predictive
-metrics. Chat 03 owns external authorization, methodology and class mappings.
-Chat 20 owns final presentation deliverables. This release prepares interfaces
+02 — Defect Detection owns training, checkpoint selection/freeze and detector predictive
+metrics. Generalization Testing owns external authorization, methodology and class mappings.
+P20 owns final presentation deliverables. This release prepares interfaces
 only and cannot finalize Stop A, even if callers edit all completion flags.
 
 ## Preparation and storage
@@ -82,26 +82,26 @@ in the registry and must be reported, never silently removed.
 
 No final-test tuning, estimated metrics, checkpoint selection or inference
 is implemented. Accepted ML evidence requires a reviewed FROZEN protocol,
-Chat 02 pretraining PASS, frozen checkpoint metadata and matching hash.
-Chat 02 predictive records must identify the held-out test split. Chat 03
+02 — Defect Detection pretraining PASS, frozen checkpoint metadata and matching hash.
+02 — Defect Detection predictive records must identify the held-out test split. Generalization Testing
 records cannot become READY/RUNNING/COMPLETE/ACCEPTED without explicit true
 authorization plus its reference, benchmark/version/subset, mapping version,
-matching Chat 02 checkpoint hash and confirmation that external results were
+matching the 02 — Defect Detection checkpoint hash and confirmation that external results were
 not used for tuning. Missing external evidence cannot produce an accepted
 metric or completed comparison. This library does not execute external work.
 
 ## Input contracts
 
-Chat 02 must supply pretraining-gate PASS evidence; frozen detector checkpoint
+02 — Defect Detection must supply pretraining-gate PASS evidence; frozen detector checkpoint
 filename/version and SHA-256; Git SHA; seed; training config; detector/evaluation
 config; environment/package record; held-out GYU-DET evaluation; mAP@0.5;
 mAP@0.5:0.95 where produced; precision; recall; F1; per-class AP; confusion
 matrix; PR data; training/validation curves; inference latency/FPS; preferably
-raw per-image predictions. Chat 19 does not produce these artifacts.
+raw per-image predictions. P19 does not produce these artifacts.
 
-Chat 03 must supply benchmark identity/version and provenance; exact subset;
+Generalization Testing must supply benchmark identity/version and provenance; exact subset;
 class-mapping document/version; explicit authorization; frozen checkpoint hash
-and confirmation it matches Chat 02; Git SHA; evaluation config and command;
+and confirmation it matches 02 — Defect Detection; Git SHA; evaluation config and command;
 external predictive metrics; compatible per-class metrics where valid; raw
 predictions; logs; comparison; limitations; and explicit confirmation external
 results were not used for tuning. A methodologically invalid comparison needs
@@ -124,7 +124,7 @@ It consumes an accepted, hash-verified JSON artifact with `kind`,
 - `pr_curves`: series with label, x recall and y precision in [0,1].
 - `training_validation_curves`: labelled series with equal-length x/y arrays.
 - `domain_comparison`: series additionally identify in_domain/external domains;
-  the Chat 03 gate applies. The owner must establish metric compatibility.
+  the Generalization Testing gate applies. The owner must establish metric compatibility.
 - `example_panel`: cases with TP/FP/FN outcome, image_path and evidence_id.
 - `runtime`: labelled x/y series plus unit ms, s or FPS.
 

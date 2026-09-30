@@ -1,6 +1,6 @@
-# Chat 08 Phase 2: simulated metric depth
+# 08 — Depth + 3D Projection, Phase 2: simulated metric depth
 
-**Chat 08 Implementation Phase 2 — Simulated Metric Depth Integration:
+**08 — Depth + 3D Projection, Phase 2 — Simulated Metric Depth Integration:
 READY FOR PR / MERGE.**
 
 Baseline: `606f04670c53a9b1833a3a5f5bf8121d7e3e9c2a`.
@@ -9,7 +9,7 @@ Branch: `feat/simulated-depth-integration`.
 At initial implementation, HEAD, main and cached origin/main matched the baseline;
 the worktree was clean.
 No remote freshness claim is made from the cached tracking ref.
-Initial Codex validation was limited to Windows. The owner subsequently verified
+Initial validation was limited to Windows. The owner subsequently verified
 the final WSL runtime results below after the validator correction in `ad5e578`.
 
 ## Final runtime validation
@@ -35,7 +35,7 @@ Validated commit: `ad5e57885306fcab6cd92e88ca0da6a1389aadc7`.
 
 The earlier validator bug was corrected by `ad5e578` and subsequently revalidated.
 This closes Phase 2 validation only. The full ROS projection node and
-camera-to-map projection remain out of scope and incomplete; all of Chat 08
+camera-to-map projection remain out of scope and incomplete; the full Depth + 3D Projection workstream
 is not complete.
 
 ## Architecture and implementation

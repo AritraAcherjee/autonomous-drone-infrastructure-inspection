@@ -1,4 +1,4 @@
-# GYU-DET M1 handoff — Chat 03 / Defect Detection
+# GYU-DET M1 handoff — Generalization Testing
 
 **Approved dataset: GYU-DET V3 baseline-v1.** This handoff closes the GYU-DET data-foundation evidence package only. The overall multi-dataset AegisInspect M1 milestone is not complete. No detector has been trained.
 

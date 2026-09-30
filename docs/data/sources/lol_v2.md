@@ -28,7 +28,7 @@ Paper terms (separate): UNKNOWN; paper accessibility does not establish dataset 
 
 HOLD; timing DO_NOT_ACQUIRE_YET; M1 acquisition required: no.
 
-Role: Paired enhancement evaluation after rights clarification. Owner: Chat 05 / Low-Light Vision.
+Role: Paired enhancement evaluation after rights clarification. Owner: Low-Light Vision workstream.
 
 Do not confuse LOL-v1 (BMVC 2018), LOL-v2 (TIP 2021), DRBN code or separate AVA/unpaired collections. No explicit dataset terms found. The SGM README paper link returned a Band Representation-Based paper instead; subset counts remain unverified rather than copied from secondary reports.
 
