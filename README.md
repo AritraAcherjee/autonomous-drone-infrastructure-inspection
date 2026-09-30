@@ -35,6 +35,10 @@ camera_optical_frame -> base_link, odom projection, map projection, tf2 localiza
 projection, VIO, sensor fusion and defect-to-map fusion remain out of scope /
 future work. This does not complete the full Depth + 3D Projection workstream.
 
+## Provenance naming
+
+Historical branch names, experiment IDs, status enums, and exact execution paths are retained when they are part of reproducibility evidence. These identifiers may contain earlier internal labels; descriptive workstream names are used in the professor-facing documentation instead of rewriting evidence history.
+
 ## Repository layout
 
 Each package below contains `package.xml` and `CMakeLists.txt`.

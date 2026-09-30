@@ -101,7 +101,7 @@ raw per-image predictions. P19 does not produce these artifacts.
 
 Generalization Testing must supply benchmark identity/version and provenance; exact subset;
 class-mapping document/version; explicit authorization; frozen checkpoint hash
-and confirmation it matches Chat 02; Git SHA; evaluation config and command;
+and confirmation it matches 02 — Defect Detection; Git SHA; evaluation config and command;
 external predictive metrics; compatible per-class metrics where valid; raw
 predictions; logs; comparison; limitations; and explicit confirmation external
 results were not used for tuning. A methodologically invalid comparison needs
@@ -124,7 +124,7 @@ It consumes an accepted, hash-verified JSON artifact with `kind`,
 - `pr_curves`: series with label, x recall and y precision in [0,1].
 - `training_validation_curves`: labelled series with equal-length x/y arrays.
 - `domain_comparison`: series additionally identify in_domain/external domains;
-  the Chat 03 gate applies. The owner must establish metric compatibility.
+  the Generalization Testing gate applies. The owner must establish metric compatibility.
 - `example_panel`: cases with TP/FP/FN outcome, image_path and evidence_id.
 - `runtime`: labelled x/y series plus unit ms, s or FPS.
 

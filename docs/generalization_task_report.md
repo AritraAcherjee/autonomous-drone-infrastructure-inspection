@@ -218,7 +218,7 @@ Guarded command: `python scripts/verify_generalization_infrastructure.py` using
 the existing isolated test environment. Result: **1 failed, 80 passed,
 74 subtests passed in 43.34s**, exit 1.
 
-- Chat 03 synthetic tests: **30 passed**.
+- Generalization Testing synthetic tests: **30 passed**.
 - Existing detector tests: **42 passed**.
 - M1 documentation tests: **8 passed, 1 known environmental failure**.
 - `git diff --check`: **PASS**.
